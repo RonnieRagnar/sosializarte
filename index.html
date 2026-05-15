@@ -200,9 +200,9 @@
     .tool-item span { font-size: 1.25rem; }
 
     /* Galería de imágenes del Bot */
-    .image-gallery {
+        .image-gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       margin-top: 2rem;
     }
@@ -220,11 +220,16 @@
     }
     .gallery-item img {
       width: 100%;
-      height: 240px;
+      height: 200px;
       object-fit: cover;
       display: block;
     }
 
+    @media (min-width: 768px) {
+      .image-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+  
     /* Secciones generales */
     section { padding: 4rem 0; }
     .section-subtitle { color: var(--gray-text); max-width: 700px; margin: 0 auto 2rem auto; }
