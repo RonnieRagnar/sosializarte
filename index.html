@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <title>Sosializarte — Automatización con IA para Negocios</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (más moderna y elegante que Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --orange: #f26522;
+      --orange-dark: #d4561a;
+      --orange-light: #ff9a5e;
+      --dark-bg: #111827;
+      --dark-card: #1f2937;
+      --light-bg: #f9fafb;
+      --white: #ffffff;
+      --gray-text: #6c625d;
+      --gray-light: #e5e7eb;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--light-bg);
+      color: #1f2937;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Tipografía */
+    h1, h2, h3 {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 4rem; }
+      h2 { font-size: 2.5rem; }
+    }
+    @media (min-width: 1024px) {
+      h1 { font-size: 4.5rem; }
+    }
+
+    /* Utilidades */
+    .text-center { text-align: center; }
+    .text-orange { color: var(--orange); }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-10 { margin-bottom: 2.5rem; }
+
+    /* Botones */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--orange);
+      border: 1px solid var(--orange);
+    }
+    .btn-outline:hover {
+      background: var(--orange);
+      color: white;
+    }
+
+    /* Grids simétricas */
+    .grid-2, .grid-3, .grid-4, .stats-grid, .clients-grid, .results-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .results-grid { grid-template-columns: 1fr; }
+
+    @media (min-width: 640px) {
+      .clients-grid { grid-template-columns: repeat(4, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .results-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* Cards y módulos */
+    .card, .stat-card, .client-card, .result-card, .tool-card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+      border: 1px solid var(--gray-light);
+      text-align: center;
+    }
+    .card:hover, .stat-card:hover, .client-card:hover, .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 50;
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .logo span { color: #1f2937; }
+    .nav-links { display: none; gap: 2rem; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: #4b5563; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+
+    /* Hero */
+    .hero { padding: 4rem 0 2rem; }
+    @media (min-width: 768px) { .hero { padding: 6rem 0 4rem; } }
+    .hero-content { display: flex; flex-direction: column; gap: 3rem; align-items: center; }
+    @media (min-width: 768px) { .hero-content { flex-direction: row; } }
+    .hero-text { flex: 1; }
+    .hero-image { flex: 1; text-align: center; }
+    .hero-image img { max-width: 280px; border-radius: 2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-light); background: white; }
+
+    /* Sección Tecnología */
+    .tools-showcase { background: var(--white); padding: 2rem 0; border-top: 1px solid var(--gray-light); border-bottom: 1px solid var(--gray-light); margin: 2rem 0; }
+    .tools-wrapper { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; align-items: center; }
+    .tool-item { display: flex; align-items: center; gap: 0.75rem; background: #f3f4f6; padding: 0.75rem 1.5rem; border-radius: 9999px; font-weight: 600; }
+    .tool-item span { font-size: 1.25rem; }
+
+    /* Galería de imágenes del Bot */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-light);
+      transition: 0.2s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-md);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Secciones generales */
+    section { padding: 4rem 0; }
+    .section-subtitle { color: var(--gray-text); max-width: 700px; margin: 0 auto 2rem auto; }
+
+    footer { border-top: 1px solid var(--gray-light); padding: 2rem 0; text-align: center; color: #6b7280; font-size: 0.875rem; }
+
+    /* Ajuste de simetría */
+    .container > *:last-child {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <div class="logo">//social<span>izarte</span></div>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#industrias">Industrias</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#demo">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="tag" style="display:inline-block; background:var(--orange); color:white; padding:0.25rem 1rem; border-radius:9999px; font-size:0.75rem; font-weight:600; margin-bottom:1rem;">CONSULTORÍA DE AUTOMATIZACIÓN CON IA</div>
+        <h1>Automatiza tu negocio con <span class="text-orange">IA</span> y recupera tu tiempo.</h1>
+        <p class="mb-6" style="color: #4b5563;">Creamos asistentes inteligentes, automatizaciones y sistemas con IA que trabajan por ti 24/7. Reduce trabajo repetitivo, mejora la atención a clientes y automatiza procesos reales de negocio.</p>
+        <div class="buttons" style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="https://wa.me/525572718912" class="btn btn-primary">Solicitar diagnóstico gratuito</a>
+          <a href="#demo" class="btn btn-outline">Ver demo real</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- AHORA SÍ, imagen real de tu chatbot -->
+        <img src="img/img1.jpg" alt="Asistente virtual agendando cita">
+        <p style="font-size: 0.75rem; margin-top: 0.5rem; color: #6c757d;">Asistente virtual en acción</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS REALES -->
+  <div class="container">
+    <div class="stats-grid" style="margin-bottom: 2rem;">
+      <div class="stat-card"><div class="text-orange" style="font-size: 2.5rem; font-weight: 800;">90.2%</div><p>Ahorro de tiempo real<br>(4.75h → 28 min semanales)</p></div>
+      <div class="stat-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">GL Dental</div><p>Caso de éxito real en CDMX<br>Dra. Gimel Lom</p></div>
+      <div class="stat-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">0%</div><p>Errores en datos de contacto<br>desde la implementación</p></div>
+    </div>
+  </div>
+
+  <!-- TECNOLOGÍA QUE UTILIZAMOS (Logos con texto, sin imágenes externas que fallen) -->
+  <div class="tools-showcase">
+    <div class="container">
+      <h3 class="text-center mb-4">🏗️ Tecnología que utilizamos</h3>
+      <div class="tools-wrapper">
+        <div class="tool-item"><span>📅</span> Google Calendar</div>
+        <div class="tool-item"><span>⚙️</span> Make.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="container">
+      <div class="text-center mb-10">
+        <h2>Servicios de Automatización</h2>
+        <p class="section-subtitle">Soluciones enfocadas en automatizar procesos reales de negocio usando inteligencia artificial.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">🤖</div><h3>Chatbots para WhatsApp</h3><p>Bots inteligentes para atención automática, ventas y soporte.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📅</div><h3>Automatización de citas</h3><p>Agenda automática integrada con Google Calendar.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">⚡</div><h3>Procesos automatizados</h3><p>Eliminamos tareas repetitivas y optimizamos operaciones.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📲</div><h3>Atención al cliente IA</h3><p>Respuestas automáticas y seguimiento inteligente.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📈</div><h3>Automatización de marketing</h3><p>Flujos automáticos para captar y convertir prospectos.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">🧠</div><h3>Consultoría IA</h3><p>Estrategias reales para implementar IA en negocios.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIAS (Clientes Potenciales) -->
+  <section id="industrias" style="background-color: #f3f4f6;">
+    <div class="container">
+      <div class="text-center mb-10">
+        <h2>Negocios que ya pueden automatizarse con IA</h2>
+        <p class="section-subtitle">Implementamos automatizaciones inteligentes para empresas y negocios que necesitan ahorrar tiempo, atender clientes más rápido y escalar operaciones.</p>
+      </div>
+      <div class="clients-grid">
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🦷</div><h3>Consultorios Dentales</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💆</div><h3>Spas & Estéticas</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💈</div><h3>Barberías</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">⚖️</div><h3>Despachos Jurídicos</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏠</div><h3>Inmobiliarias</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🍽️</div><h3>Restaurantes</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏋️</div><h3>Gimnasios</h3></div>
+        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🛒</div><h3>E-Commerce</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS REALES (PRD) -->
+  <section id="resultados">
+    <div class="container">
+      <div class="text-center mb-10">
+        <h2>Resultados medidos con cronómetro</h2>
+        <p class="section-subtitle">Caso real: GL Dental (Dra. Gimel Lom) — antes y después de la automatización.</p>
+      </div>
+      <div class="results-grid">
+        <div class="result-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">90.2%</div><p>Reducción del tiempo de creación de contenido<br>(4.75h → 28 min semanales)</p></div>
+        <div class="result-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">15% → 0%</div><p>Reducción de errores en datos de contacto</p></div>
+        <div class="result-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">47.5 min → 3.5 min</div><p>Tiempo por post después de la automatización</p></div>
+      </div>
+      <div class="card" style="margin-top: 2rem; text-align: center; font-style: italic;">
+        “No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana.”
+        <br><br><strong>— Dra. Gimel Lom, GL Dental (CDMX)</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE IMÁGENES (Aquí van tus capturas de pantalla) -->
+  <section id="demo" style="background-color: #f3f4f6;">
+    <div class="container">
+      <div class="text-center mb-10">
+        <h2>✨ Así se ve en acción</h2>
+        <p class="section-subtitle">Capturas reales de nuestro asistente virtual gestionando citas y respondiendo dudas.</p>
+      </div>
+      <div class="image-gallery">
+        <div class="gallery-item"><img src="img/img1.jpg" alt="Conversación con el bot 1" onerror="this.src='https://placehold.co/600x400?text=Carga+tu+imagen'"></div>
+        <div class="gallery-item"><img src="img/img2.jpg" alt="Conversación con el bot 2" onerror="this.src='https://placehold.co/600x400?text=Carga+tu+imagen'"></div>
+        <div class="gallery-item"><img src="img/img3.jpg" alt="Conversación con el bot 3" onerror="this.src='https://placehold.co/600x400?text=Carga+tu+imagen'"></div>
+        <div class="gallery-item"><img src="img/img4.jpg" alt="Conversación con el bot 4" onerror="this.src='https://placehold.co/600x400?text=Carga+tu+imagen'"></div>
+        <div class="gallery-item"><img src="img/img5.jpg" alt="Conversación con el bot 5" onerror="this.src='https://placehold.co/600x400?text=Carga+tu+imagen'"></div>
+        <div class="gallery-item"><img src="img/img6.jpg" alt="Conversación con el bot 6" onerror="this.src='https://placehold.co/600x400?text=Carga+tu+imagen'"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="contacto" style="background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%); color: white;">
+    <div class="container text-center" style="padding: 3rem 0;">
+      <h2 style="color: white;">Tu negocio también puede trabajar solo.</h2>
+      <p style="margin: 1rem auto 2rem; max-width: 600px; opacity: 0.9;">Agenda una llamada y descubre cómo automatizar procesos, atención a clientes y operaciones usando inteligencia artificial.</p>
+      <a href="https://wa.me/525572718912" class="btn" style="background: white; color: var(--orange);">Hablar por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Sosializarte — Automatización de citas y atención al cliente con IA
+  </div>
+</footer>
+
+</body>
+</html>
