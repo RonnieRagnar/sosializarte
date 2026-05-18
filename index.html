@@ -206,10 +206,47 @@
     .hero-image { flex: 1; text-align: center; max-width: 100%; }
     .hero-image img { max-width: 100%; height: auto; border-radius: 2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-light); background: white; }
 
-    /* Tecnología */
-    .tools-showcase { background: var(--white); padding: 2rem 0; border-top: 1px solid var(--gray-light); border-bottom: 1px solid var(--gray-light); margin: 2rem 0; }
-    .tools-wrapper { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; align-items: center; }
-    .tool-item { display: flex; align-items: center; gap: 0.5rem; background: #f3f4f6; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; }
+    /* Tecnología (NUEVA VERSIÓN MEJORADA) */
+    .tools-showcase { 
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+      padding: 2.5rem 0; 
+      border-top: 1px solid var(--gray-light); 
+      border-bottom: 1px solid var(--gray-light); 
+      margin: 2rem 0; 
+    }
+    .tools-wrapper { 
+      display: flex; 
+      justify-content: center; 
+      gap: 2rem; 
+      flex-wrap: wrap; 
+      align-items: center; 
+    }
+    .tool-item { 
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      gap: 0.5rem; 
+      background: #ffffff; 
+      padding: 0.75rem 1.25rem; 
+      border-radius: 1rem; 
+      font-weight: 600; 
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--gray-light);
+      min-width: 100px;
+      transition: all 0.2s ease;
+    }
+    .tool-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      border-color: var(--orange);
+    }
+    .tool-icon {
+      font-size: 1.8rem;
+    }
+    .tool-name {
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
 
     /* Galería */
     .image-gallery {
@@ -332,14 +369,37 @@
     </div>
   </div>
 
-  <!-- TECNOLOGÍA -->
+  <!-- TECNOLOGÍA QUE UTILIZAMOS (VERSIÓN PROFESIONAL MEJORADA) -->
   <div class="tools-showcase">
     <div class="container">
-      <h3 class="text-center mb-4">🏗️ Tecnología que utilizamos</h3>
+      <h3 class="text-center mb-4">🛠️ Tecnología que utilizamos</h3>
       <div class="tools-wrapper">
-        <div class="tool-item"><span>📅</span> Google Calendar</div>
-        <div class="tool-item"><span>⚙️</span> Make.com</div>
+        <div class="tool-item">
+          <div class="tool-icon">⚙️</div>
+          <div class="tool-name">Make.com</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">🤖</div>
+          <div class="tool-name">Botpress</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">🧠</div>
+          <div class="tool-name">Gemini AI</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">💬</div>
+          <div class="tool-name">ChatGPT</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">🐙</div>
+          <div class="tool-name">GitHub</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-icon">📅</div>
+          <div class="tool-name">Google Calendar</div>
+        </div>
       </div>
+      <p class="text-center" style="font-size: 0.8rem; color: #6b7280; margin-top: 1.5rem;">Integración con APIs oficiales y automatización empresarial</p>
     </div>
   </div>
 
