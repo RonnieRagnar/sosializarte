@@ -6,11 +6,11 @@
   <title>Sosializarte — Automatización con IA para Negocios</title>
 
   <!-- SEO y Open Graph -->
-  <meta name="description" content="Automatizamos negocios con inteligencia artificial. Chatbots para WhatsApp, automatización de citas, atención al cliente y procesos con IA para consultorios, spas, restaurantes y empresas.">
-  <meta name="keywords" content="automatización con IA, chatbot WhatsApp, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
+  <meta name="description" content="Automatizamos negocios con inteligencia artificial. Chatbots para WhatsApp y Telegram, automatización de citas, atención al cliente y procesos con IA para consultorios, spas, restaurantes y empresas.">
+  <meta name="keywords" content="automatización con IA, chatbot WhatsApp, chatbot Telegram, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
   <meta name="author" content="Sosializarte">
   <meta property="og:title" content="Sosializarte — Automatización con IA para Negocios">
-  <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial.">
+  <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial en WhatsApp y Telegram.">
   <meta property="og:image" content="https://sosializarte.com/hero-image.png">
   <meta property="og:url" content="https://sosializarte.com">
   <meta property="og:type" content="website">
@@ -172,6 +172,90 @@
       box-shadow: var(--shadow-md);
     }
 
+    /* FAQ Styles */
+    .faq-section {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-light);
+    }
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--gray-light);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-question:hover {
+      color: var(--orange);
+    }
+    .faq-question-text {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .faq-question-text .emoji {
+      font-size: 1.3rem;
+    }
+    .faq-icon {
+      font-size: 0.9rem;
+      transition: transform 0.3s;
+      color: var(--orange);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      padding-left: 2.2rem;
+      color: #475569;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .faq-answer.active {
+      max-height: 500px;
+      padding-bottom: 1.2rem;
+    }
+    .price-tag {
+      background: #f1f5f9;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-family: monospace;
+      margin-left: 0.5rem;
+    }
+    .faq-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .faq-title span {
+      background: #fff3e8;
+      color: var(--orange);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+    }
+
     /* Header */
     header {
       position: sticky;
@@ -207,7 +291,7 @@
     .hero-image { flex: 1; text-align: center; max-width: 100%; }
     .hero-image img { max-width: 100%; height: auto; border-radius: 2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-light); background: white; }
 
-    /* Tecnología (VERSIÓN BALANCEADA CON 8 HERRAMIENTAS) */
+    /* Tecnología */
     .tools-showcase { 
       background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
       padding: 2.5rem 0; 
@@ -349,6 +433,7 @@
       <a href="#servicios">Servicios</a>
       <a href="#industrias">Industrias</a>
       <a href="#resultados">Resultados</a>
+      <a href="#faq">FAQ</a>
       <a href="#demo">Galería</a>
       <a href="#contacto">Contacto</a>
     </div>
@@ -362,10 +447,10 @@
       <div class="hero-text">
         <div class="tag" style="display:inline-block; background:var(--orange); color:white; padding:0.25rem 1rem; border-radius:9999px; font-size:0.75rem; font-weight:600; margin-bottom:1rem;">CONSULTORÍA DE AUTOMATIZACIÓN CON IA</div>
         <h1>Automatiza tu negocio con <span class="text-orange">IA</span> y recupera tu tiempo.</h1>
-        <p class="mb-6" style="color: #4b5563;">Creamos asistentes inteligentes, automatizaciones y sistemas con IA que trabajan por ti 24/7. Reduce trabajo repetitivo, mejora la atención a clientes y automatiza procesos reales de negocio.</p>
+        <p class="mb-6" style="color: #4b5563;">Creamos asistentes inteligentes para <strong>WhatsApp y Telegram</strong>, automatizaciones y sistemas con IA que trabajan por ti 24/7. Reduce trabajo repetitivo, mejora la atención a clientes y automatiza procesos reales de negocio.</p>
         <div class="buttons" style="display:flex; gap:1rem; flex-wrap:wrap;">
-          <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20me%20interesa%20solicitar%20un%20diagn%C3%B3stico%20gratuito%20de%20automatizaci%C3%B3n%20con%20IA%20para%20mi%20negocio.%20%C2%BFPodr%C3%ADan%20compartirme%20m%C3%A1s%20informaci%C3%B3n%3F" class="btn btn-primary">Solicitar diagnóstico gratuito</a>
-          <a href="#demo" class="btn btn-outline">Ver demo real</a>
+          <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">📅 Agenda una asesoría</a>
+          <a href="#faq" class="btn btn-outline">❓ Preguntas frecuentes</a>
         </div>
       </div>
       <div class="hero-image">
@@ -384,43 +469,19 @@
     </div>
   </div>
 
-  <!-- TECNOLOGÍA QUE UTILIZAMOS (8 HERRAMIENTAS, SIMÉTRICO) -->
+  <!-- TECNOLOGÍA QUE UTILIZAMOS -->
   <div class="tools-showcase">
     <div class="container">
       <h3 class="text-center mb-4">🛠️ Tecnología que utilizamos</h3>
       <div class="tools-wrapper">
-        <div class="tool-item">
-          <div class="tool-icon">⚙️</div>
-          <div class="tool-name">Make.com</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">🤖</div>
-          <div class="tool-name">Botpress</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">🧠</div>
-          <div class="tool-name">Gemini AI</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">💬</div>
-          <div class="tool-name">ChatGPT</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">🎨</div>
-          <div class="tool-name">Claude</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">📱</div>
-          <div class="tool-name">WhatsApp API</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">✈️</div>
-          <div class="tool-name">Telegram</div>
-        </div>
-        <div class="tool-item">
-          <div class="tool-icon">🐙</div>
-          <div class="tool-name">GitHub</div>
-        </div>
+        <div class="tool-item"><div class="tool-icon">⚙️</div><div class="tool-name">Make.com</div></div>
+        <div class="tool-item"><div class="tool-icon">🤖</div><div class="tool-name">Botpress</div></div>
+        <div class="tool-item"><div class="tool-icon">🧠</div><div class="tool-name">Gemini AI</div></div>
+        <div class="tool-item"><div class="tool-icon">💬</div><div class="tool-name">ChatGPT</div></div>
+        <div class="tool-item"><div class="tool-icon">🎨</div><div class="tool-name">Claude</div></div>
+        <div class="tool-item"><div class="tool-icon">📱</div><div class="tool-name">WhatsApp API</div></div>
+        <div class="tool-item"><div class="tool-icon">✈️</div><div class="tool-name">Telegram</div></div>
+        <div class="tool-item"><div class="tool-icon">🐙</div><div class="tool-name">GitHub</div></div>
       </div>
       <p class="text-center" style="font-size: 0.8rem; color: #6b7280; margin-top: 1.5rem;">Integración con APIs oficiales y automatización empresarial</p>
     </div>
@@ -434,8 +495,8 @@
         <p class="section-subtitle">Soluciones enfocadas en automatizar procesos reales de negocio usando inteligencia artificial.</p>
       </div>
       <div class="grid-3">
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">🤖</div><h3>Chatbots para WhatsApp</h3><p>Bots inteligentes para atención automática, ventas y soporte.</p></div>
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📅</div><h3>Automatización de citas</h3><p>Agenda automática integrada con Google Calendar.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">🤖</div><h3>Chatbots para WhatsApp y Telegram</h3><p>Bots inteligentes para atención automática, ventas y soporte en ambas plataformas.</p></div>
+        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📅</div><h3>Automatización de citas</h3><p>Agenda automática integrada con Google Calendar 24/7.</p></div>
         <div class="card"><div class="text-orange" style="font-size: 2.5rem;">⚡</div><h3>Procesos automatizados</h3><p>Eliminamos tareas repetitivas y optimizamos operaciones.</p></div>
         <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📲</div><h3>Atención al cliente IA</h3><p>Respuestas automáticas y seguimiento inteligente.</p></div>
         <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📈</div><h3>Automatización de marketing</h3><p>Flujos automáticos para captar y convertir prospectos.</p></div>
@@ -483,6 +544,21 @@
     </div>
   </section>
 
+  <!-- SECCIÓN DE PREGUNTAS FRECUENTES (NUEVA) -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-section">
+        <div class="faq-title">
+          ❓ Preguntas Frecuentes
+          <span>WhatsApp + Telegram</span>
+        </div>
+        <div class="faq-grid" id="faqContainer">
+          <!-- Los FAQs se cargan con JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- GALERÍA -->
   <section id="demo" style="background-color: #f3f4f6;">
     <div class="container">
@@ -505,15 +581,15 @@
   <section id="contacto">
     <div class="container text-center">
       <h2>Tu negocio también puede trabajar solo.</h2>
-      <p>Agenda una llamada y descubre cómo automatizar procesos, atención a clientes y operaciones usando inteligencia artificial.</p>
-      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn">Hablar por WhatsApp</a>
+      <p>Agenda una llamada y descubre cómo automatizar procesos, atención a clientes y operaciones usando inteligencia artificial en WhatsApp o Telegram.</p>
+      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA%20para%20WhatsApp%20y%20Telegram.%20%C2%BFPodemos%20conversar%3F" class="btn">Hablar por WhatsApp</a>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="container">
-    <p>© 2026 Sosializarte — Automatización de citas y atención al cliente con IA</p>
+    <p>© 2026 Sosializarte — Automatización de citas y atención al cliente con IA para WhatsApp y Telegram</p>
     <div style="margin-top: 1.5rem;">
       <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
         <i class="fab fa-instagram" style="color: var(--orange); margin-right: 0.5rem;"></i>
@@ -529,5 +605,62 @@
 <!-- GoatCounter analytics -->
 <script data-goatcounter="https://sosializarte.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  // FAQ Database
+  const faqs = [
+    { emoji: "⚙️", question: "¿Cómo funciona el asistente virtual?", answer: "Tus clientes escriben por <strong>WhatsApp o Telegram</strong> y el sistema responde automáticamente en segundos. Puede mostrar horarios disponibles, agendar citas, enviar confirmaciones y sincronizar todo con Google Calendar en tiempo real.<br><br>El objetivo es automatizar tareas repetitivas para que tu negocio ahorre tiempo y atienda más rápido." },
+    { emoji: "📲", question: "¿Necesito instalar algo?", answer: "No. Nosotros realizamos toda la configuración técnica y dejamos el sistema funcionando.<br><br>Solo necesitas tu celular, acceso a WhatsApp o Telegram y conexión a internet." },
+    { emoji: "🕒", question: "¿El sistema funciona 24/7?", answer: "Sí. El asistente virtual puede responder mensajes, registrar citas y atender solicitudes incluso fuera de horario laboral. <strong>Los 7 días de la semana, 24 horas al día.</strong>" },
+    { emoji: "💰", question: "¿Tiene costo de implementación?", answer: "Sí. La implementación inicial comienza desde <strong>$3,000 MXN</strong>.<br><br>Este pago cubre:<br>✅ Configuración personalizada<br>✅ Integraciones (Google Calendar, WhatsApp, Telegram)<br>✅ Diseño del flujo conversacional<br>✅ Pruebas y validaciones<br>✅ Puesta en marcha<br><br>Cada negocio tiene necesidades distintas, por lo que algunos proyectos pueden requerir una cotización personalizada." },
+    { emoji: "📆", question: "¿Existe una mensualidad?", answer: "Sí. El servicio incluye una mensualidad desde <strong>$600 MXN</strong>.<br><br>La mensualidad cubre:<br>✅ Hosting del chatbot<br>✅ Monitoreo del sistema<br>✅ Soporte técnico<br>✅ Mantenimiento<br>✅ Actualizaciones<br>✅ Ajustes menores" },
+    { emoji: "📞", question: "¿Puedo usar mi número actual de WhatsApp?", answer: "Depende del caso. Podemos integrar un número existente o configurar uno exclusivo para automatización.<br><br>La mejor opción se define durante la evaluación inicial." },
+    { emoji: "👥", question: "¿El sistema reemplaza a mi personal?", answer: "No. El objetivo es reducir tareas repetitivas y mejorar tiempos de respuesta.<br><br>Tu equipo puede enfocarse en atender mejor a los clientes mientras la automatización se encarga de procesos operativos." },
+    { emoji: "🤷", question: "¿Qué pasa si el asistente no entiende algo?", answer: "El sistema puede redirigir automáticamente la conversación a una persona o solicitar más información.<br><br>Siempre existe una opción de atención humana." },
+    { emoji: "📅", question: "¿Puedo modificar horarios y disponibilidad?", answer: "Sí. El sistema puede sincronizarse con Google Calendar para respetar automáticamente horarios ocupados, vacaciones o cambios de agenda." },
+    { emoji: "🛠️", question: "¿Ofrecen soporte técnico?", answer: "Sí. Todos los planes incluyen soporte técnico y monitoreo.<br><br>Si ocurre algún problema, realizamos revisión y seguimiento para mantener la operación funcionando correctamente." },
+    { emoji: "📄", question: "¿Hay contrato forzoso?", answer: "No. El servicio funciona bajo esquema mensual y puedes cancelarlo cuando lo necesites. <strong>Sin penalizaciones, sin preguntas incómodas.</strong>" },
+    { emoji: "🏢", question: "¿Qué tipo de negocios pueden automatizarse?", answer: "Actualmente trabajamos con:<br>🦷 Consultorios dentales<br>💆 Spas y estéticas<br>✂️ Barberías<br>🍽️ Restaurantes<br>🏠 Inmobiliarias<br>📋 Despachos<br>🏋️ Gimnasios<br>🚗 Negocios de servicios<br><br>Y cualquier empresa que reciba mensajes repetitivos o gestione citas constantemente." }
+  ];
+
+  // Render FAQs
+  function renderFAQs() {
+    const container = document.getElementById('faqContainer');
+    if (!container) return;
+    container.innerHTML = '';
+    faqs.forEach((faq, index) => {
+      const faqDiv = document.createElement('div');
+      faqDiv.className = 'faq-item';
+      faqDiv.innerHTML = `
+        <div class="faq-question" data-index="${index}">
+          <div class="faq-question-text">
+            <span class="emoji">${faq.emoji}</span>
+            <span>${faq.question}</span>
+          </div>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer" id="answer-${index}">
+          ${faq.answer}
+        </div>
+      `;
+      container.appendChild(faqDiv);
+    });
+
+    // Add click handlers
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const index = this.dataset.index;
+        const answer = document.getElementById(`answer-${index}`);
+        const icon = this.querySelector('.faq-icon');
+        
+        answer.classList.toggle('active');
+        icon.textContent = answer.classList.contains('active') ? '▲' : '▼';
+      });
+    });
+  }
+
+  // Execute when DOM ready
+  document.addEventListener('DOMContentLoaded', renderFAQs);
+</script>
 </body>
 </html>
