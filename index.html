@@ -135,9 +135,11 @@
     .grid-3 { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr; }
     .clients-grid { 
+      display: grid;
       grid-template-columns: repeat(2, 1fr); 
       justify-items: center;
       align-items: center;
+      gap: 1.5rem;
     }
     .results-grid { grid-template-columns: 1fr; }
 
@@ -166,6 +168,7 @@
       width: 100%;
       max-width: 180px;
       margin: 0 auto;
+      text-align: center;
     }
     .card:hover, .stat-card:hover, .client-card:hover, .tool-card:hover {
       transform: translateY(-4px);
@@ -414,6 +417,27 @@
       text-decoration: none;
       font-weight: 600;
     }
+
+    /* Estilos para la sección "Quién construye tus automatizaciones" */
+    .founder-card {
+      background: var(--white);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-light);
+    }
+    .stats-pill {
+      background: #f8fafd;
+      border-radius: 1rem;
+      padding: 0.75rem 1.25rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      border-bottom: 2px solid transparent;
+    }
+    .stats-pill:hover {
+      border-bottom-color: var(--orange);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -498,22 +522,24 @@
     </div>
   </section>
 
-  <!-- INDUSTRIAS -->
+  <!-- INDUSTRIAS - CORREGIDA (centrada perfectamente) -->
   <section id="industrias" style="background-color: #f3f4f6;">
     <div class="container">
       <div class="text-center mb-10">
         <h2>Negocios que ya pueden automatizarse con IA</h2>
         <p class="section-subtitle">Implementamos automatizaciones inteligentes para empresas y negocios que necesitan ahorrar tiempo, atender clientes más rápido y escalar operaciones.</p>
       </div>
-      <div class="clients-grid">
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🦷</div><h3>Consultorios Dentales</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💆</div><h3>Spas & Estéticas</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💈</div><h3>Barberías</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">⚖️</div><h3>Despachos Jurídicos</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏠</div><h3>Inmobiliarias</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🍽️</div><h3>Restaurantes</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏋️</div><h3>Gimnasios</h3></div>
-        <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🛒</div><h3>E-Commerce</h3></div>
+      <div style="display: flex; justify-content: center; width: 100%;">
+        <div class="clients-grid" style="width: 100%; max-width: 900px; margin: 0 auto;">
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🦷</div><h3>Consultorios Dentales</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💆</div><h3>Spas & Estéticas</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💈</div><h3>Barberías</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">⚖️</div><h3>Despachos Jurídicos</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏠</div><h3>Inmobiliarias</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🍽️</div><h3>Restaurantes</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏋️</div><h3>Gimnasios</h3></div>
+          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🛒</div><h3>E-Commerce</h3></div>
+        </div>
       </div>
     </div>
   </section>
@@ -537,69 +563,80 @@
     </div>
   </section>
 
-  <!-- SOSIALIZARTE - SECCIÓN NOSOTROS (foto pequeña, bio honesta) -->
+  <!-- QUIÉN CONSTRUYE TUS AUTOMATIZACIONES - NUEVA VERSIÓN MEJORADA -->
   <section id="about" style="background: #ffffff; border-top: 1px solid #e8ecef; border-bottom: 1px solid #e8ecef;">
     <div class="container" style="padding-top: 5rem; padding-bottom: 5rem;">
       
       <div style="text-align: center; margin-bottom: 3rem;">
         <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 1rem;">
-          Respaldo profesional
+          Confianza profesional
         </div>
         <h2 style="font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: #0a1a2b;">
-          Más de 16 años en tecnología y calidad
+          ¿Quién construye tus automatizaciones?
         </h2>
         <p style="font-size: 1rem; color: #5b7a99; max-width: 600px; margin: 1rem auto 0 auto;">
-          Experiencia en TI, aseguramiento de calidad y optimización de procesos.
+          Más de 16 años de experiencia en tecnología, calidad y procesos.
         </p>
       </div>
 
-      <div style="max-width: 1000px; margin: 0 auto;">
+      <div class="founder-card" style="max-width: 1000px; margin: 0 auto;">
         
-        <!-- Grid: texto principal + foto pequeña -->
-        <div style="display: flex; flex-direction: row; gap: 2.5rem; align-items: center; flex-wrap: wrap; justify-content: center;">
+        <!-- Grid foto + texto -->
+        <div style="display: flex; flex-direction: row; gap: 2rem; align-items: center; flex-wrap: wrap; justify-content: center;">
           
-          <!-- Texto (ocupa más espacio) -->
-          <div style="flex: 3; min-width: 250px;">
-            <p style="font-size: 1rem; line-height: 1.6; color: #3a546d; margin-bottom: 1.5rem;">
-              En Sosializarte no vendemos promesas ni bots genéricos. Diseñamos soluciones con inteligencia artificial que resuelven procesos reales de negocio: citas, atención al cliente y operación diaria.
-            </p>
-            <p style="font-size: 1rem; line-height: 1.6; color: #3a546d; margin-bottom: 1.5rem;">
-              Ronald Zúñiga cuenta con más de 16 años de experiencia en tecnología de la información, aseguramiento de calidad (QA) y optimización de procesos para empresas en México. Hoy aplica ese conocimiento en automatización con inteligencia artificial.
-            </p>
-            
-            <!-- Datos clave en línea -->
-            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
-              <div><span style="font-weight: 800; color: var(--orange);">+16 años</span> <span style="color: #5b7a99;">en TI y QA</span></div>
-              <div><span style="font-weight: 800; color: var(--orange);">100%</span> <span style="color: #5b7a99;">soporte local</span></div>
-              <div><span style="font-weight: 800; color: var(--orange);">GL Dental</span> <span style="color: #5b7a99;">caso activo</span></div>
-              <div><span style="font-weight: 800; color: var(--orange);">24/7</span> <span style="color: #5b7a99;">automatización continua</span></div>
-            </div>
-          </div>
-          
-          <!-- Foto pequeña (solo para confianza) -->
-          <div style="flex: 1; text-align: center;">
+          <!-- Foto -->
+          <div style="flex-shrink: 0; text-align: center;">
             <img 
               src="founder-sosializarte.jpg" 
               alt="Ronald Zúñiga — Fundador de Sosializarte"
               style="
-                width: 100%;
-                max-width: 140px;
-                border-radius: 1rem;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-                border: 2px solid #ffffff;
-                background: white;
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                object-fit: cover;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                border: 3px solid var(--orange);
               "
             >
-            <div style="margin-top: 0.5rem; font-size: 0.75rem; color: #5b7a99;">
-              Ronald Zúñiga<br>Fundador
-            </div>
+            <div style="margin-top: 0.75rem; font-weight: 600; color: #0a1a2b;">Ronald Zúñiga</div>
+            <div style="font-size: 0.75rem; color: #5b7a99;">Fundador</div>
+          </div>
+          
+          <!-- Texto -->
+          <div style="flex: 2; min-width: 250px;">
+            <p style="font-size: 1rem; line-height: 1.6; color: #3a546d; margin-bottom: 1rem;">
+              En Sosializarte no vendemos promesas ni bots genéricos. Diseñamos soluciones con inteligencia artificial que resuelven procesos reales de negocio: citas, atención al cliente y operación diaria.
+            </p>
+            <p style="font-size: 1rem; line-height: 1.6; color: #3a546d;">
+              Ronald Zúñiga cuenta con más de 16 años de experiencia en tecnología de la información, aseguramiento de calidad (QA) y optimización de procesos para empresas en México. Hoy aplica ese conocimiento en automatización con inteligencia artificial.
+            </p>
           </div>
 
         </div>
 
+        <!-- Stats horizontales -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
+          <div class="stats-pill" style="flex: 1;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">+16</div>
+            <div style="font-size: 0.75rem; color: #5b7a99;">años en TI y QA</div>
+          </div>
+          <div class="stats-pill" style="flex: 1;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">100%</div>
+            <div style="font-size: 0.75rem; color: #5b7a99;">soporte local</div>
+          </div>
+          <div class="stats-pill" style="flex: 1;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">GL Dental</div>
+            <div style="font-size: 0.75rem; color: #5b7a99;">caso activo</div>
+          </div>
+          <div class="stats-pill" style="flex: 1;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">24/7</div>
+            <div style="font-size: 0.75rem; color: #5b7a99;">automatización continua</div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Línea divisoria final sutil -->
+      <!-- Línea divisoria final -->
       <div style="max-width: 800px; margin: 3rem auto 0 auto; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 2rem;">
         <p style="font-size: 0.75rem; letter-spacing: 1px; color: #5b7a99; margin: 0;">
           Automatización · IA aplicada · Procesos · Tecnología empresarial
@@ -617,9 +654,7 @@
           ❓ Preguntas Frecuentes
           <span>WhatsApp <span style="color: #cbd5e1;">o</span> Telegram</span>
         </div>
-        <div class="faq-grid" id="faqContainer">
-          <!-- Los FAQs se cargan con JavaScript -->
-        </div>
+        <div class="faq-grid" id="faqContainer"></div>
       </div>
     </div>
   </section>
@@ -658,7 +693,8 @@
     <div style="margin-top: 1.5rem;">
       <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
         <i class="fab fa-instagram" style="color: var(--orange); margin-right: 0.5rem;"></i>
-        Síguenos en Instagram      </p>
+        Síguenos en Instagram
+      </p>
       <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #f3f4f6; padding: 0.75rem 1.5rem; border-radius: 9999px; color: var(--orange); text-decoration: none; font-weight: 700; font-size: 1rem; transition: 0.2s;">
         @sosializarte
       </a>
@@ -666,12 +702,9 @@
   </div>
 </footer>
 
-<!-- GoatCounter analytics -->
-<script data-goatcounter="https://sosializarte.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://sosializarte.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <script>
-  // FAQ Database
   const faqs = [
     { emoji: "⚙️", question: "¿Cómo funciona el asistente virtual?", answer: "Tus clientes escriben por <strong>WhatsApp o Telegram</strong> (la plataforma que elijas) y el sistema responde automáticamente en segundos. Puede mostrar horarios disponibles, agendar citas, enviar confirmaciones y sincronizar todo con Google Calendar en tiempo real.<br><br>El objetivo es automatizar tareas repetitivas para que tu negocio ahorre tiempo y atienda más rápido." },
     { emoji: "📲", question: "¿Necesito instalar algo?", answer: "No. Nosotros realizamos toda la configuración técnica y dejamos el sistema funcionando.<br><br>Solo necesitas tu celular, acceso a WhatsApp o Telegram y conexión a internet." },
@@ -687,7 +720,6 @@
     { emoji: "🏢", question: "¿Qué tipo de negocios pueden automatizarse?", answer: "Actualmente trabajamos con:<br>🦷 Consultorios dentales<br>💆 Spas y estéticas<br>✂️ Barberías<br>🍽️ Restaurantes<br>🏠 Inmobiliarias<br>📋 Despachos<br>🏋️ Gimnasios<br>🚗 Negocios de servicios<br><br>Y cualquier empresa que reciba mensajes repetitivos o gestione citas constantemente." }
   ];
 
-  // Render FAQs
   function renderFAQs() {
     const container = document.getElementById('faqContainer');
     if (!container) return;
@@ -709,21 +741,16 @@
       `;
       container.appendChild(faqDiv);
     });
-
-    // Add click handlers
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', function() {
         const index = this.dataset.index;
         const answer = document.getElementById(`answer-${index}`);
         const icon = this.querySelector('.faq-icon');
-        
         answer.classList.toggle('active');
         icon.textContent = answer.classList.contains('active') ? '▲' : '▼';
       });
     });
   }
-
-  // Execute when DOM ready
   document.addEventListener('DOMContentLoaded', renderFAQs);
 </script>
 </body>
