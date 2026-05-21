@@ -424,6 +424,53 @@
       border-bottom-color: var(--orange);
       transform: translateY(-2px);
     }
+
+    /* Estilos del formulario */
+    .form-container {
+      background: #f8fafd;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid #e2e8f0;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 0.75rem;
+      border: 1px solid #cbd5e1;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(242, 101, 34, 0.1);
+    }
+    .form-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .form-btn:hover {
+      background: var(--orange-dark);
+    }
+    .form-footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #94a3b8;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -604,7 +651,7 @@
 
         </div>
 
-        <!-- Stats internas (corregidas: Consultor de IA en lugar de QA) -->
+        <!-- Stats internas -->
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
           <div class="stats-pill" style="flex: 1;">
             <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">+16</div>
@@ -624,6 +671,39 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- FORMULARIO DE LEADS (posicionamiento estratégico) -->
+      <div class="form-container" style="max-width: 550px; margin: 2.5rem auto 0 auto;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h3 style="font-size: 1.3rem; color: #0a1a2b;">📋 ¿Te interesa automatizar tu negocio?</h3>
+          <p style="color: #5b7a99; font-size: 0.9rem;">Déjame tus datos y te contacto en menos de 24 horas</p>
+        </div>
+        <form action="https://formspree.io/f/tu-id-aqui" method="POST">
+          <div class="form-group">
+            <input type="text" name="nombre" placeholder="Tu nombre" required class="form-input">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Tu correo electrónico" required class="form-input">
+          </div>
+          <div class="form-group">
+            <input type="tel" name="telefono" placeholder="Tu WhatsApp (opcional)" class="form-input">
+          </div>
+          <div class="form-group">
+            <select name="interes" class="form-input">
+              <option value="">¿Qué te interesa?</option>
+              <option>Chatbot para WhatsApp</option>
+              <option>Chatbot para Telegram</option>
+              <option>Automatización de citas</option>
+              <option>Consultoría IA</option>
+              <option>No estoy seguro, quiero asesoría</option>
+            </select>
+          </div>
+          <button type="submit" class="form-btn">Enviar →</button>
+          <div class="form-footer">
+            No comparto tus datos. Solo para contactarte.
+          </div>
+        </form>
       </div>
 
       <div style="max-width: 800px; margin: 3rem auto 0 auto; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 2rem;">
@@ -688,6 +768,29 @@
         @sosializarte
       </a>
     </div>
+    
+    <!-- FORMULARIO EN FOOTER (segundo punto de captura) -->
+    <div class="form-container" style="margin-top: 2rem; background: #ffffff; max-width: 500px; margin-left: auto; margin-right: auto;">
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <p style="font-weight: 600; color: #0a1a2b;">¿Prefieres que te contacte yo?</p>
+      </div>
+      <form action="https://formspree.io/f/tu-id-aqui" method="POST">
+        <div class="form-group">
+          <input type="text" name="nombre" placeholder="Tu nombre" required class="form-input">
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Tu correo" required class="form-input">
+        </div>
+        <div class="form-group">
+          <input type="tel" name="telefono" placeholder="WhatsApp" class="form-input">
+        </div>
+        <button type="submit" class="form-btn">Enviar →</button>
+      </form>
+      <div class="form-footer">
+        Sin spam. Solo información útil.
+      </div>
+    </div>
+    
   </div>
 </footer>
 
@@ -707,7 +810,6 @@
     { emoji: "🛠️", question: "¿Ofrecen soporte técnico?", answer: "Sí. Todos los planes incluyen soporte técnico y monitoreo.<br><br>Si ocurre algún problema, realizamos revisión y seguimiento para mantener la operación funcionando correctamente." },
     { emoji: "📄", question: "¿Hay contrato forzoso?", answer: "No. El servicio funciona bajo esquema mensual y puedes cancelarlo cuando lo necesites. <strong>Sin penalizaciones, sin preguntas incómodas.</strong>" },
     { emoji: "🏢", question: "¿Qué tipo de negocios pueden automatizarse?", answer: "Actualmente trabajamos con:<br>🦷 Consultorios dentales<br>💆 Spas y estéticas<br>✂️ Barberías<br>🍽️ Restaurantes<br>🏠 Inmobiliarias<br>📋 Despachos<br>🏋️ Gimnasios<br>🚗 Negocios de servicios<br><br>Y cualquier empresa que reciba mensajes repetitivos o gestione citas constantemente." },
-    // NUEVA PREGUNTA ACTUALIZADA: Certificación y Diplomado COMPLETADO
     { emoji: "🎓", question: "¿Cuál es tu formación en inteligencia artificial?", answer: "Cuento con certificación oficial <strong>Generative AI Professional Certification (GAIPCM)</strong> por Certiprof, y he completado el <strong>Diplomado en Inteligencia Artificial Generativa y Automatización</strong> en Top Learning (112 horas, septiembre 2025).<br><br>Esto significa que no improviso. Aplico principios de IA generativa, ingeniería de prompts y automatización de flujos con respaldo técnico, no solo intuición. Mi enfoque combina 16 años de QA + certificación y diplomado en IA para construir sistemas que no fallan." }
   ];
 
