@@ -14,9 +14,22 @@
   <meta property="og:url" content="https://sosializarte.com">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://sosializarte.com/" />
+  <link rel="icon" href="/favicon.ico">
 
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Sosializarte",
+    "url": "https://sosializarte.com",
+    "description": "Automatización con IA para negocios en México. Chatbots para WhatsApp y Telegram, automatización de citas y procesos empresariales.",
+    "areaServed": "MX",
+    "sameAs": ["https://instagram.com/sosializarte"]
+  }
+  </script>
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,6 +39,7 @@
       --orange: #f26522;
       --orange-dark: #c94e10;
       --orange-glow: rgba(242,101,34,0.15);
+      --orange-glow-soft: rgba(242,101,34,0.07);
       --ink: #0d0d0d;
       --ink-soft: #1a1a1a;
       --paper: #fafaf8;
@@ -33,13 +47,14 @@
       --muted: #6b6b6b;
       --border: #e4e2de;
       --border-strong: #c8c5bf;
-      --accent-line: #f26522;
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 22px;
       --radius-xl: 32px;
       --shadow-card: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
       --shadow-lift: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+      --whatsapp: #25D366;
+      --telegram: #229ED9;
     }
 
     body {
@@ -62,21 +77,20 @@
     .text-muted { color: var(--muted); }
 
     .label-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
       background: var(--orange-glow);
       color: var(--orange);
       border: 1px solid rgba(242,101,34,0.25);
-      padding: 5px 14px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      padding: 5px 14px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
-    .label-tag::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; display: inline-block; animation: pulse-dot 2s infinite; }
+    .label-tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--orange); border-radius: 50%; display: inline-block;
+      animation: pulse-dot 2s infinite;
+    }
     @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.7); } }
 
     .btn {
@@ -102,44 +116,50 @@
       border-bottom: 1px solid var(--border);
     }
     .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-    .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--ink); text-decoration: none; display: flex; align-items: baseline; gap: 1px; }
-    .logo .slash { color: var(--orange); }
+    .logo {
+      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800;
+      color: var(--ink); text-decoration: none;
+      display: flex; align-items: baseline; gap: 1px;
+    }
+    .logo .slash { color: var(--orange); font-weight: 900; font-size: 1.6rem; }
     .nav-links { display: none; gap: 2rem; list-style: none; }
     .nav-links a { color: var(--muted); font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--orange); }
     .nav-cta { display: none; }
-    @media (min-width: 900px) {
-      .nav-links { display: flex; }
-      .nav-cta { display: inline-flex; }
-    }
+    @media (min-width: 900px) { .nav-links { display: flex; } .nav-cta { display: inline-flex; } }
 
     /* ─── HERO ─── */
     .hero-wrap {
       padding: 80px 0 60px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 60px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr;
+      gap: 60px; align-items: center;
+      position: relative;
+    }
+    .hero-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at top right, rgba(242,101,34,0.08), transparent 40%);
+      pointer-events: none;
     }
     @media (min-width: 900px) {
       .hero-wrap { grid-template-columns: 1.15fr 1fr; padding: 100px 0 80px; }
     }
 
-    .hero-kicker { margin-bottom: 0; }
-
     .hero-headline { margin-bottom: 1.5rem; }
-    .hero-headline em { font-style: normal; color: var(--orange); position: relative; }
+    .hero-headline em {
+      font-style: normal; color: var(--orange); position: relative;
+    }
     .hero-headline em::after {
-      content: '';
-      position: absolute;
-      bottom: 4px; left: 0; right: 0;
-      height: 3px;
-      background: var(--orange);
-      border-radius: 2px;
-      opacity: 0.35;
+      content: ''; position: absolute;
+      bottom: 4px; left: 0; right: 0; height: 3px;
+      background: var(--orange); border-radius: 2px; opacity: 0.35;
     }
 
-    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 520px; margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 520px; margin-bottom: 2rem;
+      line-height: 1.7; font-weight: 300;
+    }
     .hero-sub strong { color: var(--ink); font-weight: 600; }
 
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
@@ -147,16 +167,13 @@
     .social-proof-strip {
       display: flex; align-items: center; gap: 12px;
       padding: 14px 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      width: fit-content;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); width: fit-content;
     }
     .proof-avatars { display: flex; }
     .proof-avatars span {
       width: 32px; height: 32px; border-radius: 50%;
-      background: var(--orange-glow);
-      border: 2px solid #fff;
+      background: var(--orange-glow); border: 2px solid #fff;
       display: flex; align-items: center; justify-content: center;
       font-size: 0.7rem; font-weight: 700; color: var(--orange);
       margin-left: -8px;
@@ -165,39 +182,28 @@
     .proof-text { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
     .proof-text span { color: var(--muted); font-weight: 400; }
 
-    /* Hero visual */
+    /* Hero chat mock */
     .hero-visual { position: relative; }
     .hero-phone-mock {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 28px 24px;
-      box-shadow: var(--shadow-lift);
-      max-width: 340px;
-      margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: 28px 24px;
+      box-shadow: var(--shadow-lift); max-width: 340px; margin: 0 auto;
     }
     .chat-header {
       display: flex; align-items: center; gap: 10px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 16px;
+      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 16px;
     }
     .chat-avatar {
       width: 38px; height: 38px; border-radius: 50%;
       background: linear-gradient(135deg, #25D366, #1aad51);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
     }
     .chat-name { font-weight: 700; font-size: 0.9rem; }
     .chat-status { font-size: 0.72rem; color: #25D366; }
     .chat-bubble {
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: 0.85rem;
-      line-height: 1.5;
-      margin-bottom: 8px;
-      max-width: 85%;
-      animation: bubble-in 0.4s ease both;
+      padding: 10px 14px; border-radius: 14px;
+      font-size: 0.85rem; line-height: 1.5; margin-bottom: 8px;
+      max-width: 85%; animation: bubble-in 0.4s ease both;
     }
     @keyframes bubble-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
     .bubble-bot { background: #f0f0f0; color: var(--ink); border-bottom-left-radius: 4px; }
@@ -210,16 +216,11 @@
     .chat-time { font-size: 0.65rem; color: var(--muted); text-align: right; margin-top: -4px; margin-bottom: 8px; }
 
     .floating-badge {
-      position: absolute;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      box-shadow: var(--shadow-lift);
-      font-size: 0.78rem;
-      font-weight: 600;
-      display: flex; align-items: center; gap: 8px;
-      white-space: nowrap;
+      position: absolute; background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 10px 14px; box-shadow: var(--shadow-lift);
+      font-size: 0.78rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; white-space: nowrap;
     }
     .badge-top { top: -16px; right: -16px; }
     .badge-bottom { bottom: -16px; left: -16px; }
@@ -227,43 +228,34 @@
 
     /* ─── TICKER ─── */
     .ticker-wrap {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--ink-soft);
-      overflow: hidden;
-      padding: 12px 0;
-      margin: 0;
+      background: var(--ink-soft); overflow: hidden; padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
     .ticker-track {
       display: flex; gap: 48px; align-items: center;
-      animation: ticker 28s linear infinite;
-      width: max-content;
+      animation: ticker 28s linear infinite; width: max-content;
     }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .ticker-item { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 0.82rem; font-weight: 500; white-space: nowrap; }
     .ticker-dot { width: 4px; height: 4px; background: var(--orange); border-radius: 50%; }
+    .ticker-item .fa-whatsapp { color: var(--whatsapp); }
+    .ticker-item .fa-telegram { color: var(--telegram); }
 
     /* ─── STATS ─── */
     .stats-section { padding: 80px 0; }
     .stat-number {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2.8rem, 5vw, 4rem);
-      font-weight: 800;
-      color: var(--orange);
-      line-height: 1;
-      margin-bottom: 8px;
+      font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 8px;
     }
     .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2px;
+      display: grid; grid-template-columns: 1fr; gap: 2px;
     }
     @media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
     .stat-cell {
-      padding: 40px 36px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: background 0.2s;
+      padding: 40px 36px; border: 1px solid var(--border);
+      background: var(--surface); transition: background 0.2s;
     }
     .stat-cell:hover { background: var(--paper); }
     .stat-label { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin-top: 4px; }
@@ -274,188 +266,232 @@
     .section-head { margin-bottom: 3rem; }
     .section-head.centered { text-align: center; }
     .section-head.centered p { margin: 1rem auto 0; max-width: 580px; }
-    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 1rem;
+    }
     .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-top: 1rem; font-weight: 300; }
 
     /* ─── TECH BAND ─── */
     .tech-band {
       background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
       padding: 48px 0;
     }
-    .tech-label { text-align: center; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
-    .tech-grid {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    .tech-label {
+      text-align: center; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px;
     }
+    .tech-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .tech-pill {
       display: flex; align-items: center; gap: 8px;
-      padding: 10px 18px;
-      background: var(--paper);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.85rem; font-weight: 600; color: var(--ink);
-      transition: all 0.2s;
+      padding: 10px 18px; background: var(--paper);
+      border: 1px solid var(--border); border-radius: 999px;
+      font-size: 0.85rem; font-weight: 600; color: var(--ink); transition: all 0.2s;
     }
     .tech-pill:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
-    .tech-pill .icon { font-size: 1.1rem; }
+    .tech-pill .icon { font-size: 1rem; }
+    .tech-pill .fa-whatsapp { color: var(--whatsapp); }
+    .tech-pill .fa-telegram { color: var(--telegram); }
+    .tech-pill .fa-google { color: #4285F4; }
 
     /* ─── SERVICES ─── */
     .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2px;
+      display: grid; grid-template-columns: 1fr; gap: 2px;
     }
     @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
 
     .service-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 36px 32px;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 36px 32px; transition: all 0.25s;
+      position: relative; overflow: hidden;
     }
     .service-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--orange);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--orange);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
     }
     .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover { background: var(--paper); }
-    .service-icon { font-size: 2rem; margin-bottom: 1.25rem; display: block; }
+    .service-card:hover {
+      background: var(--paper);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+    .service-icon-wrap {
+      width: 58px; height: 58px; border-radius: 16px;
+      background: var(--orange-glow);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+      transition: background 0.2s;
+    }
+    .service-card:hover .service-icon-wrap { background: rgba(242,101,34,0.18); }
+    .service-icon-wrap .fa-whatsapp { color: var(--whatsapp); font-size: 1.4rem; }
+    .service-icon-wrap .fa-telegram { color: var(--telegram); font-size: 1.4rem; }
     .service-card h3 { margin-bottom: 0.5rem; }
     .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
 
+    /* CTA intermedio */
+    .mid-cta {
+      margin-top: 3rem; text-align: center;
+      padding-top: 2.5rem; border-top: 1px solid var(--border);
+    }
+    .mid-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+
     /* ─── INDUSTRIES ─── */
     .industries-bg { background: var(--ink); }
-    .industries-bg .section-label { color: rgba(242,101,34,0.8); }
+    .industries-bg .section-label { color: rgba(242,101,34,0.85); }
     .industries-bg h2 { color: #fff; }
     .industries-bg .section-sub { color: rgba(255,255,255,0.5); }
+
     .industries-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
+      gap: 16px;
     }
     @media (min-width: 640px) { .industries-grid { grid-template-columns: repeat(4, 1fr); } }
-    .industry-cell {
-      background: var(--ink);
-      padding: 28px 24px;
-      display: flex; flex-direction: column; align-items: flex-start;
-      transition: background 0.2s;
-    }
-    .industry-cell:hover { background: var(--ink-soft); }
-    .industry-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .industry-cell h3 { color: #fff; font-size: 0.95rem; font-weight: 600; }
 
-    /* ─── RESULTS / CASE STUDY ─── */
-    .case-study-wrap {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-      align-items: center;
-    }
-    @media (min-width: 900px) { .case-study-wrap { grid-template-columns: 1fr 1fr; } }
-    .case-metrics {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .metric-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+    .industry-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: var(--radius-md);
       padding: 24px 20px;
-      transition: box-shadow 0.2s;
+      display: flex; flex-direction: column; align-items: flex-start;
+      transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .industry-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .industry-card:hover {
+      background: rgba(242,101,34,0.08);
+      border-color: rgba(242,101,34,0.35);
+      transform: translateY(-3px);
+    }
+    .industry-card:hover::before { transform: scaleX(1); }
+    .industry-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 14px;
+      transition: background 0.2s;
+    }
+    .industry-card:hover .industry-icon {
+      background: rgba(242,101,34,0.15);
+      border-color: rgba(242,101,34,0.3);
+    }
+    .industry-card h3 { color: #fff; font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+
+    /* ─── PROCESO ─── */
+    .proceso-section { background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .proceso-grid {
+      display: grid; grid-template-columns: 1fr; gap: 2px;
+    }
+    @media (min-width: 640px) { .proceso-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .proceso-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .proceso-step {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 36px 28px; position: relative; transition: all 0.25s;
+    }
+    .proceso-step:hover { background: var(--paper); transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+    .step-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem; font-weight: 800; line-height: 1;
+      color: var(--orange-glow); margin-bottom: 16px;
+      -webkit-text-stroke: 1px rgba(242,101,34,0.2);
+    }
+    .step-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--orange-glow);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; margin-bottom: 16px; color: var(--orange);
+    }
+    .proceso-step h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .proceso-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
+
+    /* ─── RESULTS ─── */
+    .case-study-wrap {
+      display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+    }
+    @media (min-width: 900px) { .case-study-wrap { grid-template-columns: 1fr 1fr; } }
+    .case-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .metric-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 24px 20px; transition: box-shadow 0.2s;
     }
     .metric-card:hover { box-shadow: var(--shadow-lift); }
     .metric-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--orange);
-      line-height: 1;
-      margin-bottom: 6px;
+      font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+      color: var(--orange); line-height: 1; margin-bottom: 6px;
     }
-    .metric-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; font-weight: 400; }
+    .metric-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
     .metric-card.featured {
-      grid-column: span 2;
-      background: var(--orange);
-      border-color: var(--orange);
+      grid-column: span 2; background: var(--orange); border-color: var(--orange);
     }
     .metric-card.featured .metric-num { color: #fff; font-size: 2.8rem; }
     .metric-card.featured .metric-desc { color: rgba(255,255,255,0.8); }
 
     .testimonial-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--orange);
-      border-radius: var(--radius-md);
-      padding: 32px;
-      margin-top: 24px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 4px solid var(--orange); border-radius: var(--radius-md);
+      padding: 32px; margin-top: 24px;
     }
-    .testimonial-quote { font-size: 1.1rem; color: var(--ink); line-height: 1.7; font-style: italic; font-weight: 300; margin-bottom: 20px; }
-    .testimonial-quote::before { content: '\201C'; font-size: 2rem; color: var(--orange); line-height: 0; vertical-align: -12px; margin-right: 4px; font-style: normal; }
+    .testimonial-quote {
+      font-size: 1.1rem; color: var(--ink); line-height: 1.7;
+      font-style: italic; font-weight: 300; margin-bottom: 20px;
+    }
+    .testimonial-quote::before {
+      content: '\201C'; font-size: 2rem; color: var(--orange);
+      line-height: 0; vertical-align: -12px; margin-right: 4px; font-style: normal;
+    }
     .testimonial-author { display: flex; align-items: center; gap: 12px; }
     .author-avatar {
       width: 44px; height: 44px; border-radius: 50%;
-      background: var(--orange-glow);
-      border: 2px solid var(--orange);
+      background: var(--orange-glow); border: 2px solid var(--orange);
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1rem; color: var(--orange);
     }
     .author-name { font-weight: 700; font-size: 0.9rem; }
     .author-role { font-size: 0.78rem; color: var(--muted); }
 
-    /* ─── ABOUT / FOUNDER ─── */
+    /* ─── ABOUT ─── */
     .about-wrap {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start;
     }
     @media (min-width: 900px) { .about-wrap { grid-template-columns: 1fr 1.3fr; } }
     .founder-photo-block { text-align: center; }
     .founder-img {
-      width: 180px; height: 180px; border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--orange);
-      box-shadow: 0 0 0 8px var(--orange-glow);
+      width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+      border: 4px solid var(--orange); box-shadow: 0 0 0 8px var(--orange-glow);
       display: block; margin: 0 auto 20px;
     }
     .founder-name { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; }
     .founder-role { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
     .cred-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
     .cred-pill {
-      background: var(--paper);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 5px 12px;
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 999px; padding: 5px 12px;
       font-size: 0.75rem; font-weight: 600; color: var(--ink);
     }
     .founder-text p { color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
     .founder-text p strong { color: var(--ink); font-weight: 600; }
-    .founder-stats {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px;
+    .founder-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px; }
+    .founder-stat {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 18px 16px; text-align: center;
     }
-    .founder-stat { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; text-align: center; }
     .founder-stat-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange); }
     .founder-stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
 
     /* ─── LEAD FORM ─── */
     .form-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .form-wrap {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+    .form-wrap { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
     @media (min-width: 900px) { .form-wrap { grid-template-columns: 1.2fr 1fr; } }
     .form-copy h2 { margin-bottom: 1rem; }
     .form-copy p { color: var(--muted); font-size: 1rem; line-height: 1.7; font-weight: 300; }
@@ -464,34 +500,26 @@
     .form-benefits li::before { content: '✓'; color: #22c55e; font-weight: 700; font-size: 0.85rem; }
 
     .lead-form {
-      background: var(--paper);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 36px 32px;
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 32px;
     }
     .form-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
     .form-subtitle { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
     .field { margin-bottom: 14px; }
     .field input, .field select {
       width: 100%; padding: 13px 16px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      background: var(--surface);
-      color: var(--ink);
-      transition: border-color 0.2s;
-      -webkit-appearance: none; appearance: none;
+      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      background: var(--surface); color: var(--ink);
+      transition: border-color 0.2s; -webkit-appearance: none; appearance: none;
     }
     .field input:focus, .field select:focus { outline: none; border-color: var(--orange); }
     .field input::placeholder { color: #aaa; }
     .submit-btn {
-      width: 100%; padding: 15px;
-      background: var(--orange); color: #fff;
+      width: 100%; padding: 15px; background: var(--orange); color: #fff;
       border: none; border-radius: var(--radius-sm);
       font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700;
-      cursor: pointer; transition: background 0.2s;
-      letter-spacing: 0.01em;
+      cursor: pointer; transition: background 0.2s; letter-spacing: 0.01em;
     }
     .submit-btn:hover { background: var(--orange-dark); }
     .form-disclaimer { text-align: center; font-size: 0.72rem; color: #aaa; margin-top: 12px; }
@@ -503,80 +531,72 @@
     .faq-trigger {
       display: flex; justify-content: space-between; align-items: center;
       padding: 22px 0; cursor: pointer; gap: 16px;
-      font-weight: 600; font-size: 1rem;
-      transition: color 0.2s;
+      font-weight: 600; font-size: 1rem; transition: color 0.2s;
     }
     .faq-trigger:hover { color: var(--orange); }
     .faq-trigger-text { display: flex; align-items: center; gap: 10px; }
     .faq-emoji { font-size: 1.2rem; flex-shrink: 0; }
     .faq-arrow { font-size: 0.85rem; color: var(--orange); transition: transform 0.3s; flex-shrink: 0; }
     .faq-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      padding-left: 32px;
-      color: var(--muted); font-size: 0.92rem; line-height: 1.75; font-weight: 300;
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+      padding-left: 32px; color: var(--muted); font-size: 0.92rem; line-height: 1.75; font-weight: 300;
     }
     .faq-body.open { max-height: 600px; padding-bottom: 20px; }
 
     /* ─── GALLERY ─── */
     .gallery-bg { background: var(--ink); }
     .gallery-bg h2 { color: #fff; }
-    .gallery-bg .section-label { color: rgba(242,101,34,0.8); }
+    .gallery-bg .section-label { color: rgba(242,101,34,0.85); }
     .gallery-bg .section-sub { color: rgba(255,255,255,0.5); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
     @media (min-width: 640px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
     .gallery-item {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: #1a1a1a;
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: transform 0.2s;
-      aspect-ratio: 4/3;
+      border-radius: var(--radius-md); overflow: hidden;
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.2s; aspect-ratio: 4/3;
     }
     .gallery-item:hover { transform: scale(1.02); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ─── CTA FINAL ─── */
-    .cta-section {
-      background: var(--orange);
-      padding: 100px 0;
-      text-align: center;
-    }
+    .cta-section { background: var(--orange); padding: 100px 0; text-align: center; }
     .cta-section h2 { color: #fff; margin-bottom: 1rem; }
-    .cta-section p { color: rgba(255,255,255,0.82); max-width: 520px; margin: 0 auto 2.5rem; font-size: 1.05rem; font-weight: 300; line-height: 1.7; }
+    .cta-section p {
+      color: rgba(255,255,255,0.82); max-width: 520px;
+      margin: 0 auto 2.5rem; font-size: 1.05rem; font-weight: 300; line-height: 1.7;
+    }
     .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: var(--ink);
-      padding: 60px 0 40px;
-      color: rgba(255,255,255,0.5);
-    }
+    footer { background: var(--ink); padding: 60px 0 40px; color: rgba(255,255,255,0.5); }
     .footer-top {
       display: flex; justify-content: space-between; align-items: flex-start;
       flex-wrap: wrap; gap: 32px; padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 32px;
     }
-    .footer-brand .logo { color: #fff; font-size: 1.4rem; }
+    .footer-brand .logo { color: #fff; }
     .footer-brand p { margin-top: 10px; font-size: 0.85rem; max-width: 240px; line-height: 1.6; }
-    .footer-links h4 { color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
-    .footer-links a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.88rem; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-links h4 {
+      color: #fff; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .footer-links a {
+      display: block; color: rgba(255,255,255,0.45); text-decoration: none;
+      font-size: 0.88rem; margin-bottom: 8px; transition: color 0.2s;
+    }
     .footer-links a:hover { color: var(--orange); }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.78rem; }
-    .ig-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.45); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px; font-size: 0.78rem;
+    }
+    .ig-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.45); text-decoration: none; font-weight: 600; transition: color 0.2s;
+    }
     .ig-link:hover { color: var(--orange); }
 
     /* ─── SCROLL REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
@@ -592,25 +612,30 @@
       padding: 16px 28px 24px;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a { padding: 12px 0; color: var(--ink); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .mobile-menu a {
+      padding: 12px 0; color: var(--ink); font-weight: 500;
+      text-decoration: none; border-bottom: 1px solid var(--border); font-size: 0.95rem;
+    }
     .mobile-menu a:last-child { border: none; }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ─── HEADER ─── -->
 <header>
   <div class="container navbar">
     <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#industrias">Industrias</a></li>
+      <li><a href="#proceso">Proceso</a></li>
       <li><a href="#resultados">Resultados</a></li>
       <li><a href="#about">Nosotros</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#demo">Galería</a></li>
     </ul>
-    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." class="btn btn-primary nav-cta">📅 Agendar asesoría</a>
+    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." class="btn btn-primary nav-cta">
+      <i class="fab fa-whatsapp"></i> Agendar asesoría
+    </a>
     <div class="hamburger" id="hamburger" aria-label="Menú" tabindex="0">
       <span></span><span></span><span></span>
     </div>
@@ -618,15 +643,16 @@
   <nav class="mobile-menu" id="mobileMenu">
     <a href="#servicios">Servicios</a>
     <a href="#industrias">Industrias</a>
+    <a href="#proceso">Proceso</a>
     <a href="#resultados">Resultados</a>
     <a href="#about">Nosotros</a>
     <a href="#faq">FAQ</a>
-    <a href="#demo">Galería</a>
-    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;">📅 Agendar asesoría →</a>
+    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
   </nav>
 </header>
 
 <main>
+
 <!-- ─── HERO ─── -->
 <section style="padding: 0;">
   <div class="container">
@@ -634,13 +660,15 @@
       <div class="hero-text">
         <div class="label-tag">Automatización con IA · México</div>
         <h1 class="hero-headline">
-          Tu negocio<br>atendiendo solo,<br><em>las 24 horas.</em>
+          Tu negocio atendiendo<br>clientes incluso<br><em>mientras duermes.</em>
         </h1>
         <p class="hero-sub">
-          Diseñamos asistentes inteligentes para <strong>WhatsApp y Telegram</strong> que agendan citas, responden dudas y eliminan tareas repetitivas — sin que tú estés presente.
+          Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp</strong> y <strong>Telegram</strong>.
         </p>
         <div class="hero-btns">
-          <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">📅 Agendar asesoría gratuita</a>
+          <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Agendar asesoría gratuita
+          </a>
           <a href="#resultados" class="btn btn-ghost">Ver caso real →</a>
         </div>
         <div class="social-proof-strip">
@@ -655,7 +683,7 @@
       </div>
 
       <div class="hero-visual">
-        <div style="position: relative; display: inline-block; width: 100%; max-width: 340px; margin: 0 auto; display: block;">
+        <div style="position: relative; max-width: 340px; margin: 0 auto; display: block;">
           <div class="floating-badge badge-top">
             <span class="badge-dot"></span> Bot activo 24/7
           </div>
@@ -686,24 +714,34 @@
 <!-- ─── TICKER ─── -->
 <div class="ticker-wrap">
   <div class="ticker-track">
-    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot WhatsApp 24/7</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Automatización de citas</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Google Calendar integrado</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>90.2% ahorro de tiempo</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Caso real: GL Dental</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot Telegram</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Sin errores en contactos</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Implementación en días</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Soporte local CDMX</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot WhatsApp 24/7</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Automatización de citas</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Google Calendar integrado</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>90.2% ahorro de tiempo</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Caso real: GL Dental</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot Telegram</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Sin errores en contactos</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Implementación en días</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Soporte local CDMX</span>
+    <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">⚡ 90.2% ahorro de tiempo</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">🦷 Caso real: GL Dental</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">🚀 Implementación en días</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">📍 Soporte local CDMX</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">⚡ 90.2% ahorro de tiempo</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">🦷 Caso real: GL Dental</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">🚀 Implementación en días</span>
+    <span class="ticker-dot"></span>
+    <span class="ticker-item">📍 Soporte local CDMX</span>
+    <span class="ticker-dot"></span>
   </div>
 </div>
 
@@ -735,14 +773,14 @@
   <div class="container">
     <p class="tech-label">Tecnología que utilizamos</p>
     <div class="tech-grid">
+      <div class="tech-pill"><i class="fab fa-whatsapp icon" style="color:var(--whatsapp);"></i> WhatsApp API</div>
+      <div class="tech-pill"><i class="fab fa-telegram icon" style="color:var(--telegram);"></i> Telegram</div>
+      <div class="tech-pill"><i class="fab fa-google icon" style="color:#4285F4;"></i> Google Calendar</div>
       <div class="tech-pill"><span class="icon">⚙️</span> Make.com</div>
       <div class="tech-pill"><span class="icon">🤖</span> Botpress</div>
       <div class="tech-pill"><span class="icon">🧠</span> Gemini AI</div>
       <div class="tech-pill"><span class="icon">💬</span> ChatGPT</div>
       <div class="tech-pill"><span class="icon">🎨</span> Claude AI</div>
-      <div class="tech-pill"><span class="icon">📱</span> WhatsApp API</div>
-      <div class="tech-pill"><span class="icon">✈️</span> Telegram</div>
-      <div class="tech-pill"><span class="icon">📅</span> Google Calendar</div>
     </div>
   </div>
 </div>
@@ -757,35 +795,41 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <span class="service-icon">🤖</span>
+        <div class="service-icon-wrap"><i class="fab fa-whatsapp"></i></div>
         <h3>Chatbot para WhatsApp</h3>
         <p>Bots inteligentes que atienden clientes, responden preguntas y cierran ventas en WhatsApp sin que estés presente.</p>
       </div>
       <div class="service-card reveal reveal-delay-1">
-        <span class="service-icon">✈️</span>
+        <div class="service-icon-wrap"><i class="fab fa-telegram"></i></div>
         <h3>Chatbot para Telegram</h3>
         <p>Asistentes virtuales para atención automatizada, soporte y ventas dentro de Telegram.</p>
       </div>
       <div class="service-card reveal reveal-delay-2">
-        <span class="service-icon">📅</span>
+        <div class="service-icon-wrap" style="font-size:1.4rem;">📅</div>
         <h3>Automatización de citas</h3>
         <p>Agenda automática sincronizada con Google Calendar. Tu cliente elige horario y queda confirmado al instante.</p>
       </div>
       <div class="service-card reveal">
-        <span class="service-icon">⚡</span>
+        <div class="service-icon-wrap" style="font-size:1.4rem;">⚡</div>
         <h3>Procesos automatizados</h3>
         <p>Eliminamos tareas repetitivas: confirmaciones, recordatorios, seguimientos y formularios en piloto automático.</p>
       </div>
       <div class="service-card reveal reveal-delay-1">
-        <span class="service-icon">📲</span>
+        <div class="service-icon-wrap" style="font-size:1.4rem;">📲</div>
         <h3>Atención al cliente con IA</h3>
         <p>Respuestas automáticas, seguimiento inteligente y escalado a humano cuando se necesita.</p>
       </div>
       <div class="service-card reveal reveal-delay-2">
-        <span class="service-icon">📈</span>
+        <div class="service-icon-wrap" style="font-size:1.4rem;">📈</div>
         <h3>Automatización de marketing</h3>
         <p>Flujos automáticos para captar prospectos, nutrir leads y convertir oportunidades sin intervención manual.</p>
       </div>
+    </div>
+    <div class="mid-cta reveal">
+      <p>¿Listo para dejar de responder mensajes manualmente?</p>
+      <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
+      </a>
     </div>
   </div>
 </section>
@@ -799,14 +843,75 @@
       <p class="section-sub">Cualquier negocio que reciba mensajes repetitivos o gestione citas constantemente es candidato ideal.</p>
     </div>
     <div class="industries-grid">
-      <div class="industry-cell reveal"><div class="industry-icon">🦷</div><h3>Consultorios Dentales</h3></div>
-      <div class="industry-cell reveal reveal-delay-1"><div class="industry-icon">💆</div><h3>Spas y Estéticas</h3></div>
-      <div class="industry-cell reveal reveal-delay-2"><div class="industry-icon">💈</div><h3>Barberías</h3></div>
-      <div class="industry-cell reveal reveal-delay-3"><div class="industry-icon">⚖️</div><h3>Despachos Jurídicos</h3></div>
-      <div class="industry-cell reveal"><div class="industry-icon">🏠</div><h3>Inmobiliarias</h3></div>
-      <div class="industry-cell reveal reveal-delay-1"><div class="industry-icon">🍽️</div><h3>Restaurantes</h3></div>
-      <div class="industry-cell reveal reveal-delay-2"><div class="industry-icon">🏋️</div><h3>Gimnasios</h3></div>
-      <div class="industry-cell reveal reveal-delay-3"><div class="industry-icon">🛒</div><h3>E-Commerce</h3></div>
+      <div class="industry-card reveal">
+        <div class="industry-icon">🦷</div>
+        <h3>Consultorios Dentales</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-1">
+        <div class="industry-icon">💆</div>
+        <h3>Spas y Estéticas</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-2">
+        <div class="industry-icon">💈</div>
+        <h3>Barberías</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-3">
+        <div class="industry-icon">⚖️</div>
+        <h3>Despachos Jurídicos</h3>
+      </div>
+      <div class="industry-card reveal">
+        <div class="industry-icon">🏠</div>
+        <h3>Inmobiliarias</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-1">
+        <div class="industry-icon">🍽️</div>
+        <h3>Restaurantes</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-2">
+        <div class="industry-icon">🏋️</div>
+        <h3>Gimnasios</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-3">
+        <div class="industry-icon">🛒</div>
+        <h3>E-Commerce</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESO ─── -->
+<section id="proceso" class="proceso-section">
+  <div class="container">
+    <div class="section-head centered reveal">
+      <div class="section-label">Sin sorpresas</div>
+      <h2>Cómo trabajamos</h2>
+      <p class="section-sub">Un proceso claro, desde el primer contacto hasta el bot funcionando en tu negocio.</p>
+    </div>
+    <div class="proceso-grid">
+      <div class="proceso-step reveal">
+        <div class="step-number">01</div>
+        <div class="step-icon"><i class="fas fa-search"></i></div>
+        <h3>Diagnóstico</h3>
+        <p>Entendemos tu negocio, los mensajes que recibes y los procesos que quieres automatizar. Sin compromisos.</p>
+      </div>
+      <div class="proceso-step reveal reveal-delay-1">
+        <div class="step-number">02</div>
+        <div class="step-icon"><i class="fas fa-sitemap"></i></div>
+        <h3>Diseño del flujo</h3>
+        <p>Mapeamos la conversación ideal de tu bot: bienvenida, opciones, captura de datos y confirmaciones.</p>
+      </div>
+      <div class="proceso-step reveal reveal-delay-2">
+        <div class="step-number">03</div>
+        <div class="step-icon"><i class="fas fa-code"></i></div>
+        <h3>Implementación</h3>
+        <p>Configuramos el bot, conectamos WhatsApp o Telegram y lo integramos con tu Google Calendar.</p>
+      </div>
+      <div class="proceso-step reveal reveal-delay-3">
+        <div class="step-number">04</div>
+        <div class="step-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Lanzamiento</h3>
+        <p>Pruebas, ajustes finales y puesta en marcha. Tu negocio empieza a atender solo desde el primer día.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -896,7 +1001,7 @@
   </div>
 </section>
 
-<!-- ─── LEAD FORM (PRINCIPAL PUNTO DE CONVERSIÓN) ─── -->
+<!-- ─── LEAD FORM ─── -->
 <section class="form-section" id="contacto-form">
   <div class="container">
     <div class="form-wrap">
@@ -948,7 +1053,9 @@
     </div>
     <div style="text-align: center; margin-top: 3rem;">
       <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Tienes una pregunta que no está aquí?</p>
-      <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n." class="btn btn-primary">Pregunta directo por WhatsApp</a>
+      <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n." class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Pregunta directo por WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -978,8 +1085,12 @@
     <h2>Tu negocio puede trabajar solo.</h2>
     <p>Agenda una llamada sin costo y en 30 minutos sabemos si la automatización tiene sentido para ti.</p>
     <div class="cta-btns">
-      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-white">💬 Hablar por WhatsApp</a>
-      <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">📋 Llenar formulario</a>
+      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-white">
+        <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
+      </a>
+      <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">
+        📋 Llenar formulario
+      </a>
     </div>
   </div>
 </section>
@@ -996,8 +1107,8 @@
       </div>
       <div class="footer-links">
         <h4>Servicios</h4>
-        <a href="#servicios">Chatbot WhatsApp</a>
-        <a href="#servicios">Chatbot Telegram</a>
+        <a href="#servicios"><i class="fab fa-whatsapp" style="color:var(--whatsapp); margin-right:6px;"></i>Chatbot WhatsApp</a>
+        <a href="#servicios"><i class="fab fa-telegram" style="color:var(--telegram); margin-right:6px;"></i>Chatbot Telegram</a>
         <a href="#servicios">Automatización de citas</a>
         <a href="#servicios">Atención al cliente IA</a>
       </div>
@@ -1005,17 +1116,21 @@
         <h4>Empresa</h4>
         <a href="#about">Nosotros</a>
         <a href="#resultados">Resultados</a>
+        <a href="#proceso">Proceso</a>
         <a href="#faq">FAQ</a>
         <a href="https://wa.me/525540509093">Contacto</a>
+        <a href="/privacidad" style="font-size:0.8rem; opacity:0.6;">Política de privacidad</a>
       </div>
       <div class="footer-links">
         <h4>Redes</h4>
-        <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener" class="ig-link"><i class="fab fa-instagram"></i> @sosializarte</a>
+        <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener" class="ig-link">
+          <i class="fab fa-instagram"></i> @sosializarte
+        </a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 Sosializarte — Ciudad de México</p>
-      <p>Automatización con IA · Chatbots · WhatsApp · Telegram</p>
+      <p>Automatización con IA · Chatbots · <i class="fab fa-whatsapp" style="color:var(--whatsapp);"></i> WhatsApp · <i class="fab fa-telegram" style="color:var(--telegram);"></i> Telegram</p>
     </div>
   </div>
 </footer>
@@ -1065,7 +1180,6 @@ function buildFAQ() {
   });
 }
 
-// Scroll reveal
 function initReveal() {
   const els = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
@@ -1074,13 +1188,12 @@ function initReveal() {
   els.forEach(el => obs.observe(el));
 }
 
-// Counter animation
 function animateCounter(el, target, suffix, duration) {
   let start = 0;
   const step = (timestamp) => {
     if (!start) start = timestamp;
     const progress = Math.min((timestamp - start) / duration, 1);
-    el.textContent = Math.floor(progress * target) + suffix;
+    el.textContent = (progress * target).toFixed(1) + suffix;
     if (progress < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
@@ -1098,7 +1211,6 @@ function initCounter() {
   obs.observe(el);
 }
 
-// Mobile menu
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('mobileMenu').classList.toggle('open');
 });
