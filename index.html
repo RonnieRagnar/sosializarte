@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>Sosializarte — Automatización con IA para Negocios</title>
 
-  <!-- SEO y Open Graph -->
   <meta name="description" content="Automatizamos negocios con inteligencia artificial. Chatbots para WhatsApp y Telegram, automatización de citas, atención al cliente y procesos con IA para consultorios, spas, restaurantes y empresas.">
   <meta name="keywords" content="automatización con IA, chatbot WhatsApp, chatbot Telegram, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
   <meta name="author" content="Sosializarte">
@@ -16,681 +15,911 @@
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://sosializarte.com/" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     :root {
       --orange: #f26522;
-      --orange-dark: #d4561a;
-      --orange-light: #ff9a5e;
-      --light-bg: #f9fafb;
-      --white: #ffffff;
-      --gray-text: #6c625d;
-      --gray-light: #e5e7eb;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+      --orange-dark: #c94e10;
+      --orange-glow: rgba(242,101,34,0.15);
+      --ink: #0d0d0d;
+      --ink-soft: #1a1a1a;
+      --paper: #fafaf8;
+      --surface: #ffffff;
+      --muted: #6b6b6b;
+      --border: #e4e2de;
+      --border-strong: #c8c5bf;
+      --accent-line: #f26522;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-lift: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--light-bg);
-      color: #1f2937;
-      line-height: 1.5;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
-    h1, h2, h3 {
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
+    h1, h2, h3, .display { font-family: 'Syne', sans-serif; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15; font-weight: 700; }
+    h3 { font-size: 1.15rem; font-weight: 700; }
 
-    h1 {
-      font-size: 3rem;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (min-width: 768px) {
-      h1 { font-size: 4rem; }
-      h2 { font-size: 2.5rem; }
-    }
-    @media (min-width: 1024px) {
-      h1 { font-size: 4.5rem; }
-    }
-
-    .text-center { text-align: center; }
     .text-orange { color: var(--orange); }
-    .mb-2 { margin-bottom: 0.5rem; }
-    .mb-4 { margin-bottom: 1rem; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .mb-10 { margin-bottom: 2.5rem; }
+    .text-muted { color: var(--muted); }
 
-    .btn {
+    .label-tag {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 0.875rem 1.75rem;
-      border-radius: 9999px;
+      gap: 6px;
+      background: var(--orange-glow);
+      color: var(--orange);
+      border: 1px solid rgba(242,101,34,0.25);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 0.72rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-size: 1rem;
-      cursor: pointer;
-      border: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
     }
-    .btn-primary {
-      background: var(--orange);
-      color: white;
-      box-shadow: var(--shadow-md);
-    }
-    .btn-primary:hover {
-      background: var(--orange-dark);
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--orange);
-      border: 1px solid var(--orange);
-    }
-    .btn-outline:hover {
-      background: var(--orange);
-      color: white;
-    }
+    .label-tag::before { content: ''; width: 6px; height: 6px; background: var(--orange); border-radius: 50%; display: inline-block; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.7); } }
 
-    .grid-2, .grid-3, .grid-4, .stats-grid, .clients-grid, .results-grid {
-      display: grid;
-      gap: 2rem;
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 999px;
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      white-space: nowrap;
     }
-    .grid-2 { grid-template-columns: 1fr; }
-    .grid-3 { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .clients-grid { 
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); 
-      justify-items: center;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .results-grid { grid-template-columns: 1fr; }
+    .btn-primary { background: var(--orange); color: #fff; box-shadow: 0 4px 20px rgba(242,101,34,0.35); }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 28px rgba(242,101,34,0.4); }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border-strong); }
+    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-1px); }
+    .btn-white { background: #fff; color: var(--orange); font-weight: 700; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
 
-    @media (min-width: 640px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .results-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (min-width: 768px) {
-      .grid-2 { grid-template-columns: repeat(2, 1fr); }
-      .grid-3 { grid-template-columns: repeat(3, 1fr); }
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
-      .clients-grid { grid-template-columns: repeat(4, 1fr); }
-      .results-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .card, .stat-card, .client-card, .result-card, .tool-card {
-      background: var(--white);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-      border: 1px solid var(--gray-light);
-      text-align: center;
-    }
-    .client-card {
-      width: 100%;
-      max-width: 180px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .faq-section {
-      background: var(--white);
-      border-radius: 1.5rem;
-      padding: 2.5rem 2rem;
-      margin: 2rem 0;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-light);
-    }
-    .faq-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--gray-light);
-    }
-    .faq-question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.2s;
-    }
-    .faq-question:hover {
-      color: var(--orange);
-    }
-    .faq-question-text {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .faq-question-text .emoji {
-      font-size: 1.3rem;
-    }
-    .faq-icon {
-      font-size: 0.9rem;
-      transition: transform 0.3s;
-      color: var(--orange);
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      padding-left: 2.2rem;
-      color: #475569;
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-    .faq-answer.active {
-      max-height: 500px;
-      padding-bottom: 1.2rem;
-    }
-    .faq-title {
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .faq-title span {
-      background: #fff3e8;
-      color: var(--orange);
-      padding: 0.3rem 0.8rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-    }
-
+    /* ─── HEADER ─── */
     header {
-      position: sticky;
-      top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      z-index: 50;
-      border-bottom: 1px solid var(--gray-light);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
-    .navbar {
-      display: flex;
-      justify-content: space-between;
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--ink); text-decoration: none; display: flex; align-items: baseline; gap: 1px; }
+    .logo .slash { color: var(--orange); }
+    .nav-links { display: none; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta { display: none; }
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .nav-cta { display: inline-flex; }
+    }
+
+    /* ─── HERO ─── */
+    .hero-wrap {
+      padding: 80px 0 60px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
       align-items: center;
-      padding: 1rem 0;
     }
-    .logo {
-      font-size: 1.5rem;
+    @media (min-width: 900px) {
+      .hero-wrap { grid-template-columns: 1.15fr 1fr; padding: 100px 0 80px; }
+    }
+
+    .hero-kicker { margin-bottom: 0; }
+
+    .hero-headline { margin-bottom: 1.5rem; }
+    .hero-headline em { font-style: normal; color: var(--orange); position: relative; }
+    .hero-headline em::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      opacity: 0.35;
+    }
+
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 520px; margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
+    .hero-sub strong { color: var(--ink); font-weight: 600; }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+
+    .social-proof-strip {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      width: fit-content;
+    }
+    .proof-avatars { display: flex; }
+    .proof-avatars span {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--orange-glow);
+      border: 2px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; color: var(--orange);
+      margin-left: -8px;
+    }
+    .proof-avatars span:first-child { margin-left: 0; }
+    .proof-text { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+    .proof-text span { color: var(--muted); font-weight: 400; }
+
+    /* Hero visual */
+    .hero-visual { position: relative; }
+    .hero-phone-mock {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-lift);
+      max-width: 340px;
+      margin: 0 auto;
+    }
+    .chat-header {
+      display: flex; align-items: center; gap: 10px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .chat-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #1aad51);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .chat-name { font-weight: 700; font-size: 0.9rem; }
+    .chat-status { font-size: 0.72rem; color: #25D366; }
+    .chat-bubble {
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      max-width: 85%;
+      animation: bubble-in 0.4s ease both;
+    }
+    @keyframes bubble-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    .bubble-bot { background: #f0f0f0; color: var(--ink); border-bottom-left-radius: 4px; }
+    .bubble-user { background: var(--orange); color: #fff; border-bottom-right-radius: 4px; margin-left: auto; }
+    .bubble-delay-1 { animation-delay: 0.3s; }
+    .bubble-delay-2 { animation-delay: 0.6s; }
+    .bubble-delay-3 { animation-delay: 0.9s; }
+    .bubble-delay-4 { animation-delay: 1.2s; }
+    .bubble-delay-5 { animation-delay: 1.5s; }
+    .chat-time { font-size: 0.65rem; color: var(--muted); text-align: right; margin-top: -4px; margin-bottom: 8px; }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      box-shadow: var(--shadow-lift);
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap;
+    }
+    .badge-top { top: -16px; right: -16px; }
+    .badge-bottom { bottom: -16px; left: -16px; }
+    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+
+    /* ─── TICKER ─── */
+    .ticker-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--ink-soft);
+      overflow: hidden;
+      padding: 12px 0;
+      margin: 0;
+    }
+    .ticker-track {
+      display: flex; gap: 48px; align-items: center;
+      animation: ticker 28s linear infinite;
+      width: max-content;
+    }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-item { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 0.82rem; font-weight: 500; white-space: nowrap; }
+    .ticker-dot { width: 4px; height: 4px; background: var(--orange); border-radius: 50%; }
+
+    /* ─── STATS ─── */
+    .stats-section { padding: 80px 0; }
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4rem);
       font-weight: 800;
       color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
     }
-    .logo span { color: #1f2937; }
-    .nav-links { display: none; gap: 2rem; }
-    .nav-links a { text-decoration: none; font-weight: 500; color: #4b5563; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--orange); }
-    @media (min-width: 768px) { .nav-links { display: flex; } }
-
-    .hero { padding: 4rem 0 2rem; }
-    @media (min-width: 768px) { .hero { padding: 6rem 0 4rem; } }
-    .hero-content { display: flex; flex-direction: column; gap: 3rem; align-items: center; }
-    @media (min-width: 768px) { .hero-content { flex-direction: row; } }
-    .hero-text { flex: 1; }
-    .hero-image { flex: 1; text-align: center; max-width: 100%; }
-    .hero-image img { max-width: 100%; height: auto; border-radius: 2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-light); background: white; }
-
-    .tools-showcase { 
-      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-      padding: 2.5rem 0; 
-      border-top: 1px solid var(--gray-light); 
-      border-bottom: 1px solid var(--gray-light); 
-      margin: 2rem 0; 
-    }
-    .tools-wrapper { 
+    .stat-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-      justify-items: center;
-      align-items: center;
+      grid-template-columns: 1fr;
+      gap: 2px;
     }
-    .tool-item { 
-      display: flex; 
-      flex-direction: column;
-      align-items: center; 
-      gap: 0.5rem; 
-      background: #ffffff; 
-      padding: 0.75rem 1rem; 
-      border-radius: 1rem; 
-      font-weight: 600; 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-      border: 1px solid var(--gray-light);
-      width: 100%;
-      max-width: 140px;
-      transition: all 0.2s ease;
-    }
-    .tool-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      border-color: var(--orange);
-    }
-    .tool-icon {
-      font-size: 1.8rem;
-    }
-    .tool-name {
-      font-size: 0.85rem;
-      color: #4b5563;
-      font-weight: 600;
-    }
-
-    @media (min-width: 640px) {
-      .tools-wrapper {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-      }
-      .tool-item {
-        max-width: 160px;
-      }
-    }
-
-    .image-gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    @media (min-width: 768px) {
-      .image-gallery {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-      }
-    }
-    .gallery-item {
-      background: var(--white);
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-light);
-      transition: 0.2s;
-    }
-    .gallery-item:hover {
-      transform: scale(1.02);
-      box-shadow: var(--shadow-md);
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-
-    section { padding: 4rem 0; }
-    .section-subtitle { color: var(--gray-text); max-width: 700px; margin: 0 auto 2rem auto; }
-
-    #contacto {
-      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
-      color: white;
-      margin-top: 2rem;
-    }
-    #contacto .container {
-      padding: 2rem 1rem;
-    }
-    #contacto p {
-      font-size: 1rem;
-      line-height: 1.5;
-      max-width: 600px;
-      margin: 1rem auto 2rem;
-      opacity: 0.9;
-    }
-    #contacto h2 {
-      color: white;
-    }
-    #contacto .btn {
-      background: white;
-      color: var(--orange);
-    }
-    #contacto .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    footer {
-      border-top: 1px solid var(--gray-light);
-      padding: 2rem 0;
-      text-align: center;
-      color: #6b7280;
-      font-size: 0.875rem;
-    }
-    footer a {
-      color: var(--orange);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .founder-card {
-      background: var(--white);
-      border-radius: 2rem;
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--gray-light);
-    }
-    .stats-pill {
-      background: #f8fafd;
-      border-radius: 1rem;
-      padding: 0.75rem 1.25rem;
-      text-align: center;
-      transition: all 0.2s ease;
-      border-bottom: 2px solid transparent;
-    }
-    .stats-pill:hover {
-      border-bottom-color: var(--orange);
-      transform: translateY(-2px);
-    }
-
-    /* Estilos del formulario */
-    .form-container {
-      background: #f8fafd;
-      border-radius: 1.5rem;
-      padding: 2rem;
-      margin: 2rem 0;
-      border: 1px solid #e2e8f0;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    .form-input {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 0.75rem;
-      border: 1px solid #cbd5e1;
-      font-family: inherit;
-      font-size: 0.95rem;
-      transition: border-color 0.2s;
-    }
-    .form-input:focus {
-      outline: none;
-      border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(242, 101, 34, 0.1);
-    }
-    .form-btn {
-      background: var(--orange);
-      color: white;
-      border: none;
-      padding: 0.8rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      font-size: 1rem;
+    @media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+    .stat-cell {
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      background: var(--surface);
       transition: background 0.2s;
     }
-    .form-btn:hover {
-      background: var(--orange-dark);
+    .stat-cell:hover { background: var(--paper); }
+    .stat-label { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin-top: 4px; }
+    .stat-sublabel { font-size: 0.78rem; color: var(--border-strong); margin-top: 6px; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 80px 0; }
+    .section-head { margin-bottom: 3rem; }
+    .section-head.centered { text-align: center; }
+    .section-head.centered p { margin: 1rem auto 0; max-width: 580px; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-top: 1rem; font-weight: 300; }
+
+    /* ─── TECH BAND ─── */
+    .tech-band {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0;
     }
-    .form-footer {
+    .tech-label { text-align: center; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .tech-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    }
+    .tech-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.85rem; font-weight: 600; color: var(--ink);
+      transition: all 0.2s;
+    }
+    .tech-pill:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
+    .tech-pill .icon { font-size: 1.1rem; }
+
+    /* ─── SERVICES ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { background: var(--paper); }
+    .service-icon { font-size: 2rem; margin-bottom: 1.25rem; display: block; }
+    .service-card h3 { margin-bottom: 0.5rem; }
+    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+
+    /* ─── INDUSTRIES ─── */
+    .industries-bg { background: var(--ink); }
+    .industries-bg .section-label { color: rgba(242,101,34,0.8); }
+    .industries-bg h2 { color: #fff; }
+    .industries-bg .section-sub { color: rgba(255,255,255,0.5); }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    @media (min-width: 640px) { .industries-grid { grid-template-columns: repeat(4, 1fr); } }
+    .industry-cell {
+      background: var(--ink);
+      padding: 28px 24px;
+      display: flex; flex-direction: column; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .industry-cell:hover { background: var(--ink-soft); }
+    .industry-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .industry-cell h3 { color: #fff; font-size: 0.95rem; font-weight: 600; }
+
+    /* ─── RESULTS / CASE STUDY ─── */
+    .case-study-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 900px) { .case-study-wrap { grid-template-columns: 1fr 1fr; } }
+    .case-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      transition: box-shadow 0.2s;
+    }
+    .metric-card:hover { box-shadow: var(--shadow-lift); }
+    .metric-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .metric-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; font-weight: 400; }
+    .metric-card.featured {
+      grid-column: span 2;
+      background: var(--orange);
+      border-color: var(--orange);
+    }
+    .metric-card.featured .metric-num { color: #fff; font-size: 2.8rem; }
+    .metric-card.featured .metric-desc { color: rgba(255,255,255,0.8); }
+
+    .testimonial-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--orange);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      margin-top: 24px;
+    }
+    .testimonial-quote { font-size: 1.1rem; color: var(--ink); line-height: 1.7; font-style: italic; font-weight: 300; margin-bottom: 20px; }
+    .testimonial-quote::before { content: '\201C'; font-size: 2rem; color: var(--orange); line-height: 0; vertical-align: -12px; margin-right: 4px; font-style: normal; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--orange-glow);
+      border: 2px solid var(--orange);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: var(--orange);
+    }
+    .author-name { font-weight: 700; font-size: 0.9rem; }
+    .author-role { font-size: 0.78rem; color: var(--muted); }
+
+    /* ─── ABOUT / FOUNDER ─── */
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (min-width: 900px) { .about-wrap { grid-template-columns: 1fr 1.3fr; } }
+    .founder-photo-block { text-align: center; }
+    .founder-img {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--orange);
+      box-shadow: 0 0 0 8px var(--orange-glow);
+      display: block; margin: 0 auto 20px;
+    }
+    .founder-name { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; }
+    .founder-role { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+    .cred-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
+    .cred-pill {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 0.75rem; font-weight: 600; color: var(--ink);
+    }
+    .founder-text p { color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+    .founder-text p strong { color: var(--ink); font-weight: 600; }
+    .founder-stats {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 28px;
+    }
+    .founder-stat { background: var(--paper); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 16px; text-align: center; }
+    .founder-stat-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange); }
+    .founder-stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+    /* ─── LEAD FORM ─── */
+    .form-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (min-width: 900px) { .form-wrap { grid-template-columns: 1.2fr 1fr; } }
+    .form-copy h2 { margin-bottom: 1rem; }
+    .form-copy p { color: var(--muted); font-size: 1rem; line-height: 1.7; font-weight: 300; }
+    .form-benefits { margin-top: 1.5rem; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .form-benefits li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500; }
+    .form-benefits li::before { content: '✓'; color: #22c55e; font-weight: 700; font-size: 0.85rem; }
+
+    .lead-form {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+    }
+    .form-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+    .form-subtitle { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
+    .field { margin-bottom: 14px; }
+    .field input, .field select {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      background: var(--surface);
+      color: var(--ink);
+      transition: border-color 0.2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--orange); }
+    .field input::placeholder { color: #aaa; }
+    .submit-btn {
+      width: 100%; padding: 15px;
+      background: var(--orange); color: #fff;
+      border: none; border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .submit-btn:hover { background: var(--orange-dark); }
+    .form-disclaimer { text-align: center; font-size: 0.72rem; color: #aaa; margin-top: 12px; }
+
+    /* ─── FAQ ─── */
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-trigger {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0; cursor: pointer; gap: 16px;
+      font-weight: 600; font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .faq-trigger:hover { color: var(--orange); }
+    .faq-trigger-text { display: flex; align-items: center; gap: 10px; }
+    .faq-emoji { font-size: 1.2rem; flex-shrink: 0; }
+    .faq-arrow { font-size: 0.85rem; color: var(--orange); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      padding-left: 32px;
+      color: var(--muted); font-size: 0.92rem; line-height: 1.75; font-weight: 300;
+    }
+    .faq-body.open { max-height: 600px; padding-bottom: 20px; }
+
+    /* ─── GALLERY ─── */
+    .gallery-bg { background: var(--ink); }
+    .gallery-bg h2 { color: #fff; }
+    .gallery-bg .section-label { color: rgba(242,101,34,0.8); }
+    .gallery-bg .section-sub { color: rgba(255,255,255,0.5); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    @media (min-width: 640px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    .gallery-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #1a1a1a;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.2s;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ─── CTA FINAL ─── */
+    .cta-section {
+      background: var(--orange);
+      padding: 100px 0;
       text-align: center;
-      font-size: 0.7rem;
-      color: #94a3b8;
-      margin-top: 1rem;
     }
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.82); max-width: 520px; margin: 0 auto 2.5rem; font-size: 1.05rem; font-weight: 300; line-height: 1.7; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      padding: 60px 0 40px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 32px; padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .footer-brand .logo { color: #fff; font-size: 1.4rem; }
+    .footer-brand p { margin-top: 10px; font-size: 0.85rem; max-width: 240px; line-height: 1.6; }
+    .footer-links h4 { color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+    .footer-links a { display: block; color: rgba(255,255,255,0.45); text-decoration: none; font-size: 0.88rem; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.78rem; }
+    .ig-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.45); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    .ig-link:hover { color: var(--orange); }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* Mobile menu */
+    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
+    @media (min-width: 900px) { .hamburger { display: none; } }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 16px 28px 24px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 12px 0; color: var(--ink); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    .mobile-menu a:last-child { border: none; }
   </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="container navbar">
-    <div class="logo">//sosial<span>izarte</span></div>
-    <div class="nav-links">
-      <a href="#servicios">Servicios</a>
-      <a href="#industrias">Industrias</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#about">Nosotros</a>
-      <a href="#faq">FAQ</a>
-      <a href="#demo">Galería</a>
-      <a href="#contacto">Contacto</a>
+    <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#industrias">Industrias</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#demo">Galería</a></li>
+    </ul>
+    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." class="btn btn-primary nav-cta">📅 Agendar asesoría</a>
+    <div class="hamburger" id="hamburger" aria-label="Menú" tabindex="0">
+      <span></span><span></span><span></span>
     </div>
   </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#servicios">Servicios</a>
+    <a href="#industrias">Industrias</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#about">Nosotros</a>
+    <a href="#faq">FAQ</a>
+    <a href="#demo">Galería</a>
+    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;">📅 Agendar asesoría →</a>
+  </nav>
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <div class="tag" style="display:inline-block; background:var(--orange); color:white; padding:0.25rem 1rem; border-radius:9999px; font-size:0.75rem; font-weight:600; margin-bottom:1rem;">CONSULTORÍA DE AUTOMATIZACIÓN CON IA</div>
-        <h1>Automatiza tu negocio con <span class="text-orange">IA</span> y recupera tu tiempo.</h1>
-        <p style="font-size:1.1rem; font-weight:600; color:#1f2937; margin-bottom:1rem;">
-          Menos tareas repetitivas. Más tiempo para operar tu negocio.
-        </p>
-        <p class="mb-6" style="color: #4b5563;">Creamos asistentes inteligentes para <strong>WhatsApp o Telegram</strong> (tú eliges la plataforma), automatizaciones y sistemas con IA que trabajan por ti 24/7.</p>
-        <div class="buttons" style="display:flex; gap:1rem; flex-wrap:wrap;">
-          <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">📅 Agenda una asesoría</a>
-          <a href="#faq" class="btn btn-outline">❓ Preguntas frecuentes</a>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="hero-image.png" alt="Asistente virtual de Sosializarte agendando una cita dental por WhatsApp">
-        <p style="font-size: 0.75rem; margin-top: 0.5rem; color: #6c757d; text-align: center;">Asistente virtual en acción</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
+<!-- ─── HERO ─── -->
+<section style="padding: 0;">
   <div class="container">
-    <div class="stats-grid" style="margin-bottom: 2rem;">
-      <div class="stat-card"><div class="text-orange" style="font-size: 2.5rem; font-weight: 800;">90.2%</div><p>Ahorro de tiempo real<br>(4.75h → 28 min semanales)</p></div>
-      <div class="stat-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">GL Dental</div><p>1er caso de éxito real<br>Dra. Gimel Lom</p></div>
-      <div class="stat-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">0%</div><p>Errores en datos de contacto<br>desde la implementación</p></div>
-    </div>
-  </div>
-
-  <!-- TECNOLOGÍA -->
-  <div class="tools-showcase">
-    <div class="container">
-      <h3 class="text-center mb-4">Tecnología que utilizamos</h3>
-      <div class="tools-wrapper">
-        <div class="tool-item"><div class="tool-icon">⚙️</div><div class="tool-name">Make.com</div></div>
-        <div class="tool-item"><div class="tool-icon">🤖</div><div class="tool-name">Botpress</div></div>
-        <div class="tool-item"><div class="tool-icon">🧠</div><div class="tool-name">Gemini AI</div></div>
-        <div class="tool-item"><div class="tool-icon">💬</div><div class="tool-name">ChatGPT</div></div>
-        <div class="tool-item"><div class="tool-icon">🎨</div><div class="tool-name">Claude</div></div>
-        <div class="tool-item"><div class="tool-icon">📱</div><div class="tool-name">WhatsApp API</div></div>
-        <div class="tool-item"><div class="tool-icon">✈️</div><div class="tool-name">Telegram</div></div>
-        <div class="tool-item"><div class="tool-icon">🐙</div><div class="tool-name">GitHub</div></div>
-      </div>
-      <p class="text-center" style="font-size: 0.8rem; color: #6b7280; margin-top: 1.5rem;">Integración con APIs oficiales y automatización empresarial</p>
-    </div>
-  </div>
-
-  <!-- SERVICIOS -->
-  <section id="servicios">
-    <div class="container">
-      <div class="text-center mb-10">
-        <h2>Servicios de Automatización</h2>
-        <p class="section-subtitle">Soluciones enfocadas en automatizar procesos reales de negocio usando inteligencia artificial.</p>
-      </div>
-      <div class="grid-3">
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">🤖</div><h3>Chatbot para WhatsApp</h3><p>Bots inteligentes para atención automática, ventas y soporte en WhatsApp.</p></div>
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">✈️</div><h3>Chatbot para Telegram</h3><p>Bots inteligentes para atención automática, ventas y soporte en Telegram.</p></div>
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📅</div><h3>Automatización de citas</h3><p>Agenda automática integrada con Google Calendar 24/7.</p></div>
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">⚡</div><h3>Procesos automatizados</h3><p>Eliminamos tareas repetitivas y optimizamos operaciones.</p></div>
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📲</div><h3>Atención al cliente IA</h3><p>Respuestas automáticas y seguimiento inteligente.</p></div>
-        <div class="card"><div class="text-orange" style="font-size: 2.5rem;">📈</div><h3>Automatización de marketing</h3><p>Flujos automáticos para captar y convertir prospectos.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INDUSTRIAS -->
-  <section id="industrias" style="background-color: #f3f4f6;">
-    <div class="container">
-      <div class="text-center mb-10">
-        <h2>Negocios que ya pueden automatizarse con IA</h2>
-        <p class="section-subtitle">Implementamos automatizaciones inteligentes para empresas y negocios que necesitan ahorrar tiempo, atender clientes más rápido y escalar operaciones.</p>
-      </div>
-      <div style="display: flex; justify-content: center; width: 100%;">
-        <div class="clients-grid" style="width: 100%; max-width: 900px; margin: 0 auto;">
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🦷</div><h3>Consultorios Dentales</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💆</div><h3>Spas & Estéticas</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">💈</div><h3>Barberías</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">⚖️</div><h3>Despachos Jurídicos</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏠</div><h3>Inmobiliarias</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🍽️</div><h3>Restaurantes</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🏋️</div><h3>Gimnasios</h3></div>
-          <div class="client-card"><div class="text-orange" style="font-size: 2rem;">🛒</div><h3>E-Commerce</h3></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESULTADOS REALES -->
-  <section id="resultados">
-    <div class="container">
-      <div class="text-center mb-10">
-        <h2>Resultados medidos con cronómetro</h2>
-        <p class="section-subtitle">Caso real: GL Dental (Dra. Gimel Lom) — antes y después de la automatización.</p>
-      </div>
-      <div class="results-grid">
-        <div class="result-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">90.2%</div><p>Reducción del tiempo de creación de contenido<br>(4.75h → 28 min semanales)</p></div>
-        <div class="result-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">15% → 0%</div><p>Reducción de errores en datos de contacto</p></div>
-        <div class="result-card"><div class="text-orange" style="font-size: 2rem; font-weight: 800;">47.5 min → 3.5 min</div><p>Tiempo por post después de la automatización</p></div>
-      </div>
-      <div class="card" style="margin-top: 2rem; text-align: center; font-style: italic;">
-        “No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana.”
-        <br><br><strong>— Dra. Gimel Lom, GL Dental (CDMX)</strong>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUIÉN CONSTRUYE TUS AUTOMATIZACIONES -->
-  <section id="about" style="background: #ffffff; border-top: 1px solid #e8ecef; border-bottom: 1px solid #e8ecef;">
-    <div class="container" style="padding-top: 5rem; padding-bottom: 5rem;">
-      
-      <div style="text-align: center; margin-bottom: 3rem;">
-        <div style="font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin-bottom: 1rem;">
-          Confianza profesional
-        </div>
-        <h2 style="font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: #0a1a2b;">
-          ¿Quién construye tus automatizaciones?
-        </h2>
-        <p style="font-size: 1rem; color: #5b7a99; max-width: 600px; margin: 1rem auto 0 auto;">
-          Más de 16 años en tecnología, calidad y procesos. Certificado en IA Generativa.
+    <div class="hero-wrap">
+      <div class="hero-text">
+        <div class="label-tag">Automatización con IA · México</div>
+        <h1 class="hero-headline">
+          Tu negocio<br>atendiendo solo,<br><em>las 24 horas.</em>
+        </h1>
+        <p class="hero-sub">
+          Diseñamos asistentes inteligentes para <strong>WhatsApp y Telegram</strong> que agendan citas, responden dudas y eliminan tareas repetitivas — sin que tú estés presente.
         </p>
+        <div class="hero-btns">
+          <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">📅 Agendar asesoría gratuita</a>
+          <a href="#resultados" class="btn btn-ghost">Ver caso real →</a>
+        </div>
+        <div class="social-proof-strip">
+          <div class="proof-avatars">
+            <span>GL</span><span>SP</span><span>AB</span>
+          </div>
+          <div class="proof-text">
+            Negocios en CDMX ya automatizados<br>
+            <span>Caso documentado: GL Dental</span>
+          </div>
+        </div>
       </div>
 
-      <div class="founder-card" style="max-width: 1000px; margin: 0 auto;">
-        
-        <div style="display: flex; flex-direction: row; gap: 2rem; align-items: center; flex-wrap: wrap; justify-content: center;">
-          
-          <!-- Foto -->
-          <div style="flex-shrink: 0; text-align: center;">
-            <img 
-              src="founder-sosializarte.jpg" 
-              alt="Ronald Zúñiga — Fundador de Sosializarte"
-              style="
-                width: 120px;
-                height: 120px;
-                border-radius: 50%;
-                object-fit: cover;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-                border: 3px solid var(--orange);
-              "
-            >
-            <div style="margin-top: 0.75rem; font-weight: 700; color: #0a1a2b;">Ronald Zúñiga</div>
-            <div style="font-size: 0.7rem; color: #5b7a99; letter-spacing: 0.3px;">
-              Detrás de la automatización
+      <div class="hero-visual">
+        <div style="position: relative; display: inline-block; width: 100%; max-width: 340px; margin: 0 auto; display: block;">
+          <div class="floating-badge badge-top">
+            <span class="badge-dot"></span> Bot activo 24/7
+          </div>
+          <div class="hero-phone-mock">
+            <div class="chat-header">
+              <div class="chat-avatar">🦷</div>
+              <div>
+                <div class="chat-name">GL Dental — Asistente</div>
+                <div class="chat-status">● En línea ahora</div>
+              </div>
+            </div>
+            <div class="chat-bubble bubble-bot bubble-delay-1">Hola 👋 Bienvenida a GL Dental. ¿En qué te ayudo hoy?</div>
+            <div class="chat-time bubble-delay-1" style="animation: bubble-in 0.4s 0.3s ease both; opacity:0;">10:23</div>
+            <div class="chat-bubble bubble-user bubble-delay-2">Quiero agendar una limpieza dental</div>
+            <div class="chat-bubble bubble-bot bubble-delay-3">¡Con gusto! 📅 Tenemos disponibilidad esta semana. ¿Prefieres mañana martes a las 10am o jueves a las 4pm?</div>
+            <div class="chat-bubble bubble-user bubble-delay-4">Jueves a las 4pm</div>
+            <div class="chat-bubble bubble-bot bubble-delay-5">✅ <strong>Cita confirmada</strong><br>Jueves · 4:00 PM · Limpieza dental<br>Te enviamos recordatorio 24h antes.</div>
+          </div>
+          <div class="floating-badge badge-bottom">
+            ⚡ Cita agendada en 47 segundos
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot WhatsApp 24/7</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Automatización de citas</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Google Calendar integrado</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>90.2% ahorro de tiempo</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Caso real: GL Dental</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot Telegram</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Sin errores en contactos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Implementación en días</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Soporte local CDMX</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot WhatsApp 24/7</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Automatización de citas</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Google Calendar integrado</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>90.2% ahorro de tiempo</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Caso real: GL Dental</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Chatbot Telegram</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Sin errores en contactos</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Implementación en días</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Soporte local CDMX</span>
+  </div>
+</div>
+
+<!-- ─── STATS ─── -->
+<div class="stats-section" style="padding-top: 0;">
+  <div class="container">
+    <div class="stat-grid reveal">
+      <div class="stat-cell">
+        <div class="stat-number" id="counter-90">0%</div>
+        <div class="stat-label">Reducción de tiempo operativo</div>
+        <div class="stat-sublabel">De 4.75 horas → 28 minutos semanales</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">0%</div>
+        <div class="stat-label">Errores en datos de contacto</div>
+        <div class="stat-sublabel">Desde la implementación del bot</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Disponibilidad del asistente</div>
+        <div class="stat-sublabel">Sin días libres ni vacaciones</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TECH ─── -->
+<div class="tech-band">
+  <div class="container">
+    <p class="tech-label">Tecnología que utilizamos</p>
+    <div class="tech-grid">
+      <div class="tech-pill"><span class="icon">⚙️</span> Make.com</div>
+      <div class="tech-pill"><span class="icon">🤖</span> Botpress</div>
+      <div class="tech-pill"><span class="icon">🧠</span> Gemini AI</div>
+      <div class="tech-pill"><span class="icon">💬</span> ChatGPT</div>
+      <div class="tech-pill"><span class="icon">🎨</span> Claude AI</div>
+      <div class="tech-pill"><span class="icon">📱</span> WhatsApp API</div>
+      <div class="tech-pill"><span class="icon">✈️</span> Telegram</div>
+      <div class="tech-pill"><span class="icon">📅</span> Google Calendar</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SERVICIOS ─── -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Lo que hacemos</div>
+      <h2>Servicios de automatización</h2>
+      <p class="section-sub">Soluciones diseñadas para resolver procesos reales de negocio usando inteligencia artificial.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">🤖</span>
+        <h3>Chatbot para WhatsApp</h3>
+        <p>Bots inteligentes que atienden clientes, responden preguntas y cierran ventas en WhatsApp sin que estés presente.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">✈️</span>
+        <h3>Chatbot para Telegram</h3>
+        <p>Asistentes virtuales para atención automatizada, soporte y ventas dentro de Telegram.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📅</span>
+        <h3>Automatización de citas</h3>
+        <p>Agenda automática sincronizada con Google Calendar. Tu cliente elige horario y queda confirmado al instante.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-icon">⚡</span>
+        <h3>Procesos automatizados</h3>
+        <p>Eliminamos tareas repetitivas: confirmaciones, recordatorios, seguimientos y formularios en piloto automático.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">📲</span>
+        <h3>Atención al cliente con IA</h3>
+        <p>Respuestas automáticas, seguimiento inteligente y escalado a humano cuando se necesita.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">📈</span>
+        <h3>Automatización de marketing</h3>
+        <p>Flujos automáticos para captar prospectos, nutrir leads y convertir oportunidades sin intervención manual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INDUSTRIAS ─── -->
+<section id="industrias" class="industries-bg" style="padding: 80px 0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">¿Para quién es esto?</div>
+      <h2>Negocios que ya pueden automatizarse</h2>
+      <p class="section-sub">Cualquier negocio que reciba mensajes repetitivos o gestione citas constantemente es candidato ideal.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-cell reveal"><div class="industry-icon">🦷</div><h3>Consultorios Dentales</h3></div>
+      <div class="industry-cell reveal reveal-delay-1"><div class="industry-icon">💆</div><h3>Spas y Estéticas</h3></div>
+      <div class="industry-cell reveal reveal-delay-2"><div class="industry-icon">💈</div><h3>Barberías</h3></div>
+      <div class="industry-cell reveal reveal-delay-3"><div class="industry-icon">⚖️</div><h3>Despachos Jurídicos</h3></div>
+      <div class="industry-cell reveal"><div class="industry-icon">🏠</div><h3>Inmobiliarias</h3></div>
+      <div class="industry-cell reveal reveal-delay-1"><div class="industry-icon">🍽️</div><h3>Restaurantes</h3></div>
+      <div class="industry-cell reveal reveal-delay-2"><div class="industry-icon">🏋️</div><h3>Gimnasios</h3></div>
+      <div class="industry-cell reveal reveal-delay-3"><div class="industry-icon">🛒</div><h3>E-Commerce</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESULTADOS ─── -->
+<section id="resultados">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">Resultados con cronómetro</div>
+      <h2>Un caso real, números reales</h2>
+      <p class="section-sub">GL Dental — Dra. Gimel Lom — antes y después de la automatización.</p>
+    </div>
+    <div class="case-study-wrap">
+      <div class="case-metrics reveal">
+        <div class="metric-card featured">
+          <div class="metric-num">90.2%</div>
+          <div class="metric-desc">Reducción del tiempo operativo total</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">4.75h → 28min</div>
+          <div class="metric-desc">Tiempo semanal en gestión de contenido</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num">15% → 0%</div>
+          <div class="metric-desc">Errores en datos de contacto</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="section-label">Testimonio directo</div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">La Dra. Gimel Lom</h3>
+        <p class="section-sub">Consultorio dental en CDMX. Implementación completada en menos de una semana.</p>
+        <div class="testimonial-block">
+          <p class="testimonial-quote">No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana. Mis pacientes agendan solos y yo solo reviso el calendario.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">GL</div>
+            <div>
+              <div class="author-name">Dra. Gimel Lom</div>
+              <div class="author-role">GL Dental · Ciudad de México</div>
             </div>
           </div>
-          
-          <!-- Texto principal -->
-          <div style="flex: 2; min-width: 250px;">
-            <p style="font-size: 1rem; line-height: 1.6; color: #3a546d; margin-bottom: 1rem;">
-              <strong>En Sosializarte no vendemos humo ni automatizaciones genéricas.</strong> Diseñamos soluciones que resuelven procesos reales de negocio.
-            </p>
-            <p style="font-size: 1rem; line-height: 1.6; color: #3a546d;">
-              Mi experiencia no viene de vender IA. Viene de años optimizando procesos, encontrando errores y construyendo soluciones que sí funcionan en producción. Más de 16 años en tecnología de la información, aseguramiento de calidad (QA) y optimización de procesos para empresas en México.
-            </p>
-          </div>
-
         </div>
-
-        <!-- Stats internas -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0;">
-          <div class="stats-pill" style="flex: 1;">
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">+16</div>
-            <div style="font-size: 0.75rem; color: #5b7a99;">años en TI y QA</div>
-          </div>
-          <div class="stats-pill" style="flex: 1;">
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">100%</div>
-            <div style="font-size: 0.75rem; color: #5b7a99;">soporte local</div>
-          </div>
-          <div class="stats-pill" style="flex: 1;">
-            <div style="font-size: 1.2rem; font-weight: 800; color: var(--orange);">Consultor</div>
-            <div style="font-size: 0.75rem; color: #5b7a99;">de automatización IA</div>
-          </div>
-          <div class="stats-pill" style="flex: 1;">
-            <div style="font-size: 1.5rem; font-weight: 800; color: var(--orange);">24/7</div>
-            <div style="font-size: 0.75rem; color: #5b7a99;">disponibilidad</div>
-          </div>
-        </div>
-
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- FORMULARIO DE LEADS (posicionamiento estratégico) -->
-      <div class="form-container" style="max-width: 550px; margin: 2.5rem auto 0 auto;">
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-          <h3 style="font-size: 1.3rem; color: #0a1a2b;">📋 ¿Te interesa automatizar tu negocio?</h3>
-          <p style="color: #5b7a99; font-size: 0.9rem;">Déjame tus datos y te contacto en menos de 24 horas</p>
+<!-- ─── ABOUT ─── -->
+<section id="about" style="background: var(--surface); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="founder-photo-block reveal">
+        <img src="founder-sosializarte.jpg" alt="Ronald Zúñiga — Fundador de Sosializarte" class="founder-img">
+        <div class="founder-name">Ronald Zúñiga</div>
+        <div class="founder-role">Fundador · Consultor de Automatización IA</div>
+        <div class="cred-pills">
+          <span class="cred-pill">🎓 Generative AI Professional (Certiprof)</span>
+          <span class="cred-pill">📋 Diplomado IA · 112 hrs</span>
+          <span class="cred-pill">🔍 +16 años en QA & TI</span>
         </div>
+      </div>
+      <div class="founder-text reveal reveal-delay-1">
+        <div class="section-label">¿Quién construye tus automatizaciones?</div>
+        <h2 style="margin-bottom: 1.5rem;">No vendemos humo.<br>Construimos sistemas.</h2>
+        <p><strong>En Sosializarte no vendemos automatizaciones genéricas.</strong> Diseñamos soluciones que resuelven procesos reales, validadas en producción antes de entregarse.</p>
+        <p>Mi experiencia no viene de vender IA. Viene de más de 16 años optimizando procesos, encontrando errores antes de que lleguen al cliente y construyendo sistemas que realmente funcionan. QA aplicado a la automatización.</p>
+        <p>Combiné esa base con certificación oficial en <strong>Generative AI Professional (Certiprof)</strong> y el <strong>Diplomado en IA Generativa y Automatización</strong> (112 horas) para ofrecer algo distinto: automatización con criterio de calidad.</p>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <div class="founder-stat-num">+16</div>
+            <div class="founder-stat-label">años en TI y QA</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">100%</div>
+            <div class="founder-stat-label">soporte local</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">24/7</div>
+            <div class="founder-stat-label">operación continua</div>
+          </div>
+          <div class="founder-stat">
+            <div class="founder-stat-num">0</div>
+            <div class="founder-stat-label">errores en producción</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LEAD FORM (PRINCIPAL PUNTO DE CONVERSIÓN) ─── -->
+<section class="form-section" id="contacto-form">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-copy reveal">
+        <div class="section-label">Empieza hoy</div>
+        <h2>¿Tu negocio listo para trabajar solo?</h2>
+        <p>Una asesoría sin costo para evaluar si la automatización tiene sentido para tu negocio. Sin compromisos. Sin jerga técnica.</p>
+        <ul class="form-benefits">
+          <li>Respuesta en menos de 24 horas</li>
+          <li>Implementación desde $3,000 MXN</li>
+          <li>Sin contrato forzoso</li>
+          <li>Soporte técnico incluido</li>
+        </ul>
+      </div>
+      <div class="lead-form reveal reveal-delay-1">
+        <div class="form-title">📋 Cuéntame sobre tu negocio</div>
+        <div class="form-subtitle">Te contacto personalmente en menos de 24 horas</div>
         <form action="https://formspree.io/f/tu-id-aqui" method="POST">
-          <div class="form-group">
-            <input type="text" name="nombre" placeholder="Tu nombre" required class="form-input">
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Tu correo electrónico" required class="form-input">
-          </div>
-          <div class="form-group">
-            <input type="tel" name="telefono" placeholder="Tu WhatsApp (opcional)" class="form-input">
-          </div>
-          <div class="form-group">
-            <select name="interes" class="form-input">
+          <div class="field"><input type="text" name="nombre" placeholder="Tu nombre" required></div>
+          <div class="field"><input type="email" name="email" placeholder="Correo electrónico" required></div>
+          <div class="field"><input type="tel" name="telefono" placeholder="WhatsApp (opcional)"></div>
+          <div class="field">
+            <select name="interes">
               <option value="">¿Qué te interesa?</option>
               <option>Chatbot para WhatsApp</option>
               <option>Chatbot para Telegram</option>
@@ -699,152 +928,186 @@
               <option>No estoy seguro, quiero asesoría</option>
             </select>
           </div>
-          <button type="submit" class="form-btn">Enviar →</button>
-          <div class="form-footer">
-            No comparto tus datos. Solo para contactarte.
-          </div>
+          <button type="submit" class="submit-btn">Quiero mi asesoría gratuita →</button>
+          <div class="form-disclaimer">Sin spam. Tus datos son solo para contactarte.</div>
         </form>
       </div>
-
-      <div style="max-width: 800px; margin: 3rem auto 0 auto; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 2rem;">
-        <p style="font-size: 0.75rem; letter-spacing: 1px; color: #5b7a99; margin: 0;">
-          Automatización · IA aplicada · Procesos · Tecnología empresarial
-        </p>
-      </div>
-
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <div class="faq-section">
-        <div class="faq-title">
-          ❓ Preguntas Frecuentes
-          <span>WhatsApp <span style="color: #cbd5e1;">o</span> Telegram</span>
-        </div>
-        <div class="faq-grid" id="faqContainer"></div>
-      </div>
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head centered reveal">
+      <div class="section-label">Resolvemos tus dudas</div>
+      <h2>Preguntas frecuentes</h2>
     </div>
-  </section>
+    <div style="max-width: 780px; margin: 0 auto;">
+      <div class="faq-list" id="faqList"></div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;">
+      <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Tienes una pregunta que no está aquí?</p>
+      <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n." class="btn btn-primary">Pregunta directo por WhatsApp</a>
+    </div>
+  </div>
+</section>
 
-  <!-- GALERÍA -->
-  <section id="demo" style="background-color: #f3f4f6;">
-    <div class="container">
-      <div class="text-center mb-10">
-        <h2>Así se ve en acción</h2>
-        <p class="section-subtitle">Capturas reales de nuestro asistente virtual gestionando citas y respondiendo dudas.</p>
-      </div>
-      <div class="image-gallery">
-        <div class="gallery-item"><img src="img1.jpg" alt="Menú principal del bot"></div>
-        <div class="gallery-item"><img src="img2.jpg" alt="Selección de servicio"></div>
-        <div class="gallery-item"><img src="img3.jpg" alt="Selección de fecha y hora"></div>
-        <div class="gallery-item"><img src="img4.jpg" alt="Captura de datos del cliente"></div>
-        <div class="gallery-item"><img src="img5.jpg" alt="Verificación de datos"></div>
-        <div class="gallery-item"><img src="img6.jpg" alt="Confirmación de cita"></div>
-      </div>
+<!-- ─── GALERÍA ─── -->
+<section id="demo" class="gallery-bg" style="padding: 80px 0;">
+  <div class="container">
+    <div class="section-head centered reveal">
+      <div class="section-label">En acción</div>
+      <h2>Así se ve el bot trabajando</h2>
+      <p class="section-sub">Capturas reales del asistente de GL Dental gestionando citas y respondiendo dudas.</p>
     </div>
-  </section>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="img1.jpg" alt="Menú principal del bot"></div>
+      <div class="gallery-item reveal reveal-delay-1"><img src="img2.jpg" alt="Selección de servicio"></div>
+      <div class="gallery-item reveal reveal-delay-2"><img src="img3.jpg" alt="Selección de fecha y hora"></div>
+      <div class="gallery-item reveal"><img src="img4.jpg" alt="Captura de datos del cliente"></div>
+      <div class="gallery-item reveal reveal-delay-1"><img src="img5.jpg" alt="Verificación de datos"></div>
+      <div class="gallery-item reveal reveal-delay-2"><img src="img6.jpg" alt="Confirmación de cita"></div>
+    </div>
+  </div>
+</section>
 
-  <!-- CTA FINAL -->
-  <section id="contacto">
-    <div class="container text-center">
-      <h2>Tu negocio también puede trabajar solo.</h2>
-      <p>Agenda una llamada y descubre cómo automatizar procesos, atención a clientes y operaciones usando inteligencia artificial en WhatsApp o Telegram.</p>
-      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA%20para%20WhatsApp%20o%20Telegram.%20%C2%BFPodemos%20conversar%3F" class="btn">Hablar por WhatsApp</a>
+<!-- ─── CTA FINAL ─── -->
+<section class="cta-section" id="contacto">
+  <div class="container">
+    <h2>Tu negocio puede trabajar solo.</h2>
+    <p>Agenda una llamada sin costo y en 30 minutos sabemos si la automatización tiene sentido para ti.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-white">💬 Hablar por WhatsApp</a>
+      <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">📋 Llenar formulario</a>
     </div>
-  </section>
+  </div>
+</section>
+
 </main>
 
+<!-- ─── FOOTER ─── -->
 <footer>
   <div class="container">
-    <p>© 2026 Sosializarte — Automatización de citas y atención al cliente con IA para WhatsApp y Telegram</p>
-    <div style="margin-top: 1.5rem;">
-      <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">
-        <i class="fab fa-instagram" style="color: var(--orange); margin-right: 0.5rem;"></i>
-        Síguenos en Instagram
-      </p>
-      <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener noreferrer" style="display: inline-block; background: #f3f4f6; padding: 0.75rem 1.5rem; border-radius: 9999px; color: var(--orange); text-decoration: none; font-weight: 700; font-size: 1rem; transition: 0.2s;">
-        @sosializarte
-      </a>
-    </div>
-    
-    <!-- FORMULARIO EN FOOTER (segundo punto de captura) -->
-    <div class="form-container" style="margin-top: 2rem; background: #ffffff; max-width: 500px; margin-left: auto; margin-right: auto;">
-      <div style="text-align: center; margin-bottom: 1rem;">
-        <p style="font-weight: 600; color: #0a1a2b;">¿Prefieres que te contacte yo?</p>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+        <p>Automatización con IA para negocios en México. WhatsApp · Telegram · Google Calendar.</p>
       </div>
-      <form action="https://formspree.io/f/tu-id-aqui" method="POST">
-        <div class="form-group">
-          <input type="text" name="nombre" placeholder="Tu nombre" required class="form-input">
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Tu correo" required class="form-input">
-        </div>
-        <div class="form-group">
-          <input type="tel" name="telefono" placeholder="WhatsApp" class="form-input">
-        </div>
-        <button type="submit" class="form-btn">Enviar →</button>
-      </form>
-      <div class="form-footer">
-        Sin spam. Solo información útil.
+      <div class="footer-links">
+        <h4>Servicios</h4>
+        <a href="#servicios">Chatbot WhatsApp</a>
+        <a href="#servicios">Chatbot Telegram</a>
+        <a href="#servicios">Automatización de citas</a>
+        <a href="#servicios">Atención al cliente IA</a>
+      </div>
+      <div class="footer-links">
+        <h4>Empresa</h4>
+        <a href="#about">Nosotros</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://wa.me/525540509093">Contacto</a>
+      </div>
+      <div class="footer-links">
+        <h4>Redes</h4>
+        <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener" class="ig-link"><i class="fab fa-instagram"></i> @sosializarte</a>
       </div>
     </div>
-    
+    <div class="footer-bottom">
+      <p>© 2026 Sosializarte — Ciudad de México</p>
+      <p>Automatización con IA · Chatbots · WhatsApp · Telegram</p>
+    </div>
   </div>
 </footer>
 
 <script data-goatcounter="https://sosializarte.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <script>
-  const faqs = [
-    { emoji: "⚙️", question: "¿Cómo funciona el asistente virtual?", answer: "Tus clientes escriben por <strong>WhatsApp o Telegram</strong> (la plataforma que elijas) y el sistema responde automáticamente en segundos. Puede mostrar horarios disponibles, agendar citas, enviar confirmaciones y sincronizar todo con Google Calendar en tiempo real.<br><br>El objetivo es automatizar tareas repetitivas para que tu negocio ahorre tiempo y atienda más rápido." },
-    { emoji: "📲", question: "¿Necesito instalar algo?", answer: "No. Nosotros realizamos toda la configuración técnica y dejamos el sistema funcionando.<br><br>Solo necesitas tu celular, acceso a WhatsApp o Telegram y conexión a internet." },
-    { emoji: "🕒", question: "¿El sistema funciona 24/7?", answer: "Sí. El asistente virtual puede responder mensajes, registrar citas y atender solicitudes incluso fuera de horario laboral. <strong>Los 7 días de la semana, 24 horas al día.</strong>" },
-    { emoji: "💰", question: "¿Tiene costo de implementación?", answer: "Sí. La implementación inicial comienza desde <strong>$3,000 MXN</strong>.<br><br>Este pago cubre:<br>✅ Configuración personalizada<br>✅ Integraciones (Google Calendar + la plataforma elegida)<br>✅ Diseño del flujo conversacional<br>✅ Pruebas y validaciones<br>✅ Puesta en marcha<br><br>Cada negocio tiene necesidades distintas, por lo que algunos proyectos pueden requerir una cotización personalizada." },
-    { emoji: "📆", question: "¿Existe una mensualidad?", answer: "Sí. El servicio incluye una mensualidad desde <strong>$600 MXN</strong>.<br><br>La mensualidad cubre:<br>✅ Hosting del chatbot<br>✅ Monitoreo del sistema<br>✅ Soporte técnico<br>✅ Mantenimiento<br>✅ Actualizaciones<br>✅ Ajustes menores<br><br><strong>Nota:</strong> El precio es por plataforma (WhatsApp o Telegram). Si necesitas ambas, tiene un costo adicional." },
-    { emoji: "📞", question: "¿Puedo usar mi número actual de WhatsApp?", answer: "Depende del caso. Podemos integrar un número existente o configurar uno exclusivo para automatización.<br><br>La mejor opción se define durante la evaluación inicial." },
-    { emoji: "👥", question: "¿El sistema reemplaza a mi personal?", answer: "No. El objetivo es reducir tareas repetitivas y mejorar tiempos de respuesta.<br><br>Tu equipo puede enfocarse en atender mejor a los clientes mientras la automatización se encarga de procesos operativos." },
-    { emoji: "🤷", question: "¿Qué pasa si el asistente no entiende algo?", answer: "El sistema puede redirigir automáticamente la conversación a una persona o solicitar más información.<br><br>Siempre existe una opción de atención humana." },
-    { emoji: "📅", question: "¿Puedo modificar horarios y disponibilidad?", answer: "Sí. El sistema puede sincronizarse con Google Calendar para respetar automáticamente horarios ocupados, vacaciones o cambios de agenda." },
-    { emoji: "🛠️", question: "¿Ofrecen soporte técnico?", answer: "Sí. Todos los planes incluyen soporte técnico y monitoreo.<br><br>Si ocurre algún problema, realizamos revisión y seguimiento para mantener la operación funcionando correctamente." },
-    { emoji: "📄", question: "¿Hay contrato forzoso?", answer: "No. El servicio funciona bajo esquema mensual y puedes cancelarlo cuando lo necesites. <strong>Sin penalizaciones, sin preguntas incómodas.</strong>" },
-    { emoji: "🏢", question: "¿Qué tipo de negocios pueden automatizarse?", answer: "Actualmente trabajamos con:<br>🦷 Consultorios dentales<br>💆 Spas y estéticas<br>✂️ Barberías<br>🍽️ Restaurantes<br>🏠 Inmobiliarias<br>📋 Despachos<br>🏋️ Gimnasios<br>🚗 Negocios de servicios<br><br>Y cualquier empresa que reciba mensajes repetitivos o gestione citas constantemente." },
-    { emoji: "🎓", question: "¿Cuál es tu formación en inteligencia artificial?", answer: "Cuento con certificación oficial <strong>Generative AI Professional Certification (GAIPCM)</strong> por Certiprof, y he completado el <strong>Diplomado en Inteligencia Artificial Generativa y Automatización</strong> en Top Learning (112 horas, septiembre 2025).<br><br>Esto significa que no improviso. Aplico principios de IA generativa, ingeniería de prompts y automatización de flujos con respaldo técnico, no solo intuición. Mi enfoque combina 16 años de QA + certificación y diplomado en IA para construir sistemas que no fallan." }
-  ];
+const faqs = [
+  { emoji: "⚙️", q: "¿Cómo funciona el asistente virtual?", a: "Tus clientes escriben por WhatsApp o Telegram y el sistema responde en segundos. Puede mostrar horarios disponibles, agendar citas, enviar confirmaciones y sincronizar todo con Google Calendar en tiempo real.<br><br>El objetivo es automatizar tareas repetitivas para que tu negocio ahorre tiempo y atienda más rápido." },
+  { emoji: "📲", q: "¿Necesito instalar algo?", a: "No. Nosotros realizamos toda la configuración técnica y dejamos el sistema funcionando. Solo necesitas tu celular, acceso a WhatsApp o Telegram y conexión a internet." },
+  { emoji: "🕒", q: "¿El sistema funciona 24/7?", a: "Sí. El asistente virtual responde mensajes, registra citas y atiende solicitudes incluso fuera de horario laboral. Los 7 días de la semana, las 24 horas." },
+  { emoji: "💰", q: "¿Cuánto cuesta la implementación?", a: "La implementación inicial comienza desde <strong>$3,000 MXN</strong>, incluyendo:<br>✅ Configuración personalizada<br>✅ Integraciones (Google Calendar + plataforma)<br>✅ Diseño del flujo conversacional<br>✅ Pruebas y validaciones<br>✅ Puesta en marcha<br><br>Cada proyecto puede requerir cotización específica según sus necesidades." },
+  { emoji: "📆", q: "¿Existe mensualidad?", a: "Sí, desde <strong>$600 MXN mensuales</strong>. Incluye hosting del chatbot, monitoreo, soporte técnico, mantenimiento, actualizaciones y ajustes menores. El precio es por plataforma (WhatsApp o Telegram)." },
+  { emoji: "📞", q: "¿Puedo usar mi número actual de WhatsApp?", a: "Depende del caso. Podemos integrar un número existente o configurar uno exclusivo para automatización. La mejor opción se define durante la evaluación inicial." },
+  { emoji: "👥", q: "¿El sistema reemplaza a mi personal?", a: "No. El objetivo es reducir tareas repetitivas y mejorar tiempos de respuesta. Tu equipo se enfoca en atender mejor a los clientes mientras la automatización maneja procesos operativos." },
+  { emoji: "🤷", q: "¿Qué pasa si el bot no entiende algo?", a: "El sistema puede redirigir la conversación a una persona o solicitar más información. Siempre existe la opción de atención humana como respaldo." },
+  { emoji: "📄", q: "¿Hay contrato forzoso?", a: "No. El servicio es mensual y puedes cancelar cuando lo necesites. Sin penalizaciones, sin preguntas incómodas." },
+  { emoji: "🎓", q: "¿Cuál es tu formación en inteligencia artificial?", a: "Cuento con la certificación <strong>Generative AI Professional (GAIPCM) por Certiprof</strong> y completé el <strong>Diplomado en IA Generativa y Automatización</strong> en Top Learning (112 horas, 2025). Combino 16 años de QA con formación técnica certificada en IA — no improviso." }
+];
 
-  function renderFAQs() {
-    const container = document.getElementById('faqContainer');
-    if (!container) return;
-    container.innerHTML = '';
-    faqs.forEach((faq, index) => {
-      const faqDiv = document.createElement('div');
-      faqDiv.className = 'faq-item';
-      faqDiv.innerHTML = `
-        <div class="faq-question" data-index="${index}">
-          <div class="faq-question-text">
-            <span class="emoji">${faq.emoji}</span>
-            <span>${faq.question}</span>
-          </div>
-          <span class="faq-icon">▼</span>
+function buildFAQ() {
+  const list = document.getElementById('faqList');
+  if (!list) return;
+  faqs.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item';
+    item.innerHTML = `
+      <div class="faq-trigger" data-i="${i}">
+        <div class="faq-trigger-text">
+          <span class="faq-emoji">${f.emoji}</span>
+          <span>${f.q}</span>
         </div>
-        <div class="faq-answer" id="answer-${index}">
-          ${faq.answer}
-        </div>
-      `;
-      container.appendChild(faqDiv);
+        <span class="faq-arrow" id="arrow-${i}">▼</span>
+      </div>
+      <div class="faq-body" id="body-${i}">${f.a}</div>
+    `;
+    list.appendChild(item);
+  });
+  list.querySelectorAll('.faq-trigger').forEach(el => {
+    el.addEventListener('click', () => {
+      const i = el.dataset.i;
+      const body = document.getElementById(`body-${i}`);
+      const arrow = document.getElementById(`arrow-${i}`);
+      body.classList.toggle('open');
+      arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
     });
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', function() {
-        const index = this.dataset.index;
-        const answer = document.getElementById(`answer-${index}`);
-        const icon = this.querySelector('.faq-icon');
-        answer.classList.toggle('active');
-        icon.textContent = answer.classList.contains('active') ? '▲' : '▼';
-      });
-    });
-  }
-  document.addEventListener('DOMContentLoaded', renderFAQs);
+  });
+}
+
+// Scroll reveal
+function initReveal() {
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+}
+
+// Counter animation
+function animateCounter(el, target, suffix, duration) {
+  let start = 0;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    el.textContent = Math.floor(progress * target) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function initCounter() {
+  const el = document.getElementById('counter-90');
+  if (!el) return;
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      animateCounter(el, 90.2, '%', 1600);
+      obs.disconnect();
+    }
+  }, { threshold: 0.5 });
+  obs.observe(el);
+}
+
+// Mobile menu
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildFAQ();
+  initReveal();
+  initCounter();
+});
 </script>
 </body>
 </html>
