@@ -286,7 +286,7 @@
     .ticker-item .fa-whatsapp { color: var(--whatsapp); }
     .ticker-item .fa-telegram { color: var(--telegram); }
 
-    /* ─── STATS ─── */
+    /* ─── STATS (con cambio: segunda celda) ─── */
     .stats-section { padding: 80px 0; }
     .stat-number {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -370,7 +370,7 @@
       transition: all 0.3s cubic-bezier(0.34,1.2,0.64,1);
       position: relative;
       overflow: hidden;
-      border-radius: 2px;
+      border-radius: var(--radius-sm);
     }
     .service-card:hover {
       background: var(--surface);
@@ -621,7 +621,7 @@
     }
     .faq-body.open { max-height: 600px; padding-bottom: 20px; }
 
-    /* ─── SECCIÓN PRUEBA CHATBOT EN VIVO (reemplaza la galería) ─── */
+    /* ─── SECCIÓN PRUEBA CHATBOT EN VIVO (con botón que abre el chat) ─── */
     .live-chat-section {
       background: var(--ink);
       padding: 80px 0;
@@ -826,8 +826,8 @@
       </div>
       <div class="stat-cell">
         <div class="stat-number">0%</div>
-        <div class="stat-label">Errores en datos de contacto</div>
-        <div class="stat-sublabel">Desde la implementación del bot</div>
+        <div class="stat-label">Tasa de error en datos de contacto</div>
+        <div class="stat-sublabel">Cero errores desde la implementación</div>
       </div>
       <div class="stat-cell">
         <div class="stat-number">24/7</div>
@@ -1126,15 +1126,34 @@
   </div>
 </section>
 
-<!-- ─── SECCIÓN PRUEBA CHATBOT EN VIVO (reemplaza la galería) ─── -->
+<!-- ─── SECCIÓN PRUEBA CHATBOT EN VIVO (con botón que abre el chat) ─── -->
 <section class="live-chat-section">
   <div class="container">
-    <div class="label-tag" style="background: rgba(255,100,46,0.12); color: var(--orange); margin: 0 auto 1.5rem; width: fit-content;">
+    <button
+      onclick="(function() { if (window.botpressWebChat && window.botpressWebChat.open) { window.botpressWebChat.open(); } else { var btn = document.querySelector('.bp-webchat-launcher') || document.querySelector('[data-id=webchat-button]'); if (btn) btn.click(); } })()"
+      style="
+        display: inline-flex; align-items: center; gap: 7px;
+        background: var(--orange-glow); color: var(--orange);
+        border: 1px solid rgba(255,100,46,0.2);
+        padding: 6px 16px; border-radius: 999px;
+        font-size: 0.72rem; font-weight: 700;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        margin: 0 auto 1.5rem; cursor: pointer;
+        backdrop-filter: blur(4px); font-family: 'DM Sans', sans-serif;
+        transition: background 0.2s;
+      "
+      onmouseover="this.style.background='rgba(255,100,46,0.22)'"
+      onmouseout="this.style.background='var(--orange-glow)'"
+    >
+      <span style="width:6px;height:6px;background:var(--orange);border-radius:50%;display:inline-block;animation:pulse-dot 2s infinite;"></span>
       Pruébalo ahora mismo
-    </div>
+    </button>
     <h2 style="color: #fff; margin-bottom: 1rem;">Habla con el asistente en vivo</h2>
     <p style="color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto; font-size: 1rem; line-height: 1.7; font-weight: 300;">
       El mismo bot que trabaja para GL Dental — ahora disponible para que lo experimentes tú.
+    </p>
+    <p style="color: rgba(255,100,46,0.8); font-size: 0.82rem; margin-top: 1.5rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">
+      ↙ Abre el chat en la esquina inferior derecha
     </p>
   </div>
 </section>
@@ -1285,6 +1304,49 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- ─── CHATBOT EMBEBIDO ─── -->
 <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
+
+<!-- Botón flotante personalizado -->
+<div id="custom-chat-launcher" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #FF642E;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 1000;
+">
+  <span style="font-size: 28px;">🤖</span>
+</div>
+
+<style>
+  #custom-chat-launcher:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(255,100,46,0.3);
+  }
+</style>
+
+<script>
+  setTimeout(function() {
+    const launcher = document.getElementById('custom-chat-launcher');
+    if (launcher) {
+      launcher.addEventListener('click', function() {
+        if (window.botpressWebChat && window.botpressWebChat.open) {
+          window.botpressWebChat.open();
+        } else {
+          var btn = document.querySelector('.bp-webchat-launcher') || document.querySelector('[data-id=webchat-button]');
+          if (btn) btn.click();
+        }
+      });
+    }
+  }, 1500);
+</script>
 
 </body>
 </html>
