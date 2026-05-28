@@ -1335,16 +1335,20 @@ document.addEventListener('DOMContentLoaded', () => {
       window.botpress.open();
     }
   }
-  
-  setTimeout(function() {
-    var customLauncher = document.getElementById('custom-chat-launcher');
-    if (customLauncher) customLauncher.onclick = abrirChat;
-    
-    var openWebchatBtn = document.getElementById('openWebchatBtn');
-    if (openWebchatBtn) openWebchatBtn.onclick = abrirChat;
-  }, 2000);
-</script>
 
+  // Espera a que botpress exponga sus métodos
+  var intentos = 0;
+  var espera = setInterval(function() {
+    intentos++;
+    if (window.botpress && typeof window.botpress.open === 'function') {
+      clearInterval(espera);
+      document.getElementById('custom-chat-launcher').onclick = abrirChat;
+      document.getElementById('openWebchatBtn').onclick = abrirChat;
+    }
+    if (intentos > 30) clearInterval(espera); // máximo 15 segundos
+  }, 500);
+</script>
+  
 </body>
 </html>
 ```
