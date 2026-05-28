@@ -1331,10 +1331,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
   function abrirChat() {
-    if (window.botpress && typeof window.botpress.open === 'function') {
-      window.botpress.open();
-    }
+  if (window.botpress && typeof window.botpress._emit === 'function') {
+    window.botpress._emit('webchat:open');
   }
+}
 
   // Espera a que botpress exponga sus métodos
   var intentos = 0;
