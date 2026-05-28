@@ -1303,54 +1303,73 @@ document.addEventListener('DOMContentLoaded', () => {
 <script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
 
 <!-- Botón flotante personalizado -->
-<div id="custom-chat-launcher" style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #FF642E;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  z-index: 1000;
-">
+<div id="custom-chat-launcher">
   <span style="font-size: 28px;">🤖</span>
 </div>
 
 <style>
+  #custom-chat-launcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #FF642E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 9999;
+  }
   #custom-chat-launcher:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(255,100,46,0.3);
+    box-shadow: 0 6px 16px rgba(255,100,46,0.4);
   }
 </style>
 
 <script>
-  // Función para abrir el chat
   function abrirChat() {
+    // Botpress v3.6 — intenta los tres métodos en orden
     try {
-      window.botpressWebChat.sendEvent({ type: 'show' });
-    } catch(e) {
-      console.log('Error: ', e);
-      var btn = document.querySelector('.bp-webchat-launcher');
-      if (btn) btn.click();
-    }
-  }
-  
-  // Asignar eventos después de que todo cargue
-  setTimeout(function() {
-    var customLauncher = document.getElementById('custom-chat-launcher');
-    if (customLauncher) customLauncher.onclick = abrirChat;
-    
-    var openWebchatBtn = document.getElementById('openWebchatBtn');
-    if (openWebchatBtn) openWebchatBtn.onclick = abrirChat;
-  }, 2000);
-</script>
+      if (window.botpress && typeof window.botpress.open === 'function') {
+        window.botpress.open();
+        return;
+      }
+    } catch(e) {}
 
+    try {
+      if (window.botpressWebChat && typeof window.botpressWebChat.open === 'function') {
+        window.botpressWebChat.open();
+        return;
+      }
+    } catch(e) {}
+
+    // Fallback: clic directo en el launcher nativo de Botpress
+    var nativo = document.querySelector('[data-testid="webchat-fab-button"], .bpFab, .bp-widget-btn, [class*="webchat-launcher"]');
+    if (nativo) { nativo.click(); return; }
+
+    // Último recurso: ocultar launcher nativo y mostrar iframe si existe
+    var iframe = document.querySelector('[id*="botpress"], iframe[src*="botpress"]');
+    if (iframe) iframe.style.display = 'block';
+  }
+
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var customLauncher = document.getElementById('custom-chat-launcher');
+      var openBtn = document.getElementById('openWebchatBtn');
+      if (customLauncher) customLauncher.onclick = abrirChat;
+      if (openBtn) openBtn.onclick = abrirChat;
+
+      // Oculta el launcher nativo de Botpress para evitar duplicado
+      var nativo = document.querySelector('.bpFab, [class*="webchat-launcher"], [data-testid="webchat-fab-button"]');
+      if (nativo) nativo.style.display = 'none';
+    }, 2500);
+  });
+</script>
+  
 </body>
 </html>
 ```
