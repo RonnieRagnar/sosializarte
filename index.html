@@ -1,3 +1,6 @@
+Aquí tienes tu **código completo corregido** con los botones funcionando correctamente.
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -286,7 +289,7 @@
     .ticker-item .fa-whatsapp { color: var(--whatsapp); }
     .ticker-item .fa-telegram { color: var(--telegram); }
 
-    /* ─── STATS (con cambio: segunda celda) ─── */
+    /* ─── STATS ─── */
     .stats-section { padding: 80px 0; }
     .stat-number {
       font-family: 'Bricolage Grotesque', sans-serif;
@@ -621,7 +624,7 @@
     }
     .faq-body.open { max-height: 600px; padding-bottom: 20px; }
 
-    /* ─── SECCIÓN PRUEBA CHATBOT EN VIVO (con botón que abre el chat) ─── */
+    /* ─── SECCIÓN PRUEBA CHATBOT EN VIVO ─── */
     .live-chat-section {
       background: var(--ink);
       padding: 80px 0;
@@ -1129,22 +1132,19 @@
 <!-- ─── SECCIÓN PRUEBA CHATBOT EN VIVO (con botón que abre el chat) ─── -->
 <section class="live-chat-section">
   <div class="container">
-    <button
-      onclick="(function() { if (window.botpressWebChat && window.botpressWebChat.open) { window.botpressWebChat.open(); } else { var btn = document.querySelector('.bp-webchat-launcher') || document.querySelector('[data-id=webchat-button]'); if (btn) btn.click(); } })()"
-      style="
-        display: inline-flex; align-items: center; gap: 7px;
-        background: var(--orange-glow); color: var(--orange);
-        border: 1px solid rgba(255,100,46,0.2);
-        padding: 6px 16px; border-radius: 999px;
-        font-size: 0.72rem; font-weight: 700;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        margin: 0 auto 1.5rem; cursor: pointer;
-        backdrop-filter: blur(4px); font-family: 'DM Sans', sans-serif;
-        transition: background 0.2s;
-      "
-      onmouseover="this.style.background='rgba(255,100,46,0.22)'"
-      onmouseout="this.style.background='var(--orange-glow)'"
-    >
+    <button id="openWebchatBtn" style="
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--orange-glow); color: var(--orange);
+      border: 1px solid rgba(255,100,46,0.2);
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin: 0 auto 1.5rem; cursor: pointer;
+      backdrop-filter: blur(4px); font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s;
+    "
+    onmouseover="this.style.background='rgba(255,100,46,0.22)'"
+    onmouseout="this.style.background='var(--orange-glow)'">
       <span style="width:6px;height:6px;background:var(--orange);border-radius:50%;display:inline-block;animation:pulse-dot 2s infinite;"></span>
       Pruébalo ahora mismo
     </button>
@@ -1333,20 +1333,34 @@ document.addEventListener('DOMContentLoaded', () => {
 </style>
 
 <script>
-  setTimeout(function() {
-    const launcher = document.getElementById('custom-chat-launcher');
-    if (launcher) {
-      launcher.addEventListener('click', function() {
-        if (window.botpressWebChat && window.botpressWebChat.open) {
-          window.botpressWebChat.open();
-        } else {
-          var btn = document.querySelector('.bp-webchat-launcher') || document.querySelector('[data-id=webchat-button]');
-          if (btn) btn.click();
-        }
-      });
+  // Función para abrir el chat
+  function openBotpressChat() {
+    try {
+      if (window.botpressWebChat && typeof window.botpressWebChat.open === 'function') {
+        window.botpressWebChat.open();
+      } else {
+        var btn = document.querySelector('.bp-webchat-launcher') || document.querySelector('[data-id=webchat-button]');
+        if (btn) btn.click();
+      }
+    } catch(e) {
+      console.log('Error opening chat:', e);
     }
-  }, 1500);
+  }
+  
+  // Asignar eventos después de que todo cargue
+  setTimeout(function() {
+    var customLauncher = document.getElementById('custom-chat-launcher');
+    if (customLauncher) {
+      customLauncher.addEventListener('click', openBotpressChat);
+    }
+    
+    var openWebchatBtn = document.getElementById('openWebchatBtn');
+    if (openWebchatBtn) {
+      openWebchatBtn.addEventListener('click', openBotpressChat);
+    }
+  }, 2000);
 </script>
 
 </body>
 </html>
+```
