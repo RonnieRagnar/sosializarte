@@ -1298,9 +1298,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-<!-- ─── CHATBOT EMBEBIDO ─── -->
+<!-- ─── CHATBOT EMBEBIDO (SIN DEFER, COMO FUNCIONABA) ─── -->
 <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
+<script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js"></script>
 
 <!-- Botón flotante personalizado -->
 <div id="custom-chat-launcher" style="
@@ -1330,22 +1330,21 @@ document.addEventListener('DOMContentLoaded', () => {
 </style>
 
 <script>
+  // Función simplificada - usa el método que funcionaba originalmente
   function abrirChat() {
-    if (window.botpress && typeof window.botpress._emit === 'function') {
-      window.botpress._emit('webchat:open');
+    if (window.botpressWebChat && typeof window.botpressWebChat.open === 'function') {
+      window.botpressWebChat.open();
     }
   }
 
-  var intentos = 0;
-  var espera = setInterval(function() {
-    intentos++;
-    if (window.botpress && typeof window.botpress._emit === 'function') {
-      clearInterval(espera);
-      document.getElementById('custom-chat-launcher').onclick = abrirChat;
-      document.getElementById('openWebchatBtn').onclick = abrirChat;
-    }
-    if (intentos > 60) clearInterval(espera);
-  }, 500);
+  // Esperar a que todo cargue y asignar eventos
+  setTimeout(function() {
+    var launcher = document.getElementById('custom-chat-launcher');
+    if (launcher) launcher.onclick = abrirChat;
+    
+    var btn = document.getElementById('openWebchatBtn');
+    if (btn) btn.onclick = abrirChat;
+  }, 2000);
 </script>
 
 </body>
