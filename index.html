@@ -1,3 +1,6 @@
+Aquí tienes el **código completo definitivo** con el botón "Pruébalo ahora mismo" y el botón flotante funcionando correctamente.
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1126,7 +1129,7 @@
   </div>
 </section>
 
-<!-- ─── SECCIÓN PRUEBA CHATBOT EN VIVO (con botón que abre el chat) ─── -->
+<!-- ─── SECCIÓN PRUEBA CHATBOT EN VIVO ─── -->
 <section class="live-chat-section">
   <div class="container">
     <button id="openWebchatBtn" style="
@@ -1331,30 +1334,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
   // Función para abrir el chat
-  function openBotpressChat() {
+  function abrirChat() {
     try {
-      if (window.botpressWebChat && typeof window.botpressWebChat.open === 'function') {
-        window.botpressWebChat.open();
-      } else {
-        var btn = document.querySelector('.bp-webchat-launcher') || document.querySelector('[data-id=webchat-button]');
-        if (btn) btn.click();
-      }
+      window.botpressWebChat.sendEvent({ type: 'show' });
     } catch(e) {
-      console.log('Error opening chat:', e);
+      console.log('Error: ', e);
+      var btn = document.querySelector('.bp-webchat-launcher');
+      if (btn) btn.click();
     }
   }
   
   // Asignar eventos después de que todo cargue
   setTimeout(function() {
     var customLauncher = document.getElementById('custom-chat-launcher');
-    if (customLauncher) {
-      customLauncher.addEventListener('click', openBotpressChat);
-    }
+    if (customLauncher) customLauncher.onclick = abrirChat;
     
     var openWebchatBtn = document.getElementById('openWebchatBtn');
-    if (openWebchatBtn) {
-      openWebchatBtn.addEventListener('click', openBotpressChat);
-    }
+    if (openWebchatBtn) openWebchatBtn.onclick = abrirChat;
   }, 2000);
 </script>
 
