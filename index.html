@@ -1299,7 +1299,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <!-- ─── CHATBOT EMBEBIDO ─── -->
-<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js" defer></script>
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
 
 <!-- Botón flotante personalizado -->
@@ -1331,24 +1331,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
   function abrirChat() {
-  if (window.botpress && typeof window.botpress._emit === 'function') {
-    window.botpress._emit('webchat:open');
+    if (window.botpress && typeof window.botpress._emit === 'function') {
+      window.botpress._emit('webchat:open');
+    }
   }
-}
 
-  // Espera a que botpress exponga sus métodos
   var intentos = 0;
   var espera = setInterval(function() {
     intentos++;
-    if (window.botpress && typeof window.botpress.open === 'function') {
+    if (window.botpress && typeof window.botpress._emit === 'function') {
       clearInterval(espera);
       document.getElementById('custom-chat-launcher').onclick = abrirChat;
       document.getElementById('openWebchatBtn').onclick = abrirChat;
     }
-    if (intentos > 60) clearInterval(espera); // máximo 30 segundos
+    if (intentos > 60) clearInterval(espera);
   }, 500);
 </script>
-  
+
 </body>
 </html>
-```
