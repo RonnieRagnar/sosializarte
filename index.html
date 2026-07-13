@@ -1,1722 +1,2541 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-  <title>Sosializarte — Automatización con IA para Negocios</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title>Sosializarte — Automatización con IA para Negocios</title>
 
-  <meta name="description" content="Automatizamos negocios con inteligencia artificial. Chatbots para WhatsApp y Telegram, automatización de citas, atención al cliente y procesos con IA para consultorios, spas, restaurantes y empresas.">
-  <meta name="keywords" content="automatización con IA, chatbot WhatsApp, chatbot Telegram, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
-  <meta name="author" content="Sosializarte">
-  <meta property="og:title" content="Sosializarte — Automatización con IA para Negocios">
-  <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial en WhatsApp, Telegram y sitios web.">
-  <meta property="og:image" content="https://sosializarte.com/hero-image.png">
-  <meta property="og:url" content="https://sosializarte.com">
-  <meta property="og:type" content="website">
-  <link rel="canonical" href="https://sosializarte.com/" />
-  <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Automatizamos negocios con inteligencia artificial. Chatbots para WhatsApp y Telegram, automatización de citas, atención al cliente y procesos con IA para consultorios, spas, restaurantes y empresas.">
+    <meta name="keywords" content="automatización con IA, chatbot WhatsApp, chatbot Telegram, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
+    <meta name="author" content="Sosializarte">
+    <meta property="og:title" content="Sosializarte — Automatización con IA para Negocios">
+    <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial en WhatsApp, Telegram y sitios web.">
+    <meta property="og:image" content="https://sosializarte.com/hero-image.png">
+    <meta property="og:url" content="https://sosializarte.com">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://sosializarte.com/" />
+    <link rel="icon" href="/favicon.ico">
 
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ═══ PRECONEXIÓN A RECURSOS EXTERNOS ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Sosializarte",
-  "description": "Automatización con inteligencia artificial para negocios en México. Chatbots para WhatsApp y Telegram, automatización de citas y procesos empresariales con IA.",
-  "url": "https://sosializarte.com",
-  "telephone": "+525540509093",
-  "email": "sosializarte@gmail.com",
-  "image": "https://sosializarte.com/hero-image.png",
-  "priceRange": "$$",
-  "areaServed": {
-    "@type": "Country",
-    "name": "MX"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Ciudad de México",
-    "addressRegion": "CDMX",
-    "addressCountry": "MX"
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "09:00",
-      "closes": "14:00"
-    }
-  ],
-  "sameAs": [
-    "https://instagram.com/sosializarte",
-    "https://wa.me/525540509093"
-  ],
-  "founder": {
-    "@type": "Person",
-    "name": "Ronald Zúñiga",
-    "jobTitle": "Consultor de Automatización con IA"
-  },
-  "knowsAbout": [
-    "Automatización con IA",
-    "Chatbots WhatsApp",
-    "Chatbots Telegram",
-    "Inteligencia Artificial para negocios",
-    "Automatización de citas"
-  ]
-}
-</script>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    <!-- ═══ GOOGLE FONTS ═══ -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 
-    :root {
-      --orange: #FF642E;
-      --orange-dark: #E04D1A;
-      --orange-glow: rgba(255,100,46,0.12);
-      --orange-glow-soft: rgba(255,100,46,0.06);
-      --ink: #0d0d0d;
-      --ink-soft: #1a1a1a;
-      --paper: #F7F4EF;
-      --surface: #FDFCFA;
-      --muted: #6b6b6b;
-      --border: #E8E4DC;
-      --border-strong: #C9C4BB;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 22px;
-      --radius-xl: 32px;
-      --shadow-card: 0 2px 12px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
-      --shadow-lift: 0 8px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.05);
-      --shadow-orange: 0 8px 32px rgba(255,100,46,0.25);
-      --whatsapp: #25D366;
-      --telegram: #229ED9;
-    }
+    <!-- ═══ FONT AWESOME ═══ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.6;
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
+    <!-- ═══ SCHEMA.ORG ═══ -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Sosializarte",
+            "description": "Automatización con inteligencia artificial para negocios en México. Chatbots para WhatsApp y Telegram, automatización de citas y procesos empresariales con IA.",
+            "url": "https://sosializarte.com",
+            "telephone": "+525540509093",
+            "email": "sosializarte@gmail.com",
+            "image": "https://sosializarte.com/hero-image.png",
+            "priceRange": "$$",
+            "areaServed": {
+                "@type": "Country",
+                "name": "MX"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Ciudad de México",
+                "addressRegion": "CDMX",
+                "addressCountry": "MX"
+            },
+            "openingHoursSpecification": [{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+            }, {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "14:00"
+            }],
+            "sameAs": [
+                "https://instagram.com/sosializarte",
+                "https://wa.me/525540509093"
+            ],
+            "founder": {
+                "@type": "Person",
+                "name": "Ronald Zúñiga",
+                "jobTitle": "Consultor de Automatización con IA"
+            },
+            "knowsAbout": [
+                "Automatización con IA",
+                "Chatbots WhatsApp",
+                "Chatbots Telegram",
+                "Inteligencia Artificial para negocios",
+                "Automatización de citas"
+            ]
+        }
+    </script>
 
-    h1, h2, h3, .display {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      letter-spacing: -0.03em;
-    }
-    h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.05; font-weight: 800; }
-    h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.15; font-weight: 700; }
-    h3 { font-size: 1.15rem; font-weight: 700; }
+    <!-- ═══ ESTILOS CSS ═══ -->
+    <style>
+        /* ─── RESET Y BASE ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+        /* ─── VARIABLES ─── */
+        :root {
+            --orange: #FF642E;
+            --orange-dark: #E04D1A;
+            --orange-glow: rgba(255, 100, 46, 0.12);
+            --orange-glow-soft: rgba(255, 100, 46, 0.06);
+            --ink: #0d0d0d;
+            --ink-soft: #1a1a1a;
+            --paper: #F7F4EF;
+            --surface: #FDFCFA;
+            --muted: #6b6b6b;
+            --border: #E8E4DC;
+            --border-strong: #C9C4BB;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 32px;
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+            --shadow-lift: 0 8px 40px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(0, 0, 0, 0.05);
+            --shadow-orange: 0 8px 32px rgba(255, 100, 46, 0.25);
+            --whatsapp: #25D366;
+            --telegram: #229ED9;
+        }
 
-    .text-orange { color: var(--orange); }
-    .text-muted { color: var(--muted); }
+        /* ─── TIPOGRAFÍA ─── */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .label-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--orange-glow);
-      color: var(--orange);
-      border: 1px solid rgba(255,100,46,0.2);
-      padding: 6px 16px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(4px);
-    }
-    .label-tag::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--orange); border-radius: 50%; display: inline-block;
-      animation: pulse-dot 2s infinite;
-    }
-    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.7); } }
+        h1,
+        h2,
+        h3,
+        .display {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            letter-spacing: -0.03em;
+        }
+        h1 {
+            font-size: clamp(2.6rem, 6vw, 4.8rem);
+            line-height: 1.05;
+            font-weight: 800;
+        }
+        h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            line-height: 1.15;
+            font-weight: 700;
+        }
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
 
-    .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 999px;
-      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.95rem;
-      text-decoration: none; cursor: pointer; border: none;
-      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--orange);
-      color: #fff;
-      box-shadow: 0 4px 20px rgba(255,100,46,0.38);
-    }
-    .btn-primary:hover {
-      background: var(--orange-dark);
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: var(--shadow-orange);
-    }
-    .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border-strong); }
-    .btn-ghost:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-1px); }
-    .btn-white { background: #fff; color: var(--orange); font-weight: 700; }
-    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
 
-    /* ─── HEADER ─── */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(250,250,248,0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-    .logo {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.4rem; font-weight: 800;
-      color: var(--ink); text-decoration: none;
-      display: flex; align-items: baseline; gap: 1px;
-    }
-    .logo .slash { color: var(--orange); font-weight: 900; font-size: 1.6rem; }
-    .nav-links { display: none; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--muted); font-weight: 500; font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--orange); }
-    .nav-cta { display: none; }
-    @media (min-width: 900px) { .nav-links { display: flex; } .nav-cta { display: inline-flex; } }
+        /* ─── UTILIDADES ─── */
+        .text-orange {
+            color: var(--orange);
+        }
+        .text-muted {
+            color: var(--muted);
+        }
+        .pt-0 {
+            padding-top: 0;
+        }
+        .max-w-md {
+            max-width: 780px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .mt-1 {
+            margin-top: 1rem;
+        }
+        .mt-2 {
+            margin-top: 2rem;
+        }
+        .mt-3 {
+            margin-top: 3rem;
+        }
+        .mt-4 {
+            margin-top: 4rem;
+        }
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+        .gap-1 {
+            gap: 0.5rem;
+        }
+        .gap-2 {
+            gap: 1rem;
+        }
 
-    /* ─── HERO ─── */
-    .hero-wrap {
-      padding: 80px 0 60px;
-      display: grid; grid-template-columns: 1fr;
-      gap: 60px; align-items: center;
-      position: relative;
-    }
-    .hero-wrap::before {
-      content: '';
-      position: absolute;
-      top: -20%; right: -10%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,100,46,0.07) 0%, transparent 65%);
-      pointer-events: none;
-      border-radius: 50%;
-    }
-    .hero-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 10%; left: -5%;
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(255,100,46,0.04) 0%, transparent 65%);
-      pointer-events: none;
-      border-radius: 50%;
-    }
-    @media (min-width: 900px) {
-      .hero-wrap { grid-template-columns: 1.15fr 1fr; padding: 100px 0 80px; }
-    }
+        /* ─── LABEL TAG ─── */
+        .label-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--orange-glow);
+            color: var(--orange);
+            border: 1px solid rgba(255, 100, 46, 0.2);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(4px);
+        }
+        .label-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(0.7);
+            }
+        }
 
-    .hero-headline { margin-bottom: 1.5rem; }
-    .hero-headline em {
-      font-style: normal;
-      color: var(--orange);
-      position: relative;
-      display: inline-block;
-    }
-    .hero-headline em::after {
-      content: '';
-      position: absolute;
-      bottom: 2px; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
-      border-radius: 2px;
-      opacity: 0.4;
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: underline-in 0.8s 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
-    }
-    @keyframes underline-in {
-      to { transform: scaleX(1); }
-    }
+        /* ─── BOTONES ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 100, 46, 0.38);
+        }
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-orange);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink);
+            border: 1.5px solid var(--border-strong);
+        }
+        .btn-ghost:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-1px);
+        }
+        .btn-white {
+            background: #fff;
+            color: var(--orange);
+            font-weight: 700;
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
 
-    .hero-sub {
-      font-size: 1.1rem; color: var(--muted);
-      max-width: 520px; margin-bottom: 2rem;
-      line-height: 1.7; font-weight: 300;
-    }
-    .hero-sub strong { color: var(--ink); font-weight: 600; }
+        /* ─── HEADER ─── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        .logo {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 1px;
+        }
+        .logo .slash {
+            color: var(--orange);
+            font-weight: 900;
+            font-size: 1.6rem;
+        }
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+        .nav-cta {
+            display: none;
+        }
+        @media (min-width: 900px) {
+            .nav-links {
+                display: flex;
+            }
+            .nav-cta {
+                display: inline-flex;
+            }
+        }
 
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        /* ─── MENÚ HAMBURGUESA (Accesible) ─── */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (min-width: 900px) {
+            .hamburger {
+                display: none;
+            }
+        }
 
-    .social-proof-strip {
-      display: flex; align-items: center; gap: 12px;
-      padding: 14px 20px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-md); width: fit-content;
-    }
-    .proof-avatars { display: flex; }
-    .proof-avatars span {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: var(--orange-glow); border: 2px solid #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 700; color: var(--orange);
-      margin-left: -8px;
-    }
-    .proof-avatars span:first-child { margin-left: 0; }
-    .proof-text { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
-    .proof-text span { color: var(--muted); font-weight: 400; }
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 28px 24px;
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu a {
+            padding: 12px 0;
+            color: var(--ink);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+        .mobile-menu a:last-child {
+            border: none;
+        }
 
-    /* Hero chat mock */
-    .hero-visual { position: relative; }
-    .hero-phone-mock {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-xl); padding: 28px 24px;
-      box-shadow: var(--shadow-lift); max-width: 340px; margin: 0 auto;
-    }
-    .chat-header {
-      display: flex; align-items: center; gap: 10px;
-      padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 16px;
-    }
-    .chat-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: #669933;
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-    }
-    .chat-name { font-weight: 700; font-size: 0.9rem; }
-    .chat-status { font-size: 0.72rem; color: #25D366; }
-    .chat-bubble {
-      padding: 10px 14px; border-radius: 14px;
-      font-size: 0.85rem; line-height: 1.5; margin-bottom: 8px;
-      max-width: 85%; animation: bubble-in 0.4s ease both;
-    }
-    @keyframes bubble-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
-    .bubble-bot { background: #f0f0f0; color: var(--ink); border-bottom-left-radius: 4px; }
-    .bubble-user { background: var(--orange); color: #fff; border-bottom-right-radius: 4px; margin-left: auto; }
-    .bubble-delay-1 { animation-delay: 0.3s; }
-    .bubble-delay-2 { animation-delay: 0.6s; }
-    .bubble-delay-3 { animation-delay: 0.9s; }
-    .bubble-delay-4 { animation-delay: 1.2s; }
-    .bubble-delay-5 { animation-delay: 1.5s; }
-    .chat-time { font-size: 0.65rem; color: var(--muted); text-align: right; margin-top: -4px; margin-bottom: 8px; }
+        /* ─── HERO ─── */
+        .hero-wrap {
+            padding: 80px 0 60px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+        }
+        .hero-wrap::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 100, 46, 0.07) 0%, transparent 65%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+        .hero-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 100, 46, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+            border-radius: 50%;
+        }
+        @media (min-width: 900px) {
+            .hero-wrap {
+                grid-template-columns: 1.15fr 1fr;
+                padding: 100px 0 80px;
+            }
+        }
 
-    .floating-badge {
-      position: absolute; background: var(--surface);
-      border: 1px solid var(--border); border-radius: var(--radius-md);
-      padding: 10px 14px; box-shadow: var(--shadow-lift);
-      font-size: 0.78rem; font-weight: 600;
-      display: flex; align-items: center; gap: 8px; white-space: nowrap;
-    }
-    .badge-top { top: -16px; right: -16px; }
-    .badge-bottom { bottom: -16px; left: -16px; }
-    .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+        .hero-headline {
+            margin-bottom: 1.5rem;
+        }
+        .hero-headline em {
+            font-style: normal;
+            color: var(--orange);
+            position: relative;
+            display: inline-block;
+        }
+        .hero-headline em::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+            border-radius: 2px;
+            opacity: 0.4;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: underline-in 0.8s 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        @keyframes underline-in {
+            to {
+                transform: scaleX(1);
+            }
+        }
 
-    /* ─── TICKER ─── */
-    .ticker-wrap {
-      background: var(--ink-soft); overflow: hidden; padding: 12px 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .ticker-track {
-      display: flex; gap: 48px; align-items: center;
-      animation: ticker 28s linear infinite; width: max-content;
-    }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .ticker-item { display: flex; align-items: center; gap: 10px; color: #fff; font-size: 0.82rem; font-weight: 500; white-space: nowrap; }
-    .ticker-dot { width: 4px; height: 4px; background: var(--orange); border-radius: 50%; }
-    .ticker-item .fa-whatsapp { color: var(--whatsapp); }
-    .ticker-item .fa-telegram { color: var(--telegram); }
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .hero-sub strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
 
-    /* ─── STATS ─── */
-    .stats-section { padding: 80px 0; }
-    .stat-number {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(2.8rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 8px;
-      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-grid {
-      display: grid; grid-template-columns: 1fr; gap: 2px;
-    }
-    @media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
-    .stat-cell {
-      padding: 40px 36px; border: 1px solid var(--border);
-      background: var(--surface); transition: background 0.2s;
-    }
-    .stat-cell:hover { background: var(--paper); }
-    .stat-label { color: var(--muted); font-size: 0.9rem; line-height: 1.5; margin-top: 4px; }
-    .stat-sublabel { font-size: 0.78rem; color: var(--border-strong); margin-top: 6px; }
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
 
-    /* ─── SECTION BASE ─── */
-    section { padding: 80px 0; }
-    .section-head { margin-bottom: 3rem; }
-    .section-head.centered { text-align: center; }
-    .section-head.centered p { margin: 1rem auto 0; max-width: 580px; }
-    .section-label {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--orange); margin-bottom: 1rem;
-    }
-    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-top: 1rem; font-weight: 300; }
+        .social-proof-strip {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            width: fit-content;
+        }
+        .proof-avatars {
+            display: flex;
+        }
+        .proof-avatars span {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--orange-glow);
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-left: -8px;
+        }
+        .proof-avatars span:first-child {
+            margin-left: 0;
+        }
+        .proof-text {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .proof-text span {
+            color: var(--muted);
+            font-weight: 400;
+        }
 
-    /* ─── TECH BAND ─── */
-    .tech-band {
-      background: var(--surface);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 48px 0;
-    }
-    .tech-label {
-      text-align: center; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px;
-    }
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 640px) {
-      .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    .tech-pill {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      padding: 10px 18px; background: var(--paper);
-      border: 1px solid var(--border); border-radius: 999px;
-      font-size: 0.85rem; font-weight: 600; color: var(--ink); transition: all 0.2s;
-    }
-    .tech-pill:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-2px); }
-    .tech-pill .icon { font-size: 1rem; }
-    .tech-pill .fa-whatsapp { color: var(--whatsapp); }
-    .tech-pill .fa-telegram { color: var(--telegram); }
-    .tech-pill .fa-google { color: #4285F4; }
+        /* Hero chat mock */
+        .hero-visual {
+            position: relative;
+        }
+        .hero-phone-mock {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 28px 24px;
+            box-shadow: var(--shadow-lift);
+            max-width: 340px;
+            margin: 0 auto;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+        .chat-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #669933;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .chat-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .chat-status {
+            font-size: 0.72rem;
+            color: #25D366;
+        }
+        .chat-bubble {
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            max-width: 85%;
+            animation: bubble-in 0.4s ease both;
+        }
+        @keyframes bubble-in {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .bubble-bot {
+            background: #f0f0f0;
+            color: var(--ink);
+            border-bottom-left-radius: 4px;
+        }
+        .bubble-user {
+            background: var(--orange);
+            color: #fff;
+            border-bottom-right-radius: 4px;
+            margin-left: auto;
+        }
+        .bubble-delay-1 {
+            animation-delay: 0.3s;
+        }
+        .bubble-delay-2 {
+            animation-delay: 0.6s;
+        }
+        .bubble-delay-3 {
+            animation-delay: 0.9s;
+        }
+        .bubble-delay-4 {
+            animation-delay: 1.2s;
+        }
+        .bubble-delay-5 {
+            animation-delay: 1.5s;
+        }
+        .chat-time {
+            font-size: 0.65rem;
+            color: var(--muted);
+            text-align: right;
+            margin-top: -4px;
+            margin-bottom: 8px;
+        }
 
-    /* ─── SERVICES ─── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    @media (min-width: 640px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+        .floating-badge {
+            position: absolute;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 10px 14px;
+            box-shadow: var(--shadow-lift);
+            font-size: 0.78rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .badge-top {
+            top: -16px;
+            right: -16px;
+        }
+        .badge-bottom {
+            bottom: -16px;
+            left: -16px;
+        }
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+        }
 
-    .service-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 40px 36px;
-      transition: all 0.3s cubic-bezier(0.34,1.2,0.64,1);
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-sm);
-    }
-    .service-card:hover {
-      background: var(--surface);
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lift), 0 0 0 1px var(--orange);
-    }
-    .service-icon-wrap {
-      width: 58px; height: 58px; border-radius: 16px;
-      background: var(--orange-glow);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
-      font-size: 1.5rem;
-      transition: background 0.2s;
-    }
-    .service-card:hover .service-icon-wrap { background: rgba(255,100,46,0.2); }
-    .service-icon-wrap .fa-whatsapp { color: var(--whatsapp); font-size: 1.4rem; }
-    .service-icon-wrap .fa-telegram { color: var(--telegram); font-size: 1.4rem; }
-    .service-card h3 { margin-bottom: 0.5rem; }
-    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; font-weight: 300; }
+        /* ─── TICKER ─── */
+        .ticker-wrap {
+            background: var(--ink-soft);
+            overflow: hidden;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .ticker-track {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            animation: ticker 28s linear infinite;
+            width: max-content;
+        }
+        @keyframes ticker {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .ticker-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+        .ticker-item .fa-whatsapp {
+            color: var(--whatsapp);
+        }
+        .ticker-item .fa-telegram {
+            color: var(--telegram);
+        }
 
-    /* CTA intermedio */
-    .mid-cta {
-      margin-top: 3rem; text-align: center;
-      padding-top: 2.5rem; border-top: 1px solid var(--border);
-    }
-    .mid-cta p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+        /* ─── STATS ─── */
+        .stats-section {
+            padding: 80px 0;
+        }
+        .stat-number {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+        }
+        @media (min-width: 640px) {
+            .stat-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .stat-cell {
+            padding: 40px 36px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: background 0.2s;
+        }
+        .stat-cell:hover {
+            background: var(--paper);
+        }
+        .stat-label {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+        .stat-sublabel {
+            font-size: 0.78rem;
+            color: var(--border-strong);
+            margin-top: 6px;
+        }
 
-    /* ─── INDUSTRIES ─── */
-    .industries-bg { background: var(--ink); }
-    .industries-bg .section-label { color: rgba(242,101,34,0.85); }
-    .industries-bg h2 { color: #fff; }
-    .industries-bg .section-sub { color: rgba(255,255,255,0.5); }
+        /* ─── SECTION BASE ─── */
+        section {
+            padding: 80px 0;
+        }
+        .section-head {
+            margin-bottom: 3rem;
+        }
+        .section-head.centered {
+            text-align: center;
+        }
+        .section-head.centered p {
+            margin: 1rem auto 0;
+            max-width: 580px;
+        }
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+            font-weight: 300;
+        }
 
-    .industries-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-    @media (min-width: 640px) { .industries-grid { grid-template-columns: repeat(4, 1fr); } }
+        /* ─── TECH BAND ─── */
+        .tech-band {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 48px 0;
+        }
+        .tech-label {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        @media (max-width: 640px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .tech-pill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink);
+            transition: all 0.2s;
+        }
+        .tech-pill:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+        .tech-pill .icon {
+            font-size: 1rem;
+        }
+        .tech-pill .fa-whatsapp {
+            color: var(--whatsapp);
+        }
+        .tech-pill .fa-telegram {
+            color: var(--telegram);
+        }
+        .tech-pill .fa-google {
+            color: #4285F4;
+        }
 
-    .industry-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: var(--radius-md);
-      padding: 24px 20px;
-      display: flex; flex-direction: column; align-items: flex-start;
-      transition: all 0.25s;
-      position: relative; overflow: hidden;
-    }
-    .industry-card::before {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--orange), transparent);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-    }
-    .industry-card:hover {
-      background: rgba(242,101,34,0.08);
-      border-color: rgba(242,101,34,0.35);
-      transform: translateY(-3px);
-    }
-    .industry-card:hover::before { transform: scaleX(1); }
-    .industry-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 14px;
-      transition: background 0.2s;
-    }
-    .industry-card:hover .industry-icon {
-      background: rgba(242,101,34,0.15);
-      border-color: rgba(242,101,34,0.3);
-    }
-    .industry-card h3 { color: #fff; font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+        /* ─── SERVICES ─── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
 
-    /* ─── PROCESO ─── */
-    .proceso-section { background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .proceso-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-    @media (min-width: 640px) { .proceso-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .proceso-grid { grid-template-columns: repeat(4, 1fr); } }
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 40px 36px;
+            transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+        }
+        .service-card:hover {
+            background: var(--surface);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lift), 0 0 0 1px var(--orange);
+        }
+        .service-icon-wrap {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+            transition: background 0.2s;
+        }
+        .service-card:hover .service-icon-wrap {
+            background: rgba(255, 100, 46, 0.2);
+        }
+        .service-icon-wrap .fa-whatsapp {
+            color: var(--whatsapp);
+            font-size: 1.4rem;
+        }
+        .service-icon-wrap .fa-telegram {
+            color: var(--telegram);
+            font-size: 1.4rem;
+        }
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        .service-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
 
-    .proceso-step {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 36px 28px; position: relative; transition: all 0.25s;
-    }
-    .proceso-step:hover { background: var(--paper); transform: translateY(-3px); box-shadow: var(--shadow-lift); }
-    .step-number {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1;
-      color: var(--orange);
-      margin-bottom: 16px;
-    }
-    .step-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: var(--orange-glow);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; margin-bottom: 16px; color: var(--orange);
-    }
-    .proceso-step h3 { margin-bottom: 8px; font-size: 1.05rem; }
-    .proceso-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
+        .mid-cta {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .mid-cta p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
 
-    /* ─── RESULTADOS ─── */
-    .case-study-wrap {
-      display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
-    }
-    @media (min-width: 900px) { .case-study-wrap { grid-template-columns: 1fr 1fr; } }
-    .case-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .metric-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-md); padding: 24px 20px; transition: box-shadow 0.2s;
-    }
-    .metric-card:hover { box-shadow: var(--shadow-lift); }
-    .metric-num {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--orange);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .metric-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-    .metric-card.featured {
-      grid-column: span 2; background: var(--orange); border-color: var(--orange);
-    }
-    .metric-card.featured .metric-num { color: #fff; font-size: 2.8rem; }
-    .metric-card.featured .metric-desc { color: rgba(255,255,255,0.8); }
+        /* ─── INDUSTRIES ─── */
+        .industries-bg {
+            background: var(--ink);
+        }
+        .industries-bg .section-label {
+            color: rgba(242, 101, 34, 0.85);
+        }
+        .industries-bg h2 {
+            color: #fff;
+        }
+        .industries-bg .section-sub {
+            color: rgba(255, 255, 255, 0.5);
+        }
 
-    .testimonial-block {
-      background: var(--surface); border: 1px solid var(--border);
-      border-left: 4px solid var(--orange); border-radius: var(--radius-md);
-      padding: 32px; margin-top: 24px;
-    }
-    .testimonial-quote {
-      font-size: 1.1rem; color: var(--ink); line-height: 1.7;
-      font-style: italic; font-weight: 300; margin-bottom: 20px;
-    }
-    .testimonial-quote::before {
-      content: '\201C'; font-size: 2rem; color: var(--orange);
-      line-height: 0; vertical-align: -12px; margin-right: 4px; font-style: normal;
-    }
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-    .author-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--orange-glow); border: 2px solid var(--orange);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1rem; color: var(--orange);
-    }
-    .author-name { font-weight: 700; font-size: 0.9rem; }
-    .author-role { font-size: 0.78rem; color: var(--muted); }
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .industries-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
 
-    /* ─── CASOS DE ÉXITO ─── */
-    .casos-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+        .industry-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+        .industry-card:hover {
+            background: rgba(242, 101, 34, 0.08);
+            border-color: rgba(242, 101, 34, 0.35);
+            transform: translateY(-3px);
+        }
+        .industry-card:hover::before {
+            transform: scaleX(1);
+        }
+        .industry-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 14px;
+            transition: background 0.2s;
+        }
+        .industry-card:hover .industry-icon {
+            background: rgba(242, 101, 34, 0.15);
+            border-color: rgba(242, 101, 34, 0.3);
+        }
+        .industry-card h3 {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
 
-    .caso-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-card);
-      transition: all 0.3s;
-    }
-    .caso-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lift);
-    }
+        /* ─── PROCESO ─── */
+        .proceso-section {
+            background: var(--paper);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .proceso-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        @media (min-width: 640px) {
+            .proceso-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 900px) {
+            .proceso-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
 
-    .caso-header {
-      padding: 24px 32px 0 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+        .proceso-step {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 36px 28px;
+            position: relative;
+            transition: all 0.25s;
+        }
+        .proceso-step:hover {
+            background: var(--paper);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lift);
+        }
+        .step-number {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--orange);
+            margin-bottom: 16px;
+        }
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--orange-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: var(--orange);
+        }
+        .proceso-step h3 {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .proceso-step p {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
 
-    .caso-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--orange);
-      margin-bottom: 6px;
-    }
+        /* ─── RESULTADOS ─── */
+        .case-study-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media (min-width: 900px) {
+            .case-study-wrap {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .case-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .metric-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px 20px;
+            transition: box-shadow 0.2s;
+        }
+        .metric-card:hover {
+            box-shadow: var(--shadow-lift);
+        }
+        .metric-num {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--orange);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+        .metric-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .metric-card.featured {
+            grid-column: span 2;
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+        .metric-card.featured .metric-num {
+            color: #fff;
+            font-size: 2.8rem;
+        }
+        .metric-card.featured .metric-desc {
+            color: rgba(255, 255, 255, 0.8);
+        }
 
-    .caso-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0;
-    }
-    .caso-title a {
-      color: var(--ink);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .caso-title a:hover {
-      color: var(--orange);
-    }
+        .testimonial-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--orange);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            margin-top: 24px;
+        }
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--ink);
+            line-height: 1.7;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .testimonial-quote::before {
+            content: '\201C';
+            font-size: 2rem;
+            color: var(--orange);
+            line-height: 0;
+            vertical-align: -12px;
+            margin-right: 4px;
+            font-style: normal;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--orange-glow);
+            border: 2px solid var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--orange);
+        }
+        .author-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .author-role {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
 
-    .caso-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .caso-tag {
-      font-size: 0.7rem;
-      background: var(--orange-glow);
-      color: var(--orange);
-      padding: 4px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-    .caso-tag-success {
-      background: rgba(34, 197, 94, 0.12);
-      color: #22c55e;
-    }
+        /* ─── CASOS DE ÉXITO ─── */
+        .casos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    .caso-body {
-      padding: 20px 32px 32px 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
+        .caso-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.3s;
+        }
+        .caso-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lift);
+        }
 
-    .caso-text p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-    .caso-text p strong {
-      color: var(--ink);
-    }
+        .caso-header {
+            padding: 24px 32px 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
 
-    .caso-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-    .caso-links a {
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .caso-links .link-orange {
-      color: var(--orange);
-    }
-    .caso-links .link-muted {
-      color: var(--muted);
-      font-weight: 500;
-    }
+        .caso-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--orange);
+            margin-bottom: 6px;
+        }
 
-    .caso-mock {
-      background: #f0f0f0;
-      border-radius: var(--radius-md);
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
-    .caso-mock-inner {
-      background: #1a1a1a;
-      border-radius: 16px;
-      padding: 20px;
-      width: 100%;
-      max-width: 260px;
-    }
-    .caso-mock-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .caso-mock-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: #fff;
-      font-weight: 700;
-    }
-    .caso-mock-avatar.sm {
-      background: #669933;
-    }
-    .caso-mock-name {
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-    .caso-mock-status {
-      color: rgba(255,255,255,0.4);
-      font-size: 0.6rem;
-    }
-    .caso-mock-bubble-bot {
-      background: rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 10px 14px;
-      margin-bottom: 8px;
-    }
-    .caso-mock-bubble-bot .label {
-      color: rgba(255,255,255,0.4);
-      font-size: 0.6rem;
-    }
-    .caso-mock-bubble-bot .text {
-      color: #fff;
-      font-size: 0.8rem;
-    }
-    .caso-mock-bubble-user {
-      background: var(--orange);
-      border-radius: 10px;
-      padding: 8px 14px;
-      margin-left: auto;
-      width: fit-content;
-      max-width: 80%;
-    }
-    .caso-mock-bubble-user .text {
-      color: #fff;
-      font-size: 0.75rem;
-    }
-    .caso-mock-input {
-      margin-top: 12px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .caso-mock-input-field {
-      flex: 1;
-      background: rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 6px 14px;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.7rem;
-    }
-    .caso-mock-input-btn {
-      background: var(--orange);
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.8rem;
-    }
+        .caso-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        .caso-title a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .caso-title a:hover {
+            color: var(--orange);
+        }
 
-    .caso-results {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 24px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-    .caso-result-item {
-      text-align: center;
-    }
-    .caso-result-number {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--orange);
-    }
-    .caso-result-label {
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
+        .caso-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .caso-tag {
+            font-size: 0.7rem;
+            background: var(--orange-glow);
+            color: var(--orange);
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .caso-tag-success {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+        }
 
-    @media (max-width: 768px) {
-      .caso-body {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .caso-results {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 480px) {
-      .caso-results {
-        grid-template-columns: 1fr 1fr;
-      }
-      .caso-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+        .caso-body {
+            padding: 20px 32px 32px 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: center;
+        }
 
-    /* ─── ABOUT ─── */
-    .about-wrap {
-      display: grid; grid-template-columns: 1fr; gap: 48px; align-items: start;
-    }
-    @media (min-width: 900px) { .about-wrap { grid-template-columns: 1fr 1.3fr; } }
-    .founder-photo-block { text-align: center; }
-    .founder-img {
-      width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
-      border: 4px solid var(--orange); box-shadow: 0 0 0 8px var(--orange-glow);
-      display: block; margin: 0 auto 20px;
-    }
-    .founder-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 800; }
-    .founder-role { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
-    .cred-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 16px; }
-    .cred-pill {
-      background: var(--paper); border: 1px solid var(--border);
-      border-radius: 999px; padding: 5px 12px;
-      font-size: 0.75rem; font-weight: 600; color: var(--ink);
-    }
-    .founder-text p { color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
-    .founder-text p strong { color: var(--ink); font-weight: 600; }
-    .founder-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 28px;
-    }
-    @media (max-width: 640px) {
-      .founder-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    .founder-stat {
-      background: var(--paper); border: 1px solid var(--border);
-      border-radius: var(--radius-md); padding: 18px 16px; text-align: center;
-    }
-    .founder-stat-num { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--orange); }
-    .founder-stat-label { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+        .caso-text p {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .caso-text p strong {
+            color: var(--ink);
+        }
 
-    /* ─── LEAD FORM ─── */
-    .form-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .form-wrap { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; }
-    @media (min-width: 900px) { .form-wrap { grid-template-columns: 1.2fr 1fr; } }
-    .form-copy h2 { margin-bottom: 1rem; }
-    .form-copy p { color: var(--muted); font-size: 1rem; line-height: 1.7; font-weight: 300; }
-    .form-benefits { margin-top: 1.5rem; list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .form-benefits li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 500; }
-    .form-benefits li::before { content: '✓'; color: #22c55e; font-weight: 700; font-size: 0.85rem; }
+        .caso-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .caso-links a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .caso-links .link-orange {
+            color: var(--orange);
+        }
+        .caso-links .link-muted {
+            color: var(--muted);
+            font-weight: 500;
+        }
 
-    .lead-form {
-      background: var(--paper); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 36px 32px;
-    }
-    .form-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
-    .form-subtitle { color: var(--muted); font-size: 0.85rem; margin-bottom: 24px; }
-    .field { margin-bottom: 14px; }
-    .field input, .field select {
-      width: 100%; padding: 13px 16px;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      background: var(--surface); color: var(--ink);
-      transition: border-color 0.2s; -webkit-appearance: none; appearance: none;
-    }
-    .field input:focus, .field select:focus { outline: none; border-color: var(--orange); }
-    .field input::placeholder { color: #aaa; }
-    .submit-btn {
-      width: 100%; padding: 15px; background: var(--orange); color: #fff;
-      border: none; border-radius: var(--radius-sm);
-      font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700;
-      cursor: pointer; transition: background 0.2s; letter-spacing: 0.01em;
-    }
-    .submit-btn:hover { background: var(--orange-dark); }
-    .form-disclaimer { text-align: center; font-size: 0.72rem; color: #aaa; margin-top: 12px; }
+        .caso-mock {
+            background: #f0f0f0;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .caso-mock-inner {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            max-width: 260px;
+        }
+        .caso-mock-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .caso-mock-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        .caso-mock-avatar.sm {
+            background: #669933;
+        }
+        .caso-mock-name {
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .caso-mock-status {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.6rem;
+        }
+        .caso-mock-bubble-bot {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+        }
+        .caso-mock-bubble-bot .label {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.6rem;
+        }
+        .caso-mock-bubble-bot .text {
+            color: #fff;
+            font-size: 0.8rem;
+        }
+        .caso-mock-bubble-user {
+            background: var(--orange);
+            border-radius: 10px;
+            padding: 8px 14px;
+            margin-left: auto;
+            width: fit-content;
+            max-width: 80%;
+        }
+        .caso-mock-bubble-user .text {
+            color: #fff;
+            font-size: 0.75rem;
+        }
+        .caso-mock-input {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .caso-mock-input-field {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 6px 14px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+        }
+        .caso-mock-input-btn {
+            background: var(--orange);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.8rem;
+        }
 
-    /* ─── FAQ ─── */
-    .faq-list { display: flex; flex-direction: column; }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-item:first-child { border-top: 1px solid var(--border); }
-    .faq-trigger {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 22px 0; cursor: pointer; gap: 16px;
-      font-weight: 600; font-size: 1rem; transition: color 0.2s;
-    }
-    .faq-trigger:hover { color: var(--orange); }
-    .faq-trigger-text { display: flex; align-items: center; gap: 10px; }
-    .faq-emoji { font-size: 1.2rem; flex-shrink: 0; }
-    .faq-arrow { font-size: 0.85rem; color: var(--orange); transition: transform 0.3s; flex-shrink: 0; }
-    .faq-body {
-      max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
-      padding-left: 32px; color: var(--muted); font-size: 0.92rem; line-height: 1.75; font-weight: 300;
-    }
-    .faq-body.open { max-height: 600px; padding-bottom: 20px; }
+        .caso-results {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .caso-result-item {
+            text-align: center;
+        }
+        .caso-result-number {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--orange);
+        }
+        .caso-result-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
 
-    /* ─── CTA FINAL ─── */
-    .cta-section { background: var(--orange); padding: 100px 0; text-align: center; }
-    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
-    .cta-section p {
-      color: rgba(255,255,255,0.82); max-width: 520px;
-      margin: 0 auto 2.5rem; font-size: 1.05rem; font-weight: 300; line-height: 1.7;
-    }
-    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 768px) {
+            .caso-body {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .caso-results {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .caso-results {
+                grid-template-columns: 1fr 1fr;
+            }
+            .caso-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
 
-    /* ─── FOOTER ─── */
-    footer { background: var(--ink); padding: 60px 0 40px; color: rgba(255,255,255,0.5); }
-    .footer-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      flex-wrap: wrap; gap: 32px; padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 32px;
-    }
-    .footer-brand .logo { color: #fff; }
-    .footer-brand p { margin-top: 10px; font-size: 0.85rem; max-width: 240px; line-height: 1.6; }
-    .footer-links h4 {
-      color: #fff; font-size: 0.8rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
-    }
-    .footer-links a {
-      display: block; color: rgba(255,255,255,0.45); text-decoration: none;
-      font-size: 0.88rem; margin-bottom: 8px; transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--orange); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 16px; font-size: 0.78rem;
-    }
-    .ig-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.45); text-decoration: none; font-weight: 600; transition: color 0.2s;
-    }
-    .ig-link:hover { color: var(--orange); }
+        /* ─── ABOUT ─── */
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        @media (min-width: 900px) {
+            .about-wrap {
+                grid-template-columns: 1fr 1.3fr;
+            }
+        }
+        .founder-photo-block {
+            text-align: center;
+        }
+        .founder-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--orange);
+            box-shadow: 0 0 0 8px var(--orange-glow);
+            display: block;
+            margin: 0 auto 20px;
+        }
+        .founder-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+        .founder-role {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+        .cred-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .cred-pill {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .founder-text p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+        .founder-text p strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .founder-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 28px;
+        }
+        @media (max-width: 640px) {
+            .founder-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .founder-stat {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 18px 16px;
+            text-align: center;
+        }
+        .founder-stat-num {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--orange);
+        }
+        .founder-stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
 
-    /* ─── SCROLL REVEAL ─── */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+        /* ─── LEAD FORM ─── */
+        .form-section {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .form-wrap {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        @media (min-width: 900px) {
+            .form-wrap {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+        .form-copy h2 {
+            margin-bottom: 1rem;
+        }
+        .form-copy p {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .form-benefits {
+            margin-top: 1.5rem;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .form-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .form-benefits li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
 
-    /* Mobile menu */
-    .hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
-    @media (min-width: 900px) { .hamburger { display: none; } }
-    .mobile-menu {
-      display: none; flex-direction: column;
-      background: var(--surface); border-bottom: 1px solid var(--border);
-      padding: 16px 28px 24px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      padding: 12px 0; color: var(--ink); font-weight: 500;
-      text-decoration: none; border-bottom: 1px solid var(--border); font-size: 0.95rem;
-    }
-    .mobile-menu a:last-child { border: none; }
-  </style>
+        .lead-form {
+            background: var(--paper);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+        }
+        .form-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+        .form-subtitle {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+        .field {
+            margin-bottom: 14px;
+        }
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            background: var(--surface);
+            color: var(--ink);
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .field input:focus,
+        .field select:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+        .field input::placeholder {
+            color: #aaa;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--orange);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+            letter-spacing: 0.01em;
+        }
+        .submit-btn:hover {
+            background: var(--orange-dark);
+        }
+        .form-disclaimer {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #aaa;
+            margin-top: 12px;
+        }
+
+        /* ─── FAQ ─── */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+        .faq-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+            cursor: pointer;
+            gap: 16px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .faq-trigger:hover {
+            color: var(--orange);
+        }
+        .faq-trigger-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .faq-emoji {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .faq-arrow {
+            font-size: 0.85rem;
+            color: var(--orange);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding-left: 32px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+        .faq-body.open {
+            max-height: 600px;
+            padding-bottom: 20px;
+        }
+
+        /* ─── CTA FINAL ─── */
+        .cta-section {
+            background: var(--orange);
+            padding: 100px 0;
+            text-align: center;
+        }
+        .cta-section h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.82);
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        .cta-btns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--ink);
+            padding: 60px 0 40px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 32px;
+        }
+        .footer-brand .logo {
+            color: #fff;
+        }
+        .footer-brand p {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            max-width: 240px;
+            line-height: 1.6;
+        }
+        .footer-links h3 {
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-size: 0.88rem;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.78rem;
+        }
+        .ig-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+        .ig-link:hover {
+            color: var(--orange);
+        }
+
+        /* ─── SCROLL REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* ─── RESPONSIVE EXTRA ─── */
+        @media (max-width: 480px) {
+            .hero-phone-mock {
+                padding: 16px;
+            }
+            .floating-badge {
+                display: none;
+            }
+            .stat-cell {
+                padding: 24px 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- ─── HEADER ─── -->
-<header>
-  <div class="container navbar">
-    <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
-    <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#industrias">Industrias</a></li>
-      <li><a href="#proceso">Proceso</a></li>
-      <li><a href="#resultados">Resultados</a></li>
-      <li><a href="#casos">Casos</a></li>
-      <li><a href="#about">Nosotros</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." class="btn btn-primary nav-cta">
-      <i class="fab fa-whatsapp"></i> Agendar asesoría
-    </a>
-    <div class="hamburger" id="hamburger" aria-label="Menú" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-  <nav class="mobile-menu" id="mobileMenu">
-    <a href="#servicios">Servicios</a>
-    <a href="#industrias">Industrias</a>
-    <a href="#proceso">Proceso</a>
-    <a href="#resultados">Resultados</a>
-    <a href="#casos">Casos</a>
-    <a href="#about">Nosotros</a>
-    <a href="#faq">FAQ</a>
-    <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
-  </nav>
-</header>
-
-<main>
-
-<!-- ─── HERO ─── -->
-<section style="padding: 0;">
-  <div class="container">
-    <div class="hero-wrap">
-      <div class="hero-text">
-        <div class="label-tag">Automatización con IA · México</div>
-        <h1 class="hero-headline">
-          Tu negocio atendiendo<br>clientes incluso<br><em>mientras duermes.</em>
-        </h1>
-        <p class="hero-sub">
-          Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp, Telegram y sitios web</strong>.
-        </p>
-        <div class="hero-btns">
-          <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
-            <i class="fab fa-whatsapp"></i> Agendar asesoría gratuita
-          </a>
-          <a href="#resultados" class="btn btn-ghost">Ver casos reales →</a>
+    <!-- ─── HEADER ─── -->
+    <header>
+        <div class="container navbar">
+            <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+            <ul class="nav-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#industrias">Industrias</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#resultados">Resultados</a></li>
+                <li><a href="#casos">Casos</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." class="btn btn-primary nav-cta">
+                <i class="fab fa-whatsapp"></i> Agendar asesoría
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <div class="social-proof-strip">
-          <div class="proof-avatars">
-            <span>SM</span><span>GL</span><span>SP</span>
-          </div>
-          <div class="proof-text">
-            Proyectos en producción<br>
-            <span>Solid Maker · GL Dental</span>
-          </div>
-        </div>
-      </div>
+        <nav class="mobile-menu" id="mobileMenu">
+            <a href="#servicios">Servicios</a>
+            <a href="#industrias">Industrias</a>
+            <a href="#proceso">Proceso</a>
+            <a href="#resultados">Resultados</a>
+            <a href="#casos">Casos</a>
+            <a href="#about">Nosotros</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
+        </nav>
+    </header>
 
-      <div class="hero-visual">
-        <div style="position: relative; max-width: 340px; margin: 0 auto; display: block;">
-          <div class="floating-badge badge-top">
-            <span class="badge-dot"></span> Bot activo 24/7
-          </div>
-          <div class="hero-phone-mock">
-            <div class="chat-header">
-              <div class="chat-avatar" style="background: #669933;">🖨️</div>
-              <div>
-                <div class="chat-name">Solid Maker — Asistente</div>
-                <div class="chat-status">● En línea ahora</div>
-              </div>
-            </div>
-            <div class="chat-bubble bubble-bot bubble-delay-1">¡Hola! 👋 Soy el Asesor Técnico de <strong>Solid Maker</strong>. ¿Qué proyecto tienes en mente?</div>
-            <div class="chat-time bubble-delay-1" style="animation: bubble-in 0.4s 0.3s ease both; opacity:0;">10:23</div>
-            <div class="chat-bubble bubble-user bubble-delay-2">Quiero cotizar un llavero personalizado</div>
-            <div class="chat-bubble bubble-bot bubble-delay-3">🎨 ¡Excelente! Tenemos 6 tipos de llaveros: mascotas, autos, empresas, personalizados, con NFC y multicolor. ¿Cuál te interesa?</div>
-            <div class="chat-bubble bubble-user bubble-delay-4">Mascotas</div>
-            <div class="chat-bubble bubble-bot bubble-delay-5">🐾 Escaneamos a tu mascota y lo convertimos en un llavero 3D realista. Precio desde $300 MXN. 📱 ¿Te contacto por WhatsApp para cotizar?</div>
-          </div>
-          <div class="floating-badge badge-bottom">
-            ⚡ Cotización en 2 minutos
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <main>
 
-<!-- ─── TICKER ─── -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">⚡ Caso: Solid Maker</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">🦷 Caso: GL Dental</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">🚀 Implementación en días</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">📍 Soporte local CDMX</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">⚡ Caso: Solid Maker</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">🦷 Caso: GL Dental</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">🚀 Implementación en días</span>
-    <span class="ticker-dot"></span>
-    <span class="ticker-item">📍 Soporte local CDMX</span>
-    <span class="ticker-dot"></span>
-  </div>
-</div>
+        <!-- ─── HERO ─── -->
+        <section class="pt-0">
+            <div class="container">
+                <div class="hero-wrap">
+                    <div class="hero-text">
+                        <div class="label-tag">Automatización con IA · México</div>
+                        <h1 class="hero-headline">
+                            Tu negocio atendiendo<br>clientes incluso<br><em>mientras duermes.</em>
+                        </h1>
+                        <p class="hero-sub">
+                            Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp, Telegram y sitios web</strong>.
+                        </p>
+                        <div class="hero-btns">
+                            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
+                                <i class="fab fa-whatsapp"></i> Agendar asesoría gratuita
+                            </a>
+                            <a href="#resultados" class="btn btn-ghost">Ver casos reales →</a>
+                        </div>
+                        <div class="social-proof-strip">
+                            <div class="proof-avatars">
+                                <span>SM</span><span>GL</span><span>SP</span>
+                            </div>
+                            <div class="proof-text">
+                                Proyectos en producción<br>
+                                <span>Solid Maker · GL Dental</span>
+                            </div>
+                        </div>
+                    </div>
 
-<!-- ─── STATS ─── -->
-<div class="stats-section" style="padding-top: 0;">
-  <div class="container">
-    <div class="stat-grid reveal">
-      <div class="stat-cell">
-        <div class="stat-number" id="counter-90">0%</div>
-        <div class="stat-label">Reducción de tiempo operativo</div>
-        <div class="stat-sublabel">De 4.75 horas → 28 minutos semanales</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">0%</div>
-        <div class="stat-label">Tasa de error en datos de contacto</div>
-        <div class="stat-sublabel">Cero errores desde la implementación</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-number">24/7</div>
-        <div class="stat-label">Disponibilidad del asistente</div>
-        <div class="stat-sublabel">Sin días libres ni vacaciones</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── TECH ─── -->
-<div class="tech-band">
-  <div class="container">
-    <p class="tech-label">Tecnología que utilizamos</p>
-    <div class="tech-grid">
-      <div class="tech-pill"><i class="fab fa-whatsapp icon" style="color:var(--whatsapp);"></i> WhatsApp API</div>
-      <div class="tech-pill"><i class="fab fa-telegram icon" style="color:var(--telegram);"></i> Telegram</div>
-      <div class="tech-pill"><i class="fab fa-google icon" style="color:#4285F4;"></i> Google Calendar</div>
-      <div class="tech-pill"><span class="icon">⚙️</span> Make.com</div>
-      <div class="tech-pill"><span class="icon">🤖</span> Botpress</div>
-      <div class="tech-pill"><span class="icon">🧠</span> Gemini AI</div>
-      <div class="tech-pill"><span class="icon">💬</span> ChatGPT</div>
-      <div class="tech-pill"><span class="icon">🎨</span> Claude AI</div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── SERVICIOS ─── -->
-<section id="servicios">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-label">Lo que hacemos</div>
-      <h2>Servicios de automatización</h2>
-      <p class="section-sub">Soluciones diseñadas para resolver procesos reales de negocio usando inteligencia artificial.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon-wrap"><i class="fab fa-whatsapp"></i></div>
-        <h3>Chatbot para WhatsApp</h3>
-        <p>Bots inteligentes que atienden clientes, responden preguntas y cierran ventas en WhatsApp sin que estés presente.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon-wrap"><i class="fab fa-telegram"></i></div>
-        <h3>Chatbot para Telegram</h3>
-        <p>Asistentes virtuales para atención automatizada, soporte y ventas dentro de Telegram.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon-wrap" style="font-size:1.4rem;">📅</div>
-        <h3>Automatización de citas</h3>
-        <p>Agenda automática sincronizada con Google Calendar. Tu cliente elige horario y queda confirmado al instante.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon-wrap" style="font-size:1.4rem;">⚡</div>
-        <h3>Procesos automatizados</h3>
-        <p>Eliminamos tareas repetitivas: confirmaciones, recordatorios, seguimientos y formularios en piloto automático.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon-wrap" style="font-size:1.4rem;">📲</div>
-        <h3>Atención al cliente con IA</h3>
-        <p>Respuestas automáticas, seguimiento inteligente y escalado a humano cuando se necesita.</p>
-      </div>
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon-wrap" style="font-size:1.4rem;">📈</div>
-        <h3>Automatización de marketing</h3>
-        <p>Flujos automáticos para captar prospectos, nutrir leads y convertir oportunidades sin intervención manual.</p>
-      </div>
-    </div>
-    <div class="mid-cta reveal">
-      <p>¿Listo para dejar de responder mensajes manualmente?</p>
-      <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── INDUSTRIAS ─── -->
-<section id="industrias" class="industries-bg" style="padding: 80px 0;">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-label">¿Para quién es esto?</div>
-      <h2>Negocios que ya pueden automatizarse</h2>
-      <p class="section-sub">Cualquier negocio que reciba mensajes repetitivos o gestione citas constantemente es candidato ideal.</p>
-    </div>
-    <div class="industries-grid">
-      <div class="industry-card reveal">
-        <div class="industry-icon">🖨️</div>
-        <h3>Impresión 3D</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-1">
-        <div class="industry-icon">🦷</div>
-        <h3>Consultorios Dentales</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-2">
-        <div class="industry-icon">💆</div>
-        <h3>Spas y Estéticas</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-3">
-        <div class="industry-icon">💈</div>
-        <h3>Barberías</h3>
-      </div>
-      <div class="industry-card reveal">
-        <div class="industry-icon">⚖️</div>
-        <h3>Despachos Jurídicos</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-1">
-        <div class="industry-icon">🏠</div>
-        <h3>Inmobiliarias</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-2">
-        <div class="industry-icon">🍽️</div>
-        <h3>Restaurantes</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-3">
-        <div class="industry-icon">🏋️</div>
-        <h3>Gimnasios</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PROCESO ─── -->
-<section id="proceso" class="proceso-section">
-  <div class="container">
-    <div class="section-head centered reveal">
-      <div class="section-label">Sin sorpresas</div>
-      <h2>Cómo trabajamos</h2>
-      <p class="section-sub">Un proceso claro, desde el primer contacto hasta el bot funcionando en tu negocio.</p>
-    </div>
-    <div class="proceso-grid">
-      <div class="proceso-step reveal">
-        <div class="step-number">01</div>
-        <div class="step-icon"><i class="fas fa-search"></i></div>
-        <h3>Diagnóstico</h3>
-        <p>Entendemos tu negocio, los mensajes que recibes y los procesos que quieres automatizar. Sin compromisos.</p>
-      </div>
-      <div class="proceso-step reveal reveal-delay-1">
-        <div class="step-number">02</div>
-        <div class="step-icon"><i class="fas fa-sitemap"></i></div>
-        <h3>Diseño del flujo</h3>
-        <p>Mapeamos la conversación ideal de tu bot: bienvenida, opciones, captura de datos y confirmaciones.</p>
-      </div>
-      <div class="proceso-step reveal reveal-delay-2">
-        <div class="step-number">03</div>
-        <div class="step-icon"><i class="fas fa-code"></i></div>
-        <h3>Implementación</h3>
-        <p>Configuramos el bot, conectamos WhatsApp o Telegram y lo integramos con tu Google Calendar.</p>
-      </div>
-      <div class="proceso-step reveal reveal-delay-3">
-        <div class="step-number">04</div>
-        <div class="step-icon"><i class="fas fa-rocket"></i></div>
-        <h3>Lanzamiento</h3>
-        <p>Pruebas, ajustes finales y puesta en marcha. Tu negocio empieza a atender solo desde el primer día.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── RESULTADOS ─── -->
-<section id="resultados">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-label">Resultados con cronómetro</div>
-      <h2>Casos reales, números reales</h2>
-      <p class="section-sub">Dos negocios, dos industrias, un mismo resultado: automatización que funciona.</p>
-    </div>
-
-    <!-- Caso 1: GL Dental -->
-    <div style="margin-bottom: 60px;">
-      <div class="case-study-wrap">
-        <div class="case-metrics reveal">
-          <div class="metric-card featured">
-            <div class="metric-num">90.2%</div>
-            <div class="metric-desc">Reducción del tiempo operativo total</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">4.75h → 28min</div>
-            <div class="metric-desc">Tiempo semanal en gestión de contenido</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">15% → 0%</div>
-            <div class="metric-desc">Errores en datos de contacto</div>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="section-label">Testimonio directo</div>
-          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Dra. Gimel Lom</h3>
-          <p class="section-sub">Consultorio dental en CDMX. Implementación en menos de una semana.</p>
-          <div class="testimonial-block">
-            <p class="testimonial-quote">No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana. Mis pacientes agendan solos y yo solo reviso el calendario.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">GL</div>
-              <div>
-                <div class="author-name">Dra. Gimel Lom</div>
-                <div class="author-role">GL Dental · Ciudad de México</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Caso 2: Solid Maker -->
-    <div style="border-top: 1px solid var(--border); padding-top: 60px;">
-      <div class="case-study-wrap">
-        <div class="case-metrics reveal">
-          <div class="metric-card featured" style="background: #669933; border-color: #669933;">
-            <div class="metric-num">21</div>
-            <div class="metric-desc">Visitas en el primer mes</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">74%</div>
-            <div class="metric-desc">Usuarios desde dispositivos móviles</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-num">+140%</div>
-            <div class="metric-desc">Crecimiento en la primera semana</div>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <div class="section-label">Testimonio directo</div>
-          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Felipe Soriano</h3>
-          <p class="section-sub">Solid Maker · Impresión 3D en CDMX. Sitio web + chatbot en producción.</p>
-          <div class="testimonial-block" style="border-left-color: #669933;">
-            <p class="testimonial-quote">"Necesitaba una página web profesional y un sistema de cotización para mi negocio de impresión 3D. Sosializarte me entregó ambos en tiempo récord. En el primer mes ya teníamos <strong>21 visitas</strong>, con un crecimiento del <strong>140%</strong> en la primera semana, y el chatbot ha atendido consultas fuera de horario laboral. Es como tener un vendedor 24/7."</p>
-            <div class="testimonial-author">
-              <div class="author-avatar" style="background: rgba(102,153,51,0.15); border-color: #669933; color: #669933;">FS</div>
-              <div>
-                <div class="author-name">Felipe Soriano</div>
-                <div class="author-role">Solid Maker · Impresión 3D · CDMX</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA final -->
-    <div style="text-align: center; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
-      <a href="#casos" class="btn btn-primary">
-        <i class="fas fa-arrow-right"></i> Ver todos los casos de éxito
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── CASOS DE ÉXITO ─── -->
-<section id="casos" style="padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-head centered reveal">
-      <div class="section-label">Casos de éxito</div>
-      <h2>Proyectos que ya están en producción</h2>
-      <p class="section-sub">Automatizaciones y sitios web construidos para negocios reales en CDMX.</p>
-    </div>
-
-    <div class="casos-grid">
-
-      <!-- CASO: SOLID MAKER -->
-      <div class="caso-card reveal">
-        <div class="caso-header">
-          <div>
-            <div class="caso-badge">🖨️ Impresión 3D · CDMX</div>
-            <h3 class="caso-title">
-              <a href="https://solidmaker.mx" target="_blank" rel="noopener noreferrer">
-                Solid Maker
-              </a>
-            </h3>
-          </div>
-          <div class="caso-tags">
-            <span class="caso-tag caso-tag-success">✅ En producción</span>
-            <span class="caso-tag">Chatbot</span>
-            <span class="caso-tag">Web</span>
-          </div>
-        </div>
-
-        <div class="caso-body">
-          <div class="caso-text">
-            <p>
-              <strong>Solid Maker</strong> es un negocio de impresión 3D que recibía constantes consultas por WhatsApp. 
-              El tiempo de respuesta afectaba su capacidad de cotizar y cerrar ventas.
-            </p>
-            <p>
-              Construimos un <strong>sitio web profesional</strong> con un <strong>chatbot de cotización</strong> 
-              que atiende clientes 24/7, califica leads y deriva a WhatsApp solo cuando es necesario.
-            </p>
-            <div class="caso-tags" style="margin-bottom: 16px;">
-              <span class="caso-tag">Sitio web</span>
-              <span class="caso-tag">Chatbot</span>
-              <span class="caso-tag">Automatización</span>
-              <span class="caso-tag">WhatsApp</span>
-            </div>
-            <div class="caso-links">
-              <a href="https://solidmaker.mx" target="_blank" class="link-orange">
-                Ver sitio web →
-              </a>
-              <a href="https://solidmaker.mx" target="_blank" class="link-muted">
-                Probar chatbot →
-              </a>
-            </div>
-          </div>
-
-          <div class="caso-mock">
-            <div class="caso-mock-inner">
-              <div class="caso-mock-header">
-                <div class="caso-mock-avatar sm">SM</div>
-                <div>
-                  <div class="caso-mock-name">Solid Maker</div>
-                  <div class="caso-mock-status">● En línea ahora</div>
+                    <div class="hero-visual">
+                        <div style="position: relative; max-width: 340px; margin: 0 auto; display: block;">
+                            <div class="floating-badge badge-top">
+                                <span class="badge-dot"></span> Bot activo 24/7
+                            </div>
+                            <div class="hero-phone-mock">
+                                <div class="chat-header">
+                                    <div class="chat-avatar" style="background: #669933;">🖨️</div>
+                                    <div>
+                                        <div class="chat-name">Solid Maker — Asistente</div>
+                                        <div class="chat-status">● En línea ahora</div>
+                                    </div>
+                                </div>
+                                <div class="chat-bubble bubble-bot bubble-delay-1">¡Hola! 👋 Soy el Asesor Técnico de <strong>Solid Maker</strong>. ¿Qué proyecto tienes en mente?</div>
+                                <div class="chat-time bubble-delay-1" style="animation: bubble-in 0.4s 0.3s ease both; opacity:0;">10:23</div>
+                                <div class="chat-bubble bubble-user bubble-delay-2">Quiero cotizar un llavero personalizado</div>
+                                <div class="chat-bubble bubble-bot bubble-delay-3">🎨 ¡Excelente! Tenemos 6 tipos de llaveros: mascotas, autos, empresas, personalizados, con NFC y multicolor. ¿Cuál te interesa?</div>
+                                <div class="chat-bubble bubble-user bubble-delay-4">Mascotas</div>
+                                <div class="chat-bubble bubble-bot bubble-delay-5">🐾 Escaneamos a tu mascota y lo convertimos en un llavero 3D realista. Precio desde $300 MXN. 📱 ¿Te contacto por WhatsApp para cotizar?</div>
+                            </div>
+                            <div class="floating-badge badge-bottom">
+                                ⚡ Cotización en 2 minutos
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="caso-mock-bubble-bot">
-                <div class="label">🤖 Asistente</div>
-                <div class="text">"¿Qué tipo de proyecto tienes en mente?"</div>
-              </div>
-              <div class="caso-mock-bubble-user">
-                <div class="text">"Cotizar llavero"</div>
-              </div>
-              <div class="caso-mock-bubble-bot">
-                <div class="label">🤖 Asistente</div>
-                <div class="text">"Tenemos 6 tipos de llaveros..."</div>
-              </div>
-              <div class="caso-mock-input">
-                <div class="caso-mock-input-field">Escribe un mensaje...</div>
-                <div class="caso-mock-input-btn">➤</div>
-              </div>
             </div>
-          </div>
-        </div>
+        </section>
 
-        <div style="padding: 0 32px 24px 32px;">
-          <div class="caso-results">
-            <div class="caso-result-item">
-              <div class="caso-result-number">24/7</div>
-              <div class="caso-result-label">Disponibilidad</div>
+        <!-- ─── TICKER ─── -->
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">⚡ Caso: Solid Maker</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">🦷 Caso: GL Dental</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">🚀 Implementación en días</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">📍 Soporte local CDMX</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">⚡ Caso: Solid Maker</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">🦷 Caso: GL Dental</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">🚀 Implementación en días</span>
+                <span class="ticker-dot"></span>
+                <span class="ticker-item">📍 Soporte local CDMX</span>
+                <span class="ticker-dot"></span>
             </div>
-            <div class="caso-result-item">
-              <div class="caso-result-number">21</div>
-              <div class="caso-result-label">Visitas mes 1</div>
+        </div>
+
+        <!-- ─── STATS ─── -->
+        <div class="stats-section pt-0">
+            <div class="container">
+                <div class="stat-grid reveal">
+                    <div class="stat-cell">
+                        <div class="stat-number" id="counter-90">0%</div>
+                        <div class="stat-label">Reducción de tiempo operativo</div>
+                        <div class="stat-sublabel">De 4.75 horas → 28 minutos semanales</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="stat-number">0%</div>
+                        <div class="stat-label">Tasa de error en datos de contacto</div>
+                        <div class="stat-sublabel">Cero errores desde la implementación</div>
+                    </div>
+                    <div class="stat-cell">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Disponibilidad del asistente</div>
+                        <div class="stat-sublabel">Sin días libres ni vacaciones</div>
+                    </div>
+                </div>
             </div>
-            <div class="caso-result-item">
-              <div class="caso-result-number">+140%</div>
-              <div class="caso-result-label">Crecimiento semana 1</div>
+        </div>
+
+        <!-- ─── TECH ─── -->
+        <div class="tech-band">
+            <div class="container">
+                <p class="tech-label">Tecnología que utilizamos</p>
+                <div class="tech-grid">
+                    <div class="tech-pill"><i class="fab fa-whatsapp icon" style="color:var(--whatsapp);"></i> WhatsApp API</div>
+                    <div class="tech-pill"><i class="fab fa-telegram icon" style="color:var(--telegram);"></i> Telegram</div>
+                    <div class="tech-pill"><i class="fab fa-google icon" style="color:#4285F4;"></i> Google Calendar</div>
+                    <div class="tech-pill"><span class="icon">⚙️</span> Make.com</div>
+                    <div class="tech-pill"><span class="icon">🤖</span> Botpress</div>
+                    <div class="tech-pill"><span class="icon">🧠</span> Gemini AI</div>
+                    <div class="tech-pill"><span class="icon">💬</span> ChatGPT</div>
+                    <div class="tech-pill"><span class="icon">🎨</span> Claude AI</div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
 
-    </div>
+        <!-- ─── SERVICIOS ─── -->
+        <section id="servicios">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="section-label">Lo que hacemos</div>
+                    <h2>Servicios de automatización</h2>
+                    <p class="section-sub">Soluciones diseñadas para resolver procesos reales de negocio usando inteligencia artificial.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon-wrap"><i class="fab fa-whatsapp"></i></div>
+                        <h3>Chatbot para WhatsApp</h3>
+                        <p>Bots inteligentes que atienden clientes, responden preguntas y cierran ventas en WhatsApp sin que estés presente.</p>
+                    </div>
+                    <div class="service-card reveal reveal-delay-1">
+                        <div class="service-icon-wrap"><i class="fab fa-telegram"></i></div>
+                        <h3>Chatbot para Telegram</h3>
+                        <p>Asistentes virtuales para atención automatizada, soporte y ventas dentro de Telegram.</p>
+                    </div>
+                    <div class="service-card reveal reveal-delay-2">
+                        <div class="service-icon-wrap" style="font-size:1.4rem;">📅</div>
+                        <h3>Automatización de citas</h3>
+                        <p>Agenda automática sincronizada con Google Calendar. Tu cliente elige horario y queda confirmado al instante.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon-wrap" style="font-size:1.4rem;">⚡</div>
+                        <h3>Procesos automatizados</h3>
+                        <p>Eliminamos tareas repetitivas: confirmaciones, recordatorios, seguimientos y formularios en piloto automático.</p>
+                    </div>
+                    <div class="service-card reveal reveal-delay-1">
+                        <div class="service-icon-wrap" style="font-size:1.4rem;">📲</div>
+                        <h3>Atención al cliente con IA</h3>
+                        <p>Respuestas automáticas, seguimiento inteligente y escalado a humano cuando se necesita.</p>
+                    </div>
+                    <div class="service-card reveal reveal-delay-2">
+                        <div class="service-icon-wrap" style="font-size:1.4rem;">📈</div>
+                        <h3>Automatización de marketing</h3>
+                        <p>Flujos automáticos para captar prospectos, nutrir leads y convertir oportunidades sin intervención manual.</p>
+                    </div>
+                </div>
+                <div class="mid-cta reveal">
+                    <p>¿Listo para dejar de responder mensajes manualmente?</p>
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <div style="text-align: center; margin-top: 3rem;">
-      <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Quieres un chatbot como este para tu negocio?</p>
-      <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker." class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
-      </a>
-    </div>
+        <!-- ─── INDUSTRIAS ─── -->
+        <section id="industrias" class="industries-bg" style="padding: 80px 0;">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="section-label">¿Para quién es esto?</div>
+                    <h2>Negocios que ya pueden automatizarse</h2>
+                    <p class="section-sub">Cualquier negocio que reciba mensajes repetitivos o gestione citas constantemente es candidato ideal.</p>
+                </div>
+                <div class="industries-grid">
+                    <div class="industry-card reveal">
+                        <div class="industry-icon">🖨️</div>
+                        <h3>Impresión 3D</h3>
+                    </div>
+                    <div class="industry-card reveal reveal-delay-1">
+                        <div class="industry-icon">🦷</div>
+                        <h3>Consultorios Dentales</h3>
+                    </div>
+                    <div class="industry-card reveal reveal-delay-2">
+                        <div class="industry-icon">💆</div>
+                        <h3>Spas y Estéticas</h3>
+                    </div>
+                    <div class="industry-card reveal reveal-delay-3">
+                        <div class="industry-icon">💈</div>
+                        <h3>Barberías</h3>
+                    </div>
+                    <div class="industry-card reveal">
+                        <div class="industry-icon">⚖️</div>
+                        <h3>Despachos Jurídicos</h3>
+                    </div>
+                    <div class="industry-card reveal reveal-delay-1">
+                        <div class="industry-icon">🏠</div>
+                        <h3>Inmobiliarias</h3>
+                    </div>
+                    <div class="industry-card reveal reveal-delay-2">
+                        <div class="industry-icon">🍽️</div>
+                        <h3>Restaurantes</h3>
+                    </div>
+                    <div class="industry-card reveal reveal-delay-3">
+                        <div class="industry-icon">🏋️</div>
+                        <h3>Gimnasios</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  </div>
-</section>
+        <!-- ─── PROCESO ─── -->
+        <section id="proceso" class="proceso-section">
+            <div class="container">
+                <div class="section-head centered reveal">
+                    <div class="section-label">Sin sorpresas</div>
+                    <h2>Cómo trabajamos</h2>
+                    <p class="section-sub">Un proceso claro, desde el primer contacto hasta el bot funcionando en tu negocio.</p>
+                </div>
+                <div class="proceso-grid">
+                    <div class="proceso-step reveal">
+                        <div class="step-number">01</div>
+                        <div class="step-icon"><i class="fas fa-search"></i></div>
+                        <h3>Diagnóstico</h3>
+                        <p>Entendemos tu negocio, los mensajes que recibes y los procesos que quieres automatizar. Sin compromisos.</p>
+                    </div>
+                    <div class="proceso-step reveal reveal-delay-1">
+                        <div class="step-number">02</div>
+                        <div class="step-icon"><i class="fas fa-sitemap"></i></div>
+                        <h3>Diseño del flujo</h3>
+                        <p>Mapeamos la conversación ideal de tu bot: bienvenida, opciones, captura de datos y confirmaciones.</p>
+                    </div>
+                    <div class="proceso-step reveal reveal-delay-2">
+                        <div class="step-number">03</div>
+                        <div class="step-icon"><i class="fas fa-code"></i></div>
+                        <h3>Implementación</h3>
+                        <p>Configuramos el bot, conectamos WhatsApp o Telegram y lo integramos con tu Google Calendar.</p>
+                    </div>
+                    <div class="proceso-step reveal reveal-delay-3">
+                        <div class="step-number">04</div>
+                        <div class="step-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>Lanzamiento</h3>
+                        <p>Pruebas, ajustes finales y puesta en marcha. Tu negocio empieza a atender solo desde el primer día.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<!-- ─── ABOUT ─── -->
-<section id="about" style="background: var(--surface); border-top: 1px solid var(--border);">
-  <div class="container">
-    <div class="about-wrap">
-      <div class="founder-photo-block reveal">
-        <img src="founder-sosializarte.jpg" alt="Ronald Zúñiga — Fundador de Sosializarte" class="founder-img">
-        <div class="founder-name">Ronald Zúñiga</div>
-        <div class="founder-role">Fundador · Consultor de Automatización IA</div>
-        <div class="cred-pills">
-          <span class="cred-pill">🎓 Generative AI Professional (Certiprof)</span>
-          <span class="cred-pill">📋 Diplomado IA · 112 hrs</span>
-          <span class="cred-pill">🔍 +16 años en QA & TI</span>
+        <!-- ─── RESULTADOS ─── -->
+        <section id="resultados">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div class="section-label">Resultados con cronómetro</div>
+                    <h2>Casos reales, números reales</h2>
+                    <p class="section-sub">Dos negocios, dos industrias, un mismo resultado: automatización que funciona.</p>
+                </div>
+
+                <!-- Caso 1: GL Dental -->
+                <div style="margin-bottom: 60px;">
+                    <div class="case-study-wrap">
+                        <div class="case-metrics reveal">
+                            <div class="metric-card featured">
+                                <div class="metric-num">90.2%</div>
+                                <div class="metric-desc">Reducción del tiempo operativo total</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-num">4.75h → 28min</div>
+                                <div class="metric-desc">Tiempo semanal en gestión de contenido</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-num">15% → 0%</div>
+                                <div class="metric-desc">Errores en datos de contacto</div>
+                            </div>
+                        </div>
+                        <div class="reveal reveal-delay-1">
+                            <div class="section-label">Testimonio directo</div>
+                            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Dra. Gimel Lom</h3>
+                            <p class="section-sub">Consultorio dental en CDMX. Implementación en menos de una semana.</p>
+                            <div class="testimonial-block">
+                                <p class="testimonial-quote">No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana. Mis pacientes agendan solos y yo solo reviso el calendario.</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">GL</div>
+                                    <div>
+                                        <div class="author-name">Dra. Gimel Lom</div>
+                                        <div class="author-role">GL Dental · Ciudad de México</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso 2: Solid Maker -->
+                <div style="border-top: 1px solid var(--border); padding-top: 60px;">
+                    <div class="case-study-wrap">
+                        <div class="case-metrics reveal">
+                            <div class="metric-card featured" style="background: #669933; border-color: #669933;">
+                                <div class="metric-num">21</div>
+                                <div class="metric-desc">Visitas en el primer mes</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-num">74%</div>
+                                <div class="metric-desc">Usuarios desde dispositivos móviles</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-num">+140%</div>
+                                <div class="metric-desc">Crecimiento en la primera semana</div>
+                            </div>
+                        </div>
+                        <div class="reveal reveal-delay-1">
+                            <div class="section-label">Testimonio directo</div>
+                            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Felipe Soriano</h3>
+                            <p class="section-sub">Solid Maker · Impresión 3D en CDMX. Sitio web + chatbot en producción.</p>
+                            <div class="testimonial-block" style="border-left-color: #669933;">
+                                <p class="testimonial-quote">"Necesitaba una página web profesional y un sistema de cotización para mi negocio de impresión 3D. Sosializarte me entregó ambos en tiempo récord. En el primer mes ya teníamos <strong>21 visitas</strong>, con un crecimiento del <strong>140%</strong> en la primera semana, y el chatbot ha atendido consultas fuera de horario laboral. Es como tener un vendedor 24/7."</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar" style="background: rgba(102,153,51,0.15); border-color: #669933; color: #669933;">FS</div>
+                                    <div>
+                                        <div class="author-name">Felipe Soriano</div>
+                                        <div class="author-role">Solid Maker · Impresión 3D · CDMX</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA final -->
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+                    <a href="#casos" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Ver todos los casos de éxito
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ─── CASOS DE ÉXITO ─── -->
+        <section id="casos" style="padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border);">
+            <div class="container">
+                <div class="section-head centered reveal">
+                    <div class="section-label">Casos de éxito</div>
+                    <h2>Proyectos que ya están en producción</h2>
+                    <p class="section-sub">Automatizaciones y sitios web construidos para negocios reales en CDMX.</p>
+                </div>
+
+                <div class="casos-grid">
+
+                    <!-- CASO: SOLID MAKER -->
+                    <div class="caso-card reveal">
+                        <div class="caso-header">
+                            <div>
+                                <div class="caso-badge">🖨️ Impresión 3D · CDMX</div>
+                                <h3 class="caso-title">
+                                    <a href="https://solidmaker.mx" target="_blank" rel="noopener noreferrer">
+                                        Solid Maker
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="caso-tags">
+                                <span class="caso-tag caso-tag-success">✅ En producción</span>
+                                <span class="caso-tag">Chatbot</span>
+                                <span class="caso-tag">Web</span>
+                            </div>
+                        </div>
+
+                        <div class="caso-body">
+                            <div class="caso-text">
+                                <p>
+                                    <strong>Solid Maker</strong> es un negocio de impresión 3D que recibía constantes consultas por WhatsApp.
+                                    El tiempo de respuesta afectaba su capacidad de cotizar y cerrar ventas.
+                                </p>
+                                <p>
+                                    Construimos un <strong>sitio web profesional</strong> con un <strong>chatbot de cotización</strong>
+                                    que atiende clientes 24/7, califica leads y deriva a WhatsApp solo cuando es necesario.
+                                </p>
+                                <div class="caso-tags" style="margin-bottom: 16px;">
+                                    <span class="caso-tag">Sitio web</span>
+                                    <span class="caso-tag">Chatbot</span>
+                                    <span class="caso-tag">Automatización</span>
+                                    <span class="caso-tag">WhatsApp</span>
+                                </div>
+                                <div class="caso-links">
+                                    <a href="https://solidmaker.mx" target="_blank" class="link-orange">
+                                        Ver sitio web →
+                                    </a>
+                                    <a href="https://solidmaker.mx" target="_blank" class="link-muted">
+                                        Probar chatbot →
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="caso-mock">
+                                <div class="caso-mock-inner">
+                                    <div class="caso-mock-header">
+                                        <div class="caso-mock-avatar sm">SM</div>
+                                        <div>
+                                            <div class="caso-mock-name">Solid Maker</div>
+                                            <div class="caso-mock-status">● En línea ahora</div>
+                                        </div>
+                                    </div>
+                                    <div class="caso-mock-bubble-bot">
+                                        <div class="label">🤖 Asistente</div>
+                                        <div class="text">"¿Qué tipo de proyecto tienes en mente?"</div>
+                                    </div>
+                                    <div class="caso-mock-bubble-user">
+                                        <div class="text">"Cotizar llavero"</div>
+                                    </div>
+                                    <div class="caso-mock-bubble-bot">
+                                        <div class="label">🤖 Asistente</div>
+                                        <div class="text">"Tenemos 6 tipos de llaveros..."</div>
+                                    </div>
+                                    <div class="caso-mock-input">
+                                        <div class="caso-mock-input-field">Escribe un mensaje...</div>
+                                        <div class="caso-mock-input-btn">➤</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="padding: 0 32px 24px 32px;">
+                            <div class="caso-results">
+                                <div class="caso-result-item">
+                                    <div class="caso-result-number">24/7</div>
+                                    <div class="caso-result-label">Disponibilidad</div>
+                                </div>
+                                <div class="caso-result-item">
+                                    <div class="caso-result-number">21</div>
+                                    <div class="caso-result-label">Visitas mes 1</div>
+                                </div>
+                                <div class="caso-result-item">
+                                    <div class="caso-result-number">+140%</div>
+                                    <div class="caso-result-label">Crecimiento semana 1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Quieres un chatbot como este para tu negocio?</p>
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker." class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ─── ABOUT ─── -->
+        <section id="about" style="background: var(--surface); border-top: 1px solid var(--border);">
+            <div class="container">
+                <div class="about-wrap">
+                    <div class="founder-photo-block reveal">
+                        <img src="founder-sosializarte.jpg" alt="Ronald Zúñiga — Fundador de Sosializarte" class="founder-img" width="180" height="180" loading="lazy">
+                        <div class="founder-name">Ronald Zúñiga</div>
+                        <div class="founder-role">Fundador · Consultor de Automatización IA</div>
+                        <div class="cred-pills">
+                            <span class="cred-pill">🎓 Generative AI Professional (Certiprof)</span>
+                            <span class="cred-pill">📋 Diplomado IA · 112 hrs</span>
+                            <span class="cred-pill">🔍 +16 años en QA & TI</span>
+                        </div>
+                    </div>
+                    <div class="founder-text reveal reveal-delay-1">
+                        <div class="section-label">¿Quién construye tus automatizaciones?</div>
+                        <h2 style="margin-bottom: 1.5rem;">No vendemos humo.<br>Construimos sistemas.</h2>
+                        <p><strong>En Sosializarte no vendemos automatizaciones genéricas.</strong> Diseñamos soluciones que resuelven procesos reales, validadas en producción antes de entregarse.</p>
+                        <p>Mi experiencia no viene de vender IA. Viene de más de 16 años optimizando procesos, encontrando errores antes de que lleguen al cliente y construyendo sistemas que realmente funcionan. QA aplicado a la automatización.</p>
+                        <p>Combiné esa base con certificación oficial en <strong>Generative AI Professional (Certiprof)</strong> y el <strong>Diplomado en IA Generativa y Automatización</strong> (112 horas) para ofrecer algo distinto: automatización con criterio de calidad.</p>
+                        <div class="founder-stats">
+                            <div class="founder-stat">
+                                <div class="founder-stat-num">+16</div>
+                                <div class="founder-stat-label">años en TI y QA</div>
+                            </div>
+                            <div class="founder-stat">
+                                <div class="founder-stat-num">100%</div>
+                                <div class="founder-stat-label">soporte local</div>
+                            </div>
+                            <div class="founder-stat">
+                                <div class="founder-stat-num">24/7</div>
+                                <div class="founder-stat-label">disponibilidad</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── LEAD FORM ─── -->
+        <section class="form-section" id="contacto-form">
+            <div class="container">
+                <div class="form-wrap">
+                    <div class="form-copy reveal">
+                        <div class="section-label">Empieza hoy</div>
+                        <h2>¿Tu negocio listo para trabajar solo?</h2>
+                        <p>Una asesoría sin costo para evaluar si la automatización tiene sentido para tu negocio. Sin compromisos. Sin jerga técnica.</p>
+                        <ul class="form-benefits">
+                            <li>Respuesta en menos de 24 horas</li>
+                            <li>Implementación desde $3,000 MXN</li>
+                            <li>Sin contrato forzoso</li>
+                            <li>Soporte técnico incluido</li>
+                        </ul>
+                    </div>
+                    <div class="lead-form reveal reveal-delay-1">
+                        <div class="form-title">📋 Cuéntame sobre tu negocio</div>
+                        <div class="form-subtitle">Te contacto personalmente en menos de 24 horas</div>
+                        <form action="https://formspree.io/f/mwvzbnog" method="POST">
+                            <div class="field"><input type="text" name="nombre" placeholder="Tu nombre" required></div>
+                            <div class="field"><input type="email" name="email" placeholder="Correo electrónico" required></div>
+                            <div class="field"><input type="tel" name="telefono" placeholder="WhatsApp (opcional)"></div>
+                            <div class="field">
+                                <select name="interes">
+                                    <option value="">¿Qué te interesa?</option>
+                                    <option>Chatbot para WhatsApp</option>
+                                    <option>Chatbot para Telegram</option>
+                                    <option>Automatización de citas</option>
+                                    <option>Consultoría IA</option>
+                                    <option>No estoy seguro, quiero asesoría</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="submit-btn">Quiero mi asesoría gratuita →</button>
+                            <div class="form-disclaimer">Sin spam. Tus datos son solo para contactarte.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FAQ ─── -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-head centered reveal">
+                    <div class="section-label">Resolvemos tus dudas</div>
+                    <h2>Preguntas frecuentes</h2>
+                </div>
+                <div class="max-w-md">
+                    <div class="faq-list" id="faqList"></div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Tienes una pregunta que no está aquí?</p>
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n." class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Pregunta directo por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── CTA FINAL ─── -->
+        <section class="cta-section" id="contacto">
+            <div class="container">
+                <h2>Tu negocio puede trabajar solo.</h2>
+                <p>Agenda una llamada sin costo y en 30 minutos sabemos si la automatización tiene sentido para ti.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-white">
+                        <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
+                    </a>
+                    <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">
+                        📋 Llenar formulario
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+                    <p>Automatización con IA para negocios en México. WhatsApp · Telegram · Google Calendar.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Servicios</h3>
+                    <a href="#servicios"><i class="fab fa-whatsapp" style="color:var(--whatsapp); margin-right:6px;"></i>Chatbot WhatsApp</a>
+                    <a href="#servicios"><i class="fab fa-telegram" style="color:var(--telegram); margin-right:6px;"></i>Chatbot Telegram</a>
+                    <a href="#servicios">Automatización de citas</a>
+                    <a href="#servicios">Atención al cliente IA</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Empresa</h3>
+                    <a href="#about">Nosotros</a>
+                    <a href="#resultados">Resultados</a>
+                    <a href="#casos">Casos</a>
+                    <a href="#proceso">Proceso</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="https://wa.me/525540509093">Contacto</a>
+                    <a href="/privacidad" style="font-size:0.8rem; opacity:0.6;">Política de privacidad</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Redes</h3>
+                    <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener" class="ig-link">
+                        <i class="fab fa-instagram"></i> @sosializarte
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Sosializarte — Ciudad de México</p>
+                <p>Automatización con IA · Chatbots · <i class="fab fa-whatsapp" style="color:var(--whatsapp);"></i> WhatsApp · <i class="fab fa-telegram" style="color:var(--telegram);"></i> Telegram</p>
+            </div>
         </div>
-      </div>
-      <div class="founder-text reveal reveal-delay-1">
-        <div class="section-label">¿Quién construye tus automatizaciones?</div>
-        <h2 style="margin-bottom: 1.5rem;">No vendemos humo.<br>Construimos sistemas.</h2>
-        <p><strong>En Sosializarte no vendemos automatizaciones genéricas.</strong> Diseñamos soluciones que resuelven procesos reales, validadas en producción antes de entregarse.</p>
-        <p>Mi experiencia no viene de vender IA. Viene de más de 16 años optimizando procesos, encontrando errores antes de que lleguen al cliente y construyendo sistemas que realmente funcionan. QA aplicado a la automatización.</p>
-        <p>Combiné esa base con certificación oficial en <strong>Generative AI Professional (Certiprof)</strong> y el <strong>Diplomado en IA Generativa y Automatización</strong> (112 horas) para ofrecer algo distinto: automatización con criterio de calidad.</p>
-        <div class="founder-stats">
-          <div class="founder-stat">
-            <div class="founder-stat-num">+16</div>
-            <div class="founder-stat-label">años en TI y QA</div>
-          </div>
-          <div class="founder-stat">
-            <div class="founder-stat-num">100%</div>
-            <div class="founder-stat-label">soporte local</div>
-          </div>
-          <div class="founder-stat">
-            <div class="founder-stat-num">24/7</div>
-            <div class="founder-stat-label">disponibilidad</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ─── LEAD FORM ─── -->
-<section class="form-section" id="contacto-form">
-  <div class="container">
-    <div class="form-wrap">
-      <div class="form-copy reveal">
-        <div class="section-label">Empieza hoy</div>
-        <h2>¿Tu negocio listo para trabajar solo?</h2>
-        <p>Una asesoría sin costo para evaluar si la automatización tiene sentido para tu negocio. Sin compromisos. Sin jerga técnica.</p>
-        <ul class="form-benefits">
-          <li>Respuesta en menos de 24 horas</li>
-          <li>Implementación desde $3,000 MXN</li>
-          <li>Sin contrato forzoso</li>
-          <li>Soporte técnico incluido</li>
-        </ul>
-      </div>
-      <div class="lead-form reveal reveal-delay-1">
-        <div class="form-title">📋 Cuéntame sobre tu negocio</div>
-        <div class="form-subtitle">Te contacto personalmente en menos de 24 horas</div>
-        <form action="https://formspree.io/f/mwvzbnog" method="POST">
-          <div class="field"><input type="text" name="nombre" placeholder="Tu nombre" required></div>
-          <div class="field"><input type="email" name="email" placeholder="Correo electrónico" required></div>
-          <div class="field"><input type="tel" name="telefono" placeholder="WhatsApp (opcional)"></div>
-          <div class="field">
-            <select name="interes">
-              <option value="">¿Qué te interesa?</option>
-              <option>Chatbot para WhatsApp</option>
-              <option>Chatbot para Telegram</option>
-              <option>Automatización de citas</option>
-              <option>Consultoría IA</option>
-              <option>No estoy seguro, quiero asesoría</option>
-            </select>
-          </div>
-          <button type="submit" class="submit-btn">Quiero mi asesoría gratuita →</button>
-          <div class="form-disclaimer">Sin spam. Tus datos son solo para contactarte.</div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- ═══ SCRIPTS ═══ -->
+    <script data-goatcounter="https://sosializarte.goatcounter.com/count" async src="//gc.zgo.at/count.js">
+    </script>
 
-<!-- ─── FAQ ─── -->
-<section id="faq">
-  <div class="container">
-    <div class="section-head centered reveal">
-      <div class="section-label">Resolvemos tus dudas</div>
-      <h2>Preguntas frecuentes</h2>
-    </div>
-    <div style="max-width: 780px; margin: 0 auto;">
-      <div class="faq-list" id="faqList"></div>
-    </div>
-    <div style="text-align: center; margin-top: 3rem;">
-      <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Tienes una pregunta que no está aquí?</p>
-      <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n." class="btn btn-primary">
-        <i class="fab fa-whatsapp"></i> Pregunta directo por WhatsApp
-      </a>
-    </div>
-  </div>
-</section>
+    <script>
+        // ─── FAQ DATA ───
+        const faqs = [
+            { emoji: "⚙️", q: "¿Cómo funciona el asistente virtual?", a: "Tus clientes escriben por WhatsApp o Telegram y el sistema responde en segundos. Puede mostrar horarios disponibles, agendar citas, enviar confirmaciones y sincronizar todo con Google Calendar en tiempo real.<br><br>El objetivo es automatizar tareas repetitivas para que tu negocio ahorre tiempo y atienda más rápido." },
+            { emoji: "📲", q: "¿Necesito instalar algo?", a: "No. Nosotros realizamos toda la configuración técnica y dejamos el sistema funcionando. Solo necesitas tu celular, acceso a WhatsApp o Telegram y conexión a internet." },
+            { emoji: "🕒", q: "¿El sistema funciona 24/7?", a: "Sí. El asistente virtual responde mensajes, registra citas y atiende solicitudes incluso fuera de horario laboral. Los 7 días de la semana, las 24 horas." },
+            { emoji: "💰", q: "¿Cuánto cuesta la implementación?", a: "La implementación inicial comienza desde <strong>$3,000 MXN</strong>, incluyendo:<br>✅ Configuración personalizada<br>✅ Integraciones (Google Calendar + plataforma)<br>✅ Diseño del flujo conversacional<br>✅ Pruebas y validaciones<br>✅ Puesta en marcha<br><br>Cada proyecto puede requerir cotización específica según sus necesidades." },
+            { emoji: "📆", q: "¿Existe mensualidad?", a: "Sí, desde <strong>$600 MXN mensuales</strong>. Incluye hosting del chatbot, monitoreo, soporte técnico, mantenimiento, actualizaciones y ajustes menores. El precio es por plataforma (WhatsApp o Telegram)." },
+            { emoji: "📞", q: "¿Puedo usar mi número actual de WhatsApp?", a: "Depende del caso. Podemos integrar un número existente o configurar uno exclusivo para automatización. La mejor opción se define durante la evaluación inicial." },
+            { emoji: "👥", q: "¿El sistema reemplaza a mi personal?", a: "No. El objetivo es reducir tareas repetitivas y mejorar tiempos de respuesta. Tu equipo se enfoca en atender mejor a los clientes mientras la automatización maneja procesos operativos." },
+            { emoji: "🤷", q: "¿Qué pasa si el bot no entiende algo?", a: "El sistema puede redirigir la conversación a una persona o solicitar más información. Siempre existe la opción de atención humana como respaldo." },
+            { emoji: "📄", q: "¿Hay contrato forzoso?", a: "No. El servicio es mensual y puedes cancelar cuando lo necesites. Sin penalizaciones, sin preguntas incómodas." },
+            { emoji: "🎓", q: "¿Cuál es tu formación en inteligencia artificial?", a: "Cuento con la certificación <strong>Generative AI Professional (GAIPCM) por Certiprof</strong> y completé el <strong>Diplomado en IA Generativa y Automatización</strong> en Top Learning (112 horas, 2025). Combino 16 años de QA con formación técnica certificada en IA — no improviso." }
+        ];
 
-<!-- ─── CTA FINAL ─── -->
-<section class="cta-section" id="contacto">
-  <div class="container">
-    <h2>Tu negocio puede trabajar solo.</h2>
-    <p>Agenda una llamada sin costo y en 30 minutos sabemos si la automatización tiene sentido para ti.</p>
-    <div class="cta-btns">
-      <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-white">
-        <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
-      </a>
-      <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">
-        📋 Llenar formulario
-      </a>
-    </div>
-  </div>
-</section>
+        // ─── BUILD FAQ (Optimizado) ───
+        function buildFAQ() {
+            const list = document.getElementById('faqList');
+            if (!list) return;
 
-</main>
+            const faqHTML = faqs.map((f, i) =>
+                `
+                    <div class="faq-item">
+                        <div class="faq-trigger" data-i="${i}">
+                            <div class="faq-trigger-text">
+                                <span class="faq-emoji">${f.emoji}</span>
+                                <span>${f.q}</span>
+                            </div>
+                            <span class="faq-arrow" id="arrow-${i}">▼</span>
+                        </div>
+                        <div class="faq-body" id="body-${i}">${f.a}</div>
+                    </div>
+                `
+            ).join('');
 
-<!-- ─── FOOTER ─── -->
-<footer>
-  <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
-        <p>Automatización con IA para negocios en México. WhatsApp · Telegram · Google Calendar.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Servicios</h4>
-        <a href="#servicios"><i class="fab fa-whatsapp" style="color:var(--whatsapp); margin-right:6px;"></i>Chatbot WhatsApp</a>
-        <a href="#servicios"><i class="fab fa-telegram" style="color:var(--telegram); margin-right:6px;"></i>Chatbot Telegram</a>
-        <a href="#servicios">Automatización de citas</a>
-        <a href="#servicios">Atención al cliente IA</a>
-      </div>
-      <div class="footer-links">
-        <h4>Empresa</h4>
-        <a href="#about">Nosotros</a>
-        <a href="#resultados">Resultados</a>
-        <a href="#casos">Casos</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#faq">FAQ</a>
-        <a href="https://wa.me/525540509093">Contacto</a>
-        <a href="/privacidad" style="font-size:0.8rem; opacity:0.6;">Política de privacidad</a>
-      </div>
-      <div class="footer-links">
-        <h4>Redes</h4>
-        <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener" class="ig-link">
-          <i class="fab fa-instagram"></i> @sosializarte
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Sosializarte — Ciudad de México</p>
-      <p>Automatización con IA · Chatbots · <i class="fab fa-whatsapp" style="color:var(--whatsapp);"></i> WhatsApp · <i class="fab fa-telegram" style="color:var(--telegram);"></i> Telegram</p>
-    </div>
-  </div>
-</footer>
+            list.innerHTML = faqHTML;
 
-<script data-goatcounter="https://sosializarte.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+            list.querySelectorAll('.faq-trigger').forEach(el => {
+                el.addEventListener('click', () => {
+                    const i = el.dataset.i;
+                    const body = document.getElementById(`body-${i}`);
+                    const arrow = document.getElementById(`arrow-${i}`);
+                    body.classList.toggle('open');
+                    arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+                });
+            });
+        }
 
-<script>
-const faqs = [
-  { emoji: "⚙️", q: "¿Cómo funciona el asistente virtual?", a: "Tus clientes escriben por WhatsApp o Telegram y el sistema responde en segundos. Puede mostrar horarios disponibles, agendar citas, enviar confirmaciones y sincronizar todo con Google Calendar en tiempo real.<br><br>El objetivo es automatizar tareas repetitivas para que tu negocio ahorre tiempo y atienda más rápido." },
-  { emoji: "📲", q: "¿Necesito instalar algo?", a: "No. Nosotros realizamos toda la configuración técnica y dejamos el sistema funcionando. Solo necesitas tu celular, acceso a WhatsApp o Telegram y conexión a internet." },
-  { emoji: "🕒", q: "¿El sistema funciona 24/7?", a: "Sí. El asistente virtual responde mensajes, registra citas y atiende solicitudes incluso fuera de horario laboral. Los 7 días de la semana, las 24 horas." },
-  { emoji: "💰", q: "¿Cuánto cuesta la implementación?", a: "La implementación inicial comienza desde <strong>$3,000 MXN</strong>, incluyendo:<br>✅ Configuración personalizada<br>✅ Integraciones (Google Calendar + plataforma)<br>✅ Diseño del flujo conversacional<br>✅ Pruebas y validaciones<br>✅ Puesta en marcha<br><br>Cada proyecto puede requerir cotización específica según sus necesidades." },
-  { emoji: "📆", q: "¿Existe mensualidad?", a: "Sí, desde <strong>$600 MXN mensuales</strong>. Incluye hosting del chatbot, monitoreo, soporte técnico, mantenimiento, actualizaciones y ajustes menores. El precio es por plataforma (WhatsApp o Telegram)." },
-  { emoji: "📞", q: "¿Puedo usar mi número actual de WhatsApp?", a: "Depende del caso. Podemos integrar un número existente o configurar uno exclusivo para automatización. La mejor opción se define durante la evaluación inicial." },
-  { emoji: "👥", q: "¿El sistema reemplaza a mi personal?", a: "No. El objetivo es reducir tareas repetitivas y mejorar tiempos de respuesta. Tu equipo se enfoca en atender mejor a los clientes mientras la automatización maneja procesos operativos." },
-  { emoji: "🤷", q: "¿Qué pasa si el bot no entiende algo?", a: "El sistema puede redirigir la conversación a una persona o solicitar más información. Siempre existe la opción de atención humana como respaldo." },
-  { emoji: "📄", q: "¿Hay contrato forzoso?", a: "No. El servicio es mensual y puedes cancelar cuando lo necesites. Sin penalizaciones, sin preguntas incómodas." },
-  { emoji: "🎓", q: "¿Cuál es tu formación en inteligencia artificial?", a: "Cuento con la certificación <strong>Generative AI Professional (GAIPCM) por Certiprof</strong> y completé el <strong>Diplomado en IA Generativa y Automatización</strong> en Top Learning (112 horas, 2025). Combino 16 años de QA con formación técnica certificada en IA — no improviso." }
-];
+        // ─── SCROLL REVEAL ───
+        function initReveal() {
+            const els = document.querySelectorAll('.reveal');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        obs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            els.forEach(el => obs.observe(el));
+        }
 
-function buildFAQ() {
-  const list = document.getElementById('faqList');
-  if (!list) return;
-  faqs.forEach((f, i) => {
-    const item = document.createElement('div');
-    item.className = 'faq-item';
-    item.innerHTML = `
-      <div class="faq-trigger" data-i="${i}">
-        <div class="faq-trigger-text">
-          <span class="faq-emoji">${f.emoji}</span>
-          <span>${f.q}</span>
-        </div>
-        <span class="faq-arrow" id="arrow-${i}">▼</span>
-      </div>
-      <div class="faq-body" id="body-${i}">${f.a}</div>
-    `;
-    list.appendChild(item);
-  });
-  list.querySelectorAll('.faq-trigger').forEach(el => {
-    el.addEventListener('click', () => {
-      const i = el.dataset.i;
-      const body = document.getElementById(`body-${i}`);
-      const arrow = document.getElementById(`arrow-${i}`);
-      body.classList.toggle('open');
-      arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
-    });
-  });
-}
+        // ─── COUNTER ANIMATION ───
+        function animateCounter(el, target, suffix, duration) {
+            let start = 0;
+            const step = (timestamp) => {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                el.textContent = (progress * target).toFixed(1) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        }
 
-function initReveal() {
-  const els = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  els.forEach(el => obs.observe(el));
-}
+        function initCounter() {
+            const el = document.getElementById('counter-90');
+            if (!el) return;
+            const obs = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateCounter(el, 90.2, '%', 1600);
+                    obs.disconnect();
+                }
+            }, { threshold: 0.5 });
+            obs.observe(el);
+        }
 
-function animateCounter(el, target, suffix, duration) {
-  let start = 0;
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = Math.min((timestamp - start) / duration, 1);
-    el.textContent = (progress * target).toFixed(1) + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
+        // ─── MOBILE MENU ───
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        });
 
-function initCounter() {
-  const el = document.getElementById('counter-90');
-  if (!el) return;
-  const obs = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      animateCounter(el, 90.2, '%', 1600);
-      obs.disconnect();
-    }
-  }, { threshold: 0.5 });
-  obs.observe(el);
-}
+        // ─── DOM CONTENT LOADED ───
+        document.addEventListener('DOMContentLoaded', () => {
+            buildFAQ();
+            initReveal();
+            initCounter();
+        });
+    </script>
 
-document.getElementById('hamburger').addEventListener('click', () => {
-  document.getElementById('mobileMenu').classList.toggle('open');
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  buildFAQ();
-  initReveal();
-  initCounter();
-});
-</script>
-
-<!-- ─── CHATBOT EMBEBIDO ─── -->
-<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
+    <!-- ═══ CHATBOT BOTPRESS ═══ -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js" defer></script>
+    <script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
 
 </body>
 </html>
