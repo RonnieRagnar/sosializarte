@@ -9,7 +9,7 @@
   <meta name="keywords" content="automatización con IA, chatbot WhatsApp, chatbot Telegram, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
   <meta name="author" content="Sosializarte">
   <meta property="og:title" content="Sosializarte — Automatización con IA para Negocios">
-  <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial en WhatsApp y Telegram.">
+  <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial en WhatsApp, Telegram y sitios web.">
   <meta property="og:image" content="https://sosializarte.com/hero-image.png">
   <meta property="og:url" content="https://sosializarte.com">
   <meta property="og:type" content="website">
@@ -280,7 +280,7 @@
     }
     .chat-avatar {
       width: 38px; height: 38px; border-radius: 50%;
-      background: linear-gradient(135deg, #25D366, #1aad51);
+      background: #669933;
       display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
     }
     .chat-name { font-weight: 700; font-size: 0.9rem; }
@@ -612,6 +612,14 @@
       font-size: 1.5rem;
       font-weight: 700;
       margin: 0;
+    }
+    .caso-title a {
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .caso-title a:hover {
+      color: var(--orange);
     }
 
     .caso-tags {
@@ -1009,13 +1017,13 @@
           Tu negocio atendiendo<br>clientes incluso<br><em>mientras duermes.</em>
         </h1>
         <p class="hero-sub">
-          Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp</strong> y <strong>Telegram</strong>.
+          Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp, Telegram y sitios web</strong>.
         </p>
         <div class="hero-btns">
           <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
             <i class="fab fa-whatsapp"></i> Agendar asesoría gratuita
           </a>
-          <a href="#resultados" class="btn btn-ghost">Ver caso real →</a>
+          <a href="#resultados" class="btn btn-ghost">Ver casos reales →</a>
         </div>
         <div class="social-proof-strip">
           <div class="proof-avatars">
@@ -1267,40 +1275,87 @@
   <div class="container">
     <div class="section-head reveal">
       <div class="section-label">Resultados con cronómetro</div>
-      <h2>Un caso real, números reales</h2>
-      <p class="section-sub">GL Dental — Dra. Gimel Lom — antes y después de la automatización.</p>
+      <h2>Casos reales, números reales</h2>
+      <p class="section-sub">Dos negocios, dos industrias, un mismo resultado: automatización que funciona.</p>
     </div>
-    <div class="case-study-wrap">
-      <div class="case-metrics reveal">
-        <div class="metric-card featured">
-          <div class="metric-num">90.2%</div>
-          <div class="metric-desc">Reducción del tiempo operativo total</div>
+
+    <!-- Caso 1: GL Dental -->
+    <div style="margin-bottom: 60px;">
+      <div class="case-study-wrap">
+        <div class="case-metrics reveal">
+          <div class="metric-card featured">
+            <div class="metric-num">90.2%</div>
+            <div class="metric-desc">Reducción del tiempo operativo total</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">4.75h → 28min</div>
+            <div class="metric-desc">Tiempo semanal en gestión de contenido</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">15% → 0%</div>
+            <div class="metric-desc">Errores en datos de contacto</div>
+          </div>
         </div>
-        <div class="metric-card">
-          <div class="metric-num">4.75h → 28min</div>
-          <div class="metric-desc">Tiempo semanal en gestión de contenido</div>
-        </div>
-        <div class="metric-card">
-          <div class="metric-num">15% → 0%</div>
-          <div class="metric-desc">Errores en datos de contacto</div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div class="section-label">Testimonio directo</div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">La Dra. Gimel Lom</h3>
-        <p class="section-sub">Consultorio dental en CDMX. Implementación completada en menos de una semana.</p>
-        <div class="testimonial-block">
-          <p class="testimonial-quote">No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana. Mis pacientes agendan solos y yo solo reviso el calendario.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">GL</div>
-            <div>
-              <div class="author-name">Dra. Gimel Lom</div>
-              <div class="author-role">GL Dental · Ciudad de México</div>
+        <div class="reveal reveal-delay-1">
+          <div class="section-label">Testimonio directo</div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Dra. Gimel Lom</h3>
+          <p class="section-sub">Consultorio dental en CDMX. Implementación en menos de una semana.</p>
+          <div class="testimonial-block">
+            <p class="testimonial-quote">No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana. Mis pacientes agendan solos y yo solo reviso el calendario.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">GL</div>
+              <div>
+                <div class="author-name">Dra. Gimel Lom</div>
+                <div class="author-role">GL Dental · Ciudad de México</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Caso 2: Solid Maker -->
+    <div style="border-top: 1px solid var(--border); padding-top: 60px;">
+      <div class="case-study-wrap">
+        <div class="case-metrics reveal">
+          <div class="metric-card featured" style="background: #669933; border-color: #669933;">
+            <div class="metric-num">21</div>
+            <div class="metric-desc">Visitas en el primer mes</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">74%</div>
+            <div class="metric-desc">Usuarios desde dispositivos móviles</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-num">+140%</div>
+            <div class="metric-desc">Crecimiento en la primera semana</div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="section-label">Testimonio directo</div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Felipe Soriano</h3>
+          <p class="section-sub">Solid Maker · Impresión 3D en CDMX. Sitio web + chatbot en producción.</p>
+          <div class="testimonial-block" style="border-left-color: #669933;">
+            <p class="testimonial-quote">"Necesitaba una página web profesional y un sistema de cotización para mi negocio de impresión 3D. Sosializarte me entregó ambos en tiempo récord. En el primer mes ya teníamos <strong>21 visitas</strong>, con un crecimiento del <strong>140%</strong> en la primera semana, y el chatbot ha atendido consultas fuera de horario laboral. Es como tener un vendedor 24/7."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: rgba(102,153,51,0.15); border-color: #669933; color: #669933;">FS</div>
+              <div>
+                <div class="author-name">Felipe Soriano</div>
+                <div class="author-role">Solid Maker · Impresión 3D · CDMX</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA final -->
+    <div style="text-align: center; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <a href="#casos" class="btn btn-primary">
+        <i class="fas fa-arrow-right"></i> Ver todos los casos de éxito
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -1320,7 +1375,11 @@
         <div class="caso-header">
           <div>
             <div class="caso-badge">🖨️ Impresión 3D · CDMX</div>
-            <h3 class="caso-title">Solid Maker</h3>
+            <h3 class="caso-title">
+              <a href="https://solidmaker.mx" target="_blank" rel="noopener noreferrer">
+                Solid Maker
+              </a>
+            </h3>
           </div>
           <div class="caso-tags">
             <span class="caso-tag caso-tag-success">✅ En producción</span>
@@ -1390,12 +1449,12 @@
               <div class="caso-result-label">Disponibilidad</div>
             </div>
             <div class="caso-result-item">
-              <div class="caso-result-number">100%</div>
-              <div class="caso-result-label">Personalizado</div>
+              <div class="caso-result-number">21</div>
+              <div class="caso-result-label">Visitas mes 1</div>
             </div>
             <div class="caso-result-item">
-              <div class="caso-result-number">36</div>
-              <div class="caso-result-label">Visitas semana 1</div>
+              <div class="caso-result-number">+140%</div>
+              <div class="caso-result-label">Crecimiento semana 1</div>
             </div>
           </div>
         </div>
