@@ -519,7 +519,7 @@
     .proceso-step h3 { margin-bottom: 8px; font-size: 1.05rem; }
     .proceso-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; font-weight: 300; }
 
-    /* ─── RESULTS ─── */
+    /* ─── RESULTADOS ─── */
     .case-study-wrap {
       display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
     }
@@ -567,6 +567,246 @@
     }
     .author-name { font-weight: 700; font-size: 0.9rem; }
     .author-role { font-size: 0.78rem; color: var(--muted); }
+
+    /* ─── CASOS DE ÉXITO ─── */
+    .casos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .caso-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s;
+    }
+    .caso-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .caso-header {
+      padding: 24px 32px 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .caso-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 6px;
+    }
+
+    .caso-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .caso-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .caso-tag {
+      font-size: 0.7rem;
+      background: var(--orange-glow);
+      color: var(--orange);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+    .caso-tag-success {
+      background: rgba(34, 197, 94, 0.12);
+      color: #22c55e;
+    }
+
+    .caso-body {
+      padding: 20px 32px 32px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .caso-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .caso-text p strong {
+      color: var(--ink);
+    }
+
+    .caso-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .caso-links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .caso-links .link-orange {
+      color: var(--orange);
+    }
+    .caso-links .link-muted {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .caso-mock {
+      background: #f0f0f0;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .caso-mock-inner {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      max-width: 260px;
+    }
+    .caso-mock-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .caso-mock-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .caso-mock-avatar.sm {
+      background: #669933;
+    }
+    .caso-mock-name {
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .caso-mock-status {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.6rem;
+    }
+    .caso-mock-bubble-bot {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+    }
+    .caso-mock-bubble-bot .label {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.6rem;
+    }
+    .caso-mock-bubble-bot .text {
+      color: #fff;
+      font-size: 0.8rem;
+    }
+    .caso-mock-bubble-user {
+      background: var(--orange);
+      border-radius: 10px;
+      padding: 8px 14px;
+      margin-left: auto;
+      width: fit-content;
+      max-width: 80%;
+    }
+    .caso-mock-bubble-user .text {
+      color: #fff;
+      font-size: 0.75rem;
+    }
+    .caso-mock-input {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .caso-mock-input-field {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 6px 14px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+    }
+    .caso-mock-input-btn {
+      background: var(--orange);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.8rem;
+    }
+
+    .caso-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .caso-result-item {
+      text-align: center;
+    }
+    .caso-result-number {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .caso-result-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .caso-body {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .caso-results {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .caso-results {
+        grid-template-columns: 1fr 1fr;
+      }
+      .caso-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
 
     /* ─── ABOUT ─── */
     .about-wrap {
@@ -734,6 +974,7 @@
       <li><a href="#industrias">Industrias</a></li>
       <li><a href="#proceso">Proceso</a></li>
       <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#casos">Casos</a></li>
       <li><a href="#about">Nosotros</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -749,6 +990,7 @@
     <a href="#industrias">Industrias</a>
     <a href="#proceso">Proceso</a>
     <a href="#resultados">Resultados</a>
+    <a href="#casos">Casos</a>
     <a href="#about">Nosotros</a>
     <a href="#faq">FAQ</a>
     <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
@@ -777,11 +1019,11 @@
         </div>
         <div class="social-proof-strip">
           <div class="proof-avatars">
-            <span>GL</span><span>SP</span><span>AB</span>
+            <span>SM</span><span>GL</span><span>SP</span>
           </div>
           <div class="proof-text">
-            Negocios en CDMX ya automatizados<br>
-            <span>Caso documentado: GL Dental</span>
+            Proyectos en producción<br>
+            <span>Solid Maker · GL Dental</span>
           </div>
         </div>
       </div>
@@ -793,21 +1035,21 @@
           </div>
           <div class="hero-phone-mock">
             <div class="chat-header">
-              <div class="chat-avatar">🦷</div>
+              <div class="chat-avatar" style="background: #669933;">🖨️</div>
               <div>
-                <div class="chat-name">GL Dental — Asistente</div>
+                <div class="chat-name">Solid Maker — Asistente</div>
                 <div class="chat-status">● En línea ahora</div>
               </div>
             </div>
-            <div class="chat-bubble bubble-bot bubble-delay-1">Hola 👋 Bienvenida a GL Dental. ¿En qué te ayudo hoy?</div>
+            <div class="chat-bubble bubble-bot bubble-delay-1">¡Hola! 👋 Soy el Asesor Técnico de <strong>Solid Maker</strong>. ¿Qué proyecto tienes en mente?</div>
             <div class="chat-time bubble-delay-1" style="animation: bubble-in 0.4s 0.3s ease both; opacity:0;">10:23</div>
-            <div class="chat-bubble bubble-user bubble-delay-2">Quiero agendar una limpieza dental</div>
-            <div class="chat-bubble bubble-bot bubble-delay-3">¡Con gusto! 📅 Tenemos disponibilidad esta semana. ¿Prefieres mañana martes a las 10am o jueves a las 4pm?</div>
-            <div class="chat-bubble bubble-user bubble-delay-4">Jueves a las 4pm</div>
-            <div class="chat-bubble bubble-bot bubble-delay-5">✅ <strong>Cita confirmada</strong><br>Jueves · 4:00 PM · Limpieza dental<br>Te enviamos recordatorio 24h antes.</div>
+            <div class="chat-bubble bubble-user bubble-delay-2">Quiero cotizar un llavero personalizado</div>
+            <div class="chat-bubble bubble-bot bubble-delay-3">🎨 ¡Excelente! Tenemos 6 tipos de llaveros: mascotas, autos, empresas, personalizados, con NFC y multicolor. ¿Cuál te interesa?</div>
+            <div class="chat-bubble bubble-user bubble-delay-4">Mascotas</div>
+            <div class="chat-bubble bubble-bot bubble-delay-5">🐾 Escaneamos a tu mascota y lo convertimos en un llavero 3D realista. Precio desde $300 MXN. 📱 ¿Te contacto por WhatsApp para cotizar?</div>
           </div>
           <div class="floating-badge badge-bottom">
-            ⚡ Cita agendada en 47 segundos
+            ⚡ Cotización en 2 minutos
           </div>
         </div>
       </div>
@@ -824,9 +1066,9 @@
     <span class="ticker-dot"></span>
     <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
     <span class="ticker-dot"></span>
-    <span class="ticker-item">⚡ 90.2% ahorro de tiempo</span>
+    <span class="ticker-item">⚡ Caso: Solid Maker</span>
     <span class="ticker-dot"></span>
-    <span class="ticker-item">🦷 Caso real: GL Dental</span>
+    <span class="ticker-item">🦷 Caso: GL Dental</span>
     <span class="ticker-dot"></span>
     <span class="ticker-item">🚀 Implementación en días</span>
     <span class="ticker-dot"></span>
@@ -838,9 +1080,9 @@
     <span class="ticker-dot"></span>
     <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
     <span class="ticker-dot"></span>
-    <span class="ticker-item">⚡ 90.2% ahorro de tiempo</span>
+    <span class="ticker-item">⚡ Caso: Solid Maker</span>
     <span class="ticker-dot"></span>
-    <span class="ticker-item">🦷 Caso real: GL Dental</span>
+    <span class="ticker-item">🦷 Caso: GL Dental</span>
     <span class="ticker-dot"></span>
     <span class="ticker-item">🚀 Implementación en días</span>
     <span class="ticker-dot"></span>
@@ -948,36 +1190,36 @@
     </div>
     <div class="industries-grid">
       <div class="industry-card reveal">
+        <div class="industry-icon">🖨️</div>
+        <h3>Impresión 3D</h3>
+      </div>
+      <div class="industry-card reveal reveal-delay-1">
         <div class="industry-icon">🦷</div>
         <h3>Consultorios Dentales</h3>
       </div>
-      <div class="industry-card reveal reveal-delay-1">
+      <div class="industry-card reveal reveal-delay-2">
         <div class="industry-icon">💆</div>
         <h3>Spas y Estéticas</h3>
       </div>
-      <div class="industry-card reveal reveal-delay-2">
+      <div class="industry-card reveal reveal-delay-3">
         <div class="industry-icon">💈</div>
         <h3>Barberías</h3>
       </div>
-      <div class="industry-card reveal reveal-delay-3">
+      <div class="industry-card reveal">
         <div class="industry-icon">⚖️</div>
         <h3>Despachos Jurídicos</h3>
       </div>
-      <div class="industry-card reveal">
+      <div class="industry-card reveal reveal-delay-1">
         <div class="industry-icon">🏠</div>
         <h3>Inmobiliarias</h3>
       </div>
-      <div class="industry-card reveal reveal-delay-1">
+      <div class="industry-card reveal reveal-delay-2">
         <div class="industry-icon">🍽️</div>
         <h3>Restaurantes</h3>
       </div>
-      <div class="industry-card reveal reveal-delay-2">
+      <div class="industry-card reveal reveal-delay-3">
         <div class="industry-icon">🏋️</div>
         <h3>Gimnasios</h3>
-      </div>
-      <div class="industry-card reveal reveal-delay-3">
-        <div class="industry-icon">🛒</div>
-        <h3>E-Commerce</h3>
       </div>
     </div>
   </div>
@@ -1059,6 +1301,115 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─── CASOS DE ÉXITO ─── -->
+<section id="casos" style="padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-head centered reveal">
+      <div class="section-label">Casos de éxito</div>
+      <h2>Proyectos que ya están en producción</h2>
+      <p class="section-sub">Automatizaciones y sitios web construidos para negocios reales en CDMX.</p>
+    </div>
+
+    <div class="casos-grid">
+
+      <!-- CASO: SOLID MAKER -->
+      <div class="caso-card reveal">
+        <div class="caso-header">
+          <div>
+            <div class="caso-badge">🖨️ Impresión 3D · CDMX</div>
+            <h3 class="caso-title">Solid Maker</h3>
+          </div>
+          <div class="caso-tags">
+            <span class="caso-tag caso-tag-success">✅ En producción</span>
+            <span class="caso-tag">Chatbot</span>
+            <span class="caso-tag">Web</span>
+          </div>
+        </div>
+
+        <div class="caso-body">
+          <div class="caso-text">
+            <p>
+              <strong>Solid Maker</strong> es un negocio de impresión 3D que recibía constantes consultas por WhatsApp. 
+              El tiempo de respuesta afectaba su capacidad de cotizar y cerrar ventas.
+            </p>
+            <p>
+              Construimos un <strong>sitio web profesional</strong> con un <strong>chatbot de cotización</strong> 
+              que atiende clientes 24/7, califica leads y deriva a WhatsApp solo cuando es necesario.
+            </p>
+            <div class="caso-tags" style="margin-bottom: 16px;">
+              <span class="caso-tag">Sitio web</span>
+              <span class="caso-tag">Chatbot</span>
+              <span class="caso-tag">Automatización</span>
+              <span class="caso-tag">WhatsApp</span>
+            </div>
+            <div class="caso-links">
+              <a href="https://solidmaker.mx" target="_blank" class="link-orange">
+                Ver sitio web →
+              </a>
+              <a href="https://solidmaker.mx" target="_blank" class="link-muted">
+                Probar chatbot →
+              </a>
+            </div>
+          </div>
+
+          <div class="caso-mock">
+            <div class="caso-mock-inner">
+              <div class="caso-mock-header">
+                <div class="caso-mock-avatar sm">SM</div>
+                <div>
+                  <div class="caso-mock-name">Solid Maker</div>
+                  <div class="caso-mock-status">● En línea ahora</div>
+                </div>
+              </div>
+              <div class="caso-mock-bubble-bot">
+                <div class="label">🤖 Asistente</div>
+                <div class="text">"¿Qué tipo de proyecto tienes en mente?"</div>
+              </div>
+              <div class="caso-mock-bubble-user">
+                <div class="text">"Cotizar llavero"</div>
+              </div>
+              <div class="caso-mock-bubble-bot">
+                <div class="label">🤖 Asistente</div>
+                <div class="text">"Tenemos 6 tipos de llaveros..."</div>
+              </div>
+              <div class="caso-mock-input">
+                <div class="caso-mock-input-field">Escribe un mensaje...</div>
+                <div class="caso-mock-input-btn">➤</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding: 0 32px 24px 32px;">
+          <div class="caso-results">
+            <div class="caso-result-item">
+              <div class="caso-result-number">24/7</div>
+              <div class="caso-result-label">Disponibilidad</div>
+            </div>
+            <div class="caso-result-item">
+              <div class="caso-result-number">100%</div>
+              <div class="caso-result-label">Personalizado</div>
+            </div>
+            <div class="caso-result-item">
+              <div class="caso-result-number">36</div>
+              <div class="caso-result-label">Visitas semana 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Quieres un chatbot como este para tu negocio?</p>
+      <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker." class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -1197,6 +1548,7 @@
         <h4>Empresa</h4>
         <a href="#about">Nosotros</a>
         <a href="#resultados">Resultados</a>
+        <a href="#casos">Casos</a>
         <a href="#proceso">Proceso</a>
         <a href="#faq">FAQ</a>
         <a href="https://wa.me/525540509093">Contacto</a>
