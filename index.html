@@ -8,26 +8,45 @@
     <meta name="description" content="Automatizamos negocios con inteligencia artificial. Chatbots para WhatsApp y Telegram, automatización de citas, atención al cliente y procesos con IA para consultorios, spas, restaurantes y empresas.">
     <meta name="keywords" content="automatización con IA, chatbot WhatsApp, chatbot Telegram, inteligencia artificial para negocios, automatización de citas, IA para consultorios, asistentes virtuales, automatización empresarial">
     <meta name="author" content="Sosializarte">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
     <meta property="og:title" content="Sosializarte — Automatización con IA para Negocios">
     <meta property="og:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial en WhatsApp, Telegram y sitios web.">
     <meta property="og:image" content="https://sosializarte.com/hero-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://sosializarte.com">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sosializarte — Automatización con IA para Negocios">
+    <meta name="twitter:description" content="Automatiza atención a clientes, citas y procesos usando inteligencia artificial.">
+    <meta name="twitter:image" content="https://sosializarte.com/hero-image.png">
+
     <link rel="canonical" href="https://sosializarte.com/" />
     <link rel="icon" href="/favicon.ico">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-    <!-- ═══ PRECONEXIÓN A RECURSOS EXTERNOS ═══ -->
+    <!-- Preconnect y DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.botpress.cloud">
+    <link rel="dns-prefetch" href="https://gc.zgo.at">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-    <!-- ═══ GOOGLE FONTS ═══ -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 
-    <!-- ═══ FONT AWESOME ═══ -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- ═══ SCHEMA.ORG ═══ -->
+    <!-- Schema.org -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -79,7 +98,33 @@
         }
     </script>
 
-    <!-- ═══ ESTILOS CSS ═══ -->
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
+    <!-- Meta Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" 
+        src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+    </noscript>
+
     <style>
         /* ─── RESET Y BASE ─── */
         *,
@@ -91,6 +136,24 @@
         }
         html {
             scroll-behavior: smooth;
+        }
+
+        /* ─── SKIP LINK (Accesibilidad) ─── */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--orange);
+            color: #fff;
+            padding: 8px 16px;
+            z-index: 10000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 0 0 8px 0;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
         }
 
         /* ─── VARIABLES ─── */
@@ -115,6 +178,81 @@
             --shadow-orange: 0 8px 32px rgba(255, 100, 46, 0.25);
             --whatsapp: #25D366;
             --telegram: #229ED9;
+        }
+
+        /* ─── MODO OSCURO DEL SISTEMA ─── */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --paper: #121212;
+                --surface: #1e1e1e;
+                --ink: #f0f0f0;
+                --ink-soft: #2a2a2a;
+                --muted: #a0a0a0;
+                --border: #333;
+                --border-strong: #444;
+            }
+            .industries-bg {
+                background: #0a0a0a !important;
+            }
+            .industries-bg .industry-card {
+                background: rgba(255, 255, 255, 0.03);
+            }
+            footer {
+                background: #0a0a0a !important;
+            }
+            .hero-phone-mock {
+                background: #1e1e1e;
+                border-color: #333;
+            }
+            .chat-header {
+                border-color: #333;
+            }
+            .bubble-bot {
+                background: #2a2a2a;
+                color: var(--ink);
+            }
+            .caso-card {
+                background: #1e1e1e !important;
+            }
+            .lead-form {
+                background: #1a1a1a;
+            }
+            .field input,
+            .field select {
+                background: #2a2a2a;
+                color: var(--ink);
+                border-color: #333;
+            }
+            .tech-pill {
+                background: #1a1a1a;
+            }
+            .social-proof-strip {
+                background: #1e1e1e;
+            }
+            .testimonial-block {
+                background: #1e1e1e;
+            }
+            .metric-card {
+                background: #1e1e1e;
+            }
+            .founder-stat {
+                background: #1e1e1e;
+            }
+        }
+
+        /* ─── PREFERS REDUCED MOTION ─── */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .ticker-track {
+                animation: none !important;
+            }
         }
 
         /* ─── TIPOGRAFÍA ─── */
@@ -156,50 +294,24 @@
         }
 
         /* ─── UTILIDADES ─── */
-        .text-orange {
-            color: var(--orange);
-        }
-        .text-muted {
-            color: var(--muted);
-        }
-        .pt-0 {
-            padding-top: 0;
-        }
+        .text-orange { color: var(--orange); }
+        .text-muted { color: var(--muted); }
+        .pt-0 { padding-top: 0; }
         .max-w-md {
             max-width: 780px;
             margin-left: auto;
             margin-right: auto;
         }
-        .text-center {
-            text-align: center;
-        }
-        .mt-1 {
-            margin-top: 1rem;
-        }
-        .mt-2 {
-            margin-top: 2rem;
-        }
-        .mt-3 {
-            margin-top: 3rem;
-        }
-        .mt-4 {
-            margin-top: 4rem;
-        }
-        .mb-1 {
-            margin-bottom: 1rem;
-        }
-        .mb-2 {
-            margin-bottom: 2rem;
-        }
-        .mb-3 {
-            margin-bottom: 3rem;
-        }
-        .gap-1 {
-            gap: 0.5rem;
-        }
-        .gap-2 {
-            gap: 1rem;
-        }
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: 1rem; }
+        .mt-2 { margin-top: 2rem; }
+        .mt-3 { margin-top: 3rem; }
+        .mt-4 { margin-top: 4rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .mb-2 { margin-bottom: 2rem; }
+        .mb-3 { margin-bottom: 3rem; }
+        .gap-1 { gap: 0.5rem; }
+        .gap-2 { gap: 1rem; }
 
         /* ─── LABEL TAG ─── */
         .label-tag {
@@ -228,15 +340,8 @@
             animation: pulse-dot 2s infinite;
         }
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.5;
-                transform: scale(0.7);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
         }
 
         /* ─── BOTONES ─── */
@@ -294,6 +399,11 @@
             backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
         }
+        @media (prefers-color-scheme: dark) {
+            header {
+                background: rgba(18, 18, 18, 0.92);
+            }
+        }
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -334,12 +444,8 @@
             display: none;
         }
         @media (min-width: 900px) {
-            .nav-links {
-                display: flex;
-            }
-            .nav-cta {
-                display: inline-flex;
-            }
+            .nav-links { display: flex; }
+            .nav-cta { display: inline-flex; }
         }
 
         /* ─── MENÚ HAMBURGUESA (Accesible) ─── */
@@ -361,9 +467,7 @@
             transition: 0.3s;
         }
         @media (min-width: 900px) {
-            .hamburger {
-                display: none;
-            }
+            .hamburger { display: none; }
         }
 
         .mobile-menu {
@@ -450,9 +554,7 @@
             animation: underline-in 0.8s 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
         @keyframes underline-in {
-            to {
-                transform: scaleX(1);
-            }
+            to { transform: scaleX(1); }
         }
 
         .hero-sub {
@@ -564,19 +666,18 @@
             animation: bubble-in 0.4s ease both;
         }
         @keyframes bubble-in {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: none;
-            }
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: none; }
         }
         .bubble-bot {
             background: #f0f0f0;
             color: var(--ink);
             border-bottom-left-radius: 4px;
+        }
+        @media (prefers-color-scheme: dark) {
+            .bubble-bot {
+                background: #2a2a2a;
+            }
         }
         .bubble-user {
             background: var(--orange);
@@ -584,21 +685,11 @@
             border-bottom-right-radius: 4px;
             margin-left: auto;
         }
-        .bubble-delay-1 {
-            animation-delay: 0.3s;
-        }
-        .bubble-delay-2 {
-            animation-delay: 0.6s;
-        }
-        .bubble-delay-3 {
-            animation-delay: 0.9s;
-        }
-        .bubble-delay-4 {
-            animation-delay: 1.2s;
-        }
-        .bubble-delay-5 {
-            animation-delay: 1.5s;
-        }
+        .bubble-delay-1 { animation-delay: 0.3s; }
+        .bubble-delay-2 { animation-delay: 0.6s; }
+        .bubble-delay-3 { animation-delay: 0.9s; }
+        .bubble-delay-4 { animation-delay: 1.2s; }
+        .bubble-delay-5 { animation-delay: 1.5s; }
         .chat-time {
             font-size: 0.65rem;
             color: var(--muted);
@@ -644,6 +735,9 @@
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
+        .ticker-wrap:hover .ticker-track {
+            animation-play-state: paused;
+        }
         .ticker-track {
             display: flex;
             gap: 48px;
@@ -652,12 +746,8 @@
             width: max-content;
         }
         @keyframes ticker {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-50%);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
         .ticker-item {
             display: flex;
@@ -702,9 +792,7 @@
             gap: 2px;
         }
         @media (min-width: 640px) {
-            .stat-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .stat-grid { grid-template-columns: repeat(3, 1fr); }
         }
         .stat-cell {
             padding: 40px 36px;
@@ -723,7 +811,7 @@
         }
         .stat-sublabel {
             font-size: 0.78rem;
-            color: var(--border-strong);
+            color: var(--muted);
             margin-top: 6px;
         }
 
@@ -779,9 +867,7 @@
             gap: 12px;
         }
         @media (max-width: 640px) {
-            .tech-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
         }
         .tech-pill {
             display: flex;
@@ -822,14 +908,10 @@
             gap: 16px;
         }
         @media (min-width: 640px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (min-width: 900px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .service-card {
@@ -911,9 +993,7 @@
             gap: 16px;
         }
         @media (min-width: 640px) {
-            .industries-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            .industries-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
         .industry-card {
@@ -984,14 +1064,10 @@
             gap: 16px;
         }
         @media (min-width: 640px) {
-            .proceso-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .proceso-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (min-width: 900px) {
-            .proceso-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            .proceso-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
         .proceso-step {
@@ -1045,9 +1121,7 @@
             align-items: center;
         }
         @media (min-width: 900px) {
-            .case-study-wrap {
-                grid-template-columns: 1fr 1fr;
-            }
+            .case-study-wrap { grid-template-columns: 1fr 1fr; }
         }
         .case-metrics {
             display: grid;
@@ -1376,14 +1450,10 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-            .caso-results {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            .caso-results { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 480px) {
-            .caso-results {
-                grid-template-columns: 1fr 1fr;
-            }
+            .caso-results { grid-template-columns: 1fr 1fr; }
             .caso-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -1398,9 +1468,7 @@
             align-items: start;
         }
         @media (min-width: 900px) {
-            .about-wrap {
-                grid-template-columns: 1fr 1.3fr;
-            }
+            .about-wrap { grid-template-columns: 1fr 1.3fr; }
         }
         .founder-photo-block {
             text-align: center;
@@ -1458,9 +1526,7 @@
             margin-top: 28px;
         }
         @media (max-width: 640px) {
-            .founder-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .founder-stats { grid-template-columns: repeat(2, 1fr); }
         }
         .founder-stat {
             background: var(--paper);
@@ -1494,9 +1560,7 @@
             align-items: center;
         }
         @media (min-width: 900px) {
-            .form-wrap {
-                grid-template-columns: 1.2fr 1fr;
-            }
+            .form-wrap { grid-template-columns: 1.2fr 1fr; }
         }
         .form-copy h2 {
             margin-bottom: 1rem;
@@ -1547,6 +1611,7 @@
         }
         .field {
             margin-bottom: 14px;
+            position: relative;
         }
         .field input,
         .field select {
@@ -1570,6 +1635,21 @@
         .field input::placeholder {
             color: #aaa;
         }
+        .field input:invalid:not(:placeholder-shown) {
+            border-color: #ef4444;
+        }
+        .field input:valid:not(:placeholder-shown) {
+            border-color: #22c55e;
+        }
+        .field-error {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .field input:invalid:not(:placeholder-shown) + .field-error {
+            display: block;
+        }
         .submit-btn {
             width: 100%;
             padding: 15px;
@@ -1583,15 +1663,59 @@
             cursor: pointer;
             transition: background 0.2s;
             letter-spacing: 0.01em;
+            position: relative;
         }
         .submit-btn:hover {
             background: var(--orange-dark);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .submit-btn .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 8px;
+        }
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         .form-disclaimer {
             text-align: center;
             font-size: 0.72rem;
             color: #aaa;
             margin-top: 12px;
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .form-success.visible {
+            display: block;
+        }
+        .form-success-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .form-success h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .form-success p {
+            color: var(--muted);
+            font-size: 0.9rem;
         }
 
         /* ─── FAQ ─── */
@@ -1615,6 +1739,12 @@
             font-weight: 600;
             font-size: 1rem;
             transition: color 0.2s;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            color: inherit;
         }
         .faq-trigger:hover {
             color: var(--orange);
@@ -1634,10 +1764,13 @@
             transition: transform 0.3s;
             flex-shrink: 0;
         }
+        .faq-arrow.rotated {
+            transform: rotate(180deg);
+        }
         .faq-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease-out;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
             padding-left: 32px;
             color: var(--muted);
             font-size: 0.92rem;
@@ -1749,32 +1882,73 @@
             opacity: 1;
             transform: none;
         }
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
 
         /* ─── RESPONSIVE EXTRA ─── */
         @media (max-width: 480px) {
-            .hero-phone-mock {
-                padding: 16px;
-            }
-            .floating-badge {
-                display: none;
-            }
-            .stat-cell {
-                padding: 24px 20px;
-            }
+            .hero-phone-mock { padding: 16px; }
+            .floating-badge { display: none; }
+            .stat-cell { padding: 24px 20px; }
+        }
+
+        /* ─── COOKIE BANNER ─── */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--ink);
+            color: #fff;
+            padding: 16px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            z-index: 9999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            flex-wrap: wrap;
+        }
+        .cookie-banner.visible {
+            transform: translateY(0);
+        }
+        .cookie-banner p {
+            font-size: 0.85rem;
+            margin: 0;
+            flex: 1;
+        }
+        .cookie-banner a {
+            color: var(--orange);
+            text-decoration: underline;
+        }
+        .cookie-btn {
+            padding: 8px 20px;
+            border-radius: 999px;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .cookie-btn-accept {
+            background: var(--orange);
+            color: #fff;
+        }
+        .cookie-btn-reject {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Skip Link para accesibilidad -->
+    <a href="#main" class="skip-link">Saltar al contenido principal</a>
 
     <!-- ─── HEADER ─── -->
     <header>
@@ -1789,14 +1963,14 @@
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
-            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." class="btn btn-primary nav-cta">
+            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa.&utm_source=web&utm_medium=header&utm_campaign=asesoria" class="btn btn-primary nav-cta">
                 <i class="fab fa-whatsapp"></i> Agendar asesoría
             </a>
-            <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación">
+            <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobileMenu">
                 <span></span><span></span><span></span>
             </button>
         </div>
-        <nav class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu" id="mobileMenu" aria-hidden="true" aria-label="Menú móvil">
             <a href="#servicios">Servicios</a>
             <a href="#industrias">Industrias</a>
             <a href="#proceso">Proceso</a>
@@ -1804,11 +1978,11 @@
             <a href="#casos">Casos</a>
             <a href="#about">Nosotros</a>
             <a href="#faq">FAQ</a>
-            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa." style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
+            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa.&utm_source=web&utm_medium=mobile_menu&utm_campaign=asesoria" style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
         </nav>
     </header>
 
-    <main>
+    <main id="main">
 
         <!-- ─── HERO ─── -->
         <section class="pt-0">
@@ -1823,7 +1997,7 @@
                             Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp, Telegram y sitios web</strong>.
                         </p>
                         <div class="hero-btns">
-                            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
+                            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=hero_cta&utm_campaign=asesoria_gratuita" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Hero WhatsApp'}); fbq('track', 'Contact');">
                                 <i class="fab fa-whatsapp"></i> Agendar asesoría gratuita
                             </a>
                             <a href="#resultados" class="btn btn-ghost">Ver casos reales →</a>
@@ -1907,7 +2081,7 @@
             <div class="container">
                 <div class="stat-grid reveal">
                     <div class="stat-cell">
-                        <div class="stat-number" id="counter-90">0%</div>
+                        <div class="stat-number" id="counter-90">90.2%</div>
                         <div class="stat-label">Reducción de tiempo operativo</div>
                         <div class="stat-sublabel">De 4.75 horas → 28 minutos semanales</div>
                     </div>
@@ -1984,7 +2158,7 @@
                 </div>
                 <div class="mid-cta reveal">
                     <p>¿Listo para dejar de responder mensajes manualmente?</p>
-                    <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F" class="btn btn-primary">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=services_cta&utm_campaign=automatizar" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Services WhatsApp'}); fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
                     </a>
                 </div>
@@ -2154,7 +2328,7 @@
 
                 <!-- CTA final -->
                 <div style="text-align: center; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
-                    <a href="#casos" class="btn btn-primary">
+                    <a href="#casos" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Results to Cases'});">
                         <i class="fas fa-arrow-right"></i> Ver todos los casos de éxito
                     </a>
                 </div>
@@ -2208,10 +2382,10 @@
                                     <span class="caso-tag">WhatsApp</span>
                                 </div>
                                 <div class="caso-links">
-                                    <a href="https://solidmaker.mx" target="_blank" class="link-orange">
+                                    <a href="https://solidmaker.mx" target="_blank" rel="noopener noreferrer" class="link-orange">
                                         Ver sitio web →
                                     </a>
-                                    <a href="https://solidmaker.mx" target="_blank" class="link-muted">
+                                    <a href="https://solidmaker.mx" target="_blank" rel="noopener noreferrer" class="link-muted">
                                         Probar chatbot →
                                     </a>
                                 </div>
@@ -2267,7 +2441,7 @@
 
                 <div style="text-align: center; margin-top: 3rem;">
                     <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Quieres un chatbot como este para tu negocio?</p>
-                    <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker." class="btn btn-primary">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker.&utm_source=web&utm_medium=cases_cta&utm_campaign=solid_maker" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Cases WhatsApp'}); fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
                     </a>
                 </div>
@@ -2280,7 +2454,13 @@
             <div class="container">
                 <div class="about-wrap">
                     <div class="founder-photo-block reveal">
-                        <img src="founder-sosializarte.jpg" alt="Ronald Zúñiga — Fundador de Sosializarte" class="founder-img" width="180" height="180" loading="lazy">
+                        <!-- IMPORTANTE: Reemplaza esta ruta con la URL real de tu foto -->
+                        <img src="https://sosializarte.com/founder-sosializarte.jpg" 
+                             alt="Ronald Zúñiga, fundador de Sosializarte, consultor de automatización con IA en CDMX" 
+                             class="founder-img" 
+                             width="180" height="180" 
+                             loading="lazy"
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><rect width=%22180%22 height=%22180%22 fill=%22%23FF642E%22/><text x=%2290%22 y=%2295%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2260%22 font-family=%22sans-serif%22>RZ</text></svg>'">
                         <div class="founder-name">Ronald Zúñiga</div>
                         <div class="founder-role">Fundador · Consultor de Automatización IA</div>
                         <div class="cred-pills">
@@ -2294,7 +2474,7 @@
                         <h2 style="margin-bottom: 1.5rem;">No vendemos humo.<br>Construimos sistemas.</h2>
                         <p><strong>En Sosializarte no vendemos automatizaciones genéricas.</strong> Diseñamos soluciones que resuelven procesos reales, validadas en producción antes de entregarse.</p>
                         <p>Mi experiencia no viene de vender IA. Viene de más de 16 años optimizando procesos, encontrando errores antes de que lleguen al cliente y construyendo sistemas que realmente funcionan. QA aplicado a la automatización.</p>
-                        <p>Combiné esa base con certificación oficial en <strong>Generative AI Professional (Certiprof)</strong> y el <strong>Diplomado en IA Generativa y Automatización</strong> (112 horas) para ofrecer algo distinto: automatización con criterio de calidad.</p>
+                        <p>Combiné esa base con certificación oficial en <strong>Generative AI Professional (Certiprof)</strong> y el <strong>Diplomado en IA Generativa y Automatización</strong> (112 horas, 2025) para ofrecer algo distinto: automatización con criterio de calidad.</p>
                         <div class="founder-stats">
                             <div class="founder-stat">
                                 <div class="founder-stat-num">+16</div>
@@ -2330,25 +2510,53 @@
                         </ul>
                     </div>
                     <div class="lead-form reveal reveal-delay-1">
-                        <div class="form-title">📋 Cuéntame sobre tu negocio</div>
-                        <div class="form-subtitle">Te contacto personalmente en menos de 24 horas</div>
-                        <form action="https://formspree.io/f/mwvzbnog" method="POST">
-                            <div class="field"><input type="text" name="nombre" placeholder="Tu nombre" required></div>
-                            <div class="field"><input type="email" name="email" placeholder="Correo electrónico" required></div>
-                            <div class="field"><input type="tel" name="telefono" placeholder="WhatsApp (opcional)"></div>
-                            <div class="field">
-                                <select name="interes">
-                                    <option value="">¿Qué te interesa?</option>
-                                    <option>Chatbot para WhatsApp</option>
-                                    <option>Chatbot para Telegram</option>
-                                    <option>Automatización de citas</option>
-                                    <option>Consultoría IA</option>
-                                    <option>No estoy seguro, quiero asesoría</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="submit-btn">Quiero mi asesoría gratuita →</button>
-                            <div class="form-disclaimer">Sin spam. Tus datos son solo para contactarte.</div>
-                        </form>
+                        <div id="formContent">
+                            <div class="form-title">📋 Cuéntame sobre tu negocio</div>
+                            <div class="form-subtitle">Te contacto personalmente en menos de 24 horas</div>
+                            <form id="leadForm" action="https://formspree.io/f/mwvzbnog" method="POST">
+                                <div class="field">
+                                    <input type="text" name="nombre" placeholder="Tu nombre" required 
+                                           aria-label="Tu nombre" 
+                                           aria-describedby="nombre-help">
+                                    <div class="field-error" id="nombre-help">Por favor ingresa tu nombre</div>
+                                </div>
+                                <div class="field">
+                                    <input type="email" name="email" placeholder="Correo electrónico" required 
+                                           aria-label="Correo electrónico"
+                                           aria-describedby="email-help">
+                                    <div class="field-error" id="email-help">Por favor ingresa un correo válido</div>
+                                </div>
+                                <div class="field">
+                                    <input type="tel" name="telefono" placeholder="WhatsApp (opcional)" 
+                                           aria-label="Número de WhatsApp (opcional)">
+                                </div>
+                                <div class="field">
+                                    <select name="interes" aria-label="¿Qué te interesa?">
+                                        <option value="">¿Qué te interesa?</option>
+                                        <option>Chatbot para WhatsApp</option>
+                                        <option>Chatbot para Telegram</option>
+                                        <option>Automatización de citas</option>
+                                        <option>Consultoría IA</option>
+                                        <option>No estoy seguro, quiero asesoría</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="submit-btn" id="submitBtn">
+                                    <span class="btn-text">Quiero mi asesoría gratuita →</span>
+                                    <span class="spinner"></span>
+                                </button>
+                                <div class="form-disclaimer">Sin spam. Tus datos son solo para contactarte.</div>
+                            </form>
+                        </div>
+                        <div class="form-success" id="formSuccess">
+                            <div class="form-success-icon">🎉</div>
+                            <h3>¡Mensaje enviado!</h3>
+                            <p>Te contactaré en menos de 24 horas. Mientras tanto, puedes escribirme directo por WhatsApp.</p>
+                            <a href="https://wa.me/525540509093?text=Hola%2C%20acabo%20de%20enviar%20el%20formulario%20y%20quiero%20agendar%20mi%20llamada.&utm_source=web&utm_medium=form_success&utm_campaign=whatsapp_followup" 
+                               class="btn btn-primary" style="margin-top: 16px;"
+                               onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Form Success WhatsApp'}); fbq('track', 'Contact');">
+                                <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2366,7 +2574,9 @@
                 </div>
                 <div style="text-align: center; margin-top: 3rem;">
                     <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Tienes una pregunta que no está aquí?</p>
-                    <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n." class="btn btn-primary">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n.&utm_source=web&utm_medium=faq_cta&utm_campaign=pregunta" 
+                       class="btn btn-primary"
+                       onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'FAQ WhatsApp'}); fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Pregunta directo por WhatsApp
                     </a>
                 </div>
@@ -2379,7 +2589,9 @@
                 <h2>Tu negocio puede trabajar solo.</h2>
                 <p>Agenda una llamada sin costo y en 30 minutos sabemos si la automatización tiene sentido para ti.</p>
                 <div class="cta-btns">
-                    <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F" class="btn btn-white">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=final_cta&utm_campaign=whatsapp" 
+                       class="btn btn-white"
+                       onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Final WhatsApp'}); fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
                     </a>
                     <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">
@@ -2430,7 +2642,16 @@
         </div>
     </footer>
 
-    <!-- ═══ SCRIPTS ═══ -->
+    <!-- ─── COOKIE BANNER ─── -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies">
+        <p>Utilizamos cookies y herramientas de análisis para mejorar tu experiencia. <a href="/privacidad">Más información</a></p>
+        <div style="display: flex; gap: 8px;">
+            <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Aceptar</button>
+            <button class="cookie-btn cookie-btn-reject" id="cookieReject">Rechazar</button>
+        </div>
+    </div>
+
+    <!-- ─── SCRIPTS ─── -->
     <script data-goatcounter="https://sosializarte.goatcounter.com/count" async src="//gc.zgo.at/count.js">
     </script>
 
@@ -2449,7 +2670,7 @@
             { emoji: "🎓", q: "¿Cuál es tu formación en inteligencia artificial?", a: "Cuento con la certificación <strong>Generative AI Professional (GAIPCM) por Certiprof</strong> y completé el <strong>Diplomado en IA Generativa y Automatización</strong> en Top Learning (112 horas, 2025). Combino 16 años de QA con formación técnica certificada en IA — no improviso." }
         ];
 
-        // ─── BUILD FAQ (Optimizado) ───
+        // ─── BUILD FAQ ───
         function buildFAQ() {
             const list = document.getElementById('faqList');
             if (!list) return;
@@ -2457,14 +2678,14 @@
             const faqHTML = faqs.map((f, i) =>
                 `
                     <div class="faq-item">
-                        <div class="faq-trigger" data-i="${i}">
+                        <button class="faq-trigger" data-i="${i}" aria-expanded="false" aria-controls="faq-body-${i}">
                             <div class="faq-trigger-text">
                                 <span class="faq-emoji">${f.emoji}</span>
                                 <span>${f.q}</span>
                             </div>
                             <span class="faq-arrow" id="arrow-${i}">▼</span>
-                        </div>
-                        <div class="faq-body" id="body-${i}">${f.a}</div>
+                        </button>
+                        <div class="faq-body" id="faq-body-${i}" role="region" aria-labelledby="faq-trigger-${i}">${f.a}</div>
                     </div>
                 `
             ).join('');
@@ -2474,10 +2695,25 @@
             list.querySelectorAll('.faq-trigger').forEach(el => {
                 el.addEventListener('click', () => {
                     const i = el.dataset.i;
-                    const body = document.getElementById(`body-${i}`);
+                    const body = document.getElementById(`faq-body-${i}`);
                     const arrow = document.getElementById(`arrow-${i}`);
-                    body.classList.toggle('open');
-                    arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+                    const isOpen = body.classList.contains('open');
+
+                    // Cerrar todos los demás
+                    list.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+                    list.querySelectorAll('.faq-arrow').forEach(a => {
+                        a.textContent = '▼';
+                        a.classList.remove('rotated');
+                    });
+                    list.querySelectorAll('.faq-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+
+                    // Abrir el clickeado si estaba cerrado
+                    if (!isOpen) {
+                        body.classList.add('open');
+                        arrow.textContent = '▲';
+                        arrow.classList.add('rotated');
+                        el.setAttribute('aria-expanded', 'true');
+                    }
                 });
             });
         }
@@ -2485,6 +2721,8 @@
         // ─── SCROLL REVEAL ───
         function initReveal() {
             const els = document.querySelectorAll('.reveal');
+            if (!els.length) return;
+
             const obs = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (e.isIntersecting) {
@@ -2498,7 +2736,7 @@
 
         // ─── COUNTER ANIMATION ───
         function animateCounter(el, target, suffix, duration) {
-            let start = 0;
+            let start = null;
             const step = (timestamp) => {
                 if (!start) start = timestamp;
                 const progress = Math.min((timestamp - start) / duration, 1);
@@ -2521,19 +2759,127 @@
         }
 
         // ─── MOBILE MENU ───
-        document.getElementById('hamburger').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('open');
-        });
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!hamburger || !mobileMenu) return;
+
+            hamburger.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('open');
+                hamburger.setAttribute('aria-expanded', isOpen);
+                mobileMenu.setAttribute('aria-hidden', !isOpen);
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    mobileMenu.setAttribute('aria-hidden', 'true');
+                });
+            });
+        }
+
+        // ─── FORM HANDLING ───
+        function initForm() {
+            const form = document.getElementById('leadForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formContent = document.getElementById('formContent');
+            const formSuccess = document.getElementById('formSuccess');
+
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        formContent.style.display = 'none';
+                        formSuccess.classList.add('visible');
+
+                        // Tracking
+                        gtag('event', 'form_submit', { event_category: 'Lead', event_label: 'Formulario Contacto' });
+                        fbq('track', 'Lead');
+
+                        // Scroll al mensaje de éxito
+                        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                } catch (error) {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                    alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
+                }
+            });
+        }
+
+        // ─── COOKIE BANNER ───
+        function initCookieBanner() {
+            const banner = document.getElementById('cookieBanner');
+            const acceptBtn = document.getElementById('cookieAccept');
+            const rejectBtn = document.getElementById('cookieReject');
+
+            if (!banner) return;
+
+            // Verificar si ya se decidió
+            const cookieConsent = localStorage.getItem('cookieConsent');
+            if (!cookieConsent) {
+                setTimeout(() => banner.classList.add('visible'), 1000);
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'accepted');
+                banner.classList.remove('visible');
+                // Activar tracking
+                gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted' });
+            });
+
+            rejectBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieConsent', 'rejected');
+                banner.classList.remove('visible');
+                // Desactivar tracking no esencial
+                gtag('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied' });
+            });
+        }
+
+        // ─── SMOOTH SCROLL PARA ANCLAS ───
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
 
         // ─── DOM CONTENT LOADED ───
         document.addEventListener('DOMContentLoaded', () => {
             buildFAQ();
             initReveal();
             initCounter();
+            initMobileMenu();
+            initForm();
+            initCookieBanner();
+            initSmoothScroll();
         });
     </script>
 
-    <!-- ═══ CHATBOT BOTPRESS ═══ -->
+    <!-- ─── CHATBOT BOTPRESS ─── -->
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js" defer></script>
     <script src="https://files.bpcontent.cloud/2025/10/03/02/20251003021238-LJBEGDZ9.js" defer></script>
 
