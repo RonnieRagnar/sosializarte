@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Privacidad — Sosializarte</title>
+    <meta name="description" content="Aviso de Privacidad de Sosializarte. Conoce cómo protegemos tus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sosializarte.com/privacidad">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #FF642E;
+            --orange-dark: #E04D1A;
+            --ink: #0d0d0d;
+            --ink-soft: #1a1a1a;
+            --paper: #F7F4EF;
+            --surface: #FDFCFA;
+            --muted: #6b6b6b;
+            --border: #E8E4DC;
+            --border-strong: #C9C4BB;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --paper: #121212;
+                --surface: #1e1e1e;
+                --ink: #f0f0f0;
+                --muted: #a0a0a0;
+                --border: #333;
+                --border-strong: #444;
+            }
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        /* Header */
+        .privacy-header {
+            background: var(--ink);
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .privacy-header h1 {
+            color: #fff;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .privacy-header p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+        .privacy-header .last-updated {
+            display: inline-block;
+            background: rgba(255,100,46,0.15);
+            color: var(--orange);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Content */
+        .privacy-content {
+            padding: 60px 0;
+        }
+
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section h2 .num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--orange);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 24px 0 12px;
+            color: var(--ink);
+        }
+
+        .section p {
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .section p strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .section ul {
+            margin: 16px 0 16px 24px;
+            color: var(--muted);
+            font-weight: 300;
+        }
+        .section ul li {
+            margin-bottom: 8px;
+        }
+        .section ul li::marker {
+            color: var(--orange);
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--orange);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+        .highlight-box p:first-child {
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        /* Data table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        .data-table th {
+            background: var(--ink);
+            color: #fff;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+            font-weight: 300;
+        }
+        .data-table tr:hover td {
+            background: var(--surface);
+        }
+
+        /* Contact box */
+        .contact-box {
+            background: var(--ink);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .contact-box h2 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .contact-box p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+        }
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--orange);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .contact-link:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
+        .contact-link.secondary {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .contact-link.secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Footer */
+        .privacy-footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .privacy-footer a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .privacy-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .privacy-header { padding: 40px 0 30px; }
+            .privacy-content { padding: 40px 0; }
+            .contact-box { padding: 28px 20px; }
+            .contact-links { flex-direction: column; }
+            .contact-link { width: 100%; justify-content: center; }
+            .data-table { font-size: 0.8rem; }
+            .data-table th, .data-table td { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="privacy-header">
+        <div class="container">
+            <h1>Aviso de Privacidad</h1>
+            <p>Sosializarte — Automatización con IA para Negocios</p>
+            <span class="last-updated">📅 Última actualización: 20 de julio de 2026</span>
+        </div>
+    </header>
+
+    <main class="privacy-content">
+        <div class="container">
+
+            <!-- SECCIÓN 1 -->
+            <section class="section">
+                <h2><span class="num">1</span> Identidad y domicilio del responsable</h2>
+                <p><strong>Sosializarte</strong>, con domicilio en Ciudad de México, México, es el <strong>responsable del tratamiento</strong> de los datos personales que nos proporciones, de conformidad con la <strong>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</strong> y su Reglamento.</p>
+                <p>Para cualquier duda, ejercicio de derechos o consulta sobre este aviso, puedes contactarnos a través de:</p>
+                <ul>
+                    <li><strong>Correo electrónico:</strong> sosializarte@gmail.com</li>
+                    <li><strong>Teléfono / WhatsApp:</strong> +52 55 4050 9093</li>
+                    <li><strong>Domicilio:</strong> Ciudad de México, CDMX, México</li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN 2 -->
+            <section class="section">
+                <h2><span class="num">2</span> Datos personales que recabamos</h2>
+                <p>Para brindarte nuestros servicios de automatización con inteligencia artificial, chatbots y desarrollo web, podemos recabar los siguientes datos personales:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Datos específicos</th>
+                            <th>¿Obligatorio?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Identificación</strong></td>
+                            <td>Nombre completo, correo electrónico, número de teléfono (WhatsApp)</td>
+                            <td>Nombre y correo: Sí<br>Teléfono: No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Profesionales</strong></td>
+                            <td>Nombre del negocio, giro o industria, tipo de servicio de interés</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Técnicos (automáticos)</strong></td>
+                            <td>Dirección IP, tipo de navegador, dispositivo, cookies, páginas visitadas</td>
+                            <td>Automático</td>
+                        </tr>
+                        <tr>
+                            <td><strong>De comunicación</strong></td>
+                            <td>Mensajes enviados a través del chatbot, correos, formularios</td>
+                            <td>Según uso</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p>⚠️ Importante</p>
+                    <p><strong>No recabamos datos personales sensibles</strong> (origen racial o étnico, estado de salud, información genética, creencias religiosas, filosóficas, opiniones políticas, preferencia sexual) salvo que sea estrictamente necesario para el servicio contratado y cuentes con tu consentimiento expreso.</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3 -->
+            <section class="section">
+                <h2><span class="num">3</span> Finalidades del tratamiento</h2>
+
+                <h3>Finalidades necesarias (no requieren consentimiento adicional)</h3>
+                <ul>
+                    <li>Contactarte para responder solicitudes de información, cotizaciones o asesorías.</li>
+                    <li>Prestar los servicios de automatización, chatbots y desarrollo web contratados.</li>
+                    <li>Administrar y operar los chatbots de WhatsApp, Telegram o web que implementemos para tu negocio.</li>
+                    <li>Cumplir con obligaciones contractuales y legales derivadas de la relación comercial.</li>
+                    <li>Facturación y cumplimiento de obligaciones fiscales ante las autoridades mexicanas.</li>
+                </ul>
+
+                <h3>Finalidades secundarias (requieren tu consentimiento)</h3>
+                <ul>
+                    <li>Enviarte comunicaciones promocionales, newsletters o información sobre nuevos servicios.</li>
+                    <li>Utilizar tu caso de éxito (con tu autorización previa) como testimonio en nuestro sitio web.</li>
+                    <li>Realizar encuestas de satisfacción para mejorar nuestros servicios.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>🛡️ Tu control</p>
+                    <p>Si no deseas que usemos tus datos para las finalidades secundarias, puedes manifestarlo en cualquier momento enviando un correo a <strong>sosializarte@gmail.com</strong> con el asunto "Negativa de finalidades secundarias".</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4 -->
+            <section class="section">
+                <h2><span class="num">4</span> Transferencias de datos personales</h2>
+                <p>Tus datos personales <strong>no se transfieren a terceros</strong> para fines distintos a los aquí descritos, salvo en los siguientes casos:</p>
+                <ul>
+                    <li><strong>Proveedores de servicios tecnológicos:</strong> Formspree (procesamiento de formularios), Google (Calendar, Analytics), Botpress (plataforma de chatbots), Meta (píxel de seguimiento, solo si aceptas cookies). Estos proveedores actúan como encargados del tratamiento y están obligados contractualmente a proteger tus datos.</li>
+                    <li><strong>Autoridades competentes:</strong> Cuando sea requerido por mandato judicial, orden de autoridad competente o disposición legal.</li>
+                    <li><strong>Plataformas de mensajería:</strong> WhatsApp API y Telegram para el funcionamiento de los chatbots contratados.</li>
+                </ul>
+                <p>No vendemos, alquilamos ni comercializamos tus datos personales con terceros bajo ninguna circunstancia.</p>
+            </section>
+
+            <!-- SECCIÓN 5 -->
+            <section class="section">
+                <h2><span class="num">5</span> Derechos ARCO y cómo ejercerlos</h2>
+                <p>En todo momento tienes derecho a:</p>
+                <ul>
+                    <li><strong>Acceso:</strong> Conocer qué datos personales tenemos de ti, para qué los usamos y las condiciones del tratamiento.</li>
+                    <li><strong>Rectificación:</strong> Solicitar la corrección de datos inexactos, incompletos o desactualizados.</li>
+                    <li><strong>Cancelación:</strong> Pedir la eliminación de tus datos personales de nuestros registros cuando ya no sean necesarios para las finalidades descritas.</li>
+                    <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos para fines específicos.</li>
+                </ul>
+
+                <h3>Procedimiento para ejercer tus derechos</h3>
+                <p>Para ejercer cualquiera de los derechos ARCO, envía una solicitud a <strong>sosializarte@gmail.com</strong> con la siguiente información:</p>
+                <ul>
+                    <li>Nombre completo del titular y correo electrónico asociado.</li>
+                    <li>Documento que acredite identidad (INE, pasaporte) o, en su caso, carta poder simple del representante legal.</li>
+                    <li>Descripción clara del derecho que deseas ejercer (acceso, rectificación, cancelación u oposición).</li>
+                    <li>En caso de rectificación, indica los datos correctos y anexa documento que lo acredite.</li>
+                </ul>
+                <p>Responderemos tu solicitud en un plazo máximo de <strong>20 días hábiles</strong> contados desde la recepción. Si es procedente, haremos efectivo el derecho dentro de los <strong>15 días hábiles</strong> siguientes a nuestra respuesta.</p>
+            </section>
+
+            <!-- SECCIÓN 6 -->
+            <section class="section">
+                <h2><span class="num">6</span> Medidas de seguridad</h2>
+                <p>Implementamos medidas de seguridad administrativas, técnicas y físicas para proteger tus datos personales contra daño, pérdida, alteración, destrucción o el uso, acceso o tratamiento no autorizado:</p>
+                <ul>
+                    <li><strong>Encriptación:</strong> Comunicación segura vía HTTPS en todo nuestro sitio web.</li>
+                    <li><strong>Acceso restringido:</strong> Solo el fundador y personal autorizado tiene acceso a los datos.</li>
+                    <li><strong>Contraseñas seguras:</strong> Uso de autenticación de dos factores en todas las cuentas de servicio.</li>
+                    <li><strong>Backups cifrados:</strong> Copias de seguridad encriptadas de la información de clientes.</li>
+                    <li><strong>Confidencialidad:</strong> Obligación de confidencialidad permanente, incluso después de finalizar la relación comercial.</li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN 7 -->
+            <section class="section">
+                <h2><span class="num">7</span> Uso de cookies y tecnologías de seguimiento</h2>
+                <p>Utilizamos cookies y tecnologías similares para:</p>
+                <ul>
+                    <li><strong>Cookies esenciales:</strong> Funcionamiento básico del sitio (formularios, menú móvil).</li>
+                    <li><strong>Cookies de análisis:</strong> Google Analytics para entender cómo se usa el sitio y mejorarlo.</li>
+                    <li><strong>Cookies de marketing:</strong> Meta Pixel para medir la efectividad de nuestras campañas (solo con tu consentimiento).</li>
+                </ul>
+                <p>Al aceptar el banner de cookies, consientes el uso de cookies de análisis y marketing. Puedes rechazarlas y seguir navegando con funcionalidad limitada. También puedes configurar tu navegador para bloquear cookies en cualquier momento.</p>
+            </section>
+
+            <!-- SECCIÓN 8 -->
+            <section class="section">
+                <h2><span class="num">8</span> Datos de menores de edad</h2>
+                <p>Nuestros servicios no están dirigidos a menores de 18 años. No recabamos intencionalmente datos personales de menores. Si detectamos que hemos recopilado información de un menor, la eliminaremos de inmediato. Si eres padre o tutor y crees que tu hijo nos proporcionó datos, contáctanos a <strong>sosializarte@gmail.com</strong>.</p>
+            </section>
+
+            <!-- SECCIÓN 9 -->
+            <section class="section">
+                <h2><span class="num">9</span> Cambios al aviso de privacidad</h2>
+                <p>Este aviso de privacidad puede ser modificado en cualquier momento para cumplir con actualizaciones legislativas, cambios en nuestros procesos internos o nuevos servicios. Los cambios serán publicados en esta misma página con la fecha de última actualización.</p>
+                <p>Te recomendamos revisar esta página periódicamente. El uso continuado de nuestros servicios después de cualquier modificación implica la aceptación de los términos actualizados.</p>
+            </section>
+
+            <!-- SECCIÓN 10 -->
+            <section class="section">
+                <h2><span class="num">10</span> Consentimiento</h2>
+                <p>Al proporcionar tus datos personales a través de nuestro sitio web, formularios, chatbot, WhatsApp, correo electrónico o cualquier otro medio, <strong>manifestas tu consentimiento</strong> para que Sosializarte trate tus datos conforme a los términos de este aviso de privacidad.</p>
+                <p>Si no estás de acuerdo con alguna parte de este aviso, te pedimos que no nos proporciones tus datos personales y que contactes directamente a <strong>sosializarte@gmail.com</strong> para resolver tus dudas.</p>
+            </section>
+
+            <!-- Contacto -->
+            <div class="contact-box">
+                <h2>¿Tienes dudas sobre tu privacidad?</h2>
+                <p>Estamos aquí para ayudarte. Contáctanos para ejercer tus derechos ARCO o resolver cualquier inquietud.</p>
+                <div class="contact-links">
+                    <a href="mailto:sosializarte@gmail.com?subject=Solicitud%20derechos%20ARCO" class="contact-link">
+                        ✉️ Enviar correo
+                    </a>
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20duda%20sobre%20el%20aviso%20de%20privacidad." class="contact-link secondary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="privacy-footer">
+                <p>© 2026 Sosializarte · <a href="/">Volver al sitio principal</a></p>
+            </footer>
+
+        </div>
+    </main>
+
+</body>
+</html>
