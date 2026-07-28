@@ -98,14 +98,20 @@
         }
     </script>
 
-    <!-- Google Analytics 4 -->
-    <!-- TODO: Reemplazar GA_MEASUREMENT_ID con tu ID real de Google Analytics -->
+    <!--
+      ══════════════════════════════════════════════════════════════
+      TODO ANTES DE PUBLICAR: reemplaza GA_MEASUREMENT_ID con tu ID
+      real de Google Analytics 4 (formato G-XXXXXXXXXX).
+      Mientras diga "GA_MEASUREMENT_ID" literal, Analytics NO funciona.
+      ══════════════════════════════════════════════════════════════
+    -->
+    <!-- Google Analytics 4 (con Consent Mode v2: por defecto todo denegado) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        // Consent Mode v2: denegado por defecto hasta aceptación explícita
+        // Consent Mode v2: nada se envía como "granted" hasta que el usuario decida en el banner de cookies.
         gtag('consent', 'default', {
             'analytics_storage': 'denied',
             'ad_storage': 'denied',
@@ -115,34 +121,33 @@
         gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 
-    <!-- Meta Pixel -->
-    <!-- TODO: Reemplazar YOUR_PIXEL_ID con tu ID real de Meta Pixel -->
+    <!--
+      ══════════════════════════════════════════════════════════════
+      TODO ANTES DE PUBLICAR: reemplaza YOUR_PIXEL_ID con tu ID real
+      de Meta Pixel. El pixel ya NO se inicializa automáticamente al
+      cargar la página — se activa solo tras aceptar cookies (ver
+      initCookieBanner() más abajo), para cumplir con el consentimiento.
+      ══════════════════════════════════════════════════════════════
+    -->
     <script>
-        // Inicialización diferida: solo se carga tras consentimiento del usuario
-        window._fbqQueue = [];
-        window.fbq = function() { window._fbqQueue.push(arguments); };
-        window._fbqLoaded = false;
-        function loadMetaPixel() {
-            if (window._fbqLoaded) return;
-            window._fbqLoaded = true;
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        // NOTA: fbq('init', ...) y fbq('track', 'PageView') se llaman
+        // desde loadMetaPixel(), no aquí, para respetar el consentimiento.
+        window.metaPixelLoaded = false;
+        window.loadMetaPixel = function() {
+            if (window.metaPixelLoaded) return;
             fbq('init', 'YOUR_PIXEL_ID');
             fbq('track', 'PageView');
-            // Reprocesar eventos encolados
-            window._fbqQueue.forEach(function(args) { fbq.apply(null, args); });
-            window._fbqQueue = [];
-        }
+            window.metaPixelLoaded = true;
+        };
     </script>
-    <noscript id="metaPixelNoScript">
-        <!-- Se activa solo tras consentimiento via JS -->
-    </noscript>
 
     <style>
         /* ─── RESET Y BASE ─── */
@@ -763,6 +768,11 @@
             align-items: center;
             animation: ticker 28s linear infinite;
             width: max-content;
+        }
+        .ticker-set {
+            display: flex;
+            gap: 48px;
+            align-items: center;
         }
         @keyframes ticker {
             from { transform: translateX(0); }
@@ -2014,6 +2024,10 @@
             font-size: 0.7rem;
         }
     </style>
+    <!-- NOTA: se eliminó <base target="_blank"> — rompía la navegación
+         de anclas internas (#servicios, #casos, etc.), abriendo una
+         pestaña nueva incluso para bajar dentro de la misma página.
+         Ahora cada link externo lleva su propio target="_blank". -->
 </head>
 
 <body>
@@ -2034,7 +2048,7 @@
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
-            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa.&utm_source=web&utm_medium=header&utm_campaign=asesoria" class="btn btn-primary nav-cta" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa.&utm_source=web&utm_medium=header&utm_campaign=asesoria" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">
                 <i class="fab fa-whatsapp"></i> Agendar asesoría
             </a>
             <button class="hamburger" id="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobileMenu">
@@ -2049,7 +2063,7 @@
             <a href="#casos">Casos</a>
             <a href="#about">Nosotros</a>
             <a href="#faq">FAQ</a>
-            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa.&utm_source=web&utm_medium=mobile_menu&utm_campaign=asesoria" style="color:var(--orange); font-weight:700;" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
+            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa.&utm_source=web&utm_medium=mobile_menu&utm_campaign=asesoria" target="_blank" rel="noopener noreferrer" style="color:var(--orange); font-weight:700;"><i class="fab fa-whatsapp"></i> Agendar asesoría →</a>
         </nav>
     </header>
 
@@ -2068,7 +2082,7 @@
                             Automatizamos negocios que reciben mensajes, agendan citas y atienden clientes todos los días — con asistentes inteligentes para <strong>WhatsApp, Telegram y sitios web</strong>.
                         </p>
                         <div class="hero-btns">
-                            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=hero_cta&utm_campaign=asesoria_gratuita" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Hero WhatsApp'}); fbq('track', 'Contact');" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/525540509093?text=Hola%2C%20vi%20su%20sitio%20web%20y%20me%20interesa%20agendar%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio%20con%20IA.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=hero_cta&utm_campaign=asesoria_gratuita" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Hero WhatsApp'}); if(window.fbq) fbq('track', 'Contact');">
                                 <i class="fab fa-whatsapp"></i> Agendar asesoría gratuita
                             </a>
                             <a href="#resultados" class="btn btn-ghost">Ver casos reales →</a>
@@ -2116,34 +2130,40 @@
         <!-- ─── TICKER ─── -->
         <div class="ticker-wrap">
             <div class="ticker-track">
-                <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item">⚡ Caso: Solid Maker</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item">🦷 Caso: GL Dental</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item">🚀 Implementación en días</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item">📍 Soporte local CDMX</span>
-                <span class="ticker-dot"></span>
-                <span class="ticker-item" aria-hidden="true"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
-                <span class="ticker-item" aria-hidden="true"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
-                <span class="ticker-item" aria-hidden="true"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
-                <span class="ticker-item" aria-hidden="true">⚡ Caso: Solid Maker</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
-                <span class="ticker-item" aria-hidden="true">🦷 Caso: GL Dental</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
-                <span class="ticker-item" aria-hidden="true">🚀 Implementación en días</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
-                <span class="ticker-item" aria-hidden="true">📍 Soporte local CDMX</span>
-                <span class="ticker-dot" aria-hidden="true"></span>
+                <div class="ticker-set">
+                    <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">⚡ Caso: Solid Maker</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">🦷 Caso: GL Dental</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">🚀 Implementación en días</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">📍 Soporte local CDMX</span>
+                    <span class="ticker-dot"></span>
+                </div>
+                <!-- Segundo set duplicado solo para el loop visual del ticker.
+                     aria-hidden evita que un lector de pantalla lo anuncie dos veces. -->
+                <div class="ticker-set" aria-hidden="true">
+                    <span class="ticker-item"><i class="fab fa-whatsapp"></i>Chatbot WhatsApp 24/7</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item"><i class="fab fa-telegram"></i>Chatbot Telegram</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item"><i class="fab fa-google" style="color:#4285F4;"></i>Google Calendar integrado</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">⚡ Caso: Solid Maker</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">🦷 Caso: GL Dental</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">🚀 Implementación en días</span>
+                    <span class="ticker-dot"></span>
+                    <span class="ticker-item">📍 Soporte local CDMX</span>
+                    <span class="ticker-dot"></span>
+                </div>
             </div>
         </div>
 
@@ -2229,7 +2249,7 @@
                 </div>
                 <div class="mid-cta reveal">
                     <p>¿Listo para dejar de responder mensajes manualmente?</p>
-                    <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=services_cta&utm_campaign=automatizar" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Services WhatsApp'}); fbq('track', 'Contact');" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20me%20interesa%20automatizar%20mi%20negocio.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=services_cta&utm_campaign=automatizar" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Services WhatsApp'}); if(window.fbq) fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
                     </a>
                 </div>
@@ -2349,7 +2369,9 @@
                             <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Dra. Gimel Lom</h3>
                             <p class="section-sub">Consultorio dental en CDMX. Implementación en menos de una semana.</p>
                             <div class="testimonial-block">
-                                <p class="testimonial-quote">La reducción en tiempo operativo ha sido impresionante. Pasamos de invertir casi 5 horas semanales a solo 28 minutos en gestión de contenido y datos. Cero errores en la información de contacto desde que implementamos el sistema.</p>
+                                <!-- Cita ajustada para coincidir con lo que las métricas de al lado realmente
+                                     respaldan (generación de contenido y datos de contacto sin error). -->
+                                <p class="testimonial-quote">No puedo creer lo rápido que genera contenido de calidad. Ya no tengo que pensar en qué escribir cada semana, y los datos de contacto de mis pacientes ya no tienen errores.</p>
                                 <div class="testimonial-author">
                                     <div class="author-avatar" style="background: transparent; border: none; overflow: hidden; padding: 0; width: 44px; height: 44px; border-radius: 50%;">
                                         <img src="https://sosializarte.com/logo-gl-dental.png" 
@@ -2533,7 +2555,7 @@
 
                 <div style="text-align: center; margin-top: 3rem;">
                     <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Quieres un chatbot como este para tu negocio?</p>
-                    <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker.&utm_source=web&utm_medium=cases_cta&utm_campaign=solid_maker" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Cases WhatsApp'}); fbq('track', 'Contact');" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/525540509093?text=Hola%2C%20quiero%20automatizar%20mi%20negocio%20como%20Solid%20Maker.&utm_source=web&utm_medium=cases_cta&utm_campaign=solid_maker" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Cases WhatsApp'}); if(window.fbq) fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Quiero automatizar mi negocio
                     </a>
                 </div>
@@ -2644,8 +2666,9 @@
                             <h3>¡Mensaje enviado!</h3>
                             <p>Te contactaré en menos de 24 horas. Mientras tanto, puedes escribirme directo por WhatsApp.</p>
                             <a href="https://wa.me/525540509093?text=Hola%2C%20acabo%20de%20enviar%20el%20formulario%20y%20quiero%20agendar%20mi%20llamada.&utm_source=web&utm_medium=form_success&utm_campaign=whatsapp_followup" 
+                               target="_blank" rel="noopener noreferrer"
                                class="btn btn-primary" style="margin-top: 16px;"
-                               onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Form Success WhatsApp'}); fbq('track', 'Contact');" target="_blank" rel="noopener noreferrer">
+                               onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Form Success WhatsApp'}); if(window.fbq) fbq('track', 'Contact');">
                                 <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
                             </a>
                         </div>
@@ -2667,8 +2690,9 @@
                 <div style="text-align: center; margin-top: 3rem;">
                     <p style="color: var(--muted); margin-bottom: 1.5rem;">¿Tienes una pregunta que no está aquí?</p>
                     <a href="https://wa.me/525540509093?text=Hola%2C%20tengo%20una%20pregunta%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n.&utm_source=web&utm_medium=faq_cta&utm_campaign=pregunta" 
+                       target="_blank" rel="noopener noreferrer"
                        class="btn btn-primary"
-                       onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'FAQ WhatsApp'}); fbq('track', 'Contact');" target="_blank" rel="noopener noreferrer">
+                       onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'FAQ WhatsApp'}); if(window.fbq) fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Pregunta directo por WhatsApp
                     </a>
                 </div>
@@ -2682,8 +2706,9 @@
                 <p>Agenda una llamada sin costo y en 30 minutos sabemos si la automatización tiene sentido para ti.</p>
                 <div class="cta-btns">
                     <a href="https://wa.me/525540509093?text=Hola%2C%20buen%20d%C3%ADa.%20Vi%20su%20sitio%20web%20y%20estoy%20interesado%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20automatizaci%C3%B3n%20con%20IA.%20%C2%BFPodemos%20conversar%3F&utm_source=web&utm_medium=final_cta&utm_campaign=whatsapp" 
+                       target="_blank" rel="noopener noreferrer"
                        class="btn btn-white"
-                       onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Final WhatsApp'}); fbq('track', 'Contact');" target="_blank" rel="noopener noreferrer">
+                       onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'Final WhatsApp'}); if(window.fbq) fbq('track', 'Contact');">
                         <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
                     </a>
                     <a href="#contacto-form" class="btn" style="background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4);">
@@ -2718,11 +2743,11 @@
                     <a href="#proceso">Proceso</a>
                     <a href="#faq">FAQ</a>
                     <a href="https://wa.me/525540509093" target="_blank" rel="noopener noreferrer">Contacto</a>
-                    <a href="/privacidad" style="font-size:0.8rem; opacity:0.6;">Aviso de privacidad</a> <!-- ✅ LÍNEA AGREGADA -->
+                    <a href="/privacidad" style="font-size:0.8rem; opacity:0.6;">Aviso de privacidad</a>
                 </div>
                 <div class="footer-links">
                     <h3>Redes</h3>
-                    <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener" class="ig-link">
+                    <a href="https://instagram.com/sosializarte" target="_blank" rel="noopener noreferrer" class="ig-link">
                         <i class="fab fa-instagram"></i> @sosializarte
                     </a>
                 </div>
@@ -2900,7 +2925,7 @@
 
                         // Tracking
                         gtag('event', 'form_submit', { event_category: 'Lead', event_label: 'Formulario Contacto' });
-                        fbq('track', 'Lead');
+                        if (window.fbq) fbq('track', 'Lead');
 
                         // Scroll al mensaje de éxito
                         formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -2916,6 +2941,9 @@
         }
 
         // ─── COOKIE BANNER ───
+        // El tracking (GA4 consent + Meta Pixel) solo se activa realmente
+        // cuando el usuario acepta. Si ya había decidido antes, se respeta
+        // esa decisión al cargar la página.
         function initCookieBanner() {
             const banner = document.getElementById('cookieBanner');
             const acceptBtn = document.getElementById('cookieAccept');
@@ -2923,45 +2951,41 @@
 
             if (!banner) return;
 
-            // Verificar si ya se decidió
             const cookieConsent = localStorage.getItem('cookieConsent');
+
             if (cookieConsent === 'accepted') {
-                // Usuario ya había aceptado previamente
-                gtag('consent', 'update', { 
-                    analytics_storage: 'granted', 
-                    ad_storage: 'granted',
-                    ad_user_data: 'granted',
-                    ad_personalization: 'granted'
-                });
-                if (typeof loadMetaPixel === 'function') loadMetaPixel();
+                grantTracking();
             } else if (!cookieConsent) {
                 setTimeout(() => banner.classList.add('visible'), 1000);
+            }
+            // Si es 'rejected', no se hace nada: todo queda denegado por defecto.
+
+            function grantTracking() {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted',
+                    'ad_storage': 'granted',
+                    'ad_user_data': 'granted',
+                    'ad_personalization': 'granted'
+                });
+                if (window.loadMetaPixel) window.loadMetaPixel();
             }
 
             acceptBtn.addEventListener('click', () => {
                 localStorage.setItem('cookieConsent', 'accepted');
                 banner.classList.remove('visible');
-                // Activar tracking
-                gtag('consent', 'update', { 
-                    analytics_storage: 'granted', 
-                    ad_storage: 'granted',
-                    ad_user_data: 'granted',
-                    ad_personalization: 'granted'
-                });
-                // Cargar Meta Pixel
-                if (typeof loadMetaPixel === 'function') loadMetaPixel();
+                grantTracking();
             });
 
             rejectBtn.addEventListener('click', () => {
                 localStorage.setItem('cookieConsent', 'rejected');
                 banner.classList.remove('visible');
-                // Desactivar tracking no esencial
-                gtag('consent', 'update', { 
-                    analytics_storage: 'denied', 
-                    ad_storage: 'denied',
-                    ad_user_data: 'denied',
-                    ad_personalization: 'denied'
+                gtag('consent', 'update', {
+                    'analytics_storage': 'denied',
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied'
                 });
+                // Meta Pixel nunca se carga si se rechaza.
             });
         }
 
