@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title>Mis recursos · Sosializarte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f3f0eb;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 28px 24px 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #1e1e1e;
+        }
+
+        .header .badge-m {
+            background: #FF642E;
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .sub {
+            color: #6b6b6b;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #e8e4dc;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+        }
+
+        .accordion-item {
+            border: 1px solid #e8e4dc;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .accordion-item:hover {
+            border-color: #ccc;
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: #faf8f6;
+            border: none;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: #1e1e1e;
+            font-family: inherit;
+            text-align: left;
+            transition: background 0.15s;
+        }
+
+        .accordion-header:hover {
+            background: #f3f0eb;
+        }
+
+        .accordion-header .icon {
+            font-size: 0.85rem;
+            color: #888;
+            transition: transform 0.25s ease;
+        }
+
+        .accordion-header.open .icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 18px;
+            background: #ffffff;
+        }
+
+        .accordion-body.open {
+            max-height: 1200px;
+            padding: 12px 18px 18px 18px;
+        }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0ece6;
+            gap: 10px;
+        }
+
+        .link-row:last-child {
+            border-bottom: none;
+        }
+
+        .link-row .label {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #1e1e1e;
+            flex: 1;
+        }
+
+        .link-row .url {
+            font-size: 0.7rem;
+            color: #6b6b6b;
+            background: #f3f0eb;
+            padding: 3px 12px;
+            border-radius: 999px;
+            white-space: nowrap;
+            max-width: 160px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: monospace;
+        }
+
+        .btn-copy {
+            background: none;
+            border: 1px solid #d6c9bc;
+            border-radius: 8px;
+            padding: 3px 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+            font-family: inherit;
+            background: #fff;
+        }
+
+        .btn-copy:hover {
+            background: #1e1e1e;
+            color: #fff;
+            border-color: #1e1e1e;
+        }
+
+        .btn-copy.copied {
+            background: #669933;
+            color: #fff;
+            border-color: #669933;
+        }
+
+        .badge-tag {
+            font-size: 0.6rem;
+            font-weight: 600;
+            background: #e8e4dc;
+            color: #4a4a4a;
+            padding: 2px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .badge-tag.orange {
+            background: #FF642E;
+            color: #fff;
+        }
+
+        .badge-tag.green {
+            background: #669933;
+            color: #fff;
+        }
+
+        .badge-tag.blue {
+            background: #336699;
+            color: #fff;
+        }
+
+        .badge-tag.gray {
+            background: #e8e4dc;
+            color: #4a4a4a;
+        }
+
+        .msg-block {
+            background: #f8f6f3;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            border-left: 3px solid #FF642E;
+        }
+
+        .msg-block .msg-text {
+            font-size: 0.85rem;
+            color: #1e1e1e;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        .msg-block .msg-link {
+            font-size: 0.75rem;
+            color: #336699;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .btn-copy-msg {
+            background: none;
+            border: 1px solid #d6c9bc;
+            border-radius: 8px;
+            padding: 2px 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: inherit;
+            background: #fff;
+            margin-top: 4px;
+        }
+
+        .btn-copy-msg:hover {
+            background: #1e1e1e;
+            color: #fff;
+            border-color: #1e1e1e;
+        }
+
+        .footer-note {
+            margin-top: 18px;
+            font-size: 0.7rem;
+            color: #999;
+            text-align: center;
+            border-top: 1px solid #e8e4dc;
+            padding-top: 14px;
+        }
+
+        .status-badge {
+            font-size: 0.65rem;
+            background: #f0ece6;
+            color: #6b6b6b;
+            padding: 2px 12px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            .container {
+                padding: 18px 14px 14px;
+                border-radius: 24px;
+            }
+            .link-row {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .link-row .url {
+                max-width: 100%;
+                flex: 1;
+                text-align: left;
+            }
+            .accordion-header {
+                font-size: 0.88rem;
+                padding: 12px 14px;
+            }
+            .accordion-body.open {
+                padding: 8px 14px 14px 14px;
+            }
+            .header h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>🧰 Mis recursos</h1>
+        <span class="badge-m">Sosializarte</span>
+    </div>
+    <div class="sub">Acceso rápido · Enlaces profesionales · 31 de julio de 2026</div>
+
+    <!-- ========== 1. CUESTIONARIOS ========== -->
+    <div class="accordion-item">
+        <button class="accordion-header open" onclick="toggleAccordion(this)">
+            <span>📋 Cuestionarios para clientes</span>
+            <span class="icon">▼</span>
+        </button>
+        <div class="accordion-body open">
+            <div class="link-row">
+                <span class="label">📌 Implementación de chatbot</span>
+                <span class="badge-tag orange">Nuevo</span>
+                <button class="btn-copy" onclick="copyUrl(this, 'https://sosializarte.com/cuestionario')">Copiar</button>
+            </div>
+            <div class="link-row">
+                <span class="label">🌐 Web desde cero</span>
+                <span class="badge-tag green">Nuevo</span>
+                <button class="btn-copy" onclick="copyUrl(this, 'https://sosializarte.com/cuestionario-web')">Copiar</button>
+            </div>
+            <div class="link-row">
+                <span class="label">🔄 Rediseño + Chatbot</span>
+                <span class="badge-tag blue">Nuevo</span>
+                <button class="btn-copy" onclick="copyUrl(this, 'https://sosializarte.com/cuestionario-rediseno')">Copiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 2. PAGOS ========== -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>💳 Pagos · Clip</span>
+            <span class="icon">▼</span>
+        </button>
+        <div class="accordion-body">
+            <div class="link-row">
+                <span class="label">🔗 Link de negocio</span>
+                <span class="url">linkdenegocio.mx/@sosializarte</span>
+                <button class="btn-copy" onclick="copyUrl(this, 'https://linkdenegocio.mx/@sosializarte')">Copiar</button>
+            </div>
+            <div class="link-row" style="border-bottom: none; padding-top: 4px;">
+                <span style="font-size:0.8rem; color:#6b6b6b;">📌 Usar para: Anticipos · Pagos finales · Mantenimiento mensual</span>
+            </div>
+            <div class="link-row" style="border-bottom: none; padding-top: 0;">
+                <span style="font-size:0.75rem; color:#999;">🛠️ Catálogo en construcción (próximamente)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 3. RECURSOS RÁPIDOS ========== -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>📄 Recursos rápidos</span>
+            <span class="icon">▼</span>
+        </button>
+        <div class="accordion-body">
+            <div class="link-row">
+                <span class="label">📋 Aviso de privacidad</span>
+                <span class="url">/privacidad</span>
+                <button class="btn-copy" onclick="copyUrl(this, 'https://sosializarte.com/privacidad')">Copiar</button>
+            </div>
+            <div class="link-row" style="border-bottom: none;">
+                <span class="label">🏠 Mi sitio web</span>
+                <span class="url">sosializarte.com</span>
+                <button class="btn-copy" onclick="copyUrl(this, 'https://sosializarte.com')">Copiar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 4. MENSAJES RÁPIDOS ========== -->
+    <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+            <span>✏️ Mensajes rápidos para clientes</span>
+            <span class="icon">▼</span>
+        </button>
+        <div class="accordion-body">
+            <!-- 1. Implementación -->
+            <div class="msg-block">
+                <div class="msg-text">
+                    <strong>📌 Implementación de chatbot</strong><br>
+                    "Para comenzar con la configuración de tu asistente virtual, completa este cuestionario:"
+                </div>
+                <div class="msg-link">https://sosializarte.com/cuestionario</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '📌 Implementación de chatbot\n\nPara comenzar con la configuración de tu asistente virtual, completa este cuestionario:\n\nhttps://sosializarte.com/cuestionario')">Copiar mensaje</button>
+            </div>
+
+            <!-- 2. Web desde cero -->
+            <div class="msg-block" style="border-left-color: #669933;">
+                <div class="msg-text">
+                    <strong>🌐 Web desde cero</strong><br>
+                    "Para construir tu sitio web profesional, necesito que me compartas esta información:"
+                </div>
+                <div class="msg-link">https://sosializarte.com/cuestionario-web</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '🌐 Web desde cero\n\nPara construir tu sitio web profesional, necesito que me compartas esta información:\n\nhttps://sosializarte.com/cuestionario-web')">Copiar mensaje</button>
+            </div>
+
+            <!-- 3. Rediseño -->
+            <div class="msg-block" style="border-left-color: #336699;">
+                <div class="msg-text">
+                    <strong>🔄 Rediseño + Chatbot</strong><br>
+                    "Para evaluar tu sitio actual y planear la mejora con chatbot, completa este cuestionario:"
+                </div>
+                <div class="msg-link">https://sosializarte.com/cuestionario-rediseno</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '🔄 Rediseño + Chatbot\n\nPara evaluar tu sitio actual y planear la mejora con chatbot, completa este cuestionario:\n\nhttps://sosializarte.com/cuestionario-rediseno')">Copiar mensaje</button>
+            </div>
+
+            <!-- 4. Link de pago -->
+            <div class="msg-block" style="border-left-color: #FF642E; margin-bottom: 0;">
+                <div class="msg-text">
+                    <strong>💳 Link de pago (Clip)</strong><br>
+                    "Para realizar el pago, usa este enlace. Ingresa el monto y escribe el concepto correspondiente:"
+                </div>
+                <div class="msg-link">https://linkdenegocio.mx/@sosializarte</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '💳 Link de pago\n\nPara realizar el pago, usa este enlace. Ingresa el monto y escribe el concepto correspondiente:\n\nhttps://linkdenegocio.mx/@sosializarte')">Copiar mensaje</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        ✦ Copia cualquier enlace o mensaje con un solo clic · <span id="updateDate"></span>
+    </div>
+</div>
+
+<script>
+    // ─── Fecha actual ───
+    document.getElementById('updateDate').textContent = 'Actualizado: ' + new Date().toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    // ─── Acordeón ───
+    function toggleAccordion(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = body.classList.contains('open');
+
+        // Cierra todos
+        document.querySelectorAll('.accordion-body').forEach(function(b) {
+            b.classList.remove('open');
+        });
+        document.querySelectorAll('.accordion-header').forEach(function(h) {
+            h.classList.remove('open');
+        });
+
+        if (!isOpen) {
+            body.classList.add('open');
+            btn.classList.add('open');
+        }
+    }
+
+    // ─── Copiar URL ───
+    function copyUrl(btn, url) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(function() {
+                btn.textContent = '✅';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.textContent = 'Copiar';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                fallbackCopy(btn, url);
+            });
+        } else {
+            fallbackCopy(btn, url);
+        }
+    }
+
+    function fallbackCopy(btn, url) {
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            btn.textContent = '✅';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = 'Copiar';
+                btn.classList.remove('copied');
+            }, 2000);
+        } catch (e) {
+            alert('Copiar manualmente: ' + url);
+        }
+        document.body.removeChild(textArea);
+    }
+
+    // ─── Copiar mensaje completo ───
+    function copyMessage(btn, text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+                const original = btn.textContent;
+                btn.textContent = '✅ Copiado';
+                btn.style.background = '#669933';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#669933';
+                setTimeout(function() {
+                    btn.textContent = original;
+                    btn.style.background = '#fff';
+                    btn.style.color = '#4a4a4a';
+                    btn.style.borderColor = '#d6c9bc';
+                }, 2000);
+            }).catch(function() {
+                alert('Copiar manualmente:\n\n' + text);
+            });
+        } else {
+            alert('Copiar manualmente:\n\n' + text);
+        }
+    }
+
+    // ─── Abrir el primer acordeón por defecto ───
+    document.addEventListener('DOMContentLoaded', function() {
+        const firstHeader = document.querySelector('.accordion-header');
+        if (firstHeader) {
+            firstHeader.classList.add('open');
+            const firstBody = firstHeader.nextElementSibling;
+            if (firstBody) {
+                firstBody.classList.add('open');
+            }
+        }
+    });
+</script>
+</body>
+</html>
