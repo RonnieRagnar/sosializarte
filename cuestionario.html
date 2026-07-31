@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title>Cuestionario de Implementación — Sosializarte</title>
+
+    <meta name="description" content="Completa este cuestionario para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="canonical" href="https://sosializarte.com/cuestionario" />
+    <link rel="icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ─── RESET Y BASE ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --orange: #FF642E;
+            --orange-dark: #E04D1A;
+            --orange-glow: rgba(255, 100, 46, 0.1);
+            --ink: #0d0d0d;
+            --paper: #F7F4EF;
+            --surface: #FDFCFA;
+            --muted: #6b6b6b;
+            --border: #E8E4DC;
+            --border-strong: #C9C4BB;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lift: 0 8px 40px rgba(0, 0, 0, 0.09);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        /* ─── HEADER ─── */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 1px;
+        }
+        .logo .slash {
+            color: var(--orange);
+            font-weight: 900;
+            font-size: 1.6rem;
+        }
+
+        .back-link {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover {
+            color: var(--orange-dark);
+        }
+
+        /* ─── PROGRESO ─── */
+        .progress-bar {
+            background: var(--border);
+            border-radius: 999px;
+            height: 6px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--orange);
+            border-radius: 999px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* ─── SECCIÓN ─── */
+        .section-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .section-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+
+        /* ─── FORMULARIO ─── */
+        .form-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+        .field label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        .field label .required {
+            color: #ef4444;
+            font-weight: 700;
+        }
+        .field .hint {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background: var(--paper);
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+        .field textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .field-checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 16px;
+            margin-top: 4px;
+        }
+        @media (max-width: 480px) {
+            .field-checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+        .field-checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .field-checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .field-file {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            text-align: center;
+            color: var(--muted);
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+        .field-file:hover {
+            border-color: var(--orange);
+        }
+        .field-file input[type="file"] {
+            display: none;
+        }
+        .field-file .file-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* ─── BOTONES ─── */
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 100, 46, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 100, 46, 0.35);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--muted);
+            border: 1.5px solid var(--border-strong);
+        }
+        .btn-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* ─── SUCCESS ─── */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .form-success.visible {
+            display: block;
+        }
+        .form-success .icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+        .form-success h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .form-success p {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+        .form-success .btn {
+            margin: 0 auto;
+        }
+
+        /* ─── FOOTER ─── */
+        .footer-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-note a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 640px) {
+            body { padding: 24px 16px; }
+            .form-card { padding: 24px 20px; }
+            .section-title { font-size: 1.3rem; }
+            .header-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .form-actions { flex-direction: column; }
+            .form-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ─── HEADER ─── -->
+        <div class="header-bar">
+            <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sitio</a>
+        </div>
+
+        <!-- ─── PROGRESO ─── -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- ─── FORMULARIO ─── -->
+        <div id="formContainer">
+            <div class="form-card">
+                <h1 class="section-title">📋 Cuestionario de Implementación</h1>
+                <p class="section-desc">Completa este cuestionario para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. La información recopilada nos permitirá personalizar cada detalle del sistema.</p>
+
+                <form id="implementationForm" action="https://formspree.io/f/mvzjabgz" method="POST">
+
+                    <!-- ==================== SECCIÓN 1 ==================== -->
+                    <div class="section-block" data-section="1">
+                        <h2 class="section-title" style="font-size:1.2rem;">📋 Información del consultorio</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Datos básicos del negocio.</p>
+
+                        <div class="field">
+                            <label>Nombre del consultorio <span class="required">*</span></label>
+                            <input type="text" name="consultorio" required>
+                        </div>
+
+                        <div class="field">
+                            <label>Nombre del doctor(a) o responsable <span class="required">*</span></label>
+                            <input type="text" name="responsable" required>
+                        </div>
+
+                        <div class="field">
+                            <label>Especialidad <span class="required">*</span></label>
+                            <input type="text" name="especialidad" required>
+                        </div>
+
+                        <div class="field">
+                            <label>Ciudad <span class="required">*</span></label>
+                            <input type="text" name="ciudad" required>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Tienes una o varias sucursales? <span class="required">*</span></label>
+                            <input type="text" name="sucursales" placeholder="Ej. Una / Tres: Polanco, Condesa, Santa Fe" required>
+                        </div>
+
+                        <div class="field">
+                            <label>Dirección exacta <span class="required">*</span></label>
+                            <input type="text" name="direccion" placeholder="Calle, número, colonia, CP" required>
+                        </div>
+
+                        <div class="field">
+                            <label>Link de Google Maps</label>
+                            <input type="url" name="google_maps" placeholder="https://maps.google.com/...">
+                        </div>
+
+                        <div class="field">
+                            <label>Teléfono / WhatsApp Business <span class="required">*</span></label>
+                            <input type="text" name="telefono" placeholder="Ej. 55 1234 5678 (WhatsApp Business)" required>
+                        </div>
+
+                        <div class="field">
+                            <label>Redes sociales (Instagram, Facebook, etc.)</label>
+                            <input type="text" name="redes" placeholder="@usuario">
+                        </div>
+
+                        <div class="field">
+                            <label>Horario de atención <span class="required">*</span></label>
+                            <input type="text" name="horario" placeholder="Ej. L-V 9am-6pm, S 9am-1pm" required>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 2 ==================== -->
+                    <div class="section-block" data-section="2">
+                        <h2 class="section-title" style="font-size:1.2rem;">📞 Atención al paciente</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Cómo atienden hoy a sus pacientes y qué procesos quieren automatizar.</p>
+
+                        <div class="field">
+                            <label>Medios de contacto actuales <span class="required">*</span></label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="medios_contacto" value="WhatsApp"> WhatsApp</label>
+                                <label><input type="checkbox" name="medios_contacto" value="Llamadas"> Llamadas</label>
+                                <label><input type="checkbox" name="medios_contacto" value="Facebook"> Facebook</label>
+                                <label><input type="checkbox" name="medios_contacto" value="Instagram"> Instagram</label>
+                                <label><input type="checkbox" name="medios_contacto" value="Web"> Web</label>
+                                <label><input type="checkbox" name="medios_contacto" value="Google Maps"> Google Maps</label>
+                                <label style="grid-column: span 2;"><input type="checkbox" name="medios_contacto" value="Otro"> Otro: <input type="text" name="medios_contacto_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Cómo registran las citas hoy? <span class="required">*</span></label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="registro_citas" value="Papel"> Papel</label>
+                                <label><input type="checkbox" name="registro_citas" value="WhatsApp"> WhatsApp</label>
+                                <label><input type="checkbox" name="registro_citas" value="Google Calendar"> Google Calendar</label>
+                                <label><input type="checkbox" name="registro_citas" value="Software"> Software</label>
+                                <label style="grid-column: span 2;"><input type="checkbox" name="registro_citas" value="Otro"> Otro: <input type="text" name="registro_citas_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Funciones que quieres en el asistente <span class="required">*</span></label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="funciones_asistente" value="Solicitar citas"> Solicitar citas</label>
+                                <label><input type="checkbox" name="funciones_asistente" value="Confirmar"> Confirmar</label>
+                                <label><input type="checkbox" name="funciones_asistente" value="Recordatorios"> Recordatorios</label>
+                                <label><input type="checkbox" name="funciones_asistente" value="Reagendar"> Reagendar</label>
+                                <label><input type="checkbox" name="funciones_asistente" value="Cancelar"> Cancelar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 3 ==================== -->
+                    <div class="section-block" data-section="3">
+                        <h2 class="section-title" style="font-size:1.2rem;">🧠 Conocimiento del asistente</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Qué debe saber y cómo debe comportarse el asistente virtual.</p>
+
+                        <div class="field">
+                            <label>Servicios o tratamientos que ofrecen <span class="required">*</span></label>
+                            <textarea name="servicios" rows="3" required placeholder="Ej. Limpieza dental, ortodoncia, etc."></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>Preguntas más frecuentes de pacientes <span class="required">*</span></label>
+                            <textarea name="preguntas_frecuentes" rows="4" required placeholder="Ej. ¿Cuánto cuesta una limpieza? ¿Aceptan seguros? ¿Tienen urgencias? (escribe al menos 3)"></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>Información que debe dar el asistente <span class="required">*</span></label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="info_asistente" value="Horarios"> Horarios</label>
+                                <label><input type="checkbox" name="info_asistente" value="Dirección"> Dirección</label>
+                                <label><input type="checkbox" name="info_asistente" value="Formas de pago"> Formas de pago</label>
+                                <label><input type="checkbox" name="info_asistente" value="Promociones"> Promociones</label>
+                                <label><input type="checkbox" name="info_asistente" value="Tratamientos"> Tratamientos</label>
+                                <label><input type="checkbox" name="info_asistente" value="Especialidades"> Especialidades</label>
+                                <label style="grid-column: span 2;"><input type="checkbox" name="info_asistente" value="Otra"> Otra: <input type="text" name="info_asistente_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Cuándo debe pasar la conversación a una persona? <span class="required">*</span></label>
+                            <textarea name="escalar_humano" rows="3" required placeholder="Ej. Cuando el paciente pregunte sobre precios exactos, cuando necesite una cotización personalizada, o cuando solicite hablar con el doctor."></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Tienen página web? (Sí/No — link si tienen)</label>
+                            <input type="text" name="pagina_web" placeholder="https://...">
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 4 ==================== -->
+                    <div class="section-block" data-section="4">
+                        <h2 class="section-title" style="font-size:1.2rem;">⚙️ Datos para configuración</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Mensajes, promociones y detalles clave para la configuración final.</p>
+
+                        <div class="field">
+                            <label>Mensaje de bienvenida deseado</label>
+                            <textarea name="mensaje_bienvenida" rows="3" placeholder="Ej. ¡Hola! Soy el asistente virtual de [Consultorio]. ¿En qué puedo ayudarte?"></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>Mensaje para fuera de horario</label>
+                            <textarea name="mensaje_fuera_horario" rows="3" placeholder="Ej. Gracias por escribirnos. Nuestro horario es de 9am a 6pm. Te atenderemos mañana. ¿Te gustaría agendar una cita?"></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label>Promoción o servicio a destacar</label>
+                            <input type="text" name="promocion" placeholder="Ej. 20% de descuento en primera consulta">
+                        </div>
+
+                        <div class="field">
+                            <label>Formas de pago aceptadas / aseguradoras</label>
+                            <input type="text" name="formas_pago" placeholder="Ej. Efectivo, tarjeta, seguro dental GNP">
+                        </div>
+
+                        <div class="field">
+                            <label>Algo más que debamos saber del funcionamiento del consultorio</label>
+                            <textarea name="info_extra" rows="3" placeholder="Cualquier información adicional que creas importante para la configuración."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 5 ==================== -->
+                    <div class="section-block" data-section="5">
+                        <h2 class="section-title" style="font-size:1.2rem;">📤 Archivos adjuntos</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Archivos necesarios para la personalización del asistente y su identidad visual.</p>
+
+                        <div class="field">
+                            <label>Logotipo y colores institucionales</label>
+                            <div class="field-file" onclick="document.getElementById('logoInput').click()">
+                                <span class="file-icon">🖼️</span>
+                                <span>Haz clic para subir el logotipo</span>
+                                <input type="file" id="logoInput" name="logo" accept="image/*">
+                            </div>
+                            <div class="hint">Formatos: PNG o JPG. Tamaño máximo: 10 MB.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Fotos del consultorio</label>
+                            <div class="field-file" onclick="document.getElementById('fotosInput').click()">
+                                <span class="file-icon">📷</span>
+                                <span>Haz clic para subir fotos</span>
+                                <input type="file" id="fotosInput" name="fotos" accept="image/*">
+                            </div>
+                            <div class="hint">Puedes subir una o varias fotos. Tamaño máximo: 10 MB por archivo.</div>
+                        </div>
+                    </div>
+
+                    <!-- ─── BOTONES ─── -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Siguiente <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display:none;">
+                            <i class="fas fa-paper-plane"></i> Enviar cuestionario
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- ─── MENSAJE DE ÉXITO ─── -->
+        <div class="form-success" id="formSuccess">
+            <div class="icon">🎉</div>
+            <h2>¡Cuestionario enviado!</h2>
+            <p>Hemos recibido tu información. En las próximas 24 horas revisaremos los datos y te contactaremos para confirmar los detalles y comenzar con la configuración del asistente virtual.</p>
+            <a href="/" class="btn btn-primary">Volver al sitio</a>
+        </div>
+
+        <!-- ─── FOOTER ─── -->
+        <div class="footer-note">
+            <p>© 2026 <a href="/">Sosializarte</a> — Automatización con IA para negocios</p>
+            <p style="margin-top:4px; font-size:0.72rem;">
+                <a href="/privacidad">Aviso de privacidad</a>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // ─── NAVEGACIÓN POR SECCIONES ───
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section-block');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const progressFill = document.getElementById('progressFill');
+            let currentSection = 0;
+
+            function showSection(index) {
+                sections.forEach((section, i) => {
+                    section.style.display = (i === index) ? 'block' : 'none';
+                });
+                const progress = ((index + 1) / sections.length) * 100;
+                progressFill.style.width = progress + '%';
+
+                prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+                if (index === sections.length - 1) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'inline-flex';
+                } else {
+                    nextBtn.style.display = 'inline-flex';
+                    submitBtn.style.display = 'none';
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Mostrar la primera sección
+            showSection(0);
+
+            // Siguiente
+            nextBtn.addEventListener('click', function() {
+                if (currentSection < sections.length - 1) {
+                    currentSection++;
+                    showSection(currentSection);
+                }
+            });
+
+            // Anterior
+            prevBtn.addEventListener('click', function() {
+                if (currentSection > 0) {
+                    currentSection--;
+                    showSection(currentSection);
+                }
+            });
+
+            // ─── ENVÍO DEL FORMULARIO ───
+            const form = document.getElementById('implementationForm');
+            const formContainer = document.getElementById('formContainer');
+            const formSuccess = document.getElementById('formSuccess');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        formContainer.style.display = 'none';
+                        formSuccess.classList.add('visible');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                } catch (error) {
+                    alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar cuestionario';
+                }
+            });
+
+            // ─── SUBIDA DE ARCHIVOS ───
+            document.querySelectorAll('.field-file input[type="file"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    const label = this.closest('.field-file').querySelector('span:last-child');
+                    if (this.files.length > 0) {
+                        label.textContent = `✅ ${this.files.length} archivo(s) seleccionado(s)`;
+                    } else {
+                        label.textContent = 'Haz clic para subir archivo';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
