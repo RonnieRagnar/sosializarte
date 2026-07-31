@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <title>Cuestionario Web — Sosializarte</title>
+
+    <meta name="description" content="Completa este cuestionario para construir tu página web profesional desde cero.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="canonical" href="https://sosializarte.com/cuestionario-web" />
+    <link rel="icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --orange: #FF642E;
+            --orange-dark: #E04D1A;
+            --orange-glow: rgba(255, 100, 46, 0.1);
+            --ink: #0d0d0d;
+            --paper: #F7F4EF;
+            --surface: #FDFCFA;
+            --muted: #6b6b6b;
+            --border: #E8E4DC;
+            --border-strong: #C9C4BB;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
+            --shadow-lift: 0 8px 40px rgba(0, 0, 0, 0.09);
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 820px; margin: 0 auto; }
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--ink);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 1px;
+        }
+        .logo .slash { color: var(--orange); font-weight: 900; font-size: 1.6rem; }
+        .back-link {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-link:hover { color: var(--orange-dark); }
+        .progress-bar {
+            background: var(--border);
+            border-radius: 999px;
+            height: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--orange);
+            border-radius: 999px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .progress-label {
+            text-align: right;
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .section-desc {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+        .form-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-card);
+        }
+        .field { margin-bottom: 20px; }
+        .field label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
+        .field label .required { color: #ef4444; font-weight: 700; }
+        .field .hint { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+        .field input, .field textarea, .field select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background: var(--paper);
+            color: var(--ink);
+            transition: border-color 0.2s;
+        }
+        .field input:focus, .field textarea:focus, .field select:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+        .field textarea { min-height: 80px; resize: vertical; }
+
+        /* Estado de error visual (agregado vía JS al validar sección) */
+        .field.field-invalid input,
+        .field.field-invalid textarea,
+        .field.field-invalid select {
+            border-color: #ef4444;
+        }
+        .field-error-msg {
+            display: none;
+            color: #ef4444;
+            font-size: 0.78rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .field.field-invalid .field-error-msg {
+            display: block;
+        }
+
+        .field-checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 16px;
+            margin-top: 4px;
+        }
+        @media (max-width: 480px) { .field-checkbox-group { grid-template-columns: 1fr; } }
+        .field-checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .field-checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--orange);
+            flex-shrink: 0;
+        }
+        .field-file {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+            text-align: center;
+            color: var(--muted);
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+        .field-file:hover { border-color: var(--orange); }
+        .field-file.file-error { border-color: #ef4444; }
+        .field-file input[type="file"] { display: none; }
+        .field-file .file-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
+
+        .section-error-banner {
+            display: none;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #b91c1c;
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .section-error-banner.visible { display: block; }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: var(--orange);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 100, 46, 0.3);
+        }
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(255, 100, 46, 0.35);
+        }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .btn-secondary {
+            background: transparent;
+            color: var(--muted);
+            border: 1.5px solid var(--border-strong);
+        }
+        .btn-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .form-success.visible { display: block; }
+        .form-success .icon { font-size: 3.5rem; margin-bottom: 16px; }
+        .form-success h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .form-success p {
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 480px;
+            margin: 0 auto 24px;
+        }
+        .form-success .btn { margin: 0 auto; }
+        .footer-note {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.78rem;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .footer-note a { color: var(--orange); text-decoration: none; }
+        .footer-note a:hover { text-decoration: underline; }
+        @media (max-width: 640px) {
+            body { padding: 24px 16px; }
+            .form-card { padding: 24px 20px; }
+            .section-title { font-size: 1.3rem; }
+            .header-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+            .form-actions { flex-direction: column; }
+            .form-actions .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header-bar">
+            <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sitio</a>
+        </div>
+
+        <!-- PROGRESO -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-label" id="progressLabel">Sección 1 de 5</div>
+
+        <!-- FORMULARIO -->
+        <div id="formContainer">
+            <div class="form-card">
+                <h1 class="section-title">🌐 Cuestionario para tu Web desde Cero</h1>
+                <p class="section-desc">Completa este cuestionario para que podamos construir tu página web profesional. La información que nos compartas será la base del diseño y contenido de tu sitio.</p>
+
+                <div class="section-error-banner" id="sectionErrorBanner">
+                    ⚠️ Faltan campos obligatorios por completar en esta sección.
+                </div>
+
+                <form id="webForm" action="https://formspree.io/f/xgogjwyp" method="POST">
+                    <!-- ==================== SECCIÓN 1 ==================== -->
+                    <div class="section-block" data-section="1">
+                        <h2 class="section-title" style="font-size:1.2rem;">📋 Datos del negocio</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Información básica para identificar tu negocio.</p>
+
+                        <div class="field">
+                            <label>Nombre del negocio <span class="required">*</span></label>
+                            <input type="text" name="nombre_negocio" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Giro o sector <span class="required">*</span></label>
+                            <input type="text" name="giro" placeholder="Ej. Consultorio dental, taller mecánico, estudio de arquitectura" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Ciudad y ubicación <span class="required">*</span></label>
+                            <input type="text" name="ubicacion" placeholder="Ciudad, Estado" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Dirección exacta</label>
+                            <input type="text" name="direccion" placeholder="Calle, número, colonia, CP">
+                        </div>
+
+                        <div class="field">
+                            <label>Horario de atención <span class="required">*</span></label>
+                            <input type="text" name="horario" placeholder="Ej. L-V 9am-6pm, S 9am-1pm" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 2 ==================== -->
+                    <div class="section-block" data-section="2">
+                        <h2 class="section-title" style="font-size:1.2rem;">🎨 Diseño y estilo</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Ayúdanos a definir la identidad visual de tu sitio.</p>
+
+                        <div class="field">
+                            <label>Logotipo</label>
+                            <div class="field-file" id="logoDropzone" onclick="document.getElementById('logoInput').click()">
+                                <span class="file-icon">🖼️</span>
+                                <span class="file-label">Haz clic para subir tu logotipo</span>
+                                <input type="file" id="logoInput" name="logo" accept="image/*">
+                            </div>
+                            <div class="hint">Formatos: PNG o JPG. Tamaño máximo: 10 MB.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Colores principales de tu marca</label>
+                            <input type="text" name="colores" placeholder="Ej. Naranja #FF642E, Blanco, Negro">
+                        </div>
+
+                        <div class="field">
+                            <label>¿Tienes fotos de tu negocio, productos o instalaciones?</label>
+                            <div class="field-file" id="fotosDropzone" onclick="document.getElementById('fotosInput').click()">
+                                <span class="file-icon">📷</span>
+                                <span class="file-label">Haz clic para subir fotos</span>
+                                <input type="file" id="fotosInput" name="fotos" accept="image/*" multiple>
+                            </div>
+                            <div class="hint">Puedes subir varias fotos. Tamaño máximo: 10 MB por archivo.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Tienes un estilo visual de referencia?</label>
+                            <input type="text" name="estilo_referencia" placeholder="Ej. Moderno, minimalista, clásico, elegante, etc.">
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 3 ==================== -->
+                    <div class="section-block" data-section="3">
+                        <h2 class="section-title" style="font-size:1.2rem;">📄 Contenido</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">La información que aparecerá en tu sitio web.</p>
+
+                        <div class="field">
+                            <label>Descripción breve de tu negocio <span class="required">*</span></label>
+                            <textarea name="descripcion" rows="3" required placeholder="¿Qué haces? ¿A quién atiendes? ¿Qué te hace único?"></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Servicios o productos que ofreces <span class="required">*</span></label>
+                            <textarea name="servicios" rows="4" required placeholder="Lista los servicios o productos que ofreces. Ej. Limpieza dental, ortodoncia, blanqueamiento."></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Testimonios de clientes (si tienes)</label>
+                            <textarea name="testimonios" rows="3" placeholder="Escribe los testimonios que quieras incluir. Ej. 'Excelente servicio, muy profesionales.' — Carlos G."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 4 ==================== -->
+                    <div class="section-block" data-section="4">
+                        <h2 class="section-title" style="font-size:1.2rem;">⚙️ Funcionalidades</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">¿Qué quieres que haga tu página web?</p>
+
+                        <div class="field">
+                            <label>Contacto y comunicación</label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="funcionalidades" value="Telefono"> Teléfono</label>
+                                <label><input type="checkbox" name="funcionalidades" value="WhatsApp"> WhatsApp</label>
+                                <label><input type="checkbox" name="funcionalidades" value="Formulario de contacto"> Formulario de contacto</label>
+                                <label><input type="checkbox" name="funcionalidades" value="Enlace a redes sociales"> Enlace a redes sociales</label>
+                                <label><input type="checkbox" name="funcionalidades" value="Ubicación y mapa"> Ubicación y mapa</label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Funcionalidades avanzadas</label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="funcionalidades_avanzadas" value="Chatbot"> Chatbot para atención 24/7</label>
+                                <label><input type="checkbox" name="funcionalidades_avanzadas" value="Citas en linea"> Sistema de citas en línea</label>
+                                <label><input type="checkbox" name="funcionalidades_avanzadas" value="Galería"> Galería de imágenes</label>
+                                <label><input type="checkbox" name="funcionalidades_avanzadas" value="Blog"> Blog o noticias</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ==================== SECCIÓN 5 ==================== -->
+                    <div class="section-block" data-section="5">
+                        <h2 class="section-title" style="font-size:1.2rem;">🎯 Objetivos y presupuesto</h2>
+                        <p class="section-desc" style="font-size:0.85rem;">Ayúdanos a entender qué esperas de tu nueva página web.</p>
+
+                        <div class="field">
+                            <label>¿Cuál es el objetivo principal de tu página web? <span class="required">*</span></label>
+                            <select name="objetivo_principal" required>
+                                <option value="">Selecciona una opción...</option>
+                                <option value="Ventas">Generar más ventas o reservas</option>
+                                <option value="Visibilidad">Dar a conocer mi negocio</option>
+                                <option value="Informacion">Tener un lugar profesional con información de contacto</option>
+                                <option value="Citas">Facilitar que los clientes agenden citas</option>
+                                <option value="Portafolio">Mostrar mi portafolio o trabajos</option>
+                            </select>
+                            <div class="field-error-msg">Selecciona una opción.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Tienes un presupuesto estimado?</label>
+                            <select name="presupuesto">
+                                <option value="">Selecciona una opción...</option>
+                                <option value="Menos de 3,000">Menos de $3,000 MXN</option>
+                                <option value="3,000 a 5,000">$3,000 - $5,000 MXN</option>
+                                <option value="5,000 a 8,000">$5,000 - $8,000 MXN</option>
+                                <option value="Mas de 8,000">Más de $8,000 MXN</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>¿Tienes algún requisito o comentario adicional?</label>
+                            <textarea name="comentarios" rows="3" placeholder="Ej. 'Quiero que la web sea muy rápida y se vea bien en celular'"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ─── BOTONES ─── -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">
+                            <i class="fas fa-arrow-left"></i> Anterior
+                        </button>
+                        <button type="button" class="btn btn-primary" id="nextBtn">
+                            Siguiente <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display:none;">
+                            <i class="fas fa-paper-plane"></i> Enviar cuestionario
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- ─── MENSAJE DE ÉXITO ─── -->
+        <div class="form-success" id="formSuccess">
+            <div class="icon">🎉</div>
+            <h2>¡Cuestionario enviado!</h2>
+            <p>Hemos recibido tu información. En las próximas 24 horas revisaremos tus respuestas y te contactaremos para comenzar a planear tu sitio web.</p>
+            <a href="/" class="btn btn-primary">Volver al sitio</a>
+        </div>
+
+        <!-- ─── FOOTER ─── -->
+        <div class="footer-note">
+            <p>© 2026 <a href="/">Sosializarte</a> — Automatización con IA para negocios</p>
+            <p style="margin-top:4px; font-size:0.72rem;">
+                <a href="/privacidad">Aviso de privacidad</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const MAX_FILE_MB = 10;
+        const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = Array.from(document.querySelectorAll('.section-block'));
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const progressFill = document.getElementById('progressFill');
+            const progressLabel = document.getElementById('progressLabel');
+            const sectionErrorBanner = document.getElementById('sectionErrorBanner');
+            let currentSection = 0;
+
+            function showSection(index) {
+                sections.forEach((section, i) => {
+                    section.style.display = (i === index) ? 'block' : 'none';
+                });
+                const progress = ((index + 1) / sections.length) * 100;
+                progressFill.style.width = progress + '%';
+                progressLabel.textContent = `Sección ${index + 1} de ${sections.length}`;
+                sectionErrorBanner.classList.remove('visible');
+
+                prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+                if (index === sections.length - 1) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'inline-flex';
+                } else {
+                    nextBtn.style.display = 'inline-flex';
+                    submitBtn.style.display = 'none';
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // ─── VALIDACIÓN DE LA SECCIÓN ACTUAL ───
+            function validateSection(index) {
+                const section = sections[index];
+                let valid = true;
+                let firstInvalidEl = null;
+
+                section.querySelectorAll('input[required], textarea[required], select[required]').forEach(el => {
+                    const field = el.closest('.field');
+                    if (!el.value.trim()) {
+                        valid = false;
+                        field.classList.add('field-invalid');
+                        if (!firstInvalidEl) firstInvalidEl = el;
+                    } else {
+                        field.classList.remove('field-invalid');
+                    }
+                });
+
+                if (!valid) {
+                    sectionErrorBanner.classList.add('visible');
+                    if (firstInvalidEl) {
+                        firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    sectionErrorBanner.classList.remove('visible');
+                }
+
+                return valid;
+            }
+
+            showSection(0);
+
+            nextBtn.addEventListener('click', function() {
+                if (!validateSection(currentSection)) return;
+                if (currentSection < sections.length - 1) {
+                    currentSection++;
+                    showSection(currentSection);
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentSection > 0) {
+                    currentSection--;
+                    showSection(currentSection);
+                }
+            });
+
+            // ─── ENVÍO DEL FORMULARIO ───
+            const form = document.getElementById('webForm');
+            const formContainer = document.getElementById('formContainer');
+            const formSuccess = document.getElementById('formSuccess');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                if (!validateSection(currentSection)) return;
+
+                const submitBtnEl = document.getElementById('submitBtn');
+                submitBtnEl.disabled = true;
+                submitBtnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        formContainer.style.display = 'none';
+                        formSuccess.classList.add('visible');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                } catch (error) {
+                    alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
+                    submitBtnEl.disabled = false;
+                    submitBtnEl.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar cuestionario';
+                }
+            });
+
+            // ─── SUBIDA DE ARCHIVOS CON VALIDACIÓN DE TAMAÑO ───
+            document.querySelectorAll('.field-file input[type="file"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    const dropzone = this.closest('.field-file');
+                    const label = dropzone.querySelector('.file-label');
+
+                    if (this.files.length === 0) {
+                        label.textContent = 'Haz clic para subir archivo';
+                        dropzone.classList.remove('file-error');
+                        return;
+                    }
+
+                    const tooLarge = Array.from(this.files).filter(f => f.size > MAX_FILE_BYTES);
+
+                    if (tooLarge.length > 0) {
+                        dropzone.classList.add('file-error');
+                        label.textContent = `⚠️ ${tooLarge[0].name} pesa más de ${MAX_FILE_MB} MB. Sube un archivo más ligero.`;
+                        this.value = '';
+                        return;
+                    }
+
+                    dropzone.classList.remove('file-error');
+                    label.textContent = `✅ ${this.files.length} archivo(s) seleccionado(s)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
