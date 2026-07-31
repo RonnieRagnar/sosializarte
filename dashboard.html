@@ -407,6 +407,68 @@
         .btn-icon.fav-star:hover {
             background: #FCF0E0;
         }
+        .btn-icon .badge-copied {
+            background: #669933;
+            color: #fff;
+            padding: 0 8px;
+            border-radius: 999px;
+            font-size: 0.6rem;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ─── MENSAJES RÁPIDOS ─── */
+        .msg-block {
+            background: #F7F4EF;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 8px;
+            border-left: 4px solid #FF642E;
+        }
+        .msg-block .msg-text {
+            font-size: 0.85rem;
+            color: #0d0d0d;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+        .msg-block .msg-text strong {
+            color: #0d0d0d;
+        }
+        .msg-block .msg-url {
+            font-size: 0.75rem;
+            color: #336699;
+            font-weight: 500;
+            word-break: break-all;
+            font-family: monospace;
+        }
+        .btn-copy-msg {
+            background: none;
+            border: 1px solid #E8E4DC;
+            border-radius: 8px;
+            padding: 3px 14px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: 'DM Sans', sans-serif;
+            background: #fff;
+            margin-top: 4px;
+        }
+        .btn-copy-msg:hover {
+            background: #0d0d0d;
+            color: #fff;
+            border-color: #0d0d0d;
+        }
+        .btn-copy-msg.copied {
+            background: #669933;
+            color: #fff;
+            border-color: #669933;
+        }
 
         /* ─── FOOTER ─── */
         .footer-note {
@@ -443,6 +505,7 @@
             .fav-list { gap: 4px; }
             .fav-item { font-size: 0.75rem; padding: 3px 8px 3px 6px; }
             .header h1 { font-size: 1.3rem; }
+            .msg-block { padding: 10px 12px; }
         }
         @media (min-width: 600px) {
             .resource-item .res-left .res-url { max-width: 200px; }
@@ -500,6 +563,61 @@
 
     <!-- ─── CATEGORÍAS ─── -->
     <div class="category-grid" id="categoryGrid"></div>
+
+    <!-- ─── MENSAJES RÁPIDOS ─── -->
+    <div class="category" style="margin-top: 16px; border-color: #C9C4BB;">
+        <div class="category-header open" onclick="toggleCategory(this)" style="background: #F7F4EF;">
+            <div class="cat-left">
+                <i class="fas fa-comment" style="color: #FF642E;"></i>
+                Mensajes rápidos para clientes
+                <span class="cat-count">4</span>
+            </div>
+            <span class="cat-arrow">▼</span>
+        </div>
+        <div class="category-body open" style="padding: 8px 18px 14px 18px;">
+
+            <!-- 1. Web desde cero -->
+            <div class="msg-block">
+                <div class="msg-text">
+                    <strong>🌐 Web desde cero</strong><br>
+                    "Para construir tu sitio web profesional, necesito que me compartas esta información. Completa este cuestionario, te tomará 12-15 minutos."
+                </div>
+                <div class="msg-url">https://sosializarte.com/cuestionario-web</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '🌐 Web desde cero\n\nPara construir tu sitio web profesional, necesito que me compartas esta información. Completa este cuestionario, te tomará 12-15 minutos.\n\nhttps://sosializarte.com/cuestionario-web')">Copiar mensaje</button>
+            </div>
+
+            <!-- 2. Rediseño + Chatbot -->
+            <div class="msg-block" style="border-left-color: #336699;">
+                <div class="msg-text">
+                    <strong>🔄 Rediseño + Chatbot</strong><br>
+                    "Para evaluar tu sitio actual y planear la mejora con chatbot, completa este cuestionario."
+                </div>
+                <div class="msg-url">https://sosializarte.com/cuestionario-rediseno</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '🔄 Rediseño + Chatbot\n\nPara evaluar tu sitio actual y planear la mejora con chatbot, completa este cuestionario.\n\nhttps://sosializarte.com/cuestionario-rediseno')">Copiar mensaje</button>
+            </div>
+
+            <!-- 3. Implementación -->
+            <div class="msg-block" style="border-left-color: #669933;">
+                <div class="msg-text">
+                    <strong>🤖 Implementación de chatbot</strong><br>
+                    "Para comenzar con la configuración de tu asistente virtual, completa este cuestionario."
+                </div>
+                <div class="msg-url">https://sosializarte.com/cuestionario</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '🤖 Implementación de chatbot\n\nPara comenzar con la configuración de tu asistente virtual, completa este cuestionario.\n\nhttps://sosializarte.com/cuestionario')">Copiar mensaje</button>
+            </div>
+
+            <!-- 4. Link de pago -->
+            <div class="msg-block" style="border-left-color: #CC0033; margin-bottom: 0;">
+                <div class="msg-text">
+                    <strong>💳 Link de pago (Clip)</strong><br>
+                    "Para realizar el pago, usa este enlace. Ingresa el monto y escribe el concepto correspondiente."
+                </div>
+                <div class="msg-url">https://linkdenegocio.mx/@sosializarte</div>
+                <button class="btn-copy-msg" onclick="copyMessage(this, '💳 Link de pago\n\nPara realizar el pago, usa este enlace. Ingresa el monto y escribe el concepto correspondiente.\n\nhttps://linkdenegocio.mx/@sosializarte')">Copiar mensaje</button>
+            </div>
+
+        </div>
+    </div>
 
     <!-- ─── FOOTER ─── -->
     <div class="footer-note">
@@ -707,6 +825,25 @@
         }
         localStorage.setItem('sos_favorites', JSON.stringify(favorites));
         render();
+    }
+
+    // ─── COPIAR MENSAJE ───
+    function copyMessage(btn, text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                const original = btn.textContent;
+                btn.textContent = '✅ Copiado';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                alert('Copiar manualmente:\n\n' + text);
+            });
+        } else {
+            alert('Copiar manualmente:\n\n' + text);
+        }
     }
 
     // ─── BUSCADOR ───
