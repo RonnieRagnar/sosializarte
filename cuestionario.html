@@ -103,7 +103,7 @@
             background: var(--border);
             border-radius: 999px;
             height: 6px;
-            margin-bottom: 32px;
+            margin-bottom: 8px;
             overflow: hidden;
         }
         .progress-fill {
@@ -112,6 +112,12 @@
             border-radius: 999px;
             width: 0%;
             transition: width 0.3s ease;
+        }
+        .progress-label {
+            text-align: right;
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 24px;
         }
 
         /* ─── SECCIÓN ─── */
@@ -179,6 +185,22 @@
             resize: vertical;
         }
 
+        /* Estado de error visual (agregado vía JS al validar sección) */
+        .field.field-invalid input,
+        .field.field-invalid textarea {
+            border-color: #ef4444;
+        }
+        .field-error-msg {
+            display: none;
+            color: #ef4444;
+            font-size: 0.78rem;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+        .field.field-invalid .field-error-msg {
+            display: block;
+        }
+
         .field-checkbox-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -217,6 +239,9 @@
         .field-file:hover {
             border-color: var(--orange);
         }
+        .field-file.file-error {
+            border-color: #ef4444;
+        }
         .field-file input[type="file"] {
             display: none;
         }
@@ -224,6 +249,22 @@
             font-size: 2rem;
             display: block;
             margin-bottom: 6px;
+        }
+
+        /* ─── BANNER DE ERROR DE SECCIÓN ─── */
+        .section-error-banner {
+            display: none;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #b91c1c;
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .section-error-banner.visible {
+            display: block;
         }
 
         /* ─── BOTONES ─── */
@@ -260,6 +301,11 @@
             background: var(--orange-dark);
             transform: translateY(-2px);
             box-shadow: 0 8px 28px rgba(255, 100, 46, 0.35);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         .btn-secondary {
             background: transparent;
@@ -342,6 +388,7 @@
         <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
         </div>
+        <div class="progress-label" id="progressLabel">Sección 1 de 5</div>
 
         <!-- ─── FORMULARIO ─── -->
         <div id="formContainer">
@@ -349,7 +396,11 @@
                 <h1 class="section-title">📋 Cuestionario de Implementación</h1>
                 <p class="section-desc">Completa este cuestionario para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. La información recopilada nos permitirá personalizar cada detalle del sistema.</p>
 
-                <form id="implementationForm" action="https://formspree.io/f/mvzjabgz" method="POST">
+                <div class="section-error-banner" id="sectionErrorBanner">
+                    ⚠️ Faltan campos obligatorios por completar en esta sección.
+                </div>
+
+                <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST">
 
                     <!-- ==================== SECCIÓN 1 ==================== -->
                     <div class="section-block" data-section="1">
@@ -359,31 +410,37 @@
                         <div class="field">
                             <label>Nombre del consultorio <span class="required">*</span></label>
                             <input type="text" name="consultorio" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
                             <label>Nombre del doctor(a) o responsable <span class="required">*</span></label>
                             <input type="text" name="responsable" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
                             <label>Especialidad <span class="required">*</span></label>
                             <input type="text" name="especialidad" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
                             <label>Ciudad <span class="required">*</span></label>
                             <input type="text" name="ciudad" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
                             <label>¿Tienes una o varias sucursales? <span class="required">*</span></label>
                             <input type="text" name="sucursales" placeholder="Ej. Una / Tres: Polanco, Condesa, Santa Fe" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
                             <label>Dirección exacta <span class="required">*</span></label>
                             <input type="text" name="direccion" placeholder="Calle, número, colonia, CP" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
@@ -394,6 +451,7 @@
                         <div class="field">
                             <label>Teléfono / WhatsApp Business <span class="required">*</span></label>
                             <input type="text" name="telefono" placeholder="Ej. 55 1234 5678 (WhatsApp Business)" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
@@ -404,6 +462,7 @@
                         <div class="field">
                             <label>Horario de atención <span class="required">*</span></label>
                             <input type="text" name="horario" placeholder="Ej. L-V 9am-6pm, S 9am-1pm" required>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
                     </div>
 
@@ -412,7 +471,7 @@
                         <h2 class="section-title" style="font-size:1.2rem;">📞 Atención al paciente</h2>
                         <p class="section-desc" style="font-size:0.85rem;">Cómo atienden hoy a sus pacientes y qué procesos quieren automatizar.</p>
 
-                        <div class="field">
+                        <div class="field" data-checkbox-required="medios_contacto">
                             <label>Medios de contacto actuales <span class="required">*</span></label>
                             <div class="field-checkbox-group">
                                 <label><input type="checkbox" name="medios_contacto" value="WhatsApp"> WhatsApp</label>
@@ -423,9 +482,10 @@
                                 <label><input type="checkbox" name="medios_contacto" value="Google Maps"> Google Maps</label>
                                 <label style="grid-column: span 2;"><input type="checkbox" name="medios_contacto" value="Otro"> Otro: <input type="text" name="medios_contacto_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
                             </div>
+                            <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
 
-                        <div class="field">
+                        <div class="field" data-checkbox-required="registro_citas">
                             <label>¿Cómo registran las citas hoy? <span class="required">*</span></label>
                             <div class="field-checkbox-group">
                                 <label><input type="checkbox" name="registro_citas" value="Papel"> Papel</label>
@@ -434,9 +494,10 @@
                                 <label><input type="checkbox" name="registro_citas" value="Software"> Software</label>
                                 <label style="grid-column: span 2;"><input type="checkbox" name="registro_citas" value="Otro"> Otro: <input type="text" name="registro_citas_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
                             </div>
+                            <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
 
-                        <div class="field">
+                        <div class="field" data-checkbox-required="funciones_asistente">
                             <label>Funciones que quieres en el asistente <span class="required">*</span></label>
                             <div class="field-checkbox-group">
                                 <label><input type="checkbox" name="funciones_asistente" value="Solicitar citas"> Solicitar citas</label>
@@ -445,6 +506,7 @@
                                 <label><input type="checkbox" name="funciones_asistente" value="Reagendar"> Reagendar</label>
                                 <label><input type="checkbox" name="funciones_asistente" value="Cancelar"> Cancelar</label>
                             </div>
+                            <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
                     </div>
 
@@ -456,14 +518,16 @@
                         <div class="field">
                             <label>Servicios o tratamientos que ofrecen <span class="required">*</span></label>
                             <textarea name="servicios" rows="3" required placeholder="Ej. Limpieza dental, ortodoncia, etc."></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
                             <label>Preguntas más frecuentes de pacientes <span class="required">*</span></label>
                             <textarea name="preguntas_frecuentes" rows="4" required placeholder="Ej. ¿Cuánto cuesta una limpieza? ¿Aceptan seguros? ¿Tienen urgencias? (escribe al menos 3)"></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
-                        <div class="field">
+                        <div class="field" data-checkbox-required="info_asistente">
                             <label>Información que debe dar el asistente <span class="required">*</span></label>
                             <div class="field-checkbox-group">
                                 <label><input type="checkbox" name="info_asistente" value="Horarios"> Horarios</label>
@@ -474,11 +538,13 @@
                                 <label><input type="checkbox" name="info_asistente" value="Especialidades"> Especialidades</label>
                                 <label style="grid-column: span 2;"><input type="checkbox" name="info_asistente" value="Otra"> Otra: <input type="text" name="info_asistente_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
                             </div>
+                            <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
 
                         <div class="field">
                             <label>¿Cuándo debe pasar la conversación a una persona? <span class="required">*</span></label>
                             <textarea name="escalar_humano" rows="3" required placeholder="Ej. Cuando el paciente pregunte sobre precios exactos, cuando necesite una cotización personalizada, o cuando solicite hablar con el doctor."></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
@@ -525,9 +591,9 @@
 
                         <div class="field">
                             <label>Logotipo y colores institucionales</label>
-                            <div class="field-file" onclick="document.getElementById('logoInput').click()">
+                            <div class="field-file" id="logoDropzone" onclick="document.getElementById('logoInput').click()">
                                 <span class="file-icon">🖼️</span>
-                                <span>Haz clic para subir el logotipo</span>
+                                <span class="file-label">Haz clic para subir el logotipo</span>
                                 <input type="file" id="logoInput" name="logo" accept="image/*">
                             </div>
                             <div class="hint">Formatos: PNG o JPG. Tamaño máximo: 10 MB.</div>
@@ -535,10 +601,10 @@
 
                         <div class="field">
                             <label>Fotos del consultorio</label>
-                            <div class="field-file" onclick="document.getElementById('fotosInput').click()">
+                            <div class="field-file" id="fotosDropzone" onclick="document.getElementById('fotosInput').click()">
                                 <span class="file-icon">📷</span>
-                                <span>Haz clic para subir fotos</span>
-                                <input type="file" id="fotosInput" name="fotos" accept="image/*">
+                                <span class="file-label">Haz clic para subir fotos</span>
+                                <input type="file" id="fotosInput" name="fotos" accept="image/*" multiple>
                             </div>
                             <div class="hint">Puedes subir una o varias fotos. Tamaño máximo: 10 MB por archivo.</div>
                         </div>
@@ -580,13 +646,17 @@
     </div>
 
     <script>
-        // ─── NAVEGACIÓN POR SECCIONES ───
+        const MAX_FILE_MB = 10;
+        const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
+
         document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section-block');
+            const sections = Array.from(document.querySelectorAll('.section-block'));
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             const submitBtn = document.getElementById('submitBtn');
             const progressFill = document.getElementById('progressFill');
+            const progressLabel = document.getElementById('progressLabel');
+            const sectionErrorBanner = document.getElementById('sectionErrorBanner');
             let currentSection = 0;
 
             function showSection(index) {
@@ -595,6 +665,8 @@
                 });
                 const progress = ((index + 1) / sections.length) * 100;
                 progressFill.style.width = progress + '%';
+                progressLabel.textContent = `Sección ${index + 1} de ${sections.length}`;
+                sectionErrorBanner.classList.remove('visible');
 
                 prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
                 if (index === sections.length - 1) {
@@ -607,18 +679,62 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // Mostrar la primera sección
+            // ─── VALIDACIÓN DE LA SECCIÓN ACTUAL ───
+            // HTML5 "required" solo valida al hacer submit del <form>. Como este
+            // formulario está dividido en pasos, sin esto se podía avanzar sin
+            // llenar nada y el usuario solo se enteraba hasta el final.
+            function validateSection(index) {
+                const section = sections[index];
+                let valid = true;
+                let firstInvalidEl = null;
+
+                // Inputs y textareas requeridos
+                section.querySelectorAll('input[required], textarea[required]').forEach(el => {
+                    const field = el.closest('.field');
+                    if (!el.value.trim()) {
+                        valid = false;
+                        field.classList.add('field-invalid');
+                        if (!firstInvalidEl) firstInvalidEl = el;
+                    } else {
+                        field.classList.remove('field-invalid');
+                    }
+                });
+
+                // Grupos de checkboxes marcados como obligatorios (al menos 1)
+                section.querySelectorAll('[data-checkbox-required]').forEach(field => {
+                    const name = field.dataset.checkboxRequired;
+                    const checked = section.querySelectorAll(`input[name="${name}"]:checked`).length > 0;
+                    if (!checked) {
+                        valid = false;
+                        field.classList.add('field-invalid');
+                        if (!firstInvalidEl) firstInvalidEl = field;
+                    } else {
+                        field.classList.remove('field-invalid');
+                    }
+                });
+
+                if (!valid) {
+                    sectionErrorBanner.classList.add('visible');
+                    if (firstInvalidEl) {
+                        firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    sectionErrorBanner.classList.remove('visible');
+                }
+
+                return valid;
+            }
+
             showSection(0);
 
-            // Siguiente
             nextBtn.addEventListener('click', function() {
+                if (!validateSection(currentSection)) return;
                 if (currentSection < sections.length - 1) {
                     currentSection++;
                     showSection(currentSection);
                 }
             });
 
-            // Anterior
             prevBtn.addEventListener('click', function() {
                 if (currentSection > 0) {
                     currentSection--;
@@ -634,9 +750,12 @@
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                const submitBtn = document.getElementById('submitBtn');
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                // Valida también la última sección antes de enviar
+                if (!validateSection(currentSection)) return;
+
+                const submitBtnEl = document.getElementById('submitBtn');
+                submitBtnEl.disabled = true;
+                submitBtnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
                 try {
                     const formData = new FormData(form);
@@ -655,20 +774,34 @@
                     }
                 } catch (error) {
                     alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar cuestionario';
+                    submitBtnEl.disabled = false;
+                    submitBtnEl.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar cuestionario';
                 }
             });
 
-            // ─── SUBIDA DE ARCHIVOS ───
+            // ─── SUBIDA DE ARCHIVOS CON VALIDACIÓN DE TAMAÑO ───
             document.querySelectorAll('.field-file input[type="file"]').forEach(input => {
                 input.addEventListener('change', function() {
-                    const label = this.closest('.field-file').querySelector('span:last-child');
-                    if (this.files.length > 0) {
-                        label.textContent = `✅ ${this.files.length} archivo(s) seleccionado(s)`;
-                    } else {
+                    const dropzone = this.closest('.field-file');
+                    const label = dropzone.querySelector('.file-label');
+
+                    if (this.files.length === 0) {
                         label.textContent = 'Haz clic para subir archivo';
+                        dropzone.classList.remove('file-error');
+                        return;
                     }
+
+                    const tooLarge = Array.from(this.files).filter(f => f.size > MAX_FILE_BYTES);
+
+                    if (tooLarge.length > 0) {
+                        dropzone.classList.add('file-error');
+                        label.textContent = `⚠️ ${tooLarge[0].name} pesa más de ${MAX_FILE_MB} MB. Sube un archivo más ligero.`;
+                        this.value = ''; // limpia la selección inválida
+                        return;
+                    }
+
+                    dropzone.classList.remove('file-error');
+                    label.textContent = `✅ ${this.files.length} archivo(s) seleccionado(s)`;
                 });
             });
         });
