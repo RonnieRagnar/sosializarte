@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-    <title>Cuestionario de Implementación — Sosializarte</title>
+    <title>Expediente de Implementación · Sosializarte</title>
 
-    <meta name="description" content="Completa este cuestionario para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas.">
+    <meta name="description" content="Completa este expediente digital para configurar tu asistente virtual.">
     <meta name="robots" content="noindex, follow">
 
     <link rel="canonical" href="https://sosializarte.com/cuestionario" />
@@ -44,6 +44,8 @@
             --radius-lg: 22px;
             --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
             --shadow-lift: 0 8px 40px rgba(0, 0, 0, 0.09);
+            --success: #669933;
+            --error: #CC0033;
         }
 
         body {
@@ -55,7 +57,7 @@
         }
 
         .container {
-            max-width: 820px;
+            max-width: 880px;
             margin: 0 auto;
         }
 
@@ -66,7 +68,9 @@
             align-items: center;
             padding-bottom: 24px;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
         .logo {
@@ -98,12 +102,26 @@
             color: var(--orange-dark);
         }
 
+        .header-badge {
+            font-size: 0.6rem;
+            font-weight: 700;
+            background: var(--orange);
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 999px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+
         /* ─── PROGRESO ─── */
+        .progress-wrapper {
+            margin-bottom: 28px;
+        }
         .progress-bar {
             background: var(--border);
             border-radius: 999px;
             height: 6px;
-            margin-bottom: 8px;
             overflow: hidden;
         }
         .progress-fill {
@@ -111,26 +129,18 @@
             background: var(--orange);
             border-radius: 999px;
             width: 0%;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
         }
         .progress-label {
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
             font-size: 0.78rem;
             color: var(--muted);
-            margin-bottom: 24px;
+            margin-top: 6px;
         }
-
-        /* ─── SECCIÓN ─── */
-        .section-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .section-desc {
-            color: var(--muted);
-            font-size: 0.95rem;
-            margin-bottom: 28px;
+        .progress-label .section-count {
+            font-weight: 600;
+            color: var(--ink);
         }
 
         /* ─── FORMULARIO ─── */
@@ -142,6 +152,69 @@
             box-shadow: var(--shadow-card);
         }
 
+        .form-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+        .form-subtitle {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .section-error-banner {
+            display: none;
+            background: rgba(204, 0, 51, 0.06);
+            border: 1px solid rgba(204, 0, 51, 0.25);
+            color: var(--error);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .section-error-banner.visible {
+            display: block;
+        }
+
+        /* ─── SECCIONES ─── */
+        .section-block {
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+        .section-block.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+        }
+        .section-header h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-header p {
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* ─── CAMPOS ─── */
         .field {
             margin-bottom: 20px;
         }
@@ -152,13 +225,14 @@
             margin-bottom: 4px;
         }
         .field label .required {
-            color: #ef4444;
+            color: var(--error);
             font-weight: 700;
         }
         .field .hint {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--muted);
             margin-top: 2px;
+            font-weight: 300;
         }
 
         .field input,
@@ -185,14 +259,14 @@
             resize: vertical;
         }
 
-        /* Estado de error visual (agregado vía JS al validar sección) */
         .field.field-invalid input,
-        .field.field-invalid textarea {
-            border-color: #ef4444;
+        .field.field-invalid textarea,
+        .field.field-invalid select {
+            border-color: var(--error);
         }
         .field-error-msg {
             display: none;
-            color: #ef4444;
+            color: var(--error);
             font-size: 0.78rem;
             margin-top: 4px;
             font-weight: 600;
@@ -201,6 +275,7 @@
             display: block;
         }
 
+        /* ─── CHECKBOX GRID ─── */
         .field-checkbox-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -227,44 +302,181 @@
             flex-shrink: 0;
         }
 
+        /* ─── RADIO GROUP ─── */
+        .field-radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-top: 4px;
+        }
+        .field-radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .field-radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        /* ─── DÍAS DE LA SEMANA ─── */
+        .weekday-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+            margin-top: 4px;
+        }
+        @media (min-width: 480px) {
+            .weekday-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        .weekday-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        .weekday-item input[type="time"] {
+            width: auto;
+            padding: 4px 8px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            background: var(--paper);
+            color: var(--ink);
+        }
+        .weekday-item input[type="time"]:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+        .weekday-item .day-label {
+            min-width: 60px;
+            font-weight: 500;
+        }
+
+        /* ─── TRATAMIENTO ROW ─── */
+        .tratamiento-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 6px;
+            align-items: end;
+        }
+        @media (max-width: 640px) {
+            .tratamiento-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+        }
+        .tratamiento-row .field {
+            margin-bottom: 0;
+        }
+        .tratamiento-row .field label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+        .tratamiento-row .field input,
+        .tratamiento-row .field select {
+            padding: 8px 10px;
+            font-size: 0.85rem;
+        }
+
+        .tratamiento-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            padding-top: 4px;
+        }
+        .btn-add-row {
+            background: none;
+            border: 1px dashed var(--border-strong);
+            border-radius: var(--radius-sm);
+            padding: 6px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-add-row:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+        .btn-remove-row {
+            background: none;
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 4px;
+            transition: color 0.15s;
+        }
+        .btn-remove-row:hover {
+            color: var(--error);
+        }
+
+        /* ─── FILE UPLOAD ─── */
         .field-file {
             border: 2px dashed var(--border);
             border-radius: var(--radius-sm);
             padding: 24px;
             text-align: center;
             color: var(--muted);
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, background 0.2s;
             cursor: pointer;
+            background: var(--paper);
         }
         .field-file:hover {
             border-color: var(--orange);
+            background: var(--surface);
         }
         .field-file.file-error {
-            border-color: #ef4444;
+            border-color: var(--error);
         }
         .field-file input[type="file"] {
             display: none;
         }
         .field-file .file-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             display: block;
             margin-bottom: 6px;
         }
-
-        /* ─── BANNER DE ERROR DE SECCIÓN ─── */
-        .section-error-banner {
-            display: none;
-            background: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #b91c1c;
-            border-radius: var(--radius-sm);
-            padding: 12px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+        .field-file .file-label {
+            font-weight: 500;
         }
-        .section-error-banner.visible {
+        .field-file .file-sub {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 4px;
             display: block;
+        }
+
+        /* ─── BASE DE CONOCIMIENTO ─── */
+        .knowledge-hint {
+            background: var(--orange-glow);
+            border-left: 3px solid var(--orange);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+        .knowledge-hint strong {
+            color: var(--orange);
         }
 
         /* ─── BOTONES ─── */
@@ -276,6 +488,7 @@
             margin-top: 32px;
             padding-top: 24px;
             border-top: 1px solid var(--border);
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -295,7 +508,7 @@
         .btn-primary {
             background: var(--orange);
             color: #fff;
-            box-shadow: 0 4px 20px rgba(255, 100, 46, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 100, 46, 0.25);
         }
         .btn-primary:hover {
             background: var(--orange-dark);
@@ -306,6 +519,7 @@
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
         .btn-secondary {
             background: transparent;
@@ -315,6 +529,14 @@
         .btn-secondary:hover {
             border-color: var(--orange);
             color: var(--orange);
+        }
+        .btn-success {
+            background: var(--success);
+            color: #fff;
+        }
+        .btn-success:hover {
+            background: #4d7a26;
+            transform: translateY(-2px);
         }
 
         /* ─── SUCCESS ─── */
@@ -327,20 +549,21 @@
             display: block;
         }
         .form-success .icon {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 16px;
         }
         .form-success h2 {
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 8px;
         }
         .form-success p {
             color: var(--muted);
             font-size: 1rem;
-            max-width: 480px;
+            max-width: 520px;
             margin: 0 auto 24px;
+            line-height: 1.7;
         }
         .form-success .btn {
             margin: 0 auto;
@@ -365,12 +588,18 @@
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 640px) {
-            body { padding: 24px 16px; }
-            .form-card { padding: 24px 20px; }
-            .section-title { font-size: 1.3rem; }
-            .header-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+            body { padding: 16px; }
+            .form-card { padding: 20px 16px; }
+            .form-title { font-size: 1.4rem; }
+            .header-bar { flex-direction: column; align-items: flex-start; }
             .form-actions { flex-direction: column; }
             .form-actions .btn { width: 100%; justify-content: center; }
+            .tratamiento-row { grid-template-columns: 1fr 1fr; }
+            .weekday-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            .tratamiento-row { grid-template-columns: 1fr; }
+            .weekday-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -380,36 +609,89 @@
 
         <!-- ─── HEADER ─── -->
         <div class="header-bar">
-            <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+            <div>
+                <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+                <span class="header-badge">Expediente Digital</span>
+            </div>
             <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sitio</a>
         </div>
 
         <!-- ─── PROGRESO ─── -->
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-label">
+                <span><i class="fas fa-file-alt"></i> <span class="section-count" id="sectionCount">1</span> de <span id="totalSections">9</span></span>
+                <span id="sectionName">Objetivos y prioridades</span>
+            </div>
         </div>
-        <div class="progress-label" id="progressLabel">Sección 1 de 5</div>
 
         <!-- ─── FORMULARIO ─── -->
         <div id="formContainer">
             <div class="form-card">
-                <h1 class="section-title">📋 Cuestionario de Implementación</h1>
-                <p class="section-desc">Completa este cuestionario para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. La información recopilada nos permitirá personalizar cada detalle del sistema.</p>
+                <h1 class="form-title">📋 Expediente de Implementación</h1>
+                <p class="form-subtitle">Completa este expediente para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. <strong>Toda la información que nos compartas será la base del sistema.</strong> Te tomará aproximadamente 20-25 minutos.</p>
 
                 <div class="section-error-banner" id="sectionErrorBanner">
-                    ⚠️ Faltan campos obligatorios por completar en esta sección.
+                    <i class="fas fa-exclamation-circle"></i> Faltan campos obligatorios por completar en esta sección.
                 </div>
 
-                <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST">
+                <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST" enctype="multipart/form-data">
 
-                    <!-- ==================== SECCIÓN 1 ==================== -->
-                    <div class="section-block" data-section="1">
-                        <h2 class="section-title" style="font-size:1.2rem;">📋 Información del consultorio</h2>
-                        <p class="section-desc" style="font-size:0.85rem;">Datos básicos del negocio.</p>
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 1: OBJETIVOS Y PRIORIDADES -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block active" data-section="1">
+                        <div class="section-header">
+                            <h2><i class="fas fa-bullseye" style="color:var(--orange);"></i> Objetivos y prioridades</h2>
+                            <p>Define qué esperas lograr con el asistente y qué te quita más tiempo hoy.</p>
+                        </div>
+
+                        <div class="field" data-checkbox-required="objetivo">
+                            <label>¿Qué esperas lograr con este asistente? <span class="required">*</span></label>
+                            <div class="field-checkbox-group">
+                                <label><input type="checkbox" name="objetivo" value="Agendar citas"> Agendar citas</label>
+                                <label><input type="checkbox" name="objetivo" value="Reducir llamadas"> Reducir llamadas</label>
+                                <label><input type="checkbox" name="objetivo" value="Responder preguntas"> Responder preguntas</label>
+                                <label><input type="checkbox" name="objetivo" value="Vender tratamientos"> Vender tratamientos</label>
+                                <label><input type="checkbox" name="objetivo" value="Todo lo anterior"> Todo lo anterior</label>
+                            </div>
+                            <div class="field-error-msg">Selecciona al menos una opción.</div>
+                        </div>
 
                         <div class="field">
-                            <label>Nombre del consultorio <span class="required">*</span></label>
-                            <input type="text" name="consultorio" required>
+                            <label>¿Qué es lo que más tiempo le quita hoy a su equipo? <span class="required">*</span></label>
+                            <select name="prioridad" required>
+                                <option value="">Selecciona una opción...</option>
+                                <option value="Contestar WhatsApp">Contestar WhatsApp</option>
+                                <option value="Llamadas">Llamadas</option>
+                                <option value="Confirmar citas">Confirmar citas</option>
+                                <option value="Cancelaciones">Cancelaciones</option>
+                                <option value="Preguntas frecuentes">Preguntas frecuentes</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Si seleccionaste "Otra", especifica:</label>
+                            <input type="text" name="prioridad_otra" placeholder="¿Qué otra actividad te quita tiempo?">
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 2: DATOS DEL NEGOCIO -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="2">
+                        <div class="section-header">
+                            <h2><i class="fas fa-store" style="color:var(--orange);"></i> Datos del negocio</h2>
+                            <p>Información básica de tu consultorio o negocio.</p>
+                        </div>
+
+                        <div class="field">
+                            <label>Nombre del consultorio o negocio <span class="required">*</span></label>
+                            <input type="text" name="nombre_negocio" required>
                             <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
@@ -420,20 +702,14 @@
                         </div>
 
                         <div class="field">
-                            <label>Especialidad <span class="required">*</span></label>
+                            <label>Especialidad o giro <span class="required">*</span></label>
                             <input type="text" name="especialidad" required>
                             <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
-                            <label>Ciudad <span class="required">*</span></label>
-                            <input type="text" name="ciudad" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>¿Tienes una o varias sucursales? <span class="required">*</span></label>
-                            <input type="text" name="sucursales" placeholder="Ej. Una / Tres: Polanco, Condesa, Santa Fe" required>
+                            <label>Ciudad y ubicación <span class="required">*</span></label>
+                            <input type="text" name="ciudad" placeholder="Ciudad, Estado" required>
                             <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
@@ -446,6 +722,7 @@
                         <div class="field">
                             <label>Link de Google Maps</label>
                             <input type="url" name="google_maps" placeholder="https://maps.google.com/...">
+                            <div class="hint">Pega el enlace de tu ubicación en Google Maps.</div>
                         </div>
 
                         <div class="field">
@@ -455,158 +732,322 @@
                         </div>
 
                         <div class="field">
-                            <label>Redes sociales (Instagram, Facebook, etc.)</label>
-                            <input type="text" name="redes" placeholder="@usuario">
-                        </div>
-
-                        <div class="field">
-                            <label>Horario de atención <span class="required">*</span></label>
-                            <input type="text" name="horario" placeholder="Ej. L-V 9am-6pm, S 9am-1pm" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                            <label>Redes sociales</label>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px;">
+                                <input type="text" name="red_instagram" placeholder="Instagram @usuario" style="width:100%;">
+                                <input type="text" name="red_facebook" placeholder="Facebook @usuario" style="width:100%;">
+                                <input type="text" name="red_google_business" placeholder="Google Business" style="width:100%;">
+                                <input type="text" name="red_tiktok" placeholder="TikTok @usuario" style="width:100%;">
+                                <input type="text" name="red_doctoralia" placeholder="Doctoralia" style="width:100%;">
+                                <input type="text" name="red_calendly" placeholder="Calendly" style="width:100%;">
+                                <input type="text" name="red_pagina_web" placeholder="Página web" style="width:100%; grid-column: span 2;">
+                            </div>
+                            <div class="hint">Completa solo las que uses. Esto servirá para futuras integraciones.</div>
                         </div>
                     </div>
 
-                    <!-- ==================== SECCIÓN 2 ==================== -->
-                    <div class="section-block" data-section="2">
-                        <h2 class="section-title" style="font-size:1.2rem;">📞 Atención al paciente</h2>
-                        <p class="section-desc" style="font-size:0.85rem;">Cómo atienden hoy a sus pacientes y qué procesos quieren automatizar.</p>
-
-                        <div class="field" data-checkbox-required="medios_contacto">
-                            <label>Medios de contacto actuales <span class="required">*</span></label>
-                            <div class="field-checkbox-group">
-                                <label><input type="checkbox" name="medios_contacto" value="WhatsApp"> WhatsApp</label>
-                                <label><input type="checkbox" name="medios_contacto" value="Llamadas"> Llamadas</label>
-                                <label><input type="checkbox" name="medios_contacto" value="Facebook"> Facebook</label>
-                                <label><input type="checkbox" name="medios_contacto" value="Instagram"> Instagram</label>
-                                <label><input type="checkbox" name="medios_contacto" value="Web"> Web</label>
-                                <label><input type="checkbox" name="medios_contacto" value="Google Maps"> Google Maps</label>
-                                <label style="grid-column: span 2;"><input type="checkbox" name="medios_contacto" value="Otro"> Otro: <input type="text" name="medios_contacto_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
-                            </div>
-                            <div class="field-error-msg">Selecciona al menos una opción.</div>
-                        </div>
-
-                        <div class="field" data-checkbox-required="registro_citas">
-                            <label>¿Cómo registran las citas hoy? <span class="required">*</span></label>
-                            <div class="field-checkbox-group">
-                                <label><input type="checkbox" name="registro_citas" value="Papel"> Papel</label>
-                                <label><input type="checkbox" name="registro_citas" value="WhatsApp"> WhatsApp</label>
-                                <label><input type="checkbox" name="registro_citas" value="Google Calendar"> Google Calendar</label>
-                                <label><input type="checkbox" name="registro_citas" value="Software"> Software</label>
-                                <label style="grid-column: span 2;"><input type="checkbox" name="registro_citas" value="Otro"> Otro: <input type="text" name="registro_citas_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
-                            </div>
-                            <div class="field-error-msg">Selecciona al menos una opción.</div>
-                        </div>
-
-                        <div class="field" data-checkbox-required="funciones_asistente">
-                            <label>Funciones que quieres en el asistente <span class="required">*</span></label>
-                            <div class="field-checkbox-group">
-                                <label><input type="checkbox" name="funciones_asistente" value="Solicitar citas"> Solicitar citas</label>
-                                <label><input type="checkbox" name="funciones_asistente" value="Confirmar"> Confirmar</label>
-                                <label><input type="checkbox" name="funciones_asistente" value="Recordatorios"> Recordatorios</label>
-                                <label><input type="checkbox" name="funciones_asistente" value="Reagendar"> Reagendar</label>
-                                <label><input type="checkbox" name="funciones_asistente" value="Cancelar"> Cancelar</label>
-                            </div>
-                            <div class="field-error-msg">Selecciona al menos una opción.</div>
-                        </div>
-                    </div>
-
-                    <!-- ==================== SECCIÓN 3 ==================== -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 3: HORARIOS -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
                     <div class="section-block" data-section="3">
-                        <h2 class="section-title" style="font-size:1.2rem;">🧠 Conocimiento del asistente</h2>
-                        <p class="section-desc" style="font-size:0.85rem;">Qué debe saber y cómo debe comportarse el asistente virtual.</p>
+                        <div class="section-header">
+                            <h2><i class="fas fa-clock" style="color:var(--orange);"></i> Horarios de atención</h2>
+                            <p>Define el horario exacto de atención para cada día.</p>
+                        </div>
 
                         <div class="field">
-                            <label>Servicios o tratamientos que ofrecen <span class="required">*</span></label>
-                            <textarea name="servicios" rows="3" required placeholder="Ej. Limpieza dental, ortodoncia, etc."></textarea>
+                            <label>Horario de atención por día <span class="required">*</span></label>
+                            <div class="weekday-grid">
+                                <div class="weekday-item">
+                                    <span class="day-label">Lunes</span>
+                                    <input type="time" name="horario_lunes_inicio" value="09:00">
+                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
+                                    <input type="time" name="horario_lunes_fin" value="18:00">
+                                </div>
+                                <div class="weekday-item">
+                                    <span class="day-label">Martes</span>
+                                    <input type="time" name="horario_martes_inicio" value="09:00">
+                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
+                                    <input type="time" name="horario_martes_fin" value="18:00">
+                                </div>
+                                <div class="weekday-item">
+                                    <span class="day-label">Miércoles</span>
+                                    <input type="time" name="horario_miercoles_inicio" value="09:00">
+                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
+                                    <input type="time" name="horario_miercoles_fin" value="18:00">
+                                </div>
+                                <div class="weekday-item">
+                                    <span class="day-label">Jueves</span>
+                                    <input type="time" name="horario_jueves_inicio" value="09:00">
+                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
+                                    <input type="time" name="horario_jueves_fin" value="18:00">
+                                </div>
+                                <div class="weekday-item">
+                                    <span class="day-label">Viernes</span>
+                                    <input type="time" name="horario_viernes_inicio" value="09:00">
+                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
+                                    <input type="time" name="horario_viernes_fin" value="18:00">
+                                </div>
+                                <div class="weekday-item">
+                                    <span class="day-label">Sábado</span>
+                                    <input type="time" name="horario_sabado_inicio" value="09:00">
+                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
+                                    <input type="time" name="horario_sabado_fin" value="13:00">
+                                </div>
+                                <div class="weekday-item" style="grid-column: span 2;">
+                                    <span class="day-label">Domingo</span>
+                                    <span style="font-size:0.8rem; color:var(--muted);">Cerrado</span>
+                                    <input type="hidden" name="horario_domingo_inicio" value="">
+                                    <input type="hidden" name="horario_domingo_fin" value="">
+                                </div>
+                            </div>
+                            <div class="hint">Ajusta los horarios según tu operación. Los valores predeterminados son orientativos.</div>
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 4: CONTACTOS CLAVE -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="4">
+                        <div class="section-header">
+                            <h2><i class="fas fa-address-book" style="color:var(--orange);"></i> Contactos clave</h2>
+                            <p>¿Quién debe recibir qué tipo de comunicación?</p>
+                        </div>
+
+                        <div class="field">
+                            <label>Doctor(a) o responsable principal <span class="required">*</span></label>
+                            <input type="text" name="contacto_doctor" placeholder="Nombre y teléfono" required>
                             <div class="field-error-msg">Este campo es obligatorio.</div>
                         </div>
 
                         <div class="field">
-                            <label>Preguntas más frecuentes de pacientes <span class="required">*</span></label>
-                            <textarea name="preguntas_frecuentes" rows="4" required placeholder="Ej. ¿Cuánto cuesta una limpieza? ¿Aceptan seguros? ¿Tienen urgencias? (escribe al menos 3)"></textarea>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                            <label>Recepcionista o primer contacto</label>
+                            <input type="text" name="contacto_recepcionista" placeholder="Nombre y teléfono">
                         </div>
 
-                        <div class="field" data-checkbox-required="info_asistente">
-                            <label>Información que debe dar el asistente <span class="required">*</span></label>
+                        <div class="field">
+                            <label>Administrador(a) o encargado de pagos</label>
+                            <input type="text" name="contacto_administrador" placeholder="Nombre y teléfono">
+                        </div>
+
+                        <div class="field">
+                            <label>Contacto de facturación</label>
+                            <input type="text" name="contacto_facturacion" placeholder="Nombre y teléfono">
+                        </div>
+
+                        <div class="field">
+                            <label>Contacto para emergencias</label>
+                            <input type="text" name="contacto_emergencias" placeholder="Nombre y teléfono">
+                        </div>
+
+                        <div class="field">
+                            <label>Otro contacto relevante</label>
+                            <input type="text" name="contacto_otro" placeholder="Nombre, rol y teléfono">
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 5: TRATAMIENTOS O SERVICIOS -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="5">
+                        <div class="section-header">
+                            <h2><i class="fas fa-stethoscope" style="color:var(--orange);"></i> Tratamientos o servicios</h2>
+                            <p>¿Qué ofreces? Esto permitirá que el bot responda con información precisa.</p>
+                        </div>
+
+                        <div id="tratamientosContainer">
+                            <div class="tratamiento-row">
+                                <div class="field">
+                                    <label>Tratamiento</label>
+                                    <input type="text" name="tratamiento_nombre[]" placeholder="Limpieza dental">
+                                </div>
+                                <div class="field">
+                                    <label>Tiempo promedio</label>
+                                    <input type="text" name="tratamiento_tiempo[]" placeholder="45 min">
+                                </div>
+                                <div class="field">
+                                    <label>Costo aprox.</label>
+                                    <input type="text" name="tratamiento_costo[]" placeholder="$1,500">
+                                </div>
+                                <div class="field">
+                                    <label>¿Requiere valoración?</label>
+                                    <select name="tratamiento_valoracion[]">
+                                        <option value="Sí">Sí</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 8px;">
+                            <button type="button" class="btn-add-row" onclick="addTratamientoRow()">
+                                <i class="fas fa-plus"></i> Agregar otro tratamiento
+                            </button>
+                            <span style="font-size:0.75rem; color:var(--muted); margin-left:12px;">Agrega todos los que ofreces</span>
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 6: PREGUNTAS FRECUENTES -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="6">
+                        <div class="section-header">
+                            <h2><i class="fas fa-question-circle" style="color:var(--orange);"></i> Preguntas frecuentes</h2>
+                            <p>Escribe al menos 10 preguntas que los pacientes te hacen todo el tiempo. Esto es fundamental para el bot.</p>
+                        </div>
+
+                        <div class="field">
+                            <label>Preguntas frecuentes (mínimo 10) <span class="required">*</span></label>
+                            <div class="hint" style="margin-bottom:6px;">Escribe una por línea, con su respuesta. Ejemplo: "¿Aceptan tarjeta? — Sí, aceptamos todas las tarjetas de crédito y débito."</div>
+                            <textarea name="preguntas_frecuentes" rows="12" required placeholder="Ej. ¿Cuánto cuesta una limpieza dental? — Desde $1,200 MXN dependiendo del caso.&#10;¿Aceptan seguros? — Sí, trabajamos con GNP, MetLife y AXA.&#10;¿Atienden urgencias? — Sí, tenemos horario de urgencias de 8am a 10pm.&#10;¿Hay estacionamiento? — Sí, tenemos estacionamiento gratuito para pacientes.&#10;¿Cuánto dura una consulta? — Aproximadamente 45 minutos.&#10;¿Tienen financiamiento? — Sí, tenemos planes a meses sin intereses.&#10;¿Dónde están ubicados? — En Av. Ejemplo #123, Colonia Centro.&#10;¿Qué especialidades tienen? — Ortodoncia, endodoncia, periodoncia.&#10;¿Hacen limpieza dental con láser? — Sí, contamos con tecnología láser.&#10;¿Se necesita cita previa? — Sí, todas nuestras atenciones son con cita."></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio. Escribe al menos 10 preguntas.</div>
+                        </div>
+                    </div>
+
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 7: ESCALAMIENTO Y TONO -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="7">
+                        <div class="section-header">
+                            <h2><i class="fas fa-arrow-right" style="color:var(--orange);"></i> Escalamiento y tono</h2>
+                            <p>¿Cuándo debe intervenir una persona? ¿Cómo quieres que hable el asistente?</p>
+                        </div>
+
+                        <div class="field" data-checkbox-required="escalamiento">
+                            <label>¿Cuándo debe intervenir una persona? <span class="required">*</span></label>
                             <div class="field-checkbox-group">
-                                <label><input type="checkbox" name="info_asistente" value="Horarios"> Horarios</label>
-                                <label><input type="checkbox" name="info_asistente" value="Dirección"> Dirección</label>
-                                <label><input type="checkbox" name="info_asistente" value="Formas de pago"> Formas de pago</label>
-                                <label><input type="checkbox" name="info_asistente" value="Promociones"> Promociones</label>
-                                <label><input type="checkbox" name="info_asistente" value="Tratamientos"> Tratamientos</label>
-                                <label><input type="checkbox" name="info_asistente" value="Especialidades"> Especialidades</label>
-                                <label style="grid-column: span 2;"><input type="checkbox" name="info_asistente" value="Otra"> Otra: <input type="text" name="info_asistente_otro" placeholder="Especifica" style="width:auto; display:inline; padding:4px 8px; margin-left:4px; border:1px solid var(--border); border-radius:4px;"></label>
+                                <label><input type="checkbox" name="escalamiento" value="Urgencia"> Urgencia</label>
+                                <label><input type="checkbox" name="escalamiento" value="Queja"> Queja</label>
+                                <label><input type="checkbox" name="escalamiento" value="Cotización"> Cotización</label>
+                                <label><input type="checkbox" name="escalamiento" value="Cancelación"> Cancelación</label>
+                                <label><input type="checkbox" name="escalamiento" value="Información confidencial"> Información confidencial</label>
+                                <label><input type="checkbox" name="escalamiento" value="Otro"> Otro</label>
                             </div>
                             <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
 
                         <div class="field">
-                            <label>¿Cuándo debe pasar la conversación a una persona? <span class="required">*</span></label>
-                            <textarea name="escalar_humano" rows="3" required placeholder="Ej. Cuando el paciente pregunte sobre precios exactos, cuando necesite una cotización personalizada, o cuando solicite hablar con el doctor."></textarea>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                            <label>Si seleccionaste "Otro", especifica:</label>
+                            <input type="text" name="escalamiento_otro" placeholder="¿En qué otro caso debe intervenir una persona?">
                         </div>
 
                         <div class="field">
-                            <label>¿Tienen página web? (Sí/No — link si tienen)</label>
-                            <input type="text" name="pagina_web" placeholder="https://...">
+                            <label>¿Cómo quieres que hable el asistente? <span class="required">*</span></label>
+                            <div class="field-radio-group">
+                                <label><input type="radio" name="tono" value="Formal"> Formal</label>
+                                <label><input type="radio" name="tono" value="Cercano"> Cercano</label>
+                                <label><input type="radio" name="tono" value="Muy profesional"> Muy profesional</label>
+                                <label><input type="radio" name="tono" value="Alegre"> Alegre</label>
+                                <label><input type="radio" name="tono" value="Otro"> Otro</label>
+                            </div>
+                            <div class="field-error-msg">Selecciona una opción.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Si seleccionaste "Otro", describe el tono deseado:</label>
+                            <input type="text" name="tono_otro" placeholder="Ej. 'Queremos que sea amable pero directo'">
                         </div>
                     </div>
 
-                    <!-- ==================== SECCIÓN 4 ==================== -->
-                    <div class="section-block" data-section="4">
-                        <h2 class="section-title" style="font-size:1.2rem;">⚙️ Datos para configuración</h2>
-                        <p class="section-desc" style="font-size:0.85rem;">Mensajes, promociones y detalles clave para la configuración final.</p>
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 8: BASE DE CONOCIMIENTO -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="8">
+                        <div class="section-header">
+                            <h2><i class="fas fa-database" style="color:var(--orange);"></i> Base de conocimiento</h2>
+                            <p>Esta es la sección más importante. Pega toda la información que el asistente debería saber.</p>
+                        </div>
 
-                        <div class="field">
-                            <label>Mensaje de bienvenida deseado</label>
-                            <textarea name="mensaje_bienvenida" rows="3" placeholder="Ej. ¡Hola! Soy el asistente virtual de [Consultorio]. ¿En qué puedo ayudarte?"></textarea>
+                        <div class="knowledge-hint">
+                            <strong><i class="fas fa-lightbulb"></i> Piensa en esto como el "cerebro" del asistente.</strong><br>
+                            Incluye: políticas, promociones, historia del consultorio, convenios, precios, indicaciones, especialidades, protocolos de atención, y cualquier otra información que quieras que el bot sepa.
                         </div>
 
                         <div class="field">
-                            <label>Mensaje para fuera de horario</label>
-                            <textarea name="mensaje_fuera_horario" rows="3" placeholder="Ej. Gracias por escribirnos. Nuestro horario es de 9am a 6pm. Te atenderemos mañana. ¿Te gustaría agendar una cita?"></textarea>
-                        </div>
+                            <label>Base de conocimiento del asistente <span class="required">*</span></label>
+                            <textarea name="base_conocimiento" rows="10" required placeholder="Pega aquí toda la información relevante:
 
-                        <div class="field">
-                            <label>Promoción o servicio a destacar</label>
-                            <input type="text" name="promocion" placeholder="Ej. 20% de descuento en primera consulta">
-                        </div>
+    Políticas de atención:
+    - Cancelaciones con 24 horas de anticipación
+    - Los pagos se realizan al final de la consulta
 
-                        <div class="field">
-                            <label>Formas de pago aceptadas / aseguradoras</label>
-                            <input type="text" name="formas_pago" placeholder="Ej. Efectivo, tarjeta, seguro dental GNP">
-                        </div>
+    Promociones:
+    - 20% de descuento en primera consulta
+    - Plan de 5 sesiones con 15% de descuento
 
-                        <div class="field">
-                            <label>Algo más que debamos saber del funcionamiento del consultorio</label>
-                            <textarea name="info_extra" rows="3" placeholder="Cualquier información adicional que creas importante para la configuración."></textarea>
+    Convenios:
+    - GNP, MetLife, AXA
+
+    Especialidades:
+    - Ortodoncia, endodoncia, periodoncia, cirugía maxilofacial
+
+    Indicaciones pre-consulta:
+    - Llegar 10 minutos antes
+    - Traer estudios previos si los tienes
+
+    (Pega todo lo que consideres importante)"></textarea>
+                            <div class="field-error-msg">Este campo es obligatorio. Es el corazón del sistema.</div>
+                            <div class="hint">Cuantos más detalles pongas, mejor será la respuesta del asistente.</div>
                         </div>
                     </div>
 
-                    <!-- ==================== SECCIÓN 5 ==================== -->
-                    <div class="section-block" data-section="5">
-                        <h2 class="section-title" style="font-size:1.2rem;">📤 Archivos adjuntos</h2>
-                        <p class="section-desc" style="font-size:0.85rem;">Archivos necesarios para la personalización del asistente y su identidad visual.</p>
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <!-- SECCIÓN 9: ARCHIVOS -->
+                    <!-- ════════════════════════════════════════════════════════════════ -->
+                    <div class="section-block" data-section="9">
+                        <div class="section-header">
+                            <h2><i class="fas fa-paperclip" style="color:var(--orange);"></i> Archivos adjuntos</h2>
+                            <p>Sube todos los archivos que tengas. Así todo llega junto en un solo lugar.</p>
+                        </div>
 
                         <div class="field">
                             <label>Logotipo y colores institucionales</label>
                             <div class="field-file" id="logoDropzone" onclick="document.getElementById('logoInput').click()">
                                 <span class="file-icon">🖼️</span>
                                 <span class="file-label">Haz clic para subir el logotipo</span>
+                                <span class="file-sub">PNG o JPG · Máx. 10 MB</span>
                                 <input type="file" id="logoInput" name="logo" accept="image/*">
                             </div>
-                            <div class="hint">Formatos: PNG o JPG. Tamaño máximo: 10 MB.</div>
                         </div>
 
                         <div class="field">
-                            <label>Fotos del consultorio</label>
+                            <label>Fotografías del consultorio</label>
                             <div class="field-file" id="fotosDropzone" onclick="document.getElementById('fotosInput').click()">
                                 <span class="file-icon">📷</span>
                                 <span class="file-label">Haz clic para subir fotos</span>
+                                <span class="file-sub">Puedes subir varias · Máx. 10 MB por archivo</span>
                                 <input type="file" id="fotosInput" name="fotos" accept="image/*" multiple>
                             </div>
-                            <div class="hint">Puedes subir una o varias fotos. Tamaño máximo: 10 MB por archivo.</div>
+                        </div>
+
+                        <div class="field">
+                            <label>Aviso de privacidad</label>
+                            <div class="field-file" onclick="document.getElementById('privacidadInput').click()">
+                                <span class="file-icon">📄</span>
+                                <span class="file-label">Haz clic para subir el aviso de privacidad</span>
+                                <span class="file-sub">PDF o DOCX · Máx. 10 MB</span>
+                                <input type="file" id="privacidadInput" name="aviso_privacidad" accept=".pdf,.docx">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Lista de tratamientos o servicios (documento)</label>
+                            <div class="field-file" onclick="document.getElementById('listaInput').click()">
+                                <span class="file-icon">📋</span>
+                                <span class="file-label">Haz clic para subir la lista de tratamientos</span>
+                                <span class="file-sub">PDF, DOCX o XLSX · Máx. 10 MB</span>
+                                <input type="file" id="listaInput" name="lista_tratamientos" accept=".pdf,.docx,.xlsx">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Otros documentos relevantes</label>
+                            <div class="field-file" onclick="document.getElementById('otrosInput').click()">
+                                <span class="file-icon">📁</span>
+                                <span class="file-label">Haz clic para subir otros documentos</span>
+                                <span class="file-sub">Cualquier archivo adicional · Máx. 10 MB</span>
+                                <input type="file" id="otrosInput" name="otros_documentos" accept=".pdf,.docx,.xlsx,.png,.jpg">
+                            </div>
                         </div>
                     </div>
 
@@ -618,8 +1059,8 @@
                         <button type="button" class="btn btn-primary" id="nextBtn">
                             Siguiente <i class="fas fa-arrow-right"></i>
                         </button>
-                        <button type="submit" class="btn btn-primary" id="submitBtn" style="display:none;">
-                            <i class="fas fa-paper-plane"></i> Enviar cuestionario
+                        <button type="submit" class="btn btn-success" id="submitBtn" style="display:none;">
+                            <i class="fas fa-paper-plane"></i> Enviar expediente
                         </button>
                     </div>
 
@@ -630,8 +1071,9 @@
         <!-- ─── MENSAJE DE ÉXITO ─── -->
         <div class="form-success" id="formSuccess">
             <div class="icon">🎉</div>
-            <h2>¡Cuestionario enviado!</h2>
-            <p>Hemos recibido tu información. En las próximas 24 horas revisaremos los datos y te contactaremos para confirmar los detalles y comenzar con la configuración del asistente virtual.</p>
+            <h2>¡Expediente enviado!</h2>
+            <p>Hemos recibido toda la información. En las próximas 24 horas revisaremos los datos y comenzaremos con la configuración de tu asistente virtual.</p>
+            <p style="font-size:0.9rem; color:var(--muted);">Ahora podremos construir el prompt del chatbot, la base de conocimiento y la documentación técnica sin necesidad de hacer más preguntas.</p>
             <a href="/" class="btn btn-primary">Volver al sitio</a>
         </div>
 
@@ -649,23 +1091,41 @@
         const MAX_FILE_MB = 10;
         const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
 
+        // ─── NOMBRES DE SECCIONES ───
+        const sectionNames = [
+            'Objetivos y prioridades',
+            'Datos del negocio',
+            'Horarios de atención',
+            'Contactos clave',
+            'Tratamientos o servicios',
+            'Preguntas frecuentes',
+            'Escalamiento y tono',
+            'Base de conocimiento',
+            'Archivos adjuntos'
+        ];
+
         document.addEventListener('DOMContentLoaded', function() {
             const sections = Array.from(document.querySelectorAll('.section-block'));
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             const submitBtn = document.getElementById('submitBtn');
             const progressFill = document.getElementById('progressFill');
-            const progressLabel = document.getElementById('progressLabel');
+            const sectionCount = document.getElementById('sectionCount');
+            const totalSections = document.getElementById('totalSections');
+            const sectionName = document.getElementById('sectionName');
             const sectionErrorBanner = document.getElementById('sectionErrorBanner');
             let currentSection = 0;
 
+            totalSections.textContent = sections.length;
+
             function showSection(index) {
                 sections.forEach((section, i) => {
-                    section.style.display = (i === index) ? 'block' : 'none';
+                    section.classList.toggle('active', i === index);
                 });
                 const progress = ((index + 1) / sections.length) * 100;
                 progressFill.style.width = progress + '%';
-                progressLabel.textContent = `Sección ${index + 1} de ${sections.length}`;
+                sectionCount.textContent = index + 1;
+                sectionName.textContent = sectionNames[index] || 'Sección';
                 sectionErrorBanner.classList.remove('visible');
 
                 prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
@@ -680,16 +1140,13 @@
             }
 
             // ─── VALIDACIÓN DE LA SECCIÓN ACTUAL ───
-            // HTML5 "required" solo valida al hacer submit del <form>. Como este
-            // formulario está dividido en pasos, sin esto se podía avanzar sin
-            // llenar nada y el usuario solo se enteraba hasta el final.
             function validateSection(index) {
                 const section = sections[index];
                 let valid = true;
                 let firstInvalidEl = null;
 
                 // Inputs y textareas requeridos
-                section.querySelectorAll('input[required], textarea[required]').forEach(el => {
+                section.querySelectorAll('input[required], textarea[required], select[required]').forEach(el => {
                     const field = el.closest('.field');
                     if (!el.value.trim()) {
                         valid = false;
@@ -713,6 +1170,22 @@
                     }
                 });
 
+                // Radio buttons requeridos (sección 7)
+                section.querySelectorAll('.field-radio-group').forEach(group => {
+                    const radioName = group.querySelector('input[type="radio"]')?.name;
+                    if (radioName) {
+                        const checked = group.querySelector(`input[name="${radioName}"]:checked`);
+                        const field = group.closest('.field');
+                        if (!checked && field.querySelector('label .required')) {
+                            valid = false;
+                            field.classList.add('field-invalid');
+                            if (!firstInvalidEl) firstInvalidEl = field;
+                        } else if (field) {
+                            field.classList.remove('field-invalid');
+                        }
+                    }
+                });
+
                 if (!valid) {
                     sectionErrorBanner.classList.add('visible');
                     if (firstInvalidEl) {
@@ -725,8 +1198,10 @@
                 return valid;
             }
 
+            // ─── MOSTRAR PRIMERA SECCIÓN ───
             showSection(0);
 
+            // ─── BOTONES DE NAVEGACIÓN ───
             nextBtn.addEventListener('click', function() {
                 if (!validateSection(currentSection)) return;
                 if (currentSection < sections.length - 1) {
@@ -742,6 +1217,27 @@
                 }
             });
 
+            // ─── TE CLA "ENTER" EN EL ÚLTIMO CAMPO PARA AVANZAR ───
+            document.querySelectorAll('.section-block input, .section-block textarea, .section-block select').forEach(el => {
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        const section = this.closest('.section-block');
+                        if (section && section === sections[currentSection]) {
+                            const isLastField = section.querySelectorAll('input, textarea, select').length - 1 ===
+                                Array.from(section.querySelectorAll('input, textarea, select')).indexOf(this);
+                            if (isLastField) {
+                                e.preventDefault();
+                                if (!validateSection(currentSection)) return;
+                                if (currentSection < sections.length - 1) {
+                                    currentSection++;
+                                    showSection(currentSection);
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
             // ─── ENVÍO DEL FORMULARIO ───
             const form = document.getElementById('implementationForm');
             const formContainer = document.getElementById('formContainer');
@@ -750,10 +1246,11 @@
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                // Valida también la última sección antes de enviar
+                // Valida la última sección antes de enviar
                 if (!validateSection(currentSection)) return;
 
                 const submitBtnEl = document.getElementById('submitBtn');
+                const originalText = submitBtnEl.innerHTML;
                 submitBtnEl.disabled = true;
                 submitBtnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
@@ -775,7 +1272,7 @@
                 } catch (error) {
                     alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
                     submitBtnEl.disabled = false;
-                    submitBtnEl.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar cuestionario';
+                    submitBtnEl.innerHTML = originalText;
                 }
             });
 
@@ -795,15 +1292,74 @@
 
                     if (tooLarge.length > 0) {
                         dropzone.classList.add('file-error');
-                        label.textContent = `⚠️ ${tooLarge[0].name} pesa más de ${MAX_FILE_MB} MB. Sube un archivo más ligero.`;
-                        this.value = ''; // limpia la selección inválida
+                        label.textContent = `⚠️ "${tooLarge[0].name}" pesa más de ${MAX_FILE_MB} MB. Sube un archivo más ligero.`;
+                        this.value = '';
                         return;
                     }
 
                     dropzone.classList.remove('file-error');
-                    label.textContent = `✅ ${this.files.length} archivo(s) seleccionado(s)`;
+                    const count = this.files.length;
+                    label.textContent = count === 1 ? `✅ ${this.files[0].name} (${(this.files[0].size / 1024 / 1024).toFixed(1)} MB)` : `✅ ${count} archivos seleccionados`;
                 });
             });
+
+            // ─── AGREGAR FILAS DE TRATAMIENTO ───
+            window.addTratamientoRow = function() {
+                const container = document.getElementById('tratamientosContainer');
+                const rows = container.querySelectorAll('.tratamiento-row');
+                const lastRow = rows[rows.length - 1];
+
+                // Clonar la última fila
+                const newRow = lastRow.cloneNode(true);
+                newRow.querySelectorAll('input, select').forEach(el => {
+                    if (el.tagName === 'INPUT') {
+                        el.value = '';
+                    } else if (el.tagName === 'SELECT') {
+                        el.selectedIndex = 0;
+                    }
+                });
+
+                container.appendChild(newRow);
+
+                // Agregar botón de eliminar si hay más de 1 fila
+                updateTratamientoActions();
+
+                // Hacer scroll al nuevo campo
+                newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            };
+
+            function updateTratamientoActions() {
+                const rows = document.querySelectorAll('.tratamiento-row');
+                rows.forEach((row, index) => {
+                    let actions = row.querySelector('.tratamiento-actions');
+                    if (rows.length > 1) {
+                        if (!actions) {
+                            actions = document.createElement('div');
+                            actions.className = 'tratamiento-actions';
+                            const removeBtn = document.createElement('button');
+                            removeBtn.type = 'button';
+                            removeBtn.className = 'btn-remove-row';
+                            removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                            removeBtn.title = 'Eliminar este tratamiento';
+                            removeBtn.onclick = function() {
+                                if (document.querySelectorAll('.tratamiento-row').length > 1) {
+                                    row.remove();
+                                    updateTratamientoActions();
+                                }
+                            };
+                            actions.appendChild(removeBtn);
+                            // Insertar acciones al final de la fila
+                            const lastField = row.querySelector('.field:last-child');
+                            lastField.parentNode.insertBefore(actions, lastField.nextSibling);
+                        }
+                    } else if (actions) {
+                        actions.remove();
+                    }
+                });
+            }
+
+            // Inicializar acciones
+            setTimeout(updateTratamientoActions, 100);
         });
     </script>
 
