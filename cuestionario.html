@@ -361,11 +361,6 @@
             outline: none;
             border-color: var(--orange);
         }
-        .weekday-item .cerrado-label {
-            color: var(--muted);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
 
         /* ─── TRATAMIENTO ROW ─── */
         .tratamiento-row {
@@ -758,21 +753,25 @@
                     <div class="section-block" data-section="3">
                         <div class="section-header">
                             <h2><i class="fas fa-clock" style="color:var(--orange);"></i> Horarios de atención</h2>
-                            <p>Define el horario de atención para cada día.</p>
+                            <p>Define el horario de atención para cada día. Si no aplica, selecciona "No aplica".</p>
                         </div>
 
                         <div class="field">
-                            <label>Horario de atención por día <span class="required">*</span></label>
+                            <label>Horario de atención por día</label>
                             <div class="weekday-grid">
                                 <!-- Lunes -->
                                 <div class="weekday-item">
                                     <span class="day-label">Lunes</span>
                                     <select name="horario_lunes">
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
                                         <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
                                         <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
                                         <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
+                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
                                         <option value="Cerrado">Cerrado</option>
                                     </select>
                                 </div>
@@ -780,11 +779,15 @@
                                 <div class="weekday-item">
                                     <span class="day-label">Martes</span>
                                     <select name="horario_martes">
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
                                         <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
                                         <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
                                         <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
+                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
                                         <option value="Cerrado">Cerrado</option>
                                     </select>
                                 </div>
@@ -792,11 +795,15 @@
                                 <div class="weekday-item">
                                     <span class="day-label">Miércoles</span>
                                     <select name="horario_miercoles">
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
                                         <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
                                         <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
                                         <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
+                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
                                         <option value="Cerrado">Cerrado</option>
                                     </select>
                                 </div>
@@ -804,11 +811,15 @@
                                 <div class="weekday-item">
                                     <span class="day-label">Jueves</span>
                                     <select name="horario_jueves">
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
                                         <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
                                         <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
                                         <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
+                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
                                         <option value="Cerrado">Cerrado</option>
                                     </select>
                                 </div>
@@ -816,11 +827,15 @@
                                 <div class="weekday-item">
                                     <span class="day-label">Viernes</span>
                                     <select name="horario_viernes">
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
                                         <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
                                         <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
                                         <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
+                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
                                         <option value="Cerrado">Cerrado</option>
                                     </select>
                                 </div>
@@ -828,20 +843,29 @@
                                 <div class="weekday-item">
                                     <span class="day-label">Sábado</span>
                                     <select name="horario_sabado">
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-14:00">8:00 AM – 2:00 PM</option>
                                         <option value="09:00-13:00">9:00 AM – 1:00 PM</option>
                                         <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
                                         <option value="10:00-14:00">10:00 AM – 2:00 PM</option>
+                                        <option value="10:00-16:00">10:00 AM – 4:00 PM</option>
                                         <option value="Cerrado">Cerrado</option>
                                     </select>
                                 </div>
                                 <!-- Domingo -->
                                 <div class="weekday-item">
                                     <span class="day-label">Domingo</span>
-                                    <span class="cerrado-label">Cerrado</span>
-                                    <input type="hidden" name="horario_domingo" value="Cerrado">
+                                    <select name="horario_domingo">
+                                        <option value="">Selecciona...</option>
+                                        <option value="No aplica">🚫 No aplica</option>
+                                        <option value="08:00-14:00">8:00 AM – 2:00 PM</option>
+                                        <option value="09:00-13:00">9:00 AM – 1:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="hint">Selecciona el horario de cada día. Los valores predeterminados son orientativos.</div>
+                            <div class="hint">Selecciona "No aplica" si ese día no tiene horario definido.</div>
                         </div>
                     </div>
 
