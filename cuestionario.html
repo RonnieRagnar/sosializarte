@@ -4,1399 +4,600 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
     <title>Expediente de Implementación · Sosializarte</title>
-
     <meta name="description" content="Completa este expediente digital para configurar tu asistente virtual.">
     <meta name="robots" content="noindex, follow">
-
     <link rel="canonical" href="https://sosializarte.com/cuestionario" />
     <link rel="icon" href="/favicon.ico">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* ─── RESET Y BASE ─── */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --orange: #FF642E;
-            --orange-dark: #E04D1A;
-            --orange-glow: rgba(255, 100, 46, 0.1);
-            --ink: #0d0d0d;
-            --paper: #F7F4EF;
-            --surface: #FDFCFA;
-            --muted: #6b6b6b;
-            --border: #E8E4DC;
-            --border-strong: #C9C4BB;
-            --radius-sm: 8px;
-            --radius-md: 14px;
-            --radius-lg: 22px;
-            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
-            --shadow-lift: 0 8px 40px rgba(0, 0, 0, 0.09);
-            --success: #669933;
-            --error: #CC0033;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--paper);
-            color: var(--ink);
-            line-height: 1.6;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-        }
-
-        /* ─── HEADER ─── */
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .logo {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--ink);
-            text-decoration: none;
-            display: flex;
-            align-items: baseline;
-            gap: 1px;
-        }
-        .logo .slash {
-            color: var(--orange);
-            font-weight: 900;
-            font-size: 1.6rem;
-        }
-
-        .back-link {
-            color: var(--orange);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .back-link:hover {
-            color: var(--orange-dark);
-        }
-
-        .header-badge {
-            font-size: 0.6rem;
-            font-weight: 700;
-            background: var(--orange);
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 999px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-left: 8px;
-        }
-
-        /* ─── PROGRESO ─── */
-        .progress-wrapper {
-            margin-bottom: 28px;
-        }
-        .progress-bar {
-            background: var(--border);
-            border-radius: 999px;
-            height: 6px;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%;
-            background: var(--orange);
-            border-radius: 999px;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.78rem;
-            color: var(--muted);
-            margin-top: 6px;
-        }
-        .progress-label .section-count {
-            font-weight: 600;
-            color: var(--ink);
-        }
-
-        /* ─── FORMULARIO ─── */
-        .form-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 40px 36px;
-            box-shadow: var(--shadow-card);
-        }
-
-        .form-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-            letter-spacing: -0.02em;
-        }
-        .form-subtitle {
-            color: var(--muted);
-            font-size: 0.95rem;
-            margin-bottom: 28px;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .section-error-banner {
-            display: none;
-            background: rgba(204, 0, 51, 0.06);
-            border: 1px solid rgba(204, 0, 51, 0.25);
-            color: var(--error);
-            border-radius: var(--radius-sm);
-            padding: 12px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        .section-error-banner.visible {
-            display: block;
-        }
-
-        /* ─── SECCIONES ─── */
-        .section-block {
-            display: none;
-            animation: fadeIn 0.25s ease;
-        }
-        .section-block.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-header {
-            margin-bottom: 24px;
-        }
-        .section-header h2 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-header p {
-            color: var(--muted);
-            font-size: 0.85rem;
-            font-weight: 300;
-        }
-
-        /* ─── CAMPOS ─── */
-        .field {
-            margin-bottom: 20px;
-        }
-        .field label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 4px;
-        }
-        .field label .required {
-            color: var(--error);
-            font-weight: 700;
-        }
-        .field .hint {
-            font-size: 0.75rem;
-            color: var(--muted);
-            margin-top: 2px;
-            font-weight: 300;
-        }
-
-        .field input,
-        .field textarea,
-        .field select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            background: var(--paper);
-            color: var(--ink);
-            transition: border-color 0.2s;
-        }
-        .field input:focus,
-        .field textarea:focus,
-        .field select:focus {
-            outline: none;
-            border-color: var(--orange);
-        }
-        .field textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .field.field-invalid input,
-        .field.field-invalid textarea,
-        .field.field-invalid select {
-            border-color: var(--error);
-        }
-        .field-error-msg {
-            display: none;
-            color: var(--error);
-            font-size: 0.78rem;
-            margin-top: 4px;
-            font-weight: 600;
-        }
-        .field.field-invalid .field-error-msg {
-            display: block;
-        }
-
-        /* ─── CHECKBOX GRID ─── */
-        .field-checkbox-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 16px;
-            margin-top: 4px;
-        }
-        @media (max-width: 480px) {
-            .field-checkbox-group {
-                grid-template-columns: 1fr;
-            }
-        }
-        .field-checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 400;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-        .field-checkbox-group input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--orange);
-            flex-shrink: 0;
-        }
-
-        /* ─── RADIO GROUP ─── */
-        .field-radio-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 16px;
-            margin-top: 4px;
-        }
-        .field-radio-group label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 400;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-        .field-radio-group input[type="radio"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--orange);
-            flex-shrink: 0;
-        }
-
-        /* ─── DÍAS DE LA SEMANA CON COMBO ─── */
-        .weekday-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 16px;
-            margin-top: 4px;
-        }
-        @media (min-width: 480px) {
-            .weekday-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-        }
-        .weekday-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-        }
-        .weekday-item .day-label {
-            min-width: 55px;
-            font-weight: 500;
-        }
-        .weekday-item select {
-            flex: 1;
-            padding: 6px 8px;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.8rem;
-            background: var(--paper);
-            color: var(--ink);
-            min-width: 0;
-        }
-        .weekday-item select:focus {
-            outline: none;
-            border-color: var(--orange);
-        }
-
-        /* ─── TRATAMIENTO ROW ─── */
-        .tratamiento-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            gap: 8px;
-            margin-bottom: 6px;
-            align-items: end;
-        }
-        @media (max-width: 640px) {
-            .tratamiento-row {
-                grid-template-columns: 1fr 1fr;
-                gap: 6px;
-            }
-        }
-        .tratamiento-row .field {
-            margin-bottom: 0;
-        }
-        .tratamiento-row .field label {
-            font-size: 0.7rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            color: var(--muted);
-            letter-spacing: 0.05em;
-        }
-        .tratamiento-row .field input,
-        .tratamiento-row .field select {
-            padding: 8px 10px;
-            font-size: 0.85rem;
-        }
-
-        .tratamiento-actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            padding-top: 4px;
-        }
-        .btn-add-row {
-            background: none;
-            border: 1px dashed var(--border-strong);
-            border-radius: var(--radius-sm);
-            padding: 6px 16px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--muted);
-            cursor: pointer;
-            transition: all 0.15s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .btn-add-row:hover {
-            border-color: var(--orange);
-            color: var(--orange);
-        }
-        .btn-remove-row {
-            background: none;
-            border: none;
-            color: var(--muted);
-            cursor: pointer;
-            font-size: 0.8rem;
-            padding: 4px;
-            transition: color 0.15s;
-        }
-        .btn-remove-row:hover {
-            color: var(--error);
-        }
-
-        /* ─── FILE UPLOAD ─── */
-        .field-file {
-            border: 2px dashed var(--border);
-            border-radius: var(--radius-sm);
-            padding: 24px;
-            text-align: center;
-            color: var(--muted);
-            transition: border-color 0.2s, background 0.2s;
-            cursor: pointer;
-            background: var(--paper);
-        }
-        .field-file:hover {
-            border-color: var(--orange);
-            background: var(--surface);
-        }
-        .field-file.file-error {
-            border-color: var(--error);
-        }
-        .field-file input[type="file"] {
-            display: none;
-        }
-        .field-file .file-icon {
-            font-size: 2.2rem;
-            display: block;
-            margin-bottom: 6px;
-        }
-        .field-file .file-label {
-            font-weight: 500;
-        }
-        .field-file .file-sub {
-            font-size: 0.75rem;
-            color: var(--muted);
-            margin-top: 4px;
-            display: block;
-        }
-
-        /* ─── BASE DE CONOCIMIENTO ─── */
-        .knowledge-hint {
-            background: var(--orange-glow);
-            border-left: 3px solid var(--orange);
-            padding: 12px 16px;
-            border-radius: var(--radius-sm);
-            margin-bottom: 12px;
-            font-size: 0.85rem;
-            color: var(--ink);
-        }
-        .knowledge-hint strong {
-            color: var(--orange);
-        }
-
-        /* ─── BOTONES ─── */
-        .form-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 999px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-        }
-        .btn-primary {
-            background: var(--orange);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(255, 100, 46, 0.25);
-        }
-        .btn-primary:hover {
-            background: var(--orange-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(255, 100, 46, 0.35);
-        }
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--muted);
-            border: 1.5px solid var(--border-strong);
-        }
-        .btn-secondary:hover {
-            border-color: var(--orange);
-            color: var(--orange);
-        }
-        .btn-success {
-            background: var(--success);
-            color: #fff;
-        }
-        .btn-success:hover {
-            background: #4d7a26;
-            transform: translateY(-2px);
-        }
-
-        /* ─── SUCCESS ─── */
-        .form-success {
-            display: none;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .form-success.visible {
-            display: block;
-        }
-        .form-success .icon {
-            font-size: 4rem;
-            margin-bottom: 16px;
-        }
-        .form-success h2 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .form-success p {
-            color: var(--muted);
-            font-size: 1rem;
-            max-width: 520px;
-            margin: 0 auto 24px;
-            line-height: 1.7;
-        }
-        .form-success .btn {
-            margin: 0 auto;
-        }
-
-        /* ─── FOOTER ─── */
-        .footer-note {
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.78rem;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-        .footer-note a {
-            color: var(--orange);
-            text-decoration: none;
-        }
-        .footer-note a:hover {
-            text-decoration: underline;
-        }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 640px) {
-            body { padding: 16px; }
-            .form-card { padding: 20px 16px; }
-            .form-title { font-size: 1.4rem; }
-            .header-bar { flex-direction: column; align-items: flex-start; }
-            .form-actions { flex-direction: column; }
-            .form-actions .btn { width: 100%; justify-content: center; }
-            .tratamiento-row { grid-template-columns: 1fr 1fr; }
-            .weekday-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 480px) {
-            .tratamiento-row { grid-template-columns: 1fr; }
-            .weekday-grid { grid-template-columns: 1fr; }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        :root{
+            --orange:#FF642E;--orange-dark:#E04D1A;--orange-glow:rgba(255,100,46,0.1);
+            --ink:#0d0d0d;--paper:#F7F4EF;--surface:#FDFCFA;--muted:#6b6b6b;
+            --border:#E8E4DC;--border-strong:#C9C4BB;
+            --radius-sm:8px;--radius-md:14px;--radius-lg:22px;
+            --shadow-card:0 2px 12px rgba(0,0,0,0.05);--shadow-lift:0 8px 40px rgba(0,0,0,0.09);
+            --success:#669933;--error:#CC0033;
+        }
+        body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;padding:40px 20px;}
+        .container{max-width:880px;margin:0 auto;}
+        .header-bar{display:flex;justify-content:space-between;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:32px;flex-wrap:wrap;gap:12px;}
+        .logo{font-family:'Bricolage Grotesque',sans-serif;font-size:1.4rem;font-weight:800;color:var(--ink);text-decoration:none;display:flex;align-items:baseline;gap:1px;}
+        .logo .slash{color:var(--orange);font-weight:900;font-size:1.6rem;}
+        .back-link{color:var(--orange);text-decoration:none;font-weight:600;font-size:0.9rem;display:inline-flex;align-items:center;gap:6px;}
+        .back-link:hover{color:var(--orange-dark);}
+        .header-badge{font-size:0.6rem;font-weight:700;background:var(--orange);color:#fff;padding:4px 14px;border-radius:999px;letter-spacing:0.08em;text-transform:uppercase;margin-left:8px;}
+        .progress-wrapper{margin-bottom:28px;}
+        .progress-bar{background:var(--border);border-radius:999px;height:6px;overflow:hidden;}
+        .progress-fill{height:100%;background:var(--orange);border-radius:999px;width:0%;transition:width 0.4s ease;}
+        .progress-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--muted);margin-top:6px;}
+        .progress-label .section-count{font-weight:600;color:var(--ink);}
+        .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 36px;box-shadow:var(--shadow-card);}
+        .form-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.02em;}
+        .form-subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:28px;font-weight:300;line-height:1.6;}
+        .section-error-banner{display:none;background:rgba(204,0,51,0.06);border:1px solid rgba(204,0,51,0.25);color:var(--error);border-radius:var(--radius-sm);padding:12px 16px;font-size:0.85rem;font-weight:600;margin-bottom:20px;}
+        .section-error-banner.visible{display:block;}
+        .section-block{display:none;animation:fadeIn 0.25s ease;}
+        .section-block.active{display:block;}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+        .section-header{margin-bottom:24px;}
+        .section-header h2{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+        .section-header p{color:var(--muted);font-size:0.85rem;font-weight:300;}
+        .field{margin-bottom:20px;}
+        .field label{display:block;font-weight:600;font-size:0.9rem;margin-bottom:4px;}
+        .field label .required{color:var(--error);font-weight:700;}
+        .field .hint{font-size:0.75rem;color:var(--muted);margin-top:2px;font-weight:300;}
+        .field input,.field textarea,.field select{width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.95rem;background:var(--paper);color:var(--ink);transition:border-color 0.2s;}
+        .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--orange);}
+        .field textarea{min-height:80px;resize:vertical;}
+        .field.field-invalid input,.field.field-invalid textarea,.field.field-invalid select{border-color:var(--error);}
+        .field-error-msg{display:none;color:var(--error);font-size:0.78rem;margin-top:4px;font-weight:600;}
+        .field.field-invalid .field-error-msg{display:block;}
+        .field-checkbox-group{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin-top:4px;}
+        @media(max-width:480px){.field-checkbox-group{grid-template-columns:1fr;}}
+        .field-checkbox-group label{display:flex;align-items:center;gap:8px;font-weight:400;font-size:0.9rem;cursor:pointer;}
+        .field-checkbox-group input[type="checkbox"]{width:16px;height:16px;accent-color:var(--orange);flex-shrink:0;}
+        .field-radio-group{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:4px;}
+        .field-radio-group label{display:flex;align-items:center;gap:8px;font-weight:400;font-size:0.9rem;cursor:pointer;}
+        .field-radio-group input[type="radio"]{width:16px;height:16px;accent-color:var(--orange);flex-shrink:0;}
+        .weekday-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-top:4px;}
+        @media(min-width:480px){.weekday-grid{grid-template-columns:1fr 1fr 1fr;}}
+        .weekday-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;}
+        .weekday-item .day-label{min-width:55px;font-weight:500;}
+        .weekday-item select{flex:1;padding:6px 8px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:0.8rem;background:var(--paper);color:var(--ink);min-width:0;}
+        .weekday-item select:focus{outline:none;border-color:var(--orange);}
+        .tratamiento-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;margin-bottom:6px;align-items:end;}
+        @media(max-width:640px){.tratamiento-row{grid-template-columns:1fr 1fr;gap:6px;}}
+        .tratamiento-row .field{margin-bottom:0;}
+        .tratamiento-row .field label{font-size:0.7rem;font-weight:500;text-transform:uppercase;color:var(--muted);letter-spacing:0.05em;}
+        .tratamiento-row .field input,.tratamiento-row .field select{padding:8px 10px;font-size:0.85rem;}
+        .btn-add-row{background:none;border:1px dashed var(--border-strong);border-radius:var(--radius-sm);padding:6px 16px;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.15s;display:inline-flex;align-items:center;gap:6px;}
+        .btn-add-row:hover{border-color:var(--orange);color:var(--orange);}
+        .btn-remove-row{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:4px 8px;transition:color 0.15s;align-self:end;margin-bottom:2px;}
+        .btn-remove-row:hover{color:var(--error);}
+        .field-file{border:2px dashed var(--border);border-radius:var(--radius-sm);padding:24px;text-align:center;color:var(--muted);transition:border-color 0.2s,background 0.2s;cursor:pointer;background:var(--paper);}
+        .field-file:hover{border-color:var(--orange);background:var(--surface);}
+        .field-file.file-error{border-color:var(--error);}
+        .field-file input[type="file"]{display:none;}
+        .field-file .file-icon{font-size:2.2rem;display:block;margin-bottom:6px;}
+        .field-file .file-label{font-weight:500;}
+        .field-file .file-sub{font-size:0.75rem;color:var(--muted);margin-top:4px;display:block;}
+        .knowledge-hint{background:var(--orange-glow);border-left:3px solid var(--orange);padding:12px 16px;border-radius:var(--radius-sm);margin-bottom:12px;font-size:0.85rem;color:var(--ink);}
+        .knowledge-hint strong{color:var(--orange);}
+        .form-actions{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s ease;}
+        .btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 20px rgba(255,100,46,0.25);}
+        .btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,100,46,0.35);}
+        .btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none;}
+        .btn-secondary{background:transparent;color:var(--muted);border:1.5px solid var(--border-strong);}
+        .btn-secondary:hover{border-color:var(--orange);color:var(--orange);}
+        .btn-success{background:var(--success);color:#fff;}
+        .btn-success:hover{background:#4d7a26;transform:translateY(-2px);}
+        .btn-success:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+        .form-success{display:none;text-align:center;padding:60px 20px;}
+        .form-success.visible{display:block;}
+        .form-success .icon{font-size:4rem;margin-bottom:16px;}
+        .form-success h2{font-family:'Bricolage Grotesque',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:8px;}
+        .form-success p{color:var(--muted);font-size:1rem;max-width:520px;margin:0 auto 24px;line-height:1.7;}
+        .footer-note{text-align:center;color:var(--muted);font-size:0.78rem;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
+        .footer-note a{color:var(--orange);text-decoration:none;}
+        .footer-note a:hover{text-decoration:underline;}
+        @media(max-width:640px){
+            body{padding:16px;}
+            .form-card{padding:20px 16px;}
+            .form-title{font-size:1.4rem;}
+            .header-bar{flex-direction:column;align-items:flex-start;}
+            .form-actions{flex-direction:column;}
+            .form-actions .btn{width:100%;justify-content:center;}
+            .tratamiento-row{grid-template-columns:1fr 1fr;}
+            .weekday-grid{grid-template-columns:1fr 1fr;}
+        }
+        @media(max-width:480px){
+            .tratamiento-row{grid-template-columns:1fr;}
+            .weekday-grid{grid-template-columns:1fr;}
         }
     </style>
 </head>
 <body>
+<div class="container">
 
-    <div class="container">
-
-        <!-- ─── HEADER ─── -->
-        <div class="header-bar">
-            <div>
-                <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
-                <span class="header-badge">Expediente Digital</span>
-            </div>
-            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sitio</a>
+    <div class="header-bar">
+        <div>
+            <a href="/" class="logo"><span class="slash">//</span>sosializarte</a>
+            <span class="header-badge">Expediente Digital</span>
         </div>
-
-        <!-- ─── PROGRESO ─── -->
-        <div class="progress-wrapper">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
-            </div>
-            <div class="progress-label">
-                <span><i class="fas fa-file-alt"></i> <span class="section-count" id="sectionCount">1</span> de <span id="totalSections">9</span></span>
-                <span id="sectionName">Objetivos y prioridades</span>
-            </div>
-        </div>
-
-        <!-- ─── FORMULARIO ─── -->
-        <div id="formContainer">
-            <div class="form-card">
-                <h1 class="form-title">📋 Expediente de Implementación</h1>
-                <p class="form-subtitle">Completa este expediente para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. <strong>Toda la información que nos compartas será la base del sistema.</strong> Te tomará aproximadamente 20-25 minutos.</p>
-
-                <div class="section-error-banner" id="sectionErrorBanner">
-                    <i class="fas fa-exclamation-circle"></i> Faltan campos obligatorios por completar en esta sección.
-                </div>
-
-                <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST" enctype="multipart/form-data">
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 1: OBJETIVOS Y PRIORIDADES (CON RADIO BUTTONS) -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block active" data-section="1">
-                        <div class="section-header">
-                            <h2><i class="fas fa-bullseye" style="color:var(--orange);"></i> Objetivos y prioridades</h2>
-                            <p>Define qué esperas lograr con el asistente y qué te quita más tiempo hoy.</p>
-                        </div>
-
-                        <div class="field" data-checkbox-required="objetivo">
-                            <label>¿Qué esperas lograr con este asistente? <span class="required">*</span></label>
-                            <div class="field-checkbox-group">
-                                <label><input type="checkbox" name="objetivo" value="Agendar citas"> Agendar citas</label>
-                                <label><input type="checkbox" name="objetivo" value="Reducir llamadas"> Reducir llamadas</label>
-                                <label><input type="checkbox" name="objetivo" value="Responder preguntas"> Responder preguntas</label>
-                                <label><input type="checkbox" name="objetivo" value="Vender tratamientos"> Vender tratamientos</label>
-                                <label><input type="checkbox" name="objetivo" value="Todo lo anterior"> Todo lo anterior</label>
-                            </div>
-                            <div class="field-error-msg">Selecciona al menos una opción.</div>
-                        </div>
-
-                        <!-- ═══ CAMPO CORREGIDO: RADIO BUTTONS en lugar de SELECT ═══ -->
-                        <div class="field" id="prioridadField">
-                            <label>¿Qué es lo que más tiempo le quita hoy a su equipo? <span class="required">*</span></label>
-                            <div class="field-radio-group">
-                                <label><input type="radio" name="prioridad" value="Contestar WhatsApp"> Contestar WhatsApp</label>
-                                <label><input type="radio" name="prioridad" value="Llamadas"> Llamadas</label>
-                                <label><input type="radio" name="prioridad" value="Confirmar citas"> Confirmar citas</label>
-                                <label><input type="radio" name="prioridad" value="Cancelaciones"> Cancelaciones</label>
-                                <label><input type="radio" name="prioridad" value="Preguntas frecuentes"> Preguntas frecuentes</label>
-                                <label><input type="radio" name="prioridad" value="Otra"> Otra</label>
-                            </div>
-                            <div class="field-error-msg">Selecciona una opción.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Si seleccionaste "Otra", especifica:</label>
-                            <input type="text" name="prioridad_otra" placeholder="¿Qué otra actividad te quita tiempo?">
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 2: DATOS DEL NEGOCIO -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="2">
-                        <div class="section-header">
-                            <h2><i class="fas fa-store" style="color:var(--orange);"></i> Datos del negocio</h2>
-                            <p>Información básica de tu consultorio o negocio.</p>
-                        </div>
-
-                        <div class="field">
-                            <label>Nombre del consultorio o negocio <span class="required">*</span></label>
-                            <input type="text" name="nombre_negocio" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Nombre del doctor(a) o responsable <span class="required">*</span></label>
-                            <input type="text" name="responsable" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Especialidad o giro <span class="required">*</span></label>
-                            <input type="text" name="especialidad" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Ciudad y ubicación <span class="required">*</span></label>
-                            <input type="text" name="ciudad" placeholder="Ciudad, Estado" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Dirección exacta <span class="required">*</span></label>
-                            <input type="text" name="direccion" placeholder="Calle, número, colonia, CP" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Link de Google Maps</label>
-                            <input type="url" name="google_maps" placeholder="https://maps.google.com/...">
-                            <div class="hint">Pega el enlace de tu ubicación en Google Maps.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Teléfono / WhatsApp Business <span class="required">*</span></label>
-                            <input type="text" name="telefono" placeholder="Ej. 55 1234 5678 (WhatsApp Business)" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Redes sociales</label>
-                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px;">
-                                <input type="text" name="red_instagram" placeholder="Instagram @usuario" style="width:100%;">
-                                <input type="text" name="red_facebook" placeholder="Facebook @usuario" style="width:100%;">
-                                <input type="text" name="red_google_business" placeholder="Google Business" style="width:100%;">
-                                <input type="text" name="red_tiktok" placeholder="TikTok @usuario" style="width:100%;">
-                                <input type="text" name="red_doctoralia" placeholder="Doctoralia" style="width:100%;">
-                                <input type="text" name="red_calendly" placeholder="Calendly" style="width:100%;">
-                                <input type="text" name="red_pagina_web" placeholder="Página web" style="width:100%; grid-column: span 2;">
-                            </div>
-                            <div class="hint">Completa solo las que uses. Esto servirá para futuras integraciones.</div>
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 3: HORARIOS CON COMBO -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="3">
-                        <div class="section-header">
-                            <h2><i class="fas fa-clock" style="color:var(--orange);"></i> Horarios de atención</h2>
-                            <p>Define el horario de atención para cada día. Si no aplica, selecciona "No aplica".</p>
-                        </div>
-
-                        <div class="field">
-                            <label>Horario de atención por día</label>
-                            <div class="weekday-grid">
-                                <!-- Lunes -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Lunes</span>
-                                    <select name="horario_lunes">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
-                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
-                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
-                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
-                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                                <!-- Martes -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Martes</span>
-                                    <select name="horario_martes">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
-                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
-                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
-                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
-                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                                <!-- Miércoles -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Miércoles</span>
-                                    <select name="horario_miercoles">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
-                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
-                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
-                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
-                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                                <!-- Jueves -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Jueves</span>
-                                    <select name="horario_jueves">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
-                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
-                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
-                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
-                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                                <!-- Viernes -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Viernes</span>
-                                    <select name="horario_viernes">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
-                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
-                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
-                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
-                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
-                                        <option value="10:00-20:00">10:00 AM – 8:00 PM</option>
-                                        <option value="11:00-19:00">11:00 AM – 7:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                                <!-- Sábado -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Sábado</span>
-                                    <select name="horario_sabado">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-14:00">8:00 AM – 2:00 PM</option>
-                                        <option value="09:00-13:00">9:00 AM – 1:00 PM</option>
-                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
-                                        <option value="10:00-14:00">10:00 AM – 2:00 PM</option>
-                                        <option value="10:00-16:00">10:00 AM – 4:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                                <!-- Domingo -->
-                                <div class="weekday-item">
-                                    <span class="day-label">Domingo</span>
-                                    <select name="horario_domingo">
-                                        <option value="">Selecciona...</option>
-                                        <option value="No aplica">🚫 No aplica</option>
-                                        <option value="08:00-14:00">8:00 AM – 2:00 PM</option>
-                                        <option value="09:00-13:00">9:00 AM – 1:00 PM</option>
-                                        <option value="Cerrado">Cerrado</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="hint">Selecciona "No aplica" si ese día no tiene horario definido.</div>
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 4: CONTACTOS CLAVE -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="4">
-                        <div class="section-header">
-                            <h2><i class="fas fa-address-book" style="color:var(--orange);"></i> Contactos clave</h2>
-                            <p>¿Quién debe recibir qué tipo de comunicación?</p>
-                        </div>
-
-                        <div class="field">
-                            <label>Doctor(a) o responsable principal <span class="required">*</span></label>
-                            <input type="text" name="contacto_doctor" placeholder="Nombre y teléfono" required>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Recepcionista o primer contacto</label>
-                            <input type="text" name="contacto_recepcionista" placeholder="Nombre y teléfono">
-                        </div>
-
-                        <div class="field">
-                            <label>Administrador(a) o encargado de pagos</label>
-                            <input type="text" name="contacto_administrador" placeholder="Nombre y teléfono">
-                        </div>
-
-                        <div class="field">
-                            <label>Contacto de facturación</label>
-                            <input type="text" name="contacto_facturacion" placeholder="Nombre y teléfono">
-                        </div>
-
-                        <div class="field">
-                            <label>Contacto para emergencias</label>
-                            <input type="text" name="contacto_emergencias" placeholder="Nombre y teléfono">
-                        </div>
-
-                        <div class="field">
-                            <label>Otro contacto relevante</label>
-                            <input type="text" name="contacto_otro" placeholder="Nombre, rol y teléfono">
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 5: TRATAMIENTOS O SERVICIOS -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="5">
-                        <div class="section-header">
-                            <h2><i class="fas fa-stethoscope" style="color:var(--orange);"></i> Tratamientos o servicios</h2>
-                            <p>¿Qué ofreces? Esto permitirá que el bot responda con información precisa.</p>
-                        </div>
-
-                        <div id="tratamientosContainer">
-                            <div class="tratamiento-row">
-                                <div class="field">
-                                    <label>Tratamiento</label>
-                                    <input type="text" name="tratamiento_nombre[]" placeholder="Limpieza dental">
-                                </div>
-                                <div class="field">
-                                    <label>Tiempo promedio</label>
-                                    <input type="text" name="tratamiento_tiempo[]" placeholder="45 min">
-                                </div>
-                                <div class="field">
-                                    <label>Costo aprox.</label>
-                                    <input type="text" name="tratamiento_costo[]" placeholder="$1,500">
-                                </div>
-                                <div class="field">
-                                    <label>¿Requiere valoración?</label>
-                                    <select name="tratamiento_valoracion[]">
-                                        <option value="Sí">Sí</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 8px;">
-                            <button type="button" class="btn-add-row" onclick="addTratamientoRow()">
-                                <i class="fas fa-plus"></i> Agregar otro tratamiento
-                            </button>
-                            <span style="font-size:0.75rem; color:var(--muted); margin-left:12px;">Agrega todos los que ofreces</span>
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 6: PREGUNTAS FRECUENTES -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="6">
-                        <div class="section-header">
-                            <h2><i class="fas fa-question-circle" style="color:var(--orange);"></i> Preguntas frecuentes</h2>
-                            <p>Escribe al menos 10 preguntas que los pacientes te hacen todo el tiempo. Esto es fundamental para el bot.</p>
-                        </div>
-
-                        <div class="field">
-                            <label>Preguntas frecuentes (mínimo 10) <span class="required">*</span></label>
-                            <div class="hint" style="margin-bottom:6px;">Escribe una por línea, con su respuesta. Ejemplo: "¿Aceptan tarjeta? — Sí, aceptamos todas las tarjetas de crédito y débito."</div>
-                            <textarea name="preguntas_frecuentes" rows="12" required placeholder="Ej. ¿Cuánto cuesta una limpieza dental? — Desde $1,200 MXN dependiendo del caso.&#10;¿Aceptan seguros? — Sí, trabajamos con GNP, MetLife y AXA.&#10;¿Atienden urgencias? — Sí, tenemos horario de urgencias de 8am a 10pm.&#10;¿Hay estacionamiento? — Sí, tenemos estacionamiento gratuito para pacientes.&#10;¿Cuánto dura una consulta? — Aproximadamente 45 minutos.&#10;¿Tienen financiamiento? — Sí, tenemos planes a meses sin intereses.&#10;¿Dónde están ubicados? — En Av. Ejemplo #123, Colonia Centro.&#10;¿Qué especialidades tienen? — Ortodoncia, endodoncia, periodoncia.&#10;¿Hacen limpieza dental con láser? — Sí, contamos con tecnología láser.&#10;¿Se necesita cita previa? — Sí, todas nuestras atenciones son con cita."></textarea>
-                            <div class="field-error-msg">Este campo es obligatorio. Escribe al menos 10 preguntas.</div>
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 7: ESCALAMIENTO Y TONO -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="7">
-                        <div class="section-header">
-                            <h2><i class="fas fa-arrow-right" style="color:var(--orange);"></i> Escalamiento y tono</h2>
-                            <p>¿Cuándo debe intervenir una persona? ¿Cómo quieres que hable el asistente?</p>
-                        </div>
-
-                        <div class="field" data-checkbox-required="escalamiento">
-                            <label>¿Cuándo debe intervenir una persona? <span class="required">*</span></label>
-                            <div class="field-checkbox-group">
-                                <label><input type="checkbox" name="escalamiento" value="Urgencia"> Urgencia</label>
-                                <label><input type="checkbox" name="escalamiento" value="Queja"> Queja</label>
-                                <label><input type="checkbox" name="escalamiento" value="Cotización"> Cotización</label>
-                                <label><input type="checkbox" name="escalamiento" value="Cancelación"> Cancelación</label>
-                                <label><input type="checkbox" name="escalamiento" value="Información confidencial"> Información confidencial</label>
-                                <label><input type="checkbox" name="escalamiento" value="Otro"> Otro</label>
-                            </div>
-                            <div class="field-error-msg">Selecciona al menos una opción.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Si seleccionaste "Otro", especifica:</label>
-                            <input type="text" name="escalamiento_otro" placeholder="¿En qué otro caso debe intervenir una persona?">
-                        </div>
-
-                        <div class="field">
-                            <label>¿Cómo quieres que hable el asistente? <span class="required">*</span></label>
-                            <div class="field-radio-group">
-                                <label><input type="radio" name="tono" value="Formal"> Formal</label>
-                                <label><input type="radio" name="tono" value="Cercano"> Cercano</label>
-                                <label><input type="radio" name="tono" value="Muy profesional"> Muy profesional</label>
-                                <label><input type="radio" name="tono" value="Alegre"> Alegre</label>
-                                <label><input type="radio" name="tono" value="Otro"> Otro</label>
-                            </div>
-                            <div class="field-error-msg">Selecciona una opción.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Si seleccionaste "Otro", describe el tono deseado:</label>
-                            <input type="text" name="tono_otro" placeholder="Ej. 'Queremos que sea amable pero directo'">
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 8: BASE DE CONOCIMIENTO -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="8">
-                        <div class="section-header">
-                            <h2><i class="fas fa-database" style="color:var(--orange);"></i> Base de conocimiento</h2>
-                            <p>Esta es la sección más importante. Pega toda la información que el asistente debería saber.</p>
-                        </div>
-
-                        <div class="knowledge-hint">
-                            <strong><i class="fas fa-lightbulb"></i> Piensa en esto como el "cerebro" del asistente.</strong><br>
-                            Incluye: políticas, promociones, historia del consultorio, convenios, precios, indicaciones, especialidades, protocolos de atención, y cualquier otra información que quieras que el bot sepa.
-                        </div>
-
-                        <div class="field">
-                            <label>Base de conocimiento del asistente <span class="required">*</span></label>
-                            <textarea name="base_conocimiento" rows="10" required placeholder="Pega aquí toda la información relevante:
-
-Políticas de atención:
-- Cancelaciones con 24 horas de anticipación
-- Los pagos se realizan al final de la consulta
-
-Promociones:
-- 20% de descuento en primera consulta
-- Plan de 5 sesiones con 15% de descuento
-
-Convenios:
-- GNP, MetLife, AXA
-
-Especialidades:
-- Ortodoncia, endodoncia, periodoncia, cirugía maxilofacial
-
-Indicaciones pre-consulta:
-- Llegar 10 minutos antes
-- Traer estudios previos si los tienes
-
-(Pega todo lo que consideres importante)"></textarea>
-                            <div class="field-error-msg">Este campo es obligatorio. Es el corazón del sistema.</div>
-                            <div class="hint">Cuantos más detalles pongas, mejor será la respuesta del asistente.</div>
-                        </div>
-                    </div>
-
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 9: ARCHIVOS -->
-                    <!-- ════════════════════════════════════════════════════════════════ -->
-                    <div class="section-block" data-section="9">
-                        <div class="section-header">
-                            <h2><i class="fas fa-paperclip" style="color:var(--orange);"></i> Archivos adjuntos</h2>
-                            <p>Sube todos los archivos que tengas. Así todo llega junto en un solo lugar.</p>
-                        </div>
-
-                        <div class="field">
-                            <label>Logotipo y colores institucionales</label>
-                            <div class="field-file" id="logoDropzone" onclick="document.getElementById('logoInput').click()">
-                                <span class="file-icon">🖼️</span>
-                                <span class="file-label">Haz clic para subir el logotipo</span>
-                                <span class="file-sub">PNG o JPG · Máx. 10 MB</span>
-                                <input type="file" id="logoInput" name="logo" accept="image/*">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label>Fotografías del consultorio</label>
-                            <div class="field-file" id="fotosDropzone" onclick="document.getElementById('fotosInput').click()">
-                                <span class="file-icon">📷</span>
-                                <span class="file-label">Haz clic para subir fotos</span>
-                                <span class="file-sub">Puedes subir varias · Máx. 10 MB por archivo</span>
-                                <input type="file" id="fotosInput" name="fotos" accept="image/*" multiple>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label>Aviso de privacidad</label>
-                            <div class="field-file" onclick="document.getElementById('privacidadInput').click()">
-                                <span class="file-icon">📄</span>
-                                <span class="file-label">Haz clic para subir el aviso de privacidad</span>
-                                <span class="file-sub">PDF o DOCX · Máx. 10 MB</span>
-                                <input type="file" id="privacidadInput" name="aviso_privacidad" accept=".pdf,.docx">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label>Lista de tratamientos o servicios (documento)</label>
-                            <div class="field-file" onclick="document.getElementById('listaInput').click()">
-                                <span class="file-icon">📋</span>
-                                <span class="file-label">Haz clic para subir la lista de tratamientos</span>
-                                <span class="file-sub">PDF, DOCX o XLSX · Máx. 10 MB</span>
-                                <input type="file" id="listaInput" name="lista_tratamientos" accept=".pdf,.docx,.xlsx">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label>Otros documentos relevantes</label>
-                            <div class="field-file" onclick="document.getElementById('otrosInput').click()">
-                                <span class="file-icon">📁</span>
-                                <span class="file-label">Haz clic para subir otros documentos</span>
-                                <span class="file-sub">Cualquier archivo adicional · Máx. 10 MB</span>
-                                <input type="file" id="otrosInput" name="otros_documentos" accept=".pdf,.docx,.xlsx,.png,.jpg">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ─── BOTONES ─── -->
-                    <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">
-                            <i class="fas fa-arrow-left"></i> Anterior
-                        </button>
-                        <button type="button" class="btn btn-primary" id="nextBtn">
-                            Siguiente <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <button type="submit" class="btn btn-success" id="submitBtn" style="display:none;">
-                            <i class="fas fa-paper-plane"></i> Enviar expediente
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <!-- ─── MENSAJE DE ÉXITO ─── -->
-        <div class="form-success" id="formSuccess">
-            <div class="icon">🎉</div>
-            <h2>¡Expediente enviado!</h2>
-            <p>Hemos recibido toda la información. En las próximas 24 horas revisaremos los datos y comenzaremos con la configuración de tu asistente virtual.</p>
-            <p style="font-size:0.9rem; color:var(--muted);">Ahora podremos construir el prompt del chatbot, la base de conocimiento y la documentación técnica sin necesidad de hacer más preguntas.</p>
-            <a href="/" class="btn btn-primary">Volver al sitio</a>
-        </div>
-
-        <!-- ─── FOOTER ─── -->
-        <div class="footer-note">
-            <p>© 2026 <a href="/">Sosializarte</a> — Automatización con IA para negocios</p>
-            <p style="margin-top:4px; font-size:0.72rem;">
-                <a href="/privacidad">Aviso de privacidad</a>
-            </p>
-        </div>
-
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Volver al sitio</a>
     </div>
 
-    <script>
-        const MAX_FILE_MB = 10;
-        const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
+    <div class="progress-wrapper">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width:0%;"></div>
+        </div>
+        <div class="progress-label">
+            <span><i class="fas fa-file-alt"></i> <span class="section-count" id="sectionCount">1</span> de <span id="totalSections">9</span></span>
+            <span id="sectionName">Objetivos y prioridades</span>
+        </div>
+    </div>
 
-        // ─── NOMBRES DE SECCIONES ───
-        const sectionNames = [
-            'Objetivos y prioridades',
-            'Datos del negocio',
-            'Horarios de atención',
-            'Contactos clave',
-            'Tratamientos o servicios',
-            'Preguntas frecuentes',
-            'Escalamiento y tono',
-            'Base de conocimiento',
-            'Archivos adjuntos'
-        ];
+    <div id="formContainer">
+        <div class="form-card">
+            <h1 class="form-title">📋 Expediente de Implementación</h1>
+            <p class="form-subtitle">Completa este expediente para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. <strong>Toda la información que nos compartas será la base del sistema.</strong> Te tomará aproximadamente 20-25 minutos.</p>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = Array.from(document.querySelectorAll('.section-block'));
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const submitBtn = document.getElementById('submitBtn');
-            const progressFill = document.getElementById('progressFill');
-            const sectionCount = document.getElementById('sectionCount');
-            const totalSections = document.getElementById('totalSections');
-            const sectionName = document.getElementById('sectionName');
-            const sectionErrorBanner = document.getElementById('sectionErrorBanner');
-            let currentSection = 0;
+            <div class="section-error-banner" id="sectionErrorBanner">
+                <i class="fas fa-exclamation-circle"></i> Faltan campos obligatorios por completar en esta sección.
+            </div>
 
-            totalSections.textContent = sections.length;
+            <!-- ═══ IMPORTANTE: sin enctype para que el fetch funcione correctamente con Formspree ═══ -->
+            <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST">
 
-            function showSection(index) {
-                sections.forEach((section, i) => {
-                    section.classList.toggle('active', i === index);
-                });
-                const progress = ((index + 1) / sections.length) * 100;
-                progressFill.style.width = progress + '%';
-                sectionCount.textContent = index + 1;
-                sectionName.textContent = sectionNames[index] || 'Sección';
+                <!-- SECCIÓN 1 -->
+                <div class="section-block active" data-section="1">
+                    <div class="section-header">
+                        <h2><i class="fas fa-bullseye" style="color:var(--orange);"></i> Objetivos y prioridades</h2>
+                        <p>Define qué esperas lograr con el asistente y qué te quita más tiempo hoy.</p>
+                    </div>
+                    <div class="field" data-checkbox-required="objetivo">
+                        <label>¿Qué esperas lograr con este asistente? <span class="required">*</span></label>
+                        <div class="field-checkbox-group">
+                            <label><input type="checkbox" name="objetivo" value="Agendar citas"> Agendar citas</label>
+                            <label><input type="checkbox" name="objetivo" value="Reducir llamadas"> Reducir llamadas</label>
+                            <label><input type="checkbox" name="objetivo" value="Responder preguntas"> Responder preguntas</label>
+                            <label><input type="checkbox" name="objetivo" value="Vender tratamientos"> Vender tratamientos</label>
+                            <label><input type="checkbox" name="objetivo" value="Todo lo anterior"> Todo lo anterior</label>
+                        </div>
+                        <div class="field-error-msg">Selecciona al menos una opción.</div>
+                    </div>
+                    <div class="field" data-radio-required="prioridad">
+                        <label>¿Qué es lo que más tiempo le quita hoy a su equipo? <span class="required">*</span></label>
+                        <div class="field-radio-group">
+                            <label><input type="radio" name="prioridad" value="Contestar WhatsApp"> Contestar WhatsApp</label>
+                            <label><input type="radio" name="prioridad" value="Llamadas"> Llamadas</label>
+                            <label><input type="radio" name="prioridad" value="Confirmar citas"> Confirmar citas</label>
+                            <label><input type="radio" name="prioridad" value="Cancelaciones"> Cancelaciones</label>
+                            <label><input type="radio" name="prioridad" value="Preguntas frecuentes"> Preguntas frecuentes</label>
+                            <label><input type="radio" name="prioridad" value="Otra"> Otra</label>
+                        </div>
+                        <div class="field-error-msg">Selecciona una opción.</div>
+                    </div>
+                    <div class="field">
+                        <label>Si seleccionaste "Otra", especifica:</label>
+                        <input type="text" name="prioridad_otra" placeholder="¿Qué otra actividad te quita tiempo?">
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 2 -->
+                <div class="section-block" data-section="2">
+                    <div class="section-header">
+                        <h2><i class="fas fa-store" style="color:var(--orange);"></i> Datos del negocio</h2>
+                        <p>Información básica de tu consultorio o negocio.</p>
+                    </div>
+                    <div class="field">
+                        <label>Nombre del consultorio o negocio <span class="required">*</span></label>
+                        <input type="text" name="nombre_negocio" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Nombre del doctor(a) o responsable <span class="required">*</span></label>
+                        <input type="text" name="responsable" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Especialidad o giro <span class="required">*</span></label>
+                        <input type="text" name="especialidad" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Ciudad y ubicación <span class="required">*</span></label>
+                        <input type="text" name="ciudad" placeholder="Ciudad, Estado" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Dirección exacta <span class="required">*</span></label>
+                        <input type="text" name="direccion" placeholder="Calle, número, colonia, CP" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Link de Google Maps</label>
+                        <input type="url" name="google_maps" placeholder="https://maps.google.com/...">
+                        <div class="hint">Pega el enlace de tu ubicación en Google Maps.</div>
+                    </div>
+                    <div class="field">
+                        <label>Teléfono / WhatsApp Business <span class="required">*</span></label>
+                        <input type="text" name="telefono" placeholder="Ej. 55 1234 5678" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Redes sociales</label>
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;">
+                            <input type="text" name="red_instagram" placeholder="Instagram @usuario" style="width:100%;">
+                            <input type="text" name="red_facebook" placeholder="Facebook @usuario" style="width:100%;">
+                            <input type="text" name="red_google_business" placeholder="Google Business" style="width:100%;">
+                            <input type="text" name="red_tiktok" placeholder="TikTok @usuario" style="width:100%;">
+                            <input type="text" name="red_doctoralia" placeholder="Doctoralia" style="width:100%;">
+                            <input type="text" name="red_calendly" placeholder="Calendly" style="width:100%;">
+                            <input type="text" name="red_pagina_web" placeholder="Página web" style="width:100%;grid-column:span 2;">
+                        </div>
+                        <div class="hint">Completa solo las que uses.</div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 3 -->
+                <div class="section-block" data-section="3">
+                    <div class="section-header">
+                        <h2><i class="fas fa-clock" style="color:var(--orange);"></i> Horarios de atención</h2>
+                        <p>Define el horario de atención para cada día. Si no aplica, selecciona "No aplica".</p>
+                    </div>
+                    <div class="field">
+                        <label>Horario de atención por día</label>
+                        <div class="weekday-grid">
+                            <div class="weekday-item"><span class="day-label">Lunes</span><select name="horario_lunes"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-16:00">8:00–4:00</option><option value="09:00-17:00">9:00–5:00</option><option value="09:00-18:00">9:00–6:00</option><option value="09:00-14:00">9:00–2:00</option><option value="10:00-18:00">10:00–6:00</option><option value="10:00-20:00">10:00–8:00</option><option value="11:00-19:00">11:00–7:00</option><option value="Cerrado">Cerrado</option></select></div>
+                            <div class="weekday-item"><span class="day-label">Martes</span><select name="horario_martes"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-16:00">8:00–4:00</option><option value="09:00-17:00">9:00–5:00</option><option value="09:00-18:00">9:00–6:00</option><option value="09:00-14:00">9:00–2:00</option><option value="10:00-18:00">10:00–6:00</option><option value="10:00-20:00">10:00–8:00</option><option value="11:00-19:00">11:00–7:00</option><option value="Cerrado">Cerrado</option></select></div>
+                            <div class="weekday-item"><span class="day-label">Miércoles</span><select name="horario_miercoles"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-16:00">8:00–4:00</option><option value="09:00-17:00">9:00–5:00</option><option value="09:00-18:00">9:00–6:00</option><option value="09:00-14:00">9:00–2:00</option><option value="10:00-18:00">10:00–6:00</option><option value="10:00-20:00">10:00–8:00</option><option value="11:00-19:00">11:00–7:00</option><option value="Cerrado">Cerrado</option></select></div>
+                            <div class="weekday-item"><span class="day-label">Jueves</span><select name="horario_jueves"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-16:00">8:00–4:00</option><option value="09:00-17:00">9:00–5:00</option><option value="09:00-18:00">9:00–6:00</option><option value="09:00-14:00">9:00–2:00</option><option value="10:00-18:00">10:00–6:00</option><option value="10:00-20:00">10:00–8:00</option><option value="11:00-19:00">11:00–7:00</option><option value="Cerrado">Cerrado</option></select></div>
+                            <div class="weekday-item"><span class="day-label">Viernes</span><select name="horario_viernes"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-16:00">8:00–4:00</option><option value="09:00-17:00">9:00–5:00</option><option value="09:00-18:00">9:00–6:00</option><option value="09:00-14:00">9:00–2:00</option><option value="10:00-18:00">10:00–6:00</option><option value="10:00-20:00">10:00–8:00</option><option value="11:00-19:00">11:00–7:00</option><option value="Cerrado">Cerrado</option></select></div>
+                            <div class="weekday-item"><span class="day-label">Sábado</span><select name="horario_sabado"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-14:00">8:00–2:00</option><option value="09:00-13:00">9:00–1:00</option><option value="09:00-14:00">9:00–2:00</option><option value="10:00-14:00">10:00–2:00</option><option value="10:00-16:00">10:00–4:00</option><option value="Cerrado">Cerrado</option></select></div>
+                            <div class="weekday-item"><span class="day-label">Domingo</span><select name="horario_domingo"><option value="">Selecciona...</option><option value="No aplica">🚫 No aplica</option><option value="08:00-14:00">8:00–2:00</option><option value="09:00-13:00">9:00–1:00</option><option value="Cerrado">Cerrado</option></select></div>
+                        </div>
+                        <div class="hint">Selecciona "No aplica" si ese día no tiene horario definido.</div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 4 -->
+                <div class="section-block" data-section="4">
+                    <div class="section-header">
+                        <h2><i class="fas fa-address-book" style="color:var(--orange);"></i> Contactos clave</h2>
+                        <p>¿Quién debe recibir qué tipo de comunicación?</p>
+                    </div>
+                    <div class="field">
+                        <label>Doctor(a) o responsable principal <span class="required">*</span></label>
+                        <input type="text" name="contacto_doctor" placeholder="Nombre y teléfono" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field"><label>Recepcionista o primer contacto</label><input type="text" name="contacto_recepcionista" placeholder="Nombre y teléfono"></div>
+                    <div class="field"><label>Administrador(a) o encargado de pagos</label><input type="text" name="contacto_administrador" placeholder="Nombre y teléfono"></div>
+                    <div class="field"><label>Contacto de facturación</label><input type="text" name="contacto_facturacion" placeholder="Nombre y teléfono"></div>
+                    <div class="field"><label>Contacto para emergencias</label><input type="text" name="contacto_emergencias" placeholder="Nombre y teléfono"></div>
+                    <div class="field"><label>Otro contacto relevante</label><input type="text" name="contacto_otro" placeholder="Nombre, rol y teléfono"></div>
+                </div>
+
+                <!-- SECCIÓN 5 -->
+                <div class="section-block" data-section="5">
+                    <div class="section-header">
+                        <h2><i class="fas fa-stethoscope" style="color:var(--orange);"></i> Tratamientos o servicios</h2>
+                        <p>¿Qué ofreces? Esto permitirá que el bot responda con información precisa.</p>
+                    </div>
+                    <div id="tratamientosContainer">
+                        <div class="tratamiento-row">
+                            <div class="field"><label>Tratamiento</label><input type="text" name="tratamiento_nombre[]" placeholder="Ej. Colonoscopía"></div>
+                            <div class="field"><label>Tiempo promedio</label><input type="text" name="tratamiento_tiempo[]" placeholder="Ej. 30 min"></div>
+                            <div class="field"><label>Costo aprox.</label><input type="text" name="tratamiento_costo[]" placeholder="Ej. $3,500"></div>
+                            <div class="field"><label>¿Requiere valoración?</label><select name="tratamiento_valoracion[]"><option value="Sí">Sí</option><option value="No">No</option></select></div>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;">
+                        <button type="button" class="btn-add-row" id="addTratamientoBtn">
+                            <i class="fas fa-plus"></i> Agregar otro tratamiento
+                        </button>
+                        <span style="font-size:0.75rem;color:var(--muted);margin-left:12px;">Agrega todos los que ofreces</span>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 6 -->
+                <div class="section-block" data-section="6">
+                    <div class="section-header">
+                        <h2><i class="fas fa-question-circle" style="color:var(--orange);"></i> Preguntas frecuentes</h2>
+                        <p>Escribe al menos 10 preguntas que los pacientes te hacen todo el tiempo. Esto es fundamental para el bot.</p>
+                    </div>
+                    <div class="field">
+                        <label>Preguntas frecuentes (mínimo 10) <span class="required">*</span></label>
+                        <div class="hint" style="margin-bottom:6px;">Escribe una por línea, con su respuesta. Ejemplo: "¿Aceptan tarjeta? — Sí, aceptamos todas las tarjetas."</div>
+                        <textarea name="preguntas_frecuentes" rows="12" required placeholder="¿Cuánto cuesta una consulta? — Desde $800 MXN.&#10;¿Aceptan seguros? — Sí, trabajamos con GNP, MetLife y AXA.&#10;¿Se necesita cita previa? — Sí, todas son con cita.&#10;¿Atienden urgencias? — Sí, de 8am a 10pm.&#10;¿Dónde están ubicados? — Av. Ejemplo #123, Colonia Centro.&#10;¿Cuánto dura la consulta? — Aproximadamente 45 minutos.&#10;¿Hay estacionamiento? — Sí, gratuito para pacientes.&#10;¿Tienen financiamiento? — Sí, planes a meses sin intereses.&#10;¿Hacen estudios de laboratorio? — Sí, contamos con laboratorio propio.&#10;¿Tienen expediente electrónico? — Sí, guardamos tu historial."></textarea>
+                        <div class="field-error-msg">Este campo es obligatorio. Escribe al menos 10 preguntas.</div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 7 -->
+                <div class="section-block" data-section="7">
+                    <div class="section-header">
+                        <h2><i class="fas fa-arrow-right" style="color:var(--orange);"></i> Escalamiento y tono</h2>
+                        <p>¿Cuándo debe intervenir una persona? ¿Cómo quieres que hable el asistente?</p>
+                    </div>
+                    <div class="field" data-checkbox-required="escalamiento">
+                        <label>¿Cuándo debe intervenir una persona? <span class="required">*</span></label>
+                        <div class="field-checkbox-group">
+                            <label><input type="checkbox" name="escalamiento" value="Urgencia"> Urgencia</label>
+                            <label><input type="checkbox" name="escalamiento" value="Queja"> Queja</label>
+                            <label><input type="checkbox" name="escalamiento" value="Cotización"> Cotización</label>
+                            <label><input type="checkbox" name="escalamiento" value="Cancelación"> Cancelación</label>
+                            <label><input type="checkbox" name="escalamiento" value="Información confidencial"> Información confidencial</label>
+                            <label><input type="checkbox" name="escalamiento" value="Otro"> Otro</label>
+                        </div>
+                        <div class="field-error-msg">Selecciona al menos una opción.</div>
+                    </div>
+                    <div class="field"><label>Si seleccionaste "Otro", especifica:</label><input type="text" name="escalamiento_otro" placeholder="¿En qué otro caso debe intervenir una persona?"></div>
+                    <div class="field" data-radio-required="tono">
+                        <label>¿Cómo quieres que hable el asistente? <span class="required">*</span></label>
+                        <div class="field-radio-group">
+                            <label><input type="radio" name="tono" value="Formal"> Formal</label>
+                            <label><input type="radio" name="tono" value="Cercano"> Cercano</label>
+                            <label><input type="radio" name="tono" value="Muy profesional"> Muy profesional</label>
+                            <label><input type="radio" name="tono" value="Alegre"> Alegre</label>
+                            <label><input type="radio" name="tono" value="Otro"> Otro</label>
+                        </div>
+                        <div class="field-error-msg">Selecciona una opción.</div>
+                    </div>
+                    <div class="field"><label>Si seleccionaste "Otro", describe el tono deseado:</label><input type="text" name="tono_otro" placeholder="Ej. 'Amable pero directo'"></div>
+                </div>
+
+                <!-- SECCIÓN 8 -->
+                <div class="section-block" data-section="8">
+                    <div class="section-header">
+                        <h2><i class="fas fa-database" style="color:var(--orange);"></i> Base de conocimiento</h2>
+                        <p>Esta es la sección más importante. Pega toda la información que el asistente debería saber.</p>
+                    </div>
+                    <div class="knowledge-hint">
+                        <strong><i class="fas fa-lightbulb"></i> Piensa en esto como el "cerebro" del asistente.</strong><br>
+                        Incluye: políticas, promociones, historia del consultorio, convenios, precios, indicaciones, especialidades, protocolos de atención, y cualquier otra información relevante.
+                    </div>
+                    <div class="field">
+                        <label>Base de conocimiento del asistente <span class="required">*</span></label>
+                        <textarea name="base_conocimiento" rows="10" required placeholder="Políticas de atención:&#10;- Cancelaciones con 24 horas de anticipación&#10;- Los pagos se realizan al final de la consulta&#10;&#10;Convenios: GNP, MetLife, AXA&#10;&#10;Indicaciones pre-consulta:&#10;- Llegar 10 minutos antes&#10;- Traer estudios previos si los tienes&#10;&#10;(Pega todo lo que consideres importante)"></textarea>
+                        <div class="field-error-msg">Este campo es obligatorio. Es el corazón del sistema.</div>
+                        <div class="hint">Cuantos más detalles pongas, mejor será la respuesta del asistente.</div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 9 -->
+                <div class="section-block" data-section="9">
+                    <div class="section-header">
+                        <h2><i class="fas fa-paperclip" style="color:var(--orange);"></i> Información de contacto final</h2>
+                        <p>Para que podamos contactarte y confirmar el inicio del proyecto.</p>
+                    </div>
+                    <!-- FIX PRINCIPAL: Sección 9 reemplaza archivos por campos de texto -->
+                    <!-- Formspree Free no soporta adjuntos — los archivos se piden después por WhatsApp -->
+                    <div class="field">
+                        <label>Tu nombre completo <span class="required">*</span></label>
+                        <input type="text" name="contacto_nombre" required>
+                        <div class="field-error-msg">Este campo es obligatorio.</div>
+                    </div>
+                    <div class="field">
+                        <label>Tu correo electrónico <span class="required">*</span></label>
+                        <input type="email" name="contacto_email" required>
+                        <div class="field-error-msg">Ingresa un correo válido.</div>
+                    </div>
+                    <div class="field">
+                        <label>Tu WhatsApp</label>
+                        <input type="text" name="contacto_whatsapp" placeholder="Ej. 55 1234 5678">
+                    </div>
+                    <div class="field">
+                        <label>¿Tienes logotipo e imágenes del consultorio?</label>
+                        <div class="field-radio-group">
+                            <label><input type="radio" name="tiene_archivos" value="Sí, los envío por WhatsApp"> Sí, los envío por WhatsApp</label>
+                            <label><input type="radio" name="tiene_archivos" value="No tengo todavía"> No tengo todavía</label>
+                            <label><input type="radio" name="tiene_archivos" value="No aplica"> No aplica</label>
+                        </div>
+                        <div class="hint">Los archivos los recibiremos por WhatsApp después de que envíes este formulario.</div>
+                    </div>
+                    <div class="field">
+                        <label>Comentarios adicionales</label>
+                        <textarea name="comentarios_finales" rows="3" placeholder="Cualquier información extra que quieras que sepamos antes de arrancar."></textarea>
+                    </div>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" style="visibility:hidden;">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Siguiente <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="btn btn-success" id="submitBtn" style="display:none;">
+                        <i class="fas fa-paper-plane"></i> Enviar expediente
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+        <div class="icon">🎉</div>
+        <h2>¡Expediente enviado!</h2>
+        <p>Hemos recibido toda la información. En las próximas 24 horas revisaremos los datos y te contactaremos para comenzar con la configuración de tu asistente virtual.</p>
+        <p style="font-size:0.9rem;color:var(--muted);">Si tienes logotipo o fotos del consultorio, envíalos por WhatsApp a <strong>+52 55 4050 9093</strong>.</p>
+        <a href="/" class="btn btn-primary" style="margin-top:8px;">Volver al sitio</a>
+    </div>
+
+    <div class="footer-note">
+        <p>© 2026 <a href="/">Sosializarte</a> — Automatización con IA para negocios</p>
+        <p style="margin-top:4px;font-size:0.72rem;"><a href="/privacidad">Aviso de privacidad</a></p>
+    </div>
+
+</div>
+
+<script>
+    const sectionNames = [
+        'Objetivos y prioridades','Datos del negocio','Horarios de atención',
+        'Contactos clave','Tratamientos o servicios','Preguntas frecuentes',
+        'Escalamiento y tono','Base de conocimiento','Contacto final'
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = Array.from(document.querySelectorAll('.section-block'));
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressFill = document.getElementById('progressFill');
+        const sectionCount = document.getElementById('sectionCount');
+        const totalSectionsEl = document.getElementById('totalSections');
+        const sectionNameEl = document.getElementById('sectionName');
+        const sectionErrorBanner = document.getElementById('sectionErrorBanner');
+        let currentSection = 0;
+
+        totalSectionsEl.textContent = sections.length;
+
+        function showSection(index) {
+            sections.forEach((s, i) => s.classList.toggle('active', i === index));
+            progressFill.style.width = ((index + 1) / sections.length * 100) + '%';
+            sectionCount.textContent = index + 1;
+            sectionNameEl.textContent = sectionNames[index] || 'Sección';
+            sectionErrorBanner.classList.remove('visible');
+            prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+            nextBtn.style.display = index === sections.length - 1 ? 'none' : 'inline-flex';
+            submitBtn.style.display = index === sections.length - 1 ? 'inline-flex' : 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function validateSection(index) {
+            const section = sections[index];
+            let valid = true;
+            let firstInvalidEl = null;
+
+            // inputs, textareas, selects requeridos
+            section.querySelectorAll('input[required], textarea[required], select[required]').forEach(el => {
+                const field = el.closest('.field');
+                if (!el.value.trim()) {
+                    valid = false;
+                    field.classList.add('field-invalid');
+                    if (!firstInvalidEl) firstInvalidEl = el;
+                } else {
+                    field.classList.remove('field-invalid');
+                }
+            });
+
+            // checkboxes requeridos (al menos 1)
+            section.querySelectorAll('[data-checkbox-required]').forEach(field => {
+                const name = field.dataset.checkboxRequired;
+                const checked = section.querySelectorAll(`input[name="${name}"]:checked`).length > 0;
+                if (!checked) {
+                    valid = false;
+                    field.classList.add('field-invalid');
+                    if (!firstInvalidEl) firstInvalidEl = field;
+                } else {
+                    field.classList.remove('field-invalid');
+                }
+            });
+
+            // radio buttons requeridos
+            section.querySelectorAll('[data-radio-required]').forEach(field => {
+                const name = field.dataset.radioRequired;
+                const checked = section.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) {
+                    valid = false;
+                    field.classList.add('field-invalid');
+                    if (!firstInvalidEl) firstInvalidEl = field;
+                } else {
+                    field.classList.remove('field-invalid');
+                }
+            });
+
+            if (!valid) {
+                sectionErrorBanner.classList.add('visible');
+                if (firstInvalidEl) {
+                    setTimeout(() => firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+                }
+            } else {
                 sectionErrorBanner.classList.remove('visible');
-
-                prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
-                if (index === sections.length - 1) {
-                    nextBtn.style.display = 'none';
-                    submitBtn.style.display = 'inline-flex';
-                } else {
-                    nextBtn.style.display = 'inline-flex';
-                    submitBtn.style.display = 'none';
-                }
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
+            return valid;
+        }
 
-            // ─── VALIDACIÓN DE LA SECCIÓN ACTUAL ───
-            function validateSection(index) {
-                const section = sections[index];
-                let valid = true;
-                let firstInvalidEl = null;
+        showSection(0);
 
-                // Inputs y textareas requeridos
-                section.querySelectorAll('input[required], textarea[required], select[required]').forEach(el => {
-                    const field = el.closest('.field');
-                    if (!el.value.trim()) {
-                        valid = false;
-                        field.classList.add('field-invalid');
-                        if (!firstInvalidEl) firstInvalidEl = el;
-                    } else {
-                        field.classList.remove('field-invalid');
-                    }
-                });
-
-                // Grupos de checkboxes marcados como obligatorios (al menos 1)
-                section.querySelectorAll('[data-checkbox-required]').forEach(field => {
-                    const name = field.dataset.checkboxRequired;
-                    const checked = section.querySelectorAll(`input[name="${name}"]:checked`).length > 0;
-                    if (!checked) {
-                        valid = false;
-                        field.classList.add('field-invalid');
-                        if (!firstInvalidEl) firstInvalidEl = field;
-                    } else {
-                        field.classList.remove('field-invalid');
-                    }
-                });
-
-                // Radio buttons requeridos
-                section.querySelectorAll('.field-radio-group').forEach(group => {
-                    const radioName = group.querySelector('input[type="radio"]')?.name;
-                    if (radioName) {
-                        const checked = group.querySelector(`input[name="${radioName}"]:checked`);
-                        const field = group.closest('.field');
-                        if (!checked && field.querySelector('label .required')) {
-                            valid = false;
-                            field.classList.add('field-invalid');
-                            if (!firstInvalidEl) firstInvalidEl = field;
-                        } else if (field) {
-                            field.classList.remove('field-invalid');
-                        }
-                    }
-                });
-
-                if (!valid) {
-                    sectionErrorBanner.classList.add('visible');
-                    if (firstInvalidEl) {
-                        firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                } else {
-                    sectionErrorBanner.classList.remove('visible');
-                }
-
-                return valid;
-            }
-
-            // ─── MOSTRAR PRIMERA SECCIÓN ───
-            showSection(0);
-
-            // ─── BOTONES DE NAVEGACIÓN ───
-            nextBtn.addEventListener('click', function() {
-                if (!validateSection(currentSection)) return;
-                if (currentSection < sections.length - 1) {
-                    currentSection++;
-                    showSection(currentSection);
-                }
-            });
-
-            prevBtn.addEventListener('click', function() {
-                if (currentSection > 0) {
-                    currentSection--;
-                    showSection(currentSection);
-                }
-            });
-
-            // ─── ENVÍO DEL FORMULARIO ───
-            const form = document.getElementById('implementationForm');
-            const formContainer = document.getElementById('formContainer');
-            const formSuccess = document.getElementById('formSuccess');
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                if (!validateSection(currentSection)) return;
-
-                const submitBtnEl = document.getElementById('submitBtn');
-                const originalText = submitBtnEl.innerHTML;
-                submitBtnEl.disabled = true;
-                submitBtnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-
-                try {
-                    const formData = new FormData(form);
-                    const response = await fetch(form.action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    });
-
-                    if (response.ok) {
-                        formContainer.style.display = 'none';
-                        formSuccess.classList.add('visible');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        throw new Error('Error en el envío');
-                    }
-                } catch (error) {
-                    alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
-                    submitBtnEl.disabled = false;
-                    submitBtnEl.innerHTML = originalText;
-                }
-            });
-
-            // ─── SUBIDA DE ARCHIVOS ───
-            document.querySelectorAll('.field-file input[type="file"]').forEach(input => {
-                input.addEventListener('change', function() {
-                    const dropzone = this.closest('.field-file');
-                    const label = dropzone.querySelector('.file-label');
-
-                    if (this.files.length === 0) {
-                        label.textContent = 'Haz clic para subir archivo';
-                        dropzone.classList.remove('file-error');
-                        return;
-                    }
-
-                    const tooLarge = Array.from(this.files).filter(f => f.size > MAX_FILE_BYTES);
-
-                    if (tooLarge.length > 0) {
-                        dropzone.classList.add('file-error');
-                        label.textContent = `⚠️ "${tooLarge[0].name}" pesa más de ${MAX_FILE_MB} MB. Sube un archivo más ligero.`;
-                        this.value = '';
-                        return;
-                    }
-
-                    dropzone.classList.remove('file-error');
-                    const count = this.files.length;
-                    label.textContent = count === 1 ? `✅ ${this.files[0].name} (${(this.files[0].size / 1024 / 1024).toFixed(1)} MB)` : `✅ ${count} archivos seleccionados`;
-                });
-            });
-
-            // ─── AGREGAR FILAS DE TRATAMIENTO ───
-            window.addTratamientoRow = function() {
-                const container = document.getElementById('tratamientosContainer');
-                const rows = container.querySelectorAll('.tratamiento-row');
-                const lastRow = rows[rows.length - 1];
-
-                const newRow = lastRow.cloneNode(true);
-                newRow.querySelectorAll('input, select').forEach(el => {
-                    if (el.tagName === 'INPUT') {
-                        el.value = '';
-                    } else if (el.tagName === 'SELECT') {
-                        el.selectedIndex = 0;
-                    }
-                });
-
-                container.appendChild(newRow);
-                updateTratamientoActions();
-                newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            };
-
-            function updateTratamientoActions() {
-                const rows = document.querySelectorAll('.tratamiento-row');
-                rows.forEach((row, index) => {
-                    let actions = row.querySelector('.tratamiento-actions');
-                    if (rows.length > 1) {
-                        if (!actions) {
-                            actions = document.createElement('div');
-                            actions.className = 'tratamiento-actions';
-                            const removeBtn = document.createElement('button');
-                            removeBtn.type = 'button';
-                            removeBtn.className = 'btn-remove-row';
-                            removeBtn.innerHTML = '<i class="fas fa-times"></i>';
-                            removeBtn.title = 'Eliminar este tratamiento';
-                            removeBtn.onclick = function() {
-                                if (document.querySelectorAll('.tratamiento-row').length > 1) {
-                                    row.remove();
-                                    updateTratamientoActions();
-                                }
-                            };
-                            actions.appendChild(removeBtn);
-                            const lastField = row.querySelector('.field:last-child');
-                            lastField.parentNode.insertBefore(actions, lastField.nextSibling);
-                        }
-                    } else if (actions) {
-                        actions.remove();
-                    }
-                });
-            }
-
-            setTimeout(updateTratamientoActions, 100);
+        nextBtn.addEventListener('click', function() {
+            if (!validateSection(currentSection)) return;
+            if (currentSection < sections.length - 1) { currentSection++; showSection(currentSection); }
         });
-    </script>
 
+        prevBtn.addEventListener('click', function() {
+            if (currentSection > 0) { currentSection--; showSection(currentSection); }
+        });
+
+        // ─── ENVÍO — fetch sin Content-Type explícito para que Formspree procese bien el FormData ───
+        const form = document.getElementById('implementationForm');
+        const formContainer = document.getElementById('formContainer');
+        const formSuccess = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (!validateSection(currentSection)) return;
+
+            submitBtn.disabled = true;
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                    // NO se pone Content-Type — el browser lo pone automáticamente con el boundary correcto
+                });
+
+                if (response.ok) {
+                    formContainer.style.display = 'none';
+                    formSuccess.classList.add('visible');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const data = await response.json().catch(() => ({}));
+                    throw new Error(data.error || 'Error en el envío');
+                }
+            } catch (error) {
+                alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp al +52 55 4050 9093.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHTML;
+            }
+        });
+
+        // ─── TRATAMIENTOS ───
+        document.getElementById('addTratamientoBtn').addEventListener('click', function() {
+            const container = document.getElementById('tratamientosContainer');
+            const rows = container.querySelectorAll('.tratamiento-row');
+            const newRow = rows[rows.length - 1].cloneNode(true);
+            newRow.querySelectorAll('input').forEach(el => el.value = '');
+            newRow.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
+
+            // Agregar botón de eliminar si no lo tiene
+            if (!newRow.querySelector('.btn-remove-row')) {
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'btn-remove-row';
+                removeBtn.title = 'Eliminar';
+                removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                removeBtn.addEventListener('click', function() { newRow.remove(); });
+                newRow.appendChild(removeBtn);
+            }
+
+            container.appendChild(newRow);
+            newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    });
+</script>
 </body>
 </html>
