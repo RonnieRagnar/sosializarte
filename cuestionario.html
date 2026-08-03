@@ -641,7 +641,7 @@
                 <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST" enctype="multipart/form-data">
 
                     <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 1: OBJETIVOS Y PRIORIDADES -->
+                    <!-- SECCIÓN 1: OBJETIVOS Y PRIORIDADES (CORREGIDA) -->
                     <!-- ════════════════════════════════════════════════════════════════ -->
                     <div class="section-block active" data-section="1">
                         <div class="section-header">
@@ -661,11 +661,12 @@
                             <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
 
+                        <!-- ═══ CAMPO CORREGIDO: select con opción por defecto ═══ -->
                         <div class="field">
                             <label>¿Qué es lo que más tiempo le quita hoy a su equipo? <span class="required">*</span></label>
                             <select name="prioridad" required>
                                 <option value="">Selecciona una opción...</option>
-                                <option value="Contestar WhatsApp">Contestar WhatsApp</option>
+                                <option value="Contestar WhatsApp" selected>Contestar WhatsApp</option>
                                 <option value="Llamadas">Llamadas</option>
                                 <option value="Confirmar citas">Confirmar citas</option>
                                 <option value="Cancelaciones">Cancelaciones</option>
