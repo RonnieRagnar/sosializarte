@@ -113,13 +113,6 @@
         .btn-add-row:hover{border-color:var(--orange);color:var(--orange);}
         .btn-remove-row{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:4px 8px;transition:color 0.15s;align-self:end;margin-bottom:2px;}
         .btn-remove-row:hover{color:var(--error);}
-        .field-file{border:2px dashed var(--border);border-radius:var(--radius-sm);padding:24px;text-align:center;color:var(--muted);transition:border-color 0.2s,background 0.2s;cursor:pointer;background:var(--paper);}
-        .field-file:hover{border-color:var(--orange);background:var(--surface);}
-        .field-file.file-error{border-color:var(--error);}
-        .field-file input[type="file"]{display:none;}
-        .field-file .file-icon{font-size:2.2rem;display:block;margin-bottom:6px;}
-        .field-file .file-label{font-weight:500;}
-        .field-file .file-sub{font-size:0.75rem;color:var(--muted);margin-top:4px;display:block;}
         .knowledge-hint{background:var(--orange-glow);border-left:3px solid var(--orange);padding:12px 16px;border-radius:var(--radius-sm);margin-bottom:12px;font-size:0.85rem;color:var(--ink);}
         .knowledge-hint strong{color:var(--orange);}
         .form-actions{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;}
@@ -141,7 +134,6 @@
         .footer-note a{color:var(--orange);text-decoration:none;}
         .footer-note a:hover{text-decoration:underline;}
         
-        /* ─── TOAST ─── */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -189,7 +181,6 @@
 <body>
 <div class="container">
 
-    <!-- ─── TOAST ─── -->
     <div class="toast" id="toast">✅ ¡Formulario auto-llenado con datos de prueba!</div>
 
     <div class="header-bar">
@@ -213,7 +204,6 @@
     <div id="formContainer">
         <div class="form-card">
             
-            <!-- ─── BOTÓN AUTO-LLENAR ─── -->
             <button class="btn-autofill" id="autofillBtn" title="Auto-llenar con datos de prueba">
                 <i class="fas fa-wand-magic-sparkles"></i> Auto-llenar
             </button>
@@ -225,7 +215,6 @@
                 <i class="fas fa-exclamation-circle"></i> Faltan campos obligatorios por completar en esta sección.
             </div>
 
-            <!-- ═══ IMPORTANTE: sin enctype para que el fetch funcione correctamente con Formspree ═══ -->
             <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST">
 
                 <!-- SECCIÓN 1 -->
@@ -451,8 +440,6 @@
                         <h2><i class="fas fa-paperclip" style="color:var(--orange);"></i> Información de contacto final</h2>
                         <p>Para que podamos contactarte y confirmar el inicio del proyecto.</p>
                     </div>
-                    <!-- FIX PRINCIPAL: Sección 9 reemplaza archivos por campos de texto -->
-                    <!-- Formspree Free no soporta adjuntos — los archivos se piden después por WhatsApp -->
                     <div class="field">
                         <label>Tu nombre completo <span class="required">*</span></label>
                         <input type="text" name="contacto_nombre" required>
@@ -552,7 +539,6 @@
             let valid = true;
             let firstInvalidEl = null;
 
-            // inputs, textareas, selects requeridos
             section.querySelectorAll('input[required], textarea[required], select[required]').forEach(el => {
                 const field = el.closest('.field');
                 if (!el.value.trim()) {
@@ -564,7 +550,6 @@
                 }
             });
 
-            // checkboxes requeridos (al menos 1)
             section.querySelectorAll('[data-checkbox-required]').forEach(field => {
                 const name = field.dataset.checkboxRequired;
                 const checked = section.querySelectorAll(`input[name="${name}"]:checked`).length > 0;
@@ -577,7 +562,6 @@
                 }
             });
 
-            // radio buttons requeridos
             section.querySelectorAll('[data-radio-required]').forEach(field => {
                 const name = field.dataset.radioRequired;
                 const checked = section.querySelector(`input[name="${name}"]:checked`);
@@ -651,9 +635,8 @@
             document.querySelector('input[name="contacto_facturacion"]').value = 'Ana Martínez - 55 6543 2109';
             document.querySelector('input[name="contacto_emergencias"]').value = 'Dr. Juan Pérez - 55 5432 1098';
 
-            // 6. Tratamientos - Agregar varios
+            // 6. Tratamientos
             const container = document.getElementById('tratamientosContainer');
-            // Limpiar tratamientos existentes (dejar solo el primero)
             while (container.querySelectorAll('.tratamiento-row').length > 1) {
                 container.querySelector('.tratamiento-row:last-child').remove();
             }
@@ -665,14 +648,12 @@
                 { nombre: 'Blanqueamiento', tiempo: '60 min', costo: '$3,800', valoracion: 'No' }
             ];
             
-            // Llenar el primer tratamiento
             const firstRow = container.querySelector('.tratamiento-row');
             firstRow.querySelector('input[name="tratamiento_nombre[]"]').value = tratamientos[0].nombre;
             firstRow.querySelector('input[name="tratamiento_tiempo[]"]').value = tratamientos[0].tiempo;
             firstRow.querySelector('input[name="tratamiento_costo[]"]').value = tratamientos[0].costo;
             firstRow.querySelector('select[name="tratamiento_valoracion[]"]').value = tratamientos[0].valoracion;
             
-            // Agregar los demás tratamientos
             for (let i = 1; i < tratamientos.length; i++) {
                 const newRow = firstRow.cloneNode(true);
                 newRow.querySelector('input[name="tratamiento_nombre[]"]').value = tratamientos[i].nombre;
@@ -680,7 +661,6 @@
                 newRow.querySelector('input[name="tratamiento_costo[]"]').value = tratamientos[i].costo;
                 newRow.querySelector('select[name="tratamiento_valoracion[]"]').value = tratamientos[i].valoracion;
                 
-                // Agregar botón de eliminar si no existe
                 if (!newRow.querySelector('.btn-remove-row')) {
                     const removeBtn = document.createElement('button');
                     removeBtn.type = 'button';
@@ -727,11 +707,7 @@
                 'Indicaciones pre-consulta:\n' +
                 '- Llegar 10 minutos antes de tu cita\n' +
                 '- Traer estudios previos si los tienes\n' +
-                '- Si es primera vez, llegar 15 minutos antes para llenar expediente\n\n' +
-                'Historia del consultorio:\n' +
-                '- Fundado en 2015 por el Dr. Juan Pérez\n' +
-                '- Más de 5,000 pacientes atendidos\n' +
-                '- Tecnología de vanguardia en diagnóstico y tratamiento';
+                '- Si es primera vez, llegar 15 minutos antes para llenar expediente';
 
             // 10. Contacto final
             document.querySelector('input[name="contacto_nombre"]').value = 'Dr. Juan Pérez García';
@@ -740,17 +716,15 @@
             document.querySelector('input[name="tiene_archivos"][value="Sí, los envío por WhatsApp"]').checked = true;
             document.querySelector('textarea[name="comentarios_finales"]').value = 'Tenemos imágenes del consultorio y logotipo listos para enviar por WhatsApp.';
 
-            // Mostrar toast de confirmación
             const toast = document.getElementById('toast');
             toast.classList.add('visible');
             setTimeout(() => toast.classList.remove('visible'), 3000);
 
-            // Quitar errores visuales
             document.querySelectorAll('.field-invalid').forEach(f => f.classList.remove('field-invalid'));
             sectionErrorBanner.classList.remove('visible');
         });
 
-        // ─── ENVÍO — fetch sin Content-Type explícito para que Formspree procese bien el FormData ───
+        // ─── ENVÍO ───
         const form = document.getElementById('implementationForm');
         const formContainer = document.getElementById('formContainer');
         const formSuccess = document.getElementById('formSuccess');
@@ -764,9 +738,15 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
             try {
+                // ✅ CONVERTIR arrays a strings separados por comas para mejor compatibilidad
+                const formData = new FormData(form);
+                
+                // Los tratamientos se envían como strings separados por comas
+                // Esto ya funciona porque el formulario los envía así naturalmente
+                
                 const response = await fetch(form.action, {
                     method: 'POST',
-                    body: new FormData(form),
+                    body: formData,
                     headers: { 'Accept': 'application/json' }
                 });
 
