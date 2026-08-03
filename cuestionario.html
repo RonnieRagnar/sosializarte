@@ -36,9 +36,43 @@
         .progress-fill{height:100%;background:var(--orange);border-radius:999px;width:0%;transition:width 0.4s ease;}
         .progress-label{display:flex;justify-content:space-between;font-size:0.78rem;color:var(--muted);margin-top:6px;}
         .progress-label .section-count{font-weight:600;color:var(--ink);}
-        .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 36px;box-shadow:var(--shadow-card);}
+        .form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 36px;box-shadow:var(--shadow-card);position:relative;}
         .form-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.02em;}
         .form-subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:28px;font-weight:300;line-height:1.6;}
+        
+        /* ─── BOTÓN AUTO-LLENAR ─── */
+        .btn-autofill {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--success);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 12px rgba(102, 153, 51, 0.3);
+            z-index: 10;
+        }
+        .btn-autofill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(102, 153, 51, 0.4);
+            background: #4d7a26;
+        }
+        .btn-autofill:active {
+            transform: scale(0.95);
+        }
+        .btn-autofill i {
+            font-size: 1rem;
+        }
+        
         .section-error-banner{display:none;background:rgba(204,0,51,0.06);border:1px solid rgba(204,0,51,0.25);color:var(--error);border-radius:var(--radius-sm);padding:12px 16px;font-size:0.85rem;font-weight:600;margin-bottom:20px;}
         .section-error-banner.visible{display:block;}
         .section-block{display:none;animation:fadeIn 0.25s ease;}
@@ -106,6 +140,30 @@
         .footer-note{text-align:center;color:var(--muted);font-size:0.78rem;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
         .footer-note a{color:var(--orange);text-decoration:none;}
         .footer-note a:hover{text-decoration:underline;}
+        
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--success);
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 20px rgba(102, 153, 51, 0.3);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .toast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
         @media(max-width:640px){
             body{padding:16px;}
             .form-card{padding:20px 16px;}
@@ -115,6 +173,12 @@
             .form-actions .btn{width:100%;justify-content:center;}
             .tratamiento-row{grid-template-columns:1fr 1fr;}
             .weekday-grid{grid-template-columns:1fr 1fr;}
+            .btn-autofill {
+                position: static;
+                margin-bottom: 16px;
+                width: 100%;
+                justify-content: center;
+            }
         }
         @media(max-width:480px){
             .tratamiento-row{grid-template-columns:1fr;}
@@ -124,6 +188,9 @@
 </head>
 <body>
 <div class="container">
+
+    <!-- ─── TOAST ─── -->
+    <div class="toast" id="toast">✅ ¡Formulario auto-llenado con datos de prueba!</div>
 
     <div class="header-bar">
         <div>
@@ -145,6 +212,12 @@
 
     <div id="formContainer">
         <div class="form-card">
+            
+            <!-- ─── BOTÓN AUTO-LLENAR ─── -->
+            <button class="btn-autofill" id="autofillBtn" title="Auto-llenar con datos de prueba">
+                <i class="fas fa-wand-magic-sparkles"></i> Auto-llenar
+            </button>
+            
             <h1 class="form-title">📋 Expediente de Implementación</h1>
             <p class="form-subtitle">Completa este expediente para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. <strong>Toda la información que nos compartas será la base del sistema.</strong> Te tomará aproximadamente 20-25 minutos.</p>
 
@@ -539,6 +612,144 @@
             if (currentSection > 0) { currentSection--; showSection(currentSection); }
         });
 
+        // ─── AUTO-LLENADO ───
+        document.getElementById('autofillBtn').addEventListener('click', function() {
+            // 1. Checkboxes - Objetivos
+            const objetivos = ['Agendar citas', 'Reducir llamadas', 'Responder preguntas'];
+            document.querySelectorAll('input[name="objetivo"]').forEach(cb => {
+                cb.checked = objetivos.includes(cb.value);
+            });
+
+            // 2. Radio - Prioridad
+            document.querySelector('input[name="prioridad"][value="Contestar WhatsApp"]').checked = true;
+
+            // 3. Datos del negocio
+            document.querySelector('input[name="nombre_negocio"]').value = 'Consultorio Dental Sonrisa Perfecta';
+            document.querySelector('input[name="responsable"]').value = 'Dr. Juan Pérez García';
+            document.querySelector('input[name="especialidad"]').value = 'Odontología General y Estética';
+            document.querySelector('input[name="ciudad"]').value = 'Ciudad de México, CDMX';
+            document.querySelector('input[name="direccion"]').value = 'Av. Insurgentes Sur #1234, Colonia Del Valle, CP 03100';
+            document.querySelector('input[name="google_maps"]').value = 'https://maps.google.com/?q=Av.+Insurgentes+Sur+1234+CDMX';
+            document.querySelector('input[name="telefono"]').value = '55 9876 5432';
+            document.querySelector('input[name="red_instagram"]').value = '@sonrisaperfecta';
+            document.querySelector('input[name="red_facebook"]').value = '@sonrisaperfecta.mx';
+            document.querySelector('input[name="red_pagina_web"]').value = 'www.sonrisaperfecta.com.mx';
+
+            // 4. Horarios
+            document.querySelector('select[name="horario_lunes"]').value = '09:00-18:00';
+            document.querySelector('select[name="horario_martes"]').value = '09:00-18:00';
+            document.querySelector('select[name="horario_miercoles"]').value = '09:00-18:00';
+            document.querySelector('select[name="horario_jueves"]').value = '09:00-18:00';
+            document.querySelector('select[name="horario_viernes"]').value = '09:00-18:00';
+            document.querySelector('select[name="horario_sabado"]').value = '09:00-14:00';
+            document.querySelector('select[name="horario_domingo"]').value = 'Cerrado';
+
+            // 5. Contactos clave
+            document.querySelector('input[name="contacto_doctor"]').value = 'Dr. Juan Pérez - 55 9876 5432';
+            document.querySelector('input[name="contacto_recepcionista"]').value = 'María López - 55 8765 4321';
+            document.querySelector('input[name="contacto_administrador"]').value = 'Carlos Ramírez - 55 7654 3210';
+            document.querySelector('input[name="contacto_facturacion"]').value = 'Ana Martínez - 55 6543 2109';
+            document.querySelector('input[name="contacto_emergencias"]').value = 'Dr. Juan Pérez - 55 5432 1098';
+
+            // 6. Tratamientos - Agregar varios
+            const container = document.getElementById('tratamientosContainer');
+            // Limpiar tratamientos existentes (dejar solo el primero)
+            while (container.querySelectorAll('.tratamiento-row').length > 1) {
+                container.querySelector('.tratamiento-row:last-child').remove();
+            }
+            
+            const tratamientos = [
+                { nombre: 'Limpieza dental', tiempo: '45 min', costo: '$1,200', valoracion: 'No' },
+                { nombre: 'Ortodoncia', tiempo: '60 min', costo: '$8,500', valoracion: 'Sí' },
+                { nombre: 'Endodoncia', tiempo: '90 min', costo: '$4,500', valoracion: 'Sí' },
+                { nombre: 'Blanqueamiento', tiempo: '60 min', costo: '$3,800', valoracion: 'No' }
+            ];
+            
+            // Llenar el primer tratamiento
+            const firstRow = container.querySelector('.tratamiento-row');
+            firstRow.querySelector('input[name="tratamiento_nombre[]"]').value = tratamientos[0].nombre;
+            firstRow.querySelector('input[name="tratamiento_tiempo[]"]').value = tratamientos[0].tiempo;
+            firstRow.querySelector('input[name="tratamiento_costo[]"]').value = tratamientos[0].costo;
+            firstRow.querySelector('select[name="tratamiento_valoracion[]"]').value = tratamientos[0].valoracion;
+            
+            // Agregar los demás tratamientos
+            for (let i = 1; i < tratamientos.length; i++) {
+                const newRow = firstRow.cloneNode(true);
+                newRow.querySelector('input[name="tratamiento_nombre[]"]').value = tratamientos[i].nombre;
+                newRow.querySelector('input[name="tratamiento_tiempo[]"]').value = tratamientos[i].tiempo;
+                newRow.querySelector('input[name="tratamiento_costo[]"]').value = tratamientos[i].costo;
+                newRow.querySelector('select[name="tratamiento_valoracion[]"]').value = tratamientos[i].valoracion;
+                
+                // Agregar botón de eliminar si no existe
+                if (!newRow.querySelector('.btn-remove-row')) {
+                    const removeBtn = document.createElement('button');
+                    removeBtn.type = 'button';
+                    removeBtn.className = 'btn-remove-row';
+                    removeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                    removeBtn.addEventListener('click', function() { newRow.remove(); });
+                    newRow.appendChild(removeBtn);
+                }
+                container.appendChild(newRow);
+            }
+
+            // 7. Preguntas frecuentes
+            document.querySelector('textarea[name="preguntas_frecuentes"]').value = 
+                '¿Cuánto cuesta una consulta? — Desde $800 MXN dependiendo del tratamiento.\n' +
+                '¿Aceptan seguros? — Sí, trabajamos con GNP, MetLife y AXA.\n' +
+                '¿Se necesita cita previa? — Sí, todas nuestras atenciones son con cita.\n' +
+                '¿Atienden urgencias? — Sí, tenemos horario de urgencias de 8am a 10pm.\n' +
+                '¿Dónde están ubicados? — Av. Insurgentes Sur #1234, Colonia Del Valle, CDMX.\n' +
+                '¿Cuánto dura una consulta? — Aproximadamente 45 minutos.\n' +
+                '¿Hay estacionamiento? — Sí, tenemos estacionamiento gratuito para pacientes.\n' +
+                '¿Tienen financiamiento? — Sí, tenemos planes a meses sin intereses.\n' +
+                '¿Hacen estudios de laboratorio? — Sí, contamos con laboratorio propio.\n' +
+                '¿Tienen expediente electrónico? — Sí, guardamos tu historial médico digital.';
+
+            // 8. Escalamiento y tono
+            document.querySelectorAll('input[name="escalamiento"]').forEach(cb => {
+                cb.checked = ['Urgencia', 'Queja', 'Cancelación'].includes(cb.value);
+            });
+            document.querySelector('input[name="tono"][value="Cercano"]').checked = true;
+
+            // 9. Base de conocimiento
+            document.querySelector('textarea[name="base_conocimiento"]').value = 
+                'Políticas de atención:\n' +
+                '- Cancelaciones con 24 horas de anticipación\n' +
+                '- Los pagos se realizan al final de la consulta\n' +
+                '- Aceptamos tarjetas de crédito, débito y efectivo\n\n' +
+                'Promociones:\n' +
+                '- 20% de descuento en primera consulta\n' +
+                '- Plan de 5 sesiones de ortodoncia con 15% de descuento\n\n' +
+                'Convenios:\n' +
+                '- GNP, MetLife, AXA\n\n' +
+                'Especialidades:\n' +
+                '- Ortodoncia, endodoncia, periodoncia, cirugía maxilofacial\n\n' +
+                'Indicaciones pre-consulta:\n' +
+                '- Llegar 10 minutos antes de tu cita\n' +
+                '- Traer estudios previos si los tienes\n' +
+                '- Si es primera vez, llegar 15 minutos antes para llenar expediente\n\n' +
+                'Historia del consultorio:\n' +
+                '- Fundado en 2015 por el Dr. Juan Pérez\n' +
+                '- Más de 5,000 pacientes atendidos\n' +
+                '- Tecnología de vanguardia en diagnóstico y tratamiento';
+
+            // 10. Contacto final
+            document.querySelector('input[name="contacto_nombre"]').value = 'Dr. Juan Pérez García';
+            document.querySelector('input[name="contacto_email"]').value = 'juan.perez@sonrisaperfecta.com';
+            document.querySelector('input[name="contacto_whatsapp"]').value = '55 9876 5432';
+            document.querySelector('input[name="tiene_archivos"][value="Sí, los envío por WhatsApp"]').checked = true;
+            document.querySelector('textarea[name="comentarios_finales"]').value = 'Tenemos imágenes del consultorio y logotipo listos para enviar por WhatsApp.';
+
+            // Mostrar toast de confirmación
+            const toast = document.getElementById('toast');
+            toast.classList.add('visible');
+            setTimeout(() => toast.classList.remove('visible'), 3000);
+
+            // Quitar errores visuales
+            document.querySelectorAll('.field-invalid').forEach(f => f.classList.remove('field-invalid'));
+            sectionErrorBanner.classList.remove('visible');
+        });
+
         // ─── ENVÍO — fetch sin Content-Type explícito para que Formspree procese bien el FormData ───
         const form = document.getElementById('implementationForm');
         const formContainer = document.getElementById('formContainer');
@@ -557,7 +768,6 @@
                     method: 'POST',
                     body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
-                    // NO se pone Content-Type — el browser lo pone automáticamente con el boundary correcto
                 });
 
                 if (response.ok) {
@@ -583,7 +793,6 @@
             newRow.querySelectorAll('input').forEach(el => el.value = '');
             newRow.querySelectorAll('select').forEach(el => el.selectedIndex = 0);
 
-            // Agregar botón de eliminar si no lo tiene
             if (!newRow.querySelector('.btn-remove-row')) {
                 const removeBtn = document.createElement('button');
                 removeBtn.type = 'button';
