@@ -641,7 +641,7 @@
                 <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST" enctype="multipart/form-data">
 
                     <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 1: OBJETIVOS Y PRIORIDADES (CORREGIDA) -->
+                    <!-- SECCIÓN 1: OBJETIVOS Y PRIORIDADES (CON RADIO BUTTONS) -->
                     <!-- ════════════════════════════════════════════════════════════════ -->
                     <div class="section-block active" data-section="1">
                         <div class="section-header">
@@ -661,19 +661,18 @@
                             <div class="field-error-msg">Selecciona al menos una opción.</div>
                         </div>
 
-                        <!-- ═══ CAMPO CORREGIDO: select con opción por defecto ═══ -->
-                        <div class="field">
+                        <!-- ═══ CAMPO CORREGIDO: RADIO BUTTONS en lugar de SELECT ═══ -->
+                        <div class="field" id="prioridadField">
                             <label>¿Qué es lo que más tiempo le quita hoy a su equipo? <span class="required">*</span></label>
-                            <select name="prioridad" required>
-                                <option value="">Selecciona una opción...</option>
-                                <option value="Contestar WhatsApp" selected>Contestar WhatsApp</option>
-                                <option value="Llamadas">Llamadas</option>
-                                <option value="Confirmar citas">Confirmar citas</option>
-                                <option value="Cancelaciones">Cancelaciones</option>
-                                <option value="Preguntas frecuentes">Preguntas frecuentes</option>
-                                <option value="Otra">Otra</option>
-                            </select>
-                            <div class="field-error-msg">Este campo es obligatorio.</div>
+                            <div class="field-radio-group">
+                                <label><input type="radio" name="prioridad" value="Contestar WhatsApp"> Contestar WhatsApp</label>
+                                <label><input type="radio" name="prioridad" value="Llamadas"> Llamadas</label>
+                                <label><input type="radio" name="prioridad" value="Confirmar citas"> Confirmar citas</label>
+                                <label><input type="radio" name="prioridad" value="Cancelaciones"> Cancelaciones</label>
+                                <label><input type="radio" name="prioridad" value="Preguntas frecuentes"> Preguntas frecuentes</label>
+                                <label><input type="radio" name="prioridad" value="Otra"> Otra</label>
+                            </div>
+                            <div class="field-error-msg">Selecciona una opción.</div>
                         </div>
 
                         <div class="field">
@@ -1235,7 +1234,7 @@ Indicaciones pre-consulta:
                     }
                 });
 
-                // Radio buttons requeridos (sección 7)
+                // Radio buttons requeridos
                 section.querySelectorAll('.field-radio-group').forEach(group => {
                     const radioName = group.querySelector('input[type="radio"]')?.name;
                     if (radioName) {
