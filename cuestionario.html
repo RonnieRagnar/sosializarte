@@ -324,7 +324,7 @@
             flex-shrink: 0;
         }
 
-        /* ─── DÍAS DE LA SEMANA ─── */
+        /* ─── DÍAS DE LA SEMANA CON COMBO ─── */
         .weekday-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -342,22 +342,28 @@
             gap: 8px;
             font-size: 0.85rem;
         }
-        .weekday-item input[type="time"] {
-            width: auto;
-            padding: 4px 8px;
+        .weekday-item .day-label {
+            min-width: 55px;
+            font-weight: 500;
+        }
+        .weekday-item select {
+            flex: 1;
+            padding: 6px 8px;
             border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
             font-family: 'DM Sans', sans-serif;
             font-size: 0.8rem;
             background: var(--paper);
             color: var(--ink);
+            min-width: 0;
         }
-        .weekday-item input[type="time"]:focus {
+        .weekday-item select:focus {
             outline: none;
             border-color: var(--orange);
         }
-        .weekday-item .day-label {
-            min-width: 60px;
+        .weekday-item .cerrado-label {
+            color: var(--muted);
+            font-size: 0.8rem;
             font-weight: 500;
         }
 
@@ -747,61 +753,95 @@
                     </div>
 
                     <!-- ════════════════════════════════════════════════════════════════ -->
-                    <!-- SECCIÓN 3: HORARIOS -->
+                    <!-- SECCIÓN 3: HORARIOS CON COMBO -->
                     <!-- ════════════════════════════════════════════════════════════════ -->
                     <div class="section-block" data-section="3">
                         <div class="section-header">
                             <h2><i class="fas fa-clock" style="color:var(--orange);"></i> Horarios de atención</h2>
-                            <p>Define el horario exacto de atención para cada día.</p>
+                            <p>Define el horario de atención para cada día.</p>
                         </div>
 
                         <div class="field">
                             <label>Horario de atención por día <span class="required">*</span></label>
                             <div class="weekday-grid">
+                                <!-- Lunes -->
                                 <div class="weekday-item">
                                     <span class="day-label">Lunes</span>
-                                    <input type="time" name="horario_lunes_inicio" value="09:00">
-                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
-                                    <input type="time" name="horario_lunes_fin" value="18:00">
+                                    <select name="horario_lunes">
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
+                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
+                                <!-- Martes -->
                                 <div class="weekday-item">
                                     <span class="day-label">Martes</span>
-                                    <input type="time" name="horario_martes_inicio" value="09:00">
-                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
-                                    <input type="time" name="horario_martes_fin" value="18:00">
+                                    <select name="horario_martes">
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
+                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
+                                <!-- Miércoles -->
                                 <div class="weekday-item">
                                     <span class="day-label">Miércoles</span>
-                                    <input type="time" name="horario_miercoles_inicio" value="09:00">
-                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
-                                    <input type="time" name="horario_miercoles_fin" value="18:00">
+                                    <select name="horario_miercoles">
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
+                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
+                                <!-- Jueves -->
                                 <div class="weekday-item">
                                     <span class="day-label">Jueves</span>
-                                    <input type="time" name="horario_jueves_inicio" value="09:00">
-                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
-                                    <input type="time" name="horario_jueves_fin" value="18:00">
+                                    <select name="horario_jueves">
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
+                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
+                                <!-- Viernes -->
                                 <div class="weekday-item">
                                     <span class="day-label">Viernes</span>
-                                    <input type="time" name="horario_viernes_inicio" value="09:00">
-                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
-                                    <input type="time" name="horario_viernes_fin" value="18:00">
+                                    <select name="horario_viernes">
+                                        <option value="09:00-18:00">9:00 AM – 6:00 PM</option>
+                                        <option value="09:00-17:00">9:00 AM – 5:00 PM</option>
+                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
+                                        <option value="10:00-18:00">10:00 AM – 6:00 PM</option>
+                                        <option value="08:00-16:00">8:00 AM – 4:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
+                                <!-- Sábado -->
                                 <div class="weekday-item">
                                     <span class="day-label">Sábado</span>
-                                    <input type="time" name="horario_sabado_inicio" value="09:00">
-                                    <span style="font-size:0.7rem; color:var(--muted);">a</span>
-                                    <input type="time" name="horario_sabado_fin" value="13:00">
+                                    <select name="horario_sabado">
+                                        <option value="09:00-13:00">9:00 AM – 1:00 PM</option>
+                                        <option value="09:00-14:00">9:00 AM – 2:00 PM</option>
+                                        <option value="10:00-14:00">10:00 AM – 2:00 PM</option>
+                                        <option value="Cerrado">Cerrado</option>
+                                    </select>
                                 </div>
-                                <div class="weekday-item" style="grid-column: span 2;">
+                                <!-- Domingo -->
+                                <div class="weekday-item">
                                     <span class="day-label">Domingo</span>
-                                    <span style="font-size:0.8rem; color:var(--muted);">Cerrado</span>
-                                    <input type="hidden" name="horario_domingo_inicio" value="">
-                                    <input type="hidden" name="horario_domingo_fin" value="">
+                                    <span class="cerrado-label">Cerrado</span>
+                                    <input type="hidden" name="horario_domingo" value="Cerrado">
                                 </div>
                             </div>
-                            <div class="hint">Ajusta los horarios según tu operación. Los valores predeterminados son orientativos.</div>
+                            <div class="hint">Selecciona el horario de cada día. Los valores predeterminados son orientativos.</div>
                         </div>
                     </div>
 
@@ -967,25 +1007,25 @@
                             <label>Base de conocimiento del asistente <span class="required">*</span></label>
                             <textarea name="base_conocimiento" rows="10" required placeholder="Pega aquí toda la información relevante:
 
-    Políticas de atención:
-    - Cancelaciones con 24 horas de anticipación
-    - Los pagos se realizan al final de la consulta
+Políticas de atención:
+- Cancelaciones con 24 horas de anticipación
+- Los pagos se realizan al final de la consulta
 
-    Promociones:
-    - 20% de descuento en primera consulta
-    - Plan de 5 sesiones con 15% de descuento
+Promociones:
+- 20% de descuento en primera consulta
+- Plan de 5 sesiones con 15% de descuento
 
-    Convenios:
-    - GNP, MetLife, AXA
+Convenios:
+- GNP, MetLife, AXA
 
-    Especialidades:
-    - Ortodoncia, endodoncia, periodoncia, cirugía maxilofacial
+Especialidades:
+- Ortodoncia, endodoncia, periodoncia, cirugía maxilofacial
 
-    Indicaciones pre-consulta:
-    - Llegar 10 minutos antes
-    - Traer estudios previos si los tienes
+Indicaciones pre-consulta:
+- Llegar 10 minutos antes
+- Traer estudios previos si los tienes
 
-    (Pega todo lo que consideres importante)"></textarea>
+(Pega todo lo que consideres importante)"></textarea>
                             <div class="field-error-msg">Este campo es obligatorio. Es el corazón del sistema.</div>
                             <div class="hint">Cuantos más detalles pongas, mejor será la respuesta del asistente.</div>
                         </div>
@@ -1217,27 +1257,6 @@
                 }
             });
 
-            // ─── TE CLA "ENTER" EN EL ÚLTIMO CAMPO PARA AVANZAR ───
-            document.querySelectorAll('.section-block input, .section-block textarea, .section-block select').forEach(el => {
-                el.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        const section = this.closest('.section-block');
-                        if (section && section === sections[currentSection]) {
-                            const isLastField = section.querySelectorAll('input, textarea, select').length - 1 ===
-                                Array.from(section.querySelectorAll('input, textarea, select')).indexOf(this);
-                            if (isLastField) {
-                                e.preventDefault();
-                                if (!validateSection(currentSection)) return;
-                                if (currentSection < sections.length - 1) {
-                                    currentSection++;
-                                    showSection(currentSection);
-                                }
-                            }
-                        }
-                    }
-                });
-            });
-
             // ─── ENVÍO DEL FORMULARIO ───
             const form = document.getElementById('implementationForm');
             const formContainer = document.getElementById('formContainer');
@@ -1246,7 +1265,6 @@
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
 
-                // Valida la última sección antes de enviar
                 if (!validateSection(currentSection)) return;
 
                 const submitBtnEl = document.getElementById('submitBtn');
@@ -1276,7 +1294,7 @@
                 }
             });
 
-            // ─── SUBIDA DE ARCHIVOS CON VALIDACIÓN DE TAMAÑO ───
+            // ─── SUBIDA DE ARCHIVOS ───
             document.querySelectorAll('.field-file input[type="file"]').forEach(input => {
                 input.addEventListener('change', function() {
                     const dropzone = this.closest('.field-file');
@@ -1309,7 +1327,6 @@
                 const rows = container.querySelectorAll('.tratamiento-row');
                 const lastRow = rows[rows.length - 1];
 
-                // Clonar la última fila
                 const newRow = lastRow.cloneNode(true);
                 newRow.querySelectorAll('input, select').forEach(el => {
                     if (el.tagName === 'INPUT') {
@@ -1320,11 +1337,7 @@
                 });
 
                 container.appendChild(newRow);
-
-                // Agregar botón de eliminar si hay más de 1 fila
                 updateTratamientoActions();
-
-                // Hacer scroll al nuevo campo
                 newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
             };
 
@@ -1348,7 +1361,6 @@
                                 }
                             };
                             actions.appendChild(removeBtn);
-                            // Insertar acciones al final de la fila
                             const lastField = row.querySelector('.field:last-child');
                             lastField.parentNode.insertBefore(actions, lastField.nextSibling);
                         }
@@ -1358,7 +1370,6 @@
                 });
             }
 
-            // Inicializar acciones
             setTimeout(updateTratamientoActions, 100);
         });
     </script>
