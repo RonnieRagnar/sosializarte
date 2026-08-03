@@ -40,7 +40,6 @@
         .form-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.8rem;font-weight:700;margin-bottom:6px;letter-spacing:-0.02em;}
         .form-subtitle{color:var(--muted);font-size:0.95rem;margin-bottom:28px;font-weight:300;line-height:1.6;}
         
-        /* ─── BOTÓN AUTO-LLENAR ─── */
         .btn-autofill {
             position: absolute;
             top: 20px;
@@ -66,12 +65,8 @@
             box-shadow: 0 4px 20px rgba(102, 153, 51, 0.4);
             background: #4d7a26;
         }
-        .btn-autofill:active {
-            transform: scale(0.95);
-        }
-        .btn-autofill i {
-            font-size: 1rem;
-        }
+        .btn-autofill:active { transform: scale(0.95); }
+        .btn-autofill i { font-size: 1rem; }
         
         .section-error-banner{display:none;background:rgba(204,0,51,0.06);border:1px solid rgba(204,0,51,0.25);color:var(--error);border-radius:var(--radius-sm);padding:12px 16px;font-size:0.85rem;font-weight:600;margin-bottom:20px;}
         .section-error-banner.visible{display:block;}
@@ -151,10 +146,7 @@
             z-index: 9999;
             pointer-events: none;
         }
-        .toast.visible {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+        .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
         
         @media(max-width:640px){
             body{padding:16px;}
@@ -165,12 +157,7 @@
             .form-actions .btn{width:100%;justify-content:center;}
             .tratamiento-row{grid-template-columns:1fr 1fr;}
             .weekday-grid{grid-template-columns:1fr 1fr;}
-            .btn-autofill {
-                position: static;
-                margin-bottom: 16px;
-                width: 100%;
-                justify-content: center;
-            }
+            .btn-autofill { position: static; margin-bottom: 16px; width: 100%; justify-content: center; }
         }
         @media(max-width:480px){
             .tratamiento-row{grid-template-columns:1fr;}
@@ -209,13 +196,17 @@
             </button>
             
             <h1 class="form-title">📋 Expediente de Implementación</h1>
-            <p class="form-subtitle">Completa este expediente para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. <strong>Toda la información que nos compartas será la base del sistema.</strong> Te tomará aproximadamente 20-25 minutos.</p>
+            <p class="form-subtitle">Completa este expediente para que podamos configurar tu asistente virtual sin necesidad de idas y vueltas. <strong>Toda la información que nos compartas será la base del sistema.</strong></p>
 
             <div class="section-error-banner" id="sectionErrorBanner">
                 <i class="fas fa-exclamation-circle"></i> Faltan campos obligatorios por completar en esta sección.
             </div>
 
             <form id="implementationForm" action="https://formspree.io/f/xgogjwyp" method="POST">
+
+                <!-- ═══ ANTI-SPAM ═══ -->
+                <input type="text" name="_gotcha" style="display:none">
+                <input type="text" name="_captcha" value="false" style="display:none">
 
                 <!-- SECCIÓN 1 -->
                 <div class="section-block active" data-section="1">
@@ -312,7 +303,7 @@
                 <div class="section-block" data-section="3">
                     <div class="section-header">
                         <h2><i class="fas fa-clock" style="color:var(--orange);"></i> Horarios de atención</h2>
-                        <p>Define el horario de atención para cada día. Si no aplica, selecciona "No aplica".</p>
+                        <p>Define el horario de atención para cada día.</p>
                     </div>
                     <div class="field">
                         <label>Horario de atención por día</label>
@@ -378,7 +369,7 @@
                     <div class="field">
                         <label>Preguntas frecuentes (mínimo 10) <span class="required">*</span></label>
                         <div class="hint" style="margin-bottom:6px;">Escribe una por línea, con su respuesta. Ejemplo: "¿Aceptan tarjeta? — Sí, aceptamos todas las tarjetas."</div>
-                        <textarea name="preguntas_frecuentes" rows="12" required placeholder="¿Cuánto cuesta una consulta? — Desde $800 MXN.&#10;¿Aceptan seguros? — Sí, trabajamos con GNP, MetLife y AXA.&#10;¿Se necesita cita previa? — Sí, todas son con cita.&#10;¿Atienden urgencias? — Sí, de 8am a 10pm.&#10;¿Dónde están ubicados? — Av. Ejemplo #123, Colonia Centro.&#10;¿Cuánto dura la consulta? — Aproximadamente 45 minutos.&#10;¿Hay estacionamiento? — Sí, gratuito para pacientes.&#10;¿Tienen financiamiento? — Sí, planes a meses sin intereses.&#10;¿Hacen estudios de laboratorio? — Sí, contamos con laboratorio propio.&#10;¿Tienen expediente electrónico? — Sí, guardamos tu historial."></textarea>
+                        <textarea name="preguntas_frecuentes" rows="12" required></textarea>
                         <div class="field-error-msg">Este campo es obligatorio. Escribe al menos 10 preguntas.</div>
                     </div>
                 </div>
@@ -428,7 +419,7 @@
                     </div>
                     <div class="field">
                         <label>Base de conocimiento del asistente <span class="required">*</span></label>
-                        <textarea name="base_conocimiento" rows="10" required placeholder="Políticas de atención:&#10;- Cancelaciones con 24 horas de anticipación&#10;- Los pagos se realizan al final de la consulta&#10;&#10;Convenios: GNP, MetLife, AXA&#10;&#10;Indicaciones pre-consulta:&#10;- Llegar 10 minutos antes&#10;- Traer estudios previos si los tienes&#10;&#10;(Pega todo lo que consideres importante)"></textarea>
+                        <textarea name="base_conocimiento" rows="10" required></textarea>
                         <div class="field-error-msg">Este campo es obligatorio. Es el corazón del sistema.</div>
                         <div class="hint">Cuantos más detalles pongas, mejor será la respuesta del asistente.</div>
                     </div>
@@ -738,15 +729,9 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
             try {
-                // ✅ CONVERTIR arrays a strings separados por comas para mejor compatibilidad
-                const formData = new FormData(form);
-                
-                // Los tratamientos se envían como strings separados por comas
-                // Esto ya funciona porque el formulario los envía así naturalmente
-                
                 const response = await fetch(form.action, {
                     method: 'POST',
-                    body: formData,
+                    body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
                 });
 
