@@ -364,38 +364,13 @@
                         <p class="section-desc" style="font-size:0.85rem;">Lo que necesitamos para que la página se vea 100% Overnet.</p>
 
                         <div class="field">
-                            <label>Logotipo</label>
-                            <div class="field-file" id="logoDropzone" onclick="document.getElementById('logoInput').click()">
-                                <span class="file-icon">🖼️</span>
-                                <span class="file-label">Haz clic para subir tu logotipo (PNG, JPG, SVG, AI o EPS)</span>
-                                <input type="file" id="logoInput" name="logo" accept="image/*,.svg,.ai,.eps">
-                            </div>
-                            <div class="hint">Si no tienes el archivo a la mano, dinos y lo reconstruimos a partir de la página anterior. Tamaño máximo: 10 MB.</div>
-                        </div>
-
-                        <div class="field">
                             <label>¿Mantenemos los colores actuales o prefieres colores nuevos?</label>
                             <input type="text" name="colores" placeholder="Ej. Mantener el azul y gris actuales / Prefiero algo nuevo, sugiéranme">
                         </div>
 
-                        <div class="field">
-                            <label>Fotos de instalaciones, equipos, proyectos o personal</label>
-                            <div class="field-file" id="fotosDropzone" onclick="document.getElementById('fotosInput').click()">
-                                <span class="file-icon">📷</span>
-                                <span class="file-label">Haz clic para subir fotos</span>
-                                <input type="file" id="fotosInput" name="fotos" accept="image/*" multiple>
-                            </div>
-                            <div class="hint">Puedes subir varias fotos. Tamaño máximo: 10 MB por archivo.</div>
-                        </div>
-
-                        <div class="field">
-                            <label>Catálogo o brochure (si tienes uno en PDF)</label>
-                            <div class="field-file" id="catalogoDropzone" onclick="document.getElementById('catalogoInput').click()">
-                                <span class="file-icon">📄</span>
-                                <span class="file-label">Haz clic para subir tu catálogo</span>
-                                <input type="file" id="catalogoInput" name="catalogo" accept=".pdf,image/*">
-                            </div>
-                            <div class="hint">Tamaño máximo: 10 MB.</div>
+                        <div class="field" style="background: var(--orange-glow); border: 1px solid rgba(255, 100, 46, 0.25); border-radius: var(--radius-sm); padding: 18px;">
+                            <label style="margin-bottom: 8px;"><i class="fab fa-whatsapp"></i> Logo, fotos y catálogo</label>
+                            <p style="font-size: 0.88rem; color: var(--ink); margin: 0;">Este formulario no acepta archivos adjuntos. Cuando termines de contestar, mándanos por WhatsApp: tu logotipo (PNG, SVG, AI o EPS), fotos de instalaciones/equipos/proyectos, y tu catálogo o brochure en PDF si tienes uno.</p>
                         </div>
                     </div>
 
@@ -553,9 +528,6 @@
     </div>
 
     <script>
-        const MAX_FILE_MB = 10;
-        const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
-
         document.addEventListener('DOMContentLoaded', function() {
             const sections = Array.from(document.querySelectorAll('.section-block'));
             const prevBtn = document.getElementById('prevBtn');
@@ -677,40 +649,18 @@
                         formSuccess.classList.add('visible');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
+                        const errorBody = await response.text();
+                        console.error('Formspree respondió con error:', response.status, errorBody);
                         throw new Error('Error en el envío');
                     }
                 } catch (error) {
+                    console.error('Error al enviar el formulario:', error);
                     alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo o contáctanos por WhatsApp.');
                     submitBtnEl.disabled = false;
                     submitBtnEl.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar cuestionario';
                 }
             });
 
-            // ─── SUBIDA DE ARCHIVOS CON VALIDACIÓN DE TAMAÑO ───
-            document.querySelectorAll('.field-file input[type="file"]').forEach(input => {
-                input.addEventListener('change', function() {
-                    const dropzone = this.closest('.field-file');
-                    const label = dropzone.querySelector('.file-label');
-
-                    if (this.files.length === 0) {
-                        label.textContent = 'Haz clic para subir archivo';
-                        dropzone.classList.remove('file-error');
-                        return;
-                    }
-
-                    const tooLarge = Array.from(this.files).filter(f => f.size > MAX_FILE_BYTES);
-
-                    if (tooLarge.length > 0) {
-                        dropzone.classList.add('file-error');
-                        label.textContent = `⚠️ ${tooLarge[0].name} pesa más de ${MAX_FILE_MB} MB. Sube un archivo más ligero.`;
-                        this.value = '';
-                        return;
-                    }
-
-                    dropzone.classList.remove('file-error');
-                    label.textContent = `✅ ${this.files.length} archivo(s) seleccionado(s)`;
-                });
-            });
         });
     </script>
 </body>
